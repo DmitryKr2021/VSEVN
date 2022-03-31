@@ -157,7 +157,9 @@
 					</ul>
 				</div>
 				<div class="header__bottom">
-					<picture><source srcset="img/icons/Logo.webp"type="image/webp"><img src="img/icons/Logo.png" width="151" height="22" alt=""></picture>
+          <a href="https://vsevn.ru/" target="_blank">
+            <picture><source srcset="img/icons/Logo.webp"type="image/webp"><img src="img/icons/Logo.png" width="151" height="22" alt=""></picture>
+          </a>
 					<button class="header__btn bg-red btn">
 						Нужна подработка?
 					</button>
@@ -410,8 +412,10 @@
 							<button type="button" class="tabs__title employ">Поиск работы</button>
 							<button type="button" class="tabs__title _tab-active any">Любая категория</button>
 						</nav>
-						<div data-tabs-body class="tabs__content">
-							<div class="tabs__body inputs">
+
+            <div data-tabs-body class="tabs__content tabs__2">
+ 
+							<div class="tabs__body inputs hide-block hide1 tabs__body--person">
 								<div class="inputs__row inputs__row--four inputs__row--1">
 									<label class="inputs__label _disable-tippy">
 										<!-- data-error - выводит текст при ошибке -->
@@ -424,32 +428,30 @@
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel" id="form-1">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+											<option value="1">Автозаводский</option>
+											<option value="2">Канавинский</option>
+											<option value="3">Ленинский</option>
+											<option value="4">Московский</option>
+											<option value="5">Нижегородский</option>
+											<option value="6">Приокский</option>
+											<option value="7">Советский</option>
+											<option value="8">Сормовский</option>
 											<option selected></option>
 										</select>
 										<span>Район</span>
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+											<option value="1">Горьковская</option>
+											<option value="2">Московская</option>
+											<option value="3">Чкаловская</option>
+											<option value="4">Ленинская</option>
+											<option value="5">Заречная</option>
+											<option value="6">Двигатель Революции</option>
+											<option value="7">Пролетарская</option>
+											<option value="8">Автозаводская</option>
+											<option value="9">Комсомольская</option>
+											<option value="10">Кировская</option>
 											<option selected></option>
 										</select>
 										<span>Метро</span>
@@ -473,15 +475,13 @@
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
 										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
+											<option value="0">Не имеет значения</option>
+											<option value="1">Высшее</option>
+											<option value="2">Незаконченное высшее</option>
+											<option value="3">Среднее</option>
+											<option value="4">Среднее специальное</option>
+										</select>                               
+										<span>Образование</span>
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
 										<select name="form[]" class="form" data-scroll multiple data-checkbox>
@@ -588,7 +588,7 @@
 									<button class="inputs__btn">Показать 1 111  вакансий</button>
 								</div>
 							</div>
-							<div class="tabs__body inputs">
+							<div class="tabs__body inputs hide-block hide2 tabs__body--work">
 								<div class="inputs__row inputs__row--four inputs__row--2">
 									<label class="inputs__label _disable-tippy">
 										<!-- data-error - выводит текст при ошибке -->
@@ -601,32 +601,30 @@
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+                      <option value="1">Автозаводский</option>
+											<option value="2">Канавинский</option>
+											<option value="3">Ленинский</option>
+											<option value="4">Московский</option>
+											<option value="5">Нижегородский</option>
+											<option value="6">Приокский</option>
+											<option value="7">Советский</option>
+											<option value="8">Сормовский</option>
 											<option selected></option>
 										</select>
 										<span>Район</span>
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+                      <option value="1">Горьковская</option>
+											<option value="2">Московская</option>
+											<option value="3">Чкаловская</option>
+											<option value="4">Ленинская</option>
+											<option value="5">Заречная</option>
+											<option value="6">Двигатель Революции</option>
+											<option value="7">Пролетарская</option>
+											<option value="8">Автозаводская</option>
+											<option value="9">Комсомольская</option>
+											<option value="10">Кировская</option>
 											<option selected></option>
 										</select>
 										<span>Метро</span>
@@ -662,27 +660,53 @@
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
 										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
+											<option value="0">Не имеет значения</option>
+											<option value="1">Менее 1 года</option>
+											<option value="2">От 1 года</option>
+											<option value="3">От 2 лет</option>
+											<option value="4">От 3 лет</option>
+											<option value="5">От 4 лет</option>
+											<option value="6">От 5 лет</option>
+											<option value="7">От 6 лет</option>
+											<option value="8">От 7 лет</option>
+											<option value="9">От 8 лет</option>
+											<option value="10">От 9 лет</option>
+											<option value="11">От 10 лет</option>
+											<option value="12">От 15 лет</option>
+											<option value="13">От 20 лет</option>
+											<option value="apply">Применить</option>
+                    </select>	 
+										<span>Опыт работы</span>
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
 										<select name="form[]" class="form" data-scroll multiple data-checkbox>
 											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
+											<option value="1">Работа с ежедневной оплатой</option>
+											<option value="2">Работа без опыта</option>
+											<option value="3">Работа для студентов</option>
+											<option value="4">Работа для женщин</option>
+											<option value="5">Работа для пенсионеров</option>
+											<option value="6">Работа с бесплатным проездом</option>
+											<option value="7">Работа на дому</option>
+											<option value="8">Работа с проживанием/option>
+											<option value="9">Подработка</option>
+											<option value="10">Статус соискателя "Безработный"</option>
+											<option value="11">Статус соискателя "Работающий"</option>
+											<option value="12">Только с фото</option>
+											<option value="13">Не иногородние</option>
+											<option value="14">Отетки "Есть комментарий"</option>
+											<option value="15">Отметки "В избранном"</option>
+											<option value="16">Отметки "В черном списке"</option>
+											<option value="17">Отметки "Принят"</option>
+											<option value="18">Отметки "Не подошел"</option>
+											<option value="19">Отметки "Тот, кто откликнулся"</option>
+											<option value="20">Есть водительские права В</option>
+											<option value="21">Есть водительские права C</option>
+											<option value="22">Есть водительские права D</option>
+											<option value="23">Есть водительские права T</option>
+											<option value="24">Есть автомобиль</option>
 										</select>
-										<span>График работы</span>
+										<span>Тип вакансии</span>
 									</label>
 								</div>
 								<div class="inputs__row inputs__row--three-reverse inputs__row--last ">
@@ -732,7 +756,9 @@
 									<button class="inputs__btn">Показать 2 222 вакансий</button>
 								</div>
 							</div>
-							<div class="tabs__body inputs">
+
+
+							<div class="tabs__body inputs tabs__body--any">
 								<div class="inputs__row inputs__row--four">
 									<label class="inputs__label _disable-tippy">
 										<!-- data-error - выводит текст при ошибке -->
@@ -745,32 +771,30 @@
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+                      <option value="1">Автозаводский</option>
+											<option value="2">Канавинский</option>
+											<option value="3">Ленинский</option>
+											<option value="4">Московский</option>
+											<option value="5">Нижегородский</option>
+											<option value="6">Приокский</option>
+											<option value="7">Советский</option>
+											<option value="8">Сормовский</option>
 											<option selected></option>
 										</select>
 										<span>Район</span>
 									</label>
 									<label class="inputs__label _disable-tippy inputs__label--sel">
 										<select name="form[]" class="form" data-search>
-											<option value="1">Lorem ipsum</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
+											<option value="1">Горьковская</option>
+											<option value="2">Московская</option>
+											<option value="3">Чкаловская</option>
+											<option value="4">Ленинская</option>
+											<option value="5">Заречная</option>
+											<option value="6">Двигатель Революции</option>
+											<option value="7">Пролетарская</option>
+											<option value="8">Автозаводская</option>
+											<option value="9">Комсомольская</option>
+											<option value="10">Кировская</option>
 											<option selected></option>
 										</select>
 										<span>Метро</span>
@@ -826,6 +850,21 @@
 								</div>
 							</div>
 						</div>
+
+            <div class="roll-up">
+              <button class="roll-up__btn" id="roll-up-btn">
+                <svg class="roll-up__arrow roll-up__arrow--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#ffffff">
+                  <path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/>
+                </svg>
+                <span class="roll-up__span">Скрыть поисковую панель</span>
+                <svg class="roll-up__arrow roll-up__arrow--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#ffffff">
+                  <path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/>
+                </svg>
+              </button>
+            </div>
+
+
+
 					</div>
 				</div>
 			</section>
@@ -3410,7 +3449,9 @@
                            </div>
                         </div>
                      </div> -->
-						<div class="window__row">
+
+
+						<div class="window__row window__row--right">
 							<div data-tabs class="window__tabs window-tabs">
 								<nav data-tabs-titles class="window-tabs__navigation">
 									<button type="button" class="window-tabs__title">

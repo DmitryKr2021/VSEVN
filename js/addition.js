@@ -1,15 +1,41 @@
-let scrollHeight = Math.max(
+//Избавление от мельтешений при загрузке страницы
+const hide1 = document.querySelector('.hide1');
+const hide2 = document.querySelector('.hide2');
+
+document.addEventListener('DOMContentLoaded', function () {
+  hide1.classList.remove('hide-block');
+  hide2.classList.remove('hide-block');
+});
+/***********Конец блока**************** */
+
+//Создание красной линии - индикатора скролла 
+
+/*scrollHeight = Math.max(
   document.body.scrollHeight, document.documentElement.scrollHeight,
   document.body.offsetHeight, document.documentElement.offsetHeight,
   document.body.clientHeight, document.documentElement.clientHeight
-);
-
-scrollHeight = document.documentElement.scrollHeight;
+);*/ //Общий вариант для высоты страницы
 
 const percentScrollDiv = document.querySelector('.percent-scroll');
-document.onscroll = () => {
-  percentScrollDiv.style.width = `${1.09*document.documentElement.scrollWidth*window.pageYOffset/scrollHeight}px`;
+const windowRowRight = document.querySelector('.window__row--right');
+let numerator = 0;
+let denominator;
+let scrollRightBlock = windowRowRight.getBoundingClientRect().top;
+let rightBlockStart = scrollRightBlock;
+
+document.onscroll = (e) => {
+  let timerScroll = setInterval(scrollHandler, 10);
+  let correction = 0;
+  denominator = document.documentElement.scrollHeight + windowRowRight.clientHeight;
+
+  function scrollHandler() {
+    correction = rightBlockStart - windowRowRight.getBoundingClientRect().top;
+    numerator = window.pageYOffset + correction;
+    percentScrollDiv.style.width = `${document.documentElement.scrollWidth*1.05*numerator/denominator}px`;
+  }
 };
+/*************Конец блока*****************/
+
 
 /* Работа с кнопкой Очистить */
 /* Показать кнопку Очистить только если что-то выбрано */
@@ -104,5 +130,42 @@ function whereClick(e) {
   let target = e.target;
   if (target.getAttribute('data-value')) {
     showClean();
+  }
+}
+
+
+//Скрыть/показать поисковую панель
+const rollUp = document.querySelector('.roll-up');
+const rollUpBtn = document.querySelector('.roll-up__btn');
+const rollUpSpan = document.querySelector('.roll-up__span');
+let flagShow = true;
+
+rollUpBtn.onclick = () => {
+  if (flagShow) {
+    rollUpSpan.innerText = 'Показать поисковую панель';
+    rollUp.classList.add('active');
+    document.querySelector('.tabs__1').classList.add('hide-block');
+    document.querySelector('.tabs__2').classList.add('hide-block');
+  } else {
+    rollUpSpan.innerText = 'Скрыть поисковую панель';
+    rollUp.classList.remove('active');
+    document.querySelector('.tabs__1').classList.remove('hide-block');
+    document.querySelector('.tabs__2').classList.remove('hide-block');
+  }
+  flagShow = !flagShow;
+};
+/* Конец блока */
+
+
+window.onclick = (e) => {
+  console.log(e.target);
+};
+
+const btns = document.querySelectorAll('button');
+for (let b of btns) {
+  if (b.getAttribute('data-value') == 'apply') {
+    b.onclick = () => {
+      b.remove();
+    };
   }
 }

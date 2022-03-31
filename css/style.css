@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-  --bg-red: rgb(236, 3, 3);
+  --bg-red: #ec0303;
 }
 
 
@@ -45,6 +45,22 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: ZabraPro;
+  font-display: swap;
+  src: url("../fonts/ZabraPro-Medium.woff2") format("woff2"), url("../fonts/ZabraPro-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ZabraPro;
+  font-display: swap;
+  src: url("../fonts/ZabraPro-Regular.woff2") format("woff2"), url("../fonts/ZabraPro-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 ._not-input input {
   pointer-events: none;
 }
@@ -70,7 +86,8 @@ body {
 body {
   color: #2c2c2c;
   line-height: 1;
-  font-family: "Open Sans";
+  /*font-family: "Open Sans";*/
+  font-family: "ZabraPro";
   font-size: 1rem;
   overflow-x: hidden;
   -ms-text-size-adjust: 100%;
@@ -83,7 +100,8 @@ body {
 input,
 button,
 textarea {
-  font-family: "Open Sans";
+  /*font-family: "Open Sans";*/
+  font-family: "ZabraPro";
   font-size: inherit;
 }
 
@@ -602,7 +620,8 @@ body {
 }
 
 ._select-multiple .select__option[hidden]::before {
-  background: url("../img/icons/draw-check-mark.png") bottom no-repeat;
+  /*background: url("../img/icons/draw-check-mark.png") bottom no-repeat;*/
+  /*background: url("../img/check-mark-yellow-30.png") bottom no-repeat;*/
 }
 
 @media (min-width: 101.875em) {
@@ -710,10 +729,14 @@ body {
 
 ._select-multiple .select__option._select-selected {
   background: transparent;
+  position: relative;
 }
 
-._select-multiple .select__option._select-selected::before {
-  background: url("../img/icons/draw-check-mark.png") bottom no-repeat;
+._select-multiple .select__option._select-selected::after {
+  content: url("../img/check-mark-yellow-20.png");
+  position: absolute;
+  left: 17px;
+  top: 3px;
 }
 
 @media (min-width: 101.875em) {
@@ -740,10 +763,27 @@ body {
   }
 }
 
+._select-multiple .select__option:hover {
+  background-color: #ffdd00;
+}
+
+._select-multiple .select__option {
+  position: relative;
+}
+
 ._select-multiple .select__option::before {
   content: "";
   border: 1px solid #e3e3e3;
   border-radius: 5px;
+}
+
+._select-multiple .select__option:hover:after {
+  content: url("../img/check-mark-red-20.png");
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 18px;
+  z-index: 1;
 }
 
 @media (min-width: 101.875em) {
@@ -12423,20 +12463,32 @@ input[name=select__locality]:disabled+.select__popup-label {
   opacity: 0.4;
 }
 
-input[name=select__sector]:checked+.select__popup-label,
-input[name=select__subway-moskow]:checked+.select__popup-label,
-input[name=select__region]:checked+.select__popup-label,
-input[name=select__district]:checked+.select__popup-label,
-input[name=select__locality]:checked+.select__popup-label {
+input[name=select__sector]:hover+.select__popup-label,
+input[name=select__subway-moskow]:hover+.select__popup-label,
+input[name=select__region]:hover+.select__popup-label,
+input[name=select__district]:hover+.select__popup-label,
+input[name=select__locality]:hover+.select__popup-label {
   background-color: #fede31;
+  cursor: pointer;
 }
 
-input[name=select__sector]:checked+.select__popup-label::before,
-input[name=select__subway-moskow]:checked+.select__popup-label::before,
-input[name=select__region]:checked+.select__popup-label::before,
-input[name=select__district]:checked+.select__popup-label::before,
-input[name=select__locality]:checked+.select__popup-label::before {
-  border-color: #f00;
+input[name=select__sector]:hover+.select__popup-label::after,
+input[name=select__subway-moskow]:hover+.select__popup-label::after,
+input[name=select__region]:hover+.select__popup-label::after,
+input[name=select__district]:hover+.select__popup-label::after,
+input[name=select__locality]:hover+.select__popup-label::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/check-mark-red-30.png);
+  background-size: 80%;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  z-index: 1;
 }
 
 input[name=select__sector]:checked+.select__popup-label::after,
@@ -12448,7 +12500,7 @@ input[name=select__locality]:checked+.select__popup-label::after {
   display: block;
   width: 20px;
   height: 20px;
-  background-image: url(../img/icons/checked.png);
+  background-image: url(../img/check-mark-yellow-30.png);
   background-size: 80%;
   background-position: center 40%;
   background-repeat: no-repeat;

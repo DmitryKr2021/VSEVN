@@ -1,22 +1,77 @@
 .percent-scroll {
   height: 1px;
   width: 1px;
-  border-top: 3px solid var(--bg-red);
-}
-
-input[name=select__sector]:checked+.select__popup-label::before,
-input[name=select__subway-moskow]:checked+.select__popup-label::before,
-input[name=select__region]:checked+.select__popup-label::before,
-input[name=select__district]:checked+.select__popup-label::before,
-input[name=select__locality]:checked+.select__popup-label::before {
-  background-image: url(../img/check-mark-yellow.png);
-  background-size: contain;
-  background-size: 20px;
-  background-position: 1px -5px;
-  background-repeat: no-repeat;
-  background-color: rgb(150, 150, 150);
+  border-top: 4px solid var(--bg-red);
 }
 
 .inputs__btn--blue {
   display: none;
 }
+
+.hide-block {
+  display: none !important;
+}
+
+.tabs__body--any,
+.tabs__body--work,
+.tabs__body--person {
+  height: 555px;
+}
+
+.roll-up {
+  position: relative;
+  width: 100%;
+  max-width: 685px;
+  margin: 20px auto 0 auto;
+  /*border: 2px solid #d7212f;*/
+  border: 2px solid var(--bg-red);
+  border-radius: 5px;
+  text-align: center;
+  /*color: #d7212f;*/
+  color: var(--bg-red);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.roll-up__arrow {
+  position: absolute;
+  top: calc(50% - 10px);
+  width: 20px;
+  /*fill: #d7212f;*/
+  fill: var(--bg-red);
+  transition: transform 0.3s ease;
+  transform: rotate(180deg);
+}
+
+.roll-up__arrow--left {
+  left: 15px;
+}
+
+.roll-up__arrow--right {
+  right: 15px;
+}
+
+.roll-up__btn {
+  position: relative;
+  width: 100%;
+  padding: 14px 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+#tabs.hidden {
+  display: none;
+}
+
+.roll-up.active .roll-up__btn {
+  /*background-color: #d7212f;*/
+  background-color: var(--bg-red);
+  color: #fff;
+}
+
+.roll-up.active .roll-up__arrow {
+  transform: rotate(0);
+  fill: #ffffff;
+}
+
+/******Кнопка Применить в мультиселектах************/
