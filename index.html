@@ -408,73 +408,785 @@
 					</h1>
 					<div data-tabs class="tabs">
 						<nav data-tabs-titles class="tabs__navigation tabs__1">
-							<button type="button" class="tabs__title staff">Поиск сотрудников</button>
-							<button type="button" class="tabs__title employ">Поиск работы</button>
-							<button type="button" class="tabs__title _tab-active any">Любая категория</button>
+							<button type="button" class="tabs__title staff" data-type="staff">Поиск сотрудников</button>
+							<button type="button" class="tabs__title _tab-active work" data-type="work">Поиск работы</button>
+							<button type="button" class="tabs__title any" data-type="any">Любая категория</button>
 						</nav>
+          </div><!--/tabs-->
 
+<!--Новая верстка-->
+        <div class="choose">
+          <div class="choose__work">
+            <div class="choose__work--wrap">
+              <form action="#" class="choose__work--form" name="choose__work--form">
+                <div class="form__wrap">
+                <div class="form__wrap--blok-1_2">
+                
+                  <div class="block1">
+                    
+                    <div class="input-container">
+                      <input id="vacation" class="input-field" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="vacation" class="placeholder">Название вакансии, должность</label>
+                    </div>
+
+                    <div class="input-container">
+                      <input id="region" class="input-field" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="region" class="placeholder">Регион / Населенный пункт </label>
+                    </div>
+                  </div><!--/block1-->
+
+                  <div class="block2">
+
+                    <div class="input-container">
+                      <input id="district" class="inputselect" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow"></div>
+                        <label for="district" class="placeholder">Район</label>
+                        <ul class="input-container__ul">
+                          <li class="input-container__item"><p>Автозаводский</p></li>
+                          <li class="input-container__item"><p>Канавинский</p></li>
+                          <li class="input-container__item"><p>Ленинский</p></li>
+                          <li class="input-container__item"><p>Московский</p></li>
+                          <li class="input-container__item"><p>Нижегородский</p></li>
+                          <li class="input-container__item"><p>Приокский</p></li>
+                          <li class="input-container__item"><p>Советский</p></li>
+                          <li class="input-container__item"><p>Сормовский</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="input-container">
+                      <input id="metro" class="inputselect" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow"></div>
+                      <label for="metro" class="placeholder">Метро</label>
+                      <ul class="input-container__ul">
+                        <li class="input-container__item"><p>Горьковская</p></li>
+                        <li class="input-container__item"><p>Московская</p></li>
+                        <li class="input-container__item"><p>Чкаловская</p></li>
+                        <li class="input-container__item"><p>Ленинская</p></li>
+                        <li class="input-container__item"><p>Заречная</p></li>
+                        <li class="input-container__item"><p>Двигатель Революции</p></li>
+                        <li class="input-container__item"><p>Пролетарская</p></li>
+                        <li class="input-container__item"><p>Автозаводская</p></li>
+                        <li class="input-container__item"><p>Комсомольская</p></li>
+                        <li class="input-container__item"><p>Кировская</p></li>
+                      </ul>
+                    </div>  
+
+                  </div><!--/block2-->
+                </div> <!--/form__wrap--blok-1_2-->
+
+                <div class="form__wrap--blok-3_4">
+
+                  <div class="block3">
+
+                    <div class="input-container">
+                      <label for="rubricator" class="label-out">Отраслевой рубрикатор</label>
+                      <input id="rubricator" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow arrow2"></div>
+                        <ul class="input-container__ul hidden">
+                          <li class="input-container__item"><p>Вахт. метод #1</p></li>
+                          <li class="input-container__item"><p>Вахт. метод #2</p></li>
+                          <li class="input-container__item"><p>Вахт. метод #3</p></li>
+                          <li class="input-container__item"><p>Вахт. метод #4</p></li>
+                          <li class="input-container__item"><p>Вахт. метод #5</p></li>
+                          <li class="input-container__item"><p>Вахт. метод #6</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="input-container">
+                      <label for="shedule" class="label-out">График работы</label>
+                      <input id="shedule" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow arrow2"></div>
+                        <ul class="input-container__ul multi">
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp01" name="shedule01">
+                            <label for="inp01" class="check-multi">Вахтовый метод</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp02" name="shedule01">
+                            <label for="inp02" class="check-multi">Неполный день</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp03" name="shedule01">
+                            <label for="inp03" class="check-multi">Полный день</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp04" name="shedule01">
+                            <label for="inp04" class="check-multi">Свободный график</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp05" name="shedule01">
+                            <label for="inp05" class="check-multi">Сменный график</label></li>
+                            
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp06" name="shedule01">
+                            <label for="inp06" class="check-multi">Удаленная работа</label></li>
+
+                            <button class="apply" type="button">Применить</button>
+                        </ul>
+                    </div>
+                    
+                  </div><!--/block3-->
+
+                  <div class="block4">
+
+                    <div class="input-container">
+                      <label for="skills" class="label-out">Опыт работы</label>
+                      <input id="skills" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow arrow2"></div>
+                        <ul class="input-container__ul multi">
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp11" name="skills01">
+                            <label for="inp11" class="check-multi">Менее 1 года</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp12" name="skills01">
+                            <label for="inp12" class="check-multi">От 1 года</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp13" name="skills01">
+                            <label for="inp13" class="check-multi">От 2 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp14" name="skills01">
+                            <label for="inp14" class="check-multi">От 3 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp15" name="skills01">
+                            <label for="inp15" class="check-multi">От 4 лет</label></li>
+                            
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp16" name="skills01">
+                            <label for="inp16" class="check-multi">От 5 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp17" name="skills01">
+                            <label for="inp17" class="check-multi">От 6 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp18" name="skills01">
+                            <label for="inp18" class="check-multi">От 7 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp19" name="skills01">
+                            <label for="inp19" class="check-multi">От 8 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp110" name="skills01">
+                            <label for="inp110" class="check-multi">От 9 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp111" name="skills01">
+                            <label for="inp111" class="check-multi">От 10 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp112" name="skills01">
+                            <label for="inp112" class="check-multi">От 15 лет</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp113" name="skills01">
+                            <label for="inp113" class="check-multi">От 20 лет</label></li>
+
+                            <button class="apply" type="button">Применить</button>
+                        </ul>
+                    </div>
+
+                    <div class="input-container">
+                      <label for="vacansion" class="label-out">Тип вакансии</label>
+                      <input id="vacansion" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                      <div class="cut"></div>
+                      <div class="input-container__arrow arrow arrow2"></div>
+                        <ul class="input-container__ul multi">
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp21" name="vacansion01">
+                            <label for="inp21" class="check-multi">Работа с ежедневной оплатой</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp22" name="vacansion01">
+                            <label for="inp22" class="check-multi">Работа без опыта</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp23" name="vacansion01">
+                            <label for="inp23" class="check-multi">Работа для студентов</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp24" name="vacansion01">
+                            <label for="inp24" class="check-multi">Работа для женщин</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp25" name="vacansion01">
+                            <label for="inp25" class="check-multi">Работа для пенсионеров</label></li>
+                            
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp26" name="vacansion01">
+                            <label for="inp26" class="check-multi">Работа с бесплатным проездом</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp27" name="vacansion01">
+                            <label for="inp27" class="check-multi">Работа на дому</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp28" name="vacansion01">
+                            <label for="inp28" class="check-multi">Работа с проживанием</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp29" name="vacansion01">
+                            <label for="inp29" class="check-multi">Подработка</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp210" name="vacansion01">
+                            <label for="inp210" class="check-multi">Статус соискателя "Безработный"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp211" name="vacansion01">
+                            <label for="inp211" class="check-multi">Статус соискателя "Работающий"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp212" name="vacansion01">
+                            <label for="inp212" class="check-multi">Только с фото</label></li>
+                            
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp213" name="vacansion01">
+                            <label for="inp213" class="check-multi">Не иногородние</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp214" name="vacansion01">
+                            <label for="inp214" class="check-multi">Отметки "Есть комментарий"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp215" name="vacansion01">
+                            <label for="inp215" class="check-multi">Отметки "В избранном"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp216" name="vacansion01">
+                            <label for="inp216" class="check-multi">Отметки "В черном списке"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp217" name="vacansion01">
+                            <label for="inp217" class="check-multi">Отметки "Принят"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp218" name="vacansion01">
+                            <label for="inp218" class="check-multi">Отметки "Не подошел"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp219" name="vacansion01">
+                            <label for="inp219" class="check-multi">Отметки "Тот, кто откликнулся"</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp220" name="vacansion01">
+                            <label for="inp220" class="check-multi">Есть водительские права В</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp221" name="vacansion01">
+                            <label for="inp221" class="check-multi">Есть водительские права C</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp222" name="vacansion01">
+                            <label for="inp222" class="check-multi">Есть водительские права D</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp223" name="vacansion01">
+                            <label for="inp223" class="check-multi">Есть водительские права T</label></li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="inp224" name="vacansion01">
+                            <label for="inp224" class="check-multi">Есть автомобиль</label></li>
+                          
+                            <button class="apply" type="button">Применить</button>
+                        </ul>
+                    </div>
+                    
+                  </div><!--/block4-->
+                </div><!--/form__wrap--blok-3_4-->
+
+                <div class="form__wrap--blok-5_6">
+
+                  <div class="block5">
+                    
+                  <div class="input-container">
+                    <input id="company" class="input-field" type="text" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="company" class="placeholder">Поиск компании по названию или по номеру телефона</label>
+                  </div>
+
+                  </div><!--/block5-->
+
+                  <div class="block6">
+                    <p>Выберите категорию</p>
+                    <ul class="category">
+
+                      <li class="category__item">
+                        <input class="input-radio" type="radio" id="inp301" name="category01">
+                        <label for="inp301" class="check-radio">Работа для мужчин</label></li>
+
+                      <li class="category__item">
+                        <input class="input-radio" type="radio" id="inp302" name="category01">
+                        <label for="inp302" class="check-radio">Работа для женщин</label></li>
+
+                      <li class="category__item">
+                        <input class="input-radio" type="radio" id="inp303" name="category01">
+                        <label for="inp303" class="check-radio">Работа для студентов</label></li>
+
+                      <li class="category__item">
+                        <input class="input-radio" type="radio" id="inp304" name="category01">
+                        <label for="inp304" class="check-radio">Работа для пенсионеров</label></li>
+                    </ul>
+                  </div><!--/block6-->
+                </div><!--/form__wrap--blok-5_6-->
+
+                <div class="salary">
+                  <p>Предлагаемая зарплата</p>
+                  <div class="salary-min-max">
+                    <p class="salary-min">0</p>
+                    <p class="salary-max">700000</p>
+                  </div>
+                    <div class="salary__mark--wrap">
+                      <div class="salary__mark"></div>
+                    </div>
+                   <input class="range1" type="range" min="0" max="700000">
+                </div>
+                      
+                <div class="choose__buttons">
+                  <div class="choose__buttons--wrap">
+                    <button class="choose__btn reset-all hide-block" type="reset">Очистить</button>
+                    <button class="choose__btn show-all">Показать 1 111 вакансий</button>
+                  </div>
+                </div>
+              
+                </div><!--/form-wrap-->
+              </form>
+            </div><!--/choose__work-wrap-->
+          </div>  <!--/choose__work-->
+
+
+          <div class="choose__staff choose__staff-hide">
+            <div class="choose__staff--wrap">
+              <form action="#" class="choose__staff--form" name="choose__staff--form">
+                <div class="form__wrap">
+                  <div class="form__wrap--blok-1_2">
+                
+                    <div class="block1">
+                      
+                      <div class="input-container">
+                        <input id="vacation" class="input-field" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="vacation" class="placeholder">Название вакансии, должность</label>
+                      </div>
+  
+                      <div class="input-container">
+                        <input id="region" class="input-field" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="region" class="placeholder">Регион / Населенный пункт </label>
+                      </div>
+                    </div><!--/block1-->
+  
+                    <div class="block2">
+  
+                      <div class="input-container">
+                        <input id="district" class="inputselect" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow"></div>
+                          <label for="district" class="placeholder">Район</label>
+                          <ul class="input-container__ul">
+                            <li class="input-container__item"><p>Автозаводский</p></li>
+                            <li class="input-container__item"><p>Канавинский</p></li>
+                            <li class="input-container__item"><p>Ленинский</p></li>
+                            <li class="input-container__item"><p>Московский</p></li>
+                            <li class="input-container__item"><p>Нижегородский</p></li>
+                            <li class="input-container__item"><p>Приокский</p></li>
+                            <li class="input-container__item"><p>Советский</p></li>
+                            <li class="input-container__item"><p>Сормовский</p></li>
+                          </ul>
+                      </div>
+  
+                      <div class="input-container">
+                        <input id="metro" class="inputselect" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow"></div>
+                        <label for="metro" class="placeholder">Метро</label>
+                        <ul class="input-container__ul">
+                          <li class="input-container__item"><p>Горьковская</p></li>
+                          <li class="input-container__item"><p>Московская</p></li>
+                          <li class="input-container__item"><p>Чкаловская</p></li>
+                          <li class="input-container__item"><p>Ленинская</p></li>
+                          <li class="input-container__item"><p>Заречная</p></li>
+                          <li class="input-container__item"><p>Двигатель Революции</p></li>
+                          <li class="input-container__item"><p>Пролетарская</p></li>
+                          <li class="input-container__item"><p>Автозаводская</p></li>
+                          <li class="input-container__item"><p>Комсомольская</p></li>
+                          <li class="input-container__item"><p>Кировская</p></li>
+                        </ul>
+                      </div>  
+  
+                    </div><!--/block2-->
+                  </div> <!--/form__wrap--blok-1_2-->
+  
+                  <div class="form__wrap--blok-3_4">
+  
+                    <div class="block3">
+  
+                      <div class="input-container">
+                        <label for="rubricator" class="label-out">Отраслевой рубрикатор</label>
+                        <input id="rubricator" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul hidden">
+                            <li class="input-container__item"><p>Вахт. метод #1</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #2</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #3</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #4</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #5</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #6</p></li>
+                          </ul>
+                      </div>
+  
+                      <div class="input-container">
+                        <label for="shedule" class="label-out">График работы</label>
+                        <input id="shedule" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul multi">
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp01" name="shedule01">
+                              <label for="inp01" class="check-multi">Вахтовый метод</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp02" name="shedule01">
+                              <label for="inp02" class="check-multi">Неполный день</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp03" name="shedule01">
+                              <label for="inp03" class="check-multi">Полный день</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp04" name="shedule01">
+                              <label for="inp04" class="check-multi">Свободный график</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp05" name="shedule01">
+                              <label for="inp05" class="check-multi">Сменный график</label></li>
+                              
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp06" name="shedule01">
+                              <label for="inp06" class="check-multi">Удаленная работа</label></li>
+  
+                              <button class="apply" type="button">Применить</button>
+                          </ul>
+                      </div>
+                      
+                    </div><!--/block3-->
+  
+                    <div class="block4">
+  
+                      <div class="input-container">
+                        <label for="skills" class="label-out">Опыт работы</label>
+                        <input id="skills" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul multi">
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp11" name="skills01">
+                              <label for="inp11" class="check-multi">Менее 1 года</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp12" name="skills01">
+                              <label for="inp12" class="check-multi">От 1 года</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp13" name="skills01">
+                              <label for="inp13" class="check-multi">От 2 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp14" name="skills01">
+                              <label for="inp14" class="check-multi">От 3 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp15" name="skills01">
+                              <label for="inp15" class="check-multi">От 4 лет</label></li>
+                              
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp16" name="skills01">
+                              <label for="inp16" class="check-multi">От 5 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp17" name="skills01">
+                              <label for="inp17" class="check-multi">От 6 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp18" name="skills01">
+                              <label for="inp18" class="check-multi">От 7 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp19" name="skills01">
+                              <label for="inp19" class="check-multi">От 8 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp110" name="skills01">
+                              <label for="inp110" class="check-multi">От 9 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp111" name="skills01">
+                              <label for="inp111" class="check-multi">От 10 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp112" name="skills01">
+                              <label for="inp112" class="check-multi">От 15 лет</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp113" name="skills01">
+                              <label for="inp113" class="check-multi">От 20 лет</label></li>
+  
+                              <button class="apply" type="button">Применить</button>
+                          </ul>
+                      </div>
+  
+                      <div class="input-container">
+                        <label for="vacansion" class="label-out">Тип вакансии</label>
+                        <input id="vacansion" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul multi">
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp21" name="vacansion01">
+                              <label for="inp21" class="check-multi">Работа с ежедневной оплатой</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp22" name="vacansion01">
+                              <label for="inp22" class="check-multi">Работа без опыта</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp23" name="vacansion01">
+                              <label for="inp23" class="check-multi">Работа для студентов</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp24" name="vacansion01">
+                              <label for="inp24" class="check-multi">Работа для женщин</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp25" name="vacansion01">
+                              <label for="inp25" class="check-multi">Работа для пенсионеров</label></li>
+                              
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp26" name="vacansion01">
+                              <label for="inp26" class="check-multi">Работа с бесплатным проездом</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp27" name="vacansion01">
+                              <label for="inp27" class="check-multi">Работа на дому</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp28" name="vacansion01">
+                              <label for="inp28" class="check-multi">Работа с проживанием</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp29" name="vacansion01">
+                              <label for="inp29" class="check-multi">Подработка</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp210" name="vacansion01">
+                              <label for="inp210" class="check-multi">Статус соискателя "Безработный"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp211" name="vacansion01">
+                              <label for="inp211" class="check-multi">Статус соискателя "Работающий"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp212" name="vacansion01">
+                              <label for="inp212" class="check-multi">Только с фото</label></li>
+                              
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp213" name="vacansion01">
+                              <label for="inp213" class="check-multi">Не иногородние</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp214" name="vacansion01">
+                              <label for="inp214" class="check-multi">Отметки "Есть комментарий"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp215" name="vacansion01">
+                              <label for="inp215" class="check-multi">Отметки "В избранном"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp216" name="vacansion01">
+                              <label for="inp216" class="check-multi">Отметки "В черном списке"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp217" name="vacansion01">
+                              <label for="inp217" class="check-multi">Отметки "Принят"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp218" name="vacansion01">
+                              <label for="inp218" class="check-multi">Отметки "Не подошел"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp219" name="vacansion01">
+                              <label for="inp219" class="check-multi">Отметки "Тот, кто откликнулся"</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp220" name="vacansion01">
+                              <label for="inp220" class="check-multi">Есть водительские права В</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp221" name="vacansion01">
+                              <label for="inp221" class="check-multi">Есть водительские права C</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp222" name="vacansion01">
+                              <label for="inp222" class="check-multi">Есть водительские права D</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp223" name="vacansion01">
+                              <label for="inp223" class="check-multi">Есть водительские права T</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp224" name="vacansion01">
+                              <label for="inp224" class="check-multi">Есть автомобиль</label></li>
+                            
+                              <button class="apply" type="button">Применить</button>
+                          </ul>
+                      </div>
+                      
+                    </div><!--/block4-->
+                  </div><!--/form__wrap--blok-3_4-->
+  
+                    <div class="block5">                     
+                    <div class="input-container">
+                      <input id="company" class="input-field" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="company" class="placeholder">Поиск компании по названию или по номеру телефона</label>
+                    </div>
+                    </div><!--/block5-->
+
+
+                <div class="form__wrap--blok-6_7">
+
+                  <div class="block6">
+                  <div class="age">
+                    <p>Возраст</p>
+                    <div class="age__min-max staff-minmax">
+                      <p class="age__min">14</p>
+                      <p class="age__max">70</p>
+                    </div>
+                    <div class="age__mark mark">
+                      <div class="age__mark-left--wrap">
+                        <div class="age__mark-left"></div>
+                      </div>
+                      <div class="age__mark-right--wrap">
+                        <div class="age__mark-right"></div>
+                      </div>
+                    </div><!--/age__mark-->
+                    <div class="range2 range-age"></div>
+                  </div><!--/age-->
+
+                  <div class="salary1">
+                    <p>Желаемая зарплата</p>
+                    <div class="salary1__min-max staff-minmax">
+                      <p class="salary1__min">0</p>
+                      <p class="salary1__max">700000</p>
+                    </div>
+                    <div class="salary1__mark mark">
+                      <div class="salary1__mark-left--wrap">
+                        <div class="salary1__mark-left"></div>
+                      </div>
+                      <div class="salary1__mark-right--wrap">
+                        <div class="salary1__mark-right"></div>
+                      </div>
+                    </div><!--/salary__mark-->
+                    <div class="range2 range-experience"></div>
+                  </div><!--/salary1-->              
+                </div><!--/block6-->
+
+                <div class="block7">     
+                  <div class="block7_1"> 
+                    <div class="experience">
+                      <p>Стаж работы, лет</p>
+                      <div class="experience__min-max staff-minmax">
+                        <p class="experience__min">0</p>
+                        <p class="experience__max">56</p>
+                      </div>
+                      <div class="experience__mark mark">
+                        <div class="experience__mark-left--wrap">
+                          <div class="experience__mark-left"></div>
+                        </div>
+                        <div class="experience__mark-right--wrap">
+                          <div class="experience__mark-right"></div>
+                        </div>
+                      </div><!--/experience__mark-->
+                      <div class="range2 range-experience"></div>
+                    </div><!--/experience--> 
+
+                  </div><!--/block7-1-->
+                  
+                  <div class="block7_2">             
+                  <p>Выберите категорию</p>
+                  <ul class="category">
+                    <li class="category__item">
+                      <input class="input-radio" type="radio" id="inp301" name="category01">
+                      <label for="inp301" class="check-radio">Мужчины</label></li>
+
+                    <li class="category__item">
+                      <input class="input-radio" type="radio" id="inp302" name="category01">
+                      <label for="inp302" class="check-radio">Женщины</label></li>
+
+                    <li class="category__item">
+                      <input class="input-radio" type="radio" id="inp303" name="category01">
+                      <label for="inp303" class="check-radio">Студенты</label></li>
+
+                    <li class="category__item">
+                      <input class="input-radio" type="radio" id="inp304" name="category01">
+                      <label for="inp304" class="check-radio">Пенсионеры</label></li>
+                  </ul>
+                </div><!--/block7_2-->
+
+              </div><!--/block7-->
+
+
+
+                </div><!--/form__wrap--blok-6_7-->
+
+                  <div class="choose__buttons">
+                    <div class="choose__buttons--wrap">
+                      <button class="choose__btn reset-all hide-block" type="reset">Очистить</button>
+                      <button class="choose__btn show-all">Показать 2 222 вакансий</button>
+                    </div>
+                  </div>
+                
+                </div><!--/form-wrap-->
+              </form>
+            </div><!--/choose__staff-wrap-->          
+          </div> <!--/choose__staff-->
+
+
+          <div class="choose__any">
+            <div class="choose__any--wrap">
+              <form action="#" class="choose__any--form" name="choose__any--form">
+                <div class="form__wrap">
+
+                </div><!--/form-wrap-->
+              </form>
+            </div><!--/choose__any-wrap-->
+          </div> <!--/choose__any-->
+
+        </div>  <!--/choose-->
+
+
+<!--
             <div data-tabs-body class="tabs__content tabs__2">
  
 							<div class="tabs__body inputs hide-block hide1 tabs__body--person">
 								<div class="inputs__row inputs__row--four inputs__row--1">
-									<label class="inputs__label _disable-tippy">
-										<!-- data-error - выводит текст при ошибке -->
-										<input id="autoComplete" class="input _disable-tippy">
-										<span>Название вакансии, должность</span>
-									</label>
-									<label class="inputs__label _disable-tippy">
-										<input id="filter-1-item-2" autocomplete="off" type="text" name="form[]" data-error="" placeholder="" class="input _disable-tippy">
-										<span>Регион/Населенный пункт</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel" id="form-1">
-										<select name="form[]" class="form" data-search>
-											<option value="1">Автозаводский</option>
-											<option value="2">Канавинский</option>
-											<option value="3">Ленинский</option>
-											<option value="4">Московский</option>
-											<option value="5">Нижегородский</option>
-											<option value="6">Приокский</option>
-											<option value="7">Советский</option>
-											<option value="8">Сормовский</option>
-											<option selected></option>
-										</select>
-										<span>Район</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel">
-										<select name="form[]" class="form" data-search>
-											<option value="1">Горьковская</option>
-											<option value="2">Московская</option>
-											<option value="3">Чкаловская</option>
-											<option value="4">Ленинская</option>
-											<option value="5">Заречная</option>
-											<option value="6">Двигатель Революции</option>
-											<option value="7">Пролетарская</option>
-											<option value="8">Автозаводская</option>
-											<option value="9">Комсомольская</option>
-											<option value="10">Кировская</option>
-											<option selected></option>
-										</select>
-										<span>Метро</span>
-									</label>
-								</div>
-								<div class="inputs__row inputs__row--four inputs__row--2">
-									<label class="inputs__label _disable-tippy inputs__label--sel">
-										<select name="form[]" class="form" data-scroll data-search>
-											<option value="1" selected>Работа без специальной подготовки</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
-										</select>
-										<span>Отраслевой рубрикатор</span>
-									</label>
+									
+                
+								
 									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
+										<select name="form[]" class="form" data-scroll multiple data-checkbox data-select="sel01">
 											<option value="0">Не имеет значения</option>
 											<option value="1">Высшее</option>
 											<option value="2">Незаконченное высшее</option>
@@ -482,31 +1194,12 @@
 											<option value="4">Среднее специальное</option>
 										</select>                               
 										<span>Образование</span>
+                    <div class="apply-select hide-block" data-select="sel01">
+                      <button class="apply-select__btn">Применить</button>
+                    </div>
 									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
-									</label>
+									
+									
 								</div>
 								<div class="inputs__row inputs__row--three inputs__row--last">
 									<label class="inputs__label inputs__label--one _disable-tippy">
@@ -518,27 +1211,19 @@
 									<label class="inputs__label inputs__label--range-line">
 										<div class="inputs__range-line">
 											<span>Возраст, лет</span>
-											<!-- <label class="inputs__label _active-focus"> -->
 											<div class="inputs__range">
 												<div id="age-range" class="inputs__range"></div>
 											</div>
 
-
-											<!-- </label> -->
-											<!-- <div id="range" class="inputs__range"></div> -->
 										</div>
 									</label>
 									<label class="inputs__label inputs__label--range-line">
 										<div class="inputs__range-line">
 											<span>Стаж работы, лет</span>
-											<!-- <label class="inputs__label _active-focus"> -->
 											<div class="inputs__range">
 												<div id="lengthOfService" class="inputs__range"></div>
 											</div>
 
-
-											<!-- </label> -->
-											<!-- <div id="range" class="inputs__range"></div> -->
 										</div>
 									</label>
 								</div>
@@ -546,14 +1231,10 @@
 									<label class="inputs__label inputs__label--range-line inputs__label--mb">
 										<div class="inputs__range-line">
 											<span>Желаемая зарплата</span>
-											<!-- <label class="inputs__label _active-focus"> -->
+										
 											<div class="inputs__range">
 												<div id="first-range" class="inputs__range"></div>
 											</div>
-
-
-											<!-- </label> -->
-											<!-- <div id="range" class="inputs__range"></div> -->
 										</div>
 									</label>
 									<label class="inputs__label inputs__label--end inputs__label--options _active-focus">
@@ -591,7 +1272,6 @@
 							<div class="tabs__body inputs hide-block hide2 tabs__body--work">
 								<div class="inputs__row inputs__row--four inputs__row--2">
 									<label class="inputs__label _disable-tippy">
-										<!-- data-error - выводит текст при ошибке -->
 										<input id="autoComplete" class="input _disable-tippy">
 										<span>Название вакансии, должность</span>
 									</label>
@@ -599,157 +1279,27 @@
 										<input id="filter-1-item-22" autocomplete="off" type="text" name="form[]" data-error="" placeholder="" class="input _disable-tippy">
 										<span>Регион/Населенный пункт</span>
 									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel">
-										<select name="form[]" class="form" data-search>
-                      <option value="1">Автозаводский</option>
-											<option value="2">Канавинский</option>
-											<option value="3">Ленинский</option>
-											<option value="4">Московский</option>
-											<option value="5">Нижегородский</option>
-											<option value="6">Приокский</option>
-											<option value="7">Советский</option>
-											<option value="8">Сормовский</option>
-											<option selected></option>
-										</select>
-										<span>Район</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel">
-										<select name="form[]" class="form" data-search>
-                      <option value="1">Горьковская</option>
-											<option value="2">Московская</option>
-											<option value="3">Чкаловская</option>
-											<option value="4">Ленинская</option>
-											<option value="5">Заречная</option>
-											<option value="6">Двигатель Революции</option>
-											<option value="7">Пролетарская</option>
-											<option value="8">Автозаводская</option>
-											<option value="9">Комсомольская</option>
-											<option value="10">Кировская</option>
-											<option selected></option>
-										</select>
-										<span>Метро</span>
-									</label>
+									
+									
 								</div>
-								<div class="inputs__row inputs__row--four">
-									<label class="inputs__label _disable-tippy inputs__label--sel">
-										<select name="form[]" class="form" data-scroll data-search>
-											<option value="1" selected>Работа без специальнйо подготовки</option>
-											<option value="2">Вахт. метод #1</option>
-											<option value="3">Вахтовый ***</option>
-											<option value="4">Вахтовый метод №4</option>
-											<option value="5">рубрикатор</option>
-											<option value="6">Вахтовый #1</option>
-											<option value="7">Метод ***</option>
-											<option value="8">Метод №4</option>
-											<option value="9">должность</option>
-											<option value="10">Регион/Населенный пункт</option>
-										</select>
-										<span>Отраслевой рубрикатор</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="0">Не имеет значения</option>
-											<option value="1">Менее 1 года</option>
-											<option value="2">От 1 года</option>
-											<option value="3">От 2 лет</option>
-											<option value="4">От 3 лет</option>
-											<option value="5">От 4 лет</option>
-											<option value="6">От 5 лет</option>
-											<option value="7">От 6 лет</option>
-											<option value="8">От 7 лет</option>
-											<option value="9">От 8 лет</option>
-											<option value="10">От 9 лет</option>
-											<option value="11">От 10 лет</option>
-											<option value="12">От 15 лет</option>
-											<option value="13">От 20 лет</option>
-											<option value="apply">Применить</option>
-                    </select>	 
-										<span>Опыт работы</span>
-									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Работа с ежедневной оплатой</option>
-											<option value="2">Работа без опыта</option>
-											<option value="3">Работа для студентов</option>
-											<option value="4">Работа для женщин</option>
-											<option value="5">Работа для пенсионеров</option>
-											<option value="6">Работа с бесплатным проездом</option>
-											<option value="7">Работа на дому</option>
-											<option value="8">Работа с проживанием/option>
-											<option value="9">Подработка</option>
-											<option value="10">Статус соискателя "Безработный"</option>
-											<option value="11">Статус соискателя "Работающий"</option>
-											<option value="12">Только с фото</option>
-											<option value="13">Не иногородние</option>
-											<option value="14">Отетки "Есть комментарий"</option>
-											<option value="15">Отметки "В избранном"</option>
-											<option value="16">Отметки "В черном списке"</option>
-											<option value="17">Отметки "Принят"</option>
-											<option value="18">Отметки "Не подошел"</option>
-											<option value="19">Отметки "Тот, кто откликнулся"</option>
-											<option value="20">Есть водительские права В</option>
-											<option value="21">Есть водительские права C</option>
-											<option value="22">Есть водительские права D</option>
-											<option value="23">Есть водительские права T</option>
-											<option value="24">Есть автомобиль</option>
-										</select>
-										<span>Тип вакансии</span>
-									</label>
-								</div>
+								
+									
+								
+
+									
 								<div class="inputs__row inputs__row--three-reverse inputs__row--last ">
 									<label class="inputs__label inputs__label--mb _disable-tippy">
 										<input autocomplete="off" type="text" name="form[]" data-error="" placeholder="" class="input">
 										<span>Поиск компании по названию или по номеру телефона</span>
 									</label>
-									<label class="inputs__label inputs__label--options _active-focus">
-										<span>Выберите категорию</span>
-										<div class="options">
-											<div class="options__item">
-												<input hidden id="o_tab-1" class="options__input" checked type="radio" value="1" name="option-tab">
-												<label for="o_tab-1" class="options__label options__label--tab"><span class="options__text">Работа для мужчин</span></label>
-											</div>
-											<div class="options__item">
-												<input hidden id="o_tab-2" class="options__input" type="radio" value="2" name="option-tab">
-												<label for="o_tab-2" class="options__label options__label--tab"><span class="options__text">Работа для женщин</span></label>
-											</div>
-										</div>
-									</label>
-									<label class="inputs__label inputs__label--options">
-										<div class="options">
-											<div class="options__item">
-												<input hidden id="o_tab-3" class="options__input" checked type="radio" value="3" name="option-tab">
-												<label for="o_tab-3" class="options__label options__label--tab"><span class="options__text">Работа для студентов</span></label>
-											</div>
-											<div class="options__item">
-												<input hidden id="o_tab-4" class="options__input" type="radio" value="4" name="option-tab">
-												<label for="o_tab-4" class="options__label options__label--tab"><span class="options__text">Работа для пенсионеров</span></label>
-											</div>
-										</div>
-									</label>
+									
 								</div>
 								<div class="inputs__range-line">
 									<span>Предлагаемая зарплата</span>
-									<!-- <label class="inputs__label _active-focus"> -->
 									<div class="inputs__range">
 										<div id="range-first" class="inputs__range"></div>
 									</div>
 
-
-									<!-- </label> -->
-									<!-- <div id="range" class="inputs__range"></div> -->
 								</div>
 								<div class="inputs__buttons">
 									<button class="inputs__btn inputs__btn--blue employ" id="employ">Очистить</button>
@@ -761,7 +1311,6 @@
 							<div class="tabs__body inputs tabs__body--any">
 								<div class="inputs__row inputs__row--four">
 									<label class="inputs__label _disable-tippy">
-										<!-- data-error - выводит текст при ошибке -->
 										<input id="autoComplete" class="input _disable-tippy">
 										<span>Название вакансии, должность</span>
 									</label>
@@ -816,18 +1365,7 @@
 										</select>
 										<span>Отраслевой рубрикатор</span>
 									</label>
-									<label class="inputs__label _disable-tippy inputs__label--sel _active-focus _not-input">
-										<select name="form[]" class="form" data-scroll multiple data-checkbox>
-											<option value="">Не имеет значения</option>
-											<option value="1">Вахтовый метод</option>
-											<option value="2">Неполный день</option>
-											<option value="3">Полный день</option>
-											<option value="4">Свободный график</option>
-											<option value="5">Сменный график</option>
-											<option value="6">Удаленная работа</option>
-										</select>
-										<span>График работы</span>
-									</label>
+									
 									<label class="inputs__label _disable-tippy">
 										<input autocomplete="off" type="text" name="form[]" data-error="" placeholder="" class="input">
 										<span>Поиск компании по названию или по номеру телефона или поиск соискателя по ФИО</span>
@@ -835,14 +1373,9 @@
 								</div>
 								<div class="inputs__range-line">
 									<span>Желаемая зарплата</span>
-									<!-- <label class="inputs__label _active-focus"> -->
 									<div class="inputs__range">
 										<div id="range" class="inputs__range"></div>
 									</div>
-
-
-									<!-- </label> -->
-									<!-- <div id="range" class="inputs__range"></div> -->
 								</div>
 								<div class="inputs__buttons">
 									<button class="inputs__btn inputs__btn--blue any" id="any">Очистить</button>
@@ -850,6 +1383,10 @@
 								</div>
 							</div>
 						</div>
+
+
+          -->
+
 
             <div class="roll-up">
               <button class="roll-up__btn" id="roll-up-btn">
@@ -961,7 +1498,7 @@
 													</ul>
 													<button class="card__favorite card__favorite--remove">
 														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261 328" width="16" height="13">
-															<path d="m260.1 17.5v16.5v156.9c-4.7 0.8-10 1.5-16 2.2c-11 1.3-24 3.3-38.7 3.3c-24.7 0-47.5-4.9-69.5-9.6c-21.7-4.7-42.1-13-63.9-13c-30.1 0-45.9 4.4-51.9 6.9v143.3h-16v-142.1v-161.7v-2.6l3.4-2.4c1.6-1.1 17.5-11.2 64.4-11.2c23.5 0 45.7 4.7 67.2 9.3c21.2 4.5 42.1 10.2 65.2 10.2c14.8 0 28.7-2.1 39.7-3.5c6-0.8 11.4-1.6 16.1-2.5z" fill="#000000" />
+	<path d="m260.1 17.5v16.5v156.9c-4.7 0.8-10 1.5-16 2.2c-11 1.3-24 3.3-38.7 3.3c-24.7 0-47.5-4.9-69.5-9.6c-21.7-4.7-42.1-13-63.9-13c-30.1 0-45.9 4.4-51.9 6.9v143.3h-16v-142.1v-161.7v-2.6l3.4-2.4c1.6-1.1 17.5-11.2 64.4-11.2c23.5 0 45.7 4.7 67.2 9.3c21.2 4.5 42.1 10.2 65.2 10.2c14.8 0 28.7-2.1 39.7-3.5c6-0.8 11.4-1.6 16.1-2.5z" fill="#000000" />
 														</svg>
 														Убрать из черного списка
 													</button>
@@ -975,7 +1512,7 @@
 																		<li class="card__item">
 																			<a href="#" data-popup="#addToFavorites" class="card__favorite card__favorite--green _add">
 																				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-																					<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
+	<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
 																				</svg>
 																				Добавить соискателя в избранное
 																			</a>
@@ -983,7 +1520,7 @@
 																		<li class="card__item">
 																			<a href="" data-popup="#popup-share" class="card__favorite card__favorite--green">
 																				<svg width="16" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 17">
-																					<path d="M15.99964,13.79051c0,1.76841 -1.4629,3.20797 -3.26088,3.20797c-1.79855,0 -3.26145,-1.43956 -3.26145,-3.20797c0,-0.37583 0.06649,-0.736 0.1878,-1.07156l-3.89511,-2.17444c-0.59853,0.70804 -1.50078,1.15993 -2.50854,1.15993c-1.79855,0 -3.26202,-1.43844 -3.26202,-3.20686c0,-1.76841 1.46347,-3.20686 3.26202,-3.20686c1.00777,0 1.91002,0.45189 2.50877,1.16105l3.89488,-2.17556c-0.12131,-0.33556 -0.1878,-0.69573 -0.1878,-1.07156c0,-1.76841 1.46313,-3.20686 3.26145,-3.20686c1.79798,0 3.26088,1.43844 3.26088,3.20686c0,1.76953 -1.4629,3.20909 -3.26122,3.20909c-1.008,0 -1.91059,-0.45301 -2.509,-1.16216l-3.89488,2.17556c0.12131,0.33444 0.1878,0.69573 0.1878,1.07044c0,0.37583 -0.06649,0.736 -0.1878,1.07156l3.89511,2.17444c0.59875,-0.70804 1.50101,-1.16105 2.50912,-1.16105c1.79798,0 3.26088,1.43956 3.26088,3.20797zM10.6184,3.20464c0,1.15098 0.95123,2.08608 2.12036,2.08608c1.16879,0 2.11967,-0.9351 2.11967,-2.08608c0,-1.14986 -0.95089,-2.08496 -2.11967,-2.08496c-1.16913,0 -2.12036,0.9351 -2.12036,2.08496zM5.38113,8.49758c0,-1.14986 -0.95089,-2.08384 -2.11967,-2.08384c-1.16947,0 -2.12059,0.93398 -2.12059,2.08384c0,1.14986 0.95112,2.08496 2.12059,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496zM14.85844,13.79051c0,-1.14986 -0.95089,-2.08608 -2.11967,-2.08608c-1.16913,0 -2.12036,0.93622 -2.12036,2.08608c0,1.14986 0.95123,2.08496 2.12036,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496z" fill="#6aa527" fill-opacity="1">
+	<path d="M15.99964,13.79051c0,1.76841 -1.4629,3.20797 -3.26088,3.20797c-1.79855,0 -3.26145,-1.43956 -3.26145,-3.20797c0,-0.37583 0.06649,-0.736 0.1878,-1.07156l-3.89511,-2.17444c-0.59853,0.70804 -1.50078,1.15993 -2.50854,1.15993c-1.79855,0 -3.26202,-1.43844 -3.26202,-3.20686c0,-1.76841 1.46347,-3.20686 3.26202,-3.20686c1.00777,0 1.91002,0.45189 2.50877,1.16105l3.89488,-2.17556c-0.12131,-0.33556 -0.1878,-0.69573 -0.1878,-1.07156c0,-1.76841 1.46313,-3.20686 3.26145,-3.20686c1.79798,0 3.26088,1.43844 3.26088,3.20686c0,1.76953 -1.4629,3.20909 -3.26122,3.20909c-1.008,0 -1.91059,-0.45301 -2.509,-1.16216l-3.89488,2.17556c0.12131,0.33444 0.1878,0.69573 0.1878,1.07044c0,0.37583 -0.06649,0.736 -0.1878,1.07156l3.89511,2.17444c0.59875,-0.70804 1.50101,-1.16105 2.50912,-1.16105c1.79798,0 3.26088,1.43956 3.26088,3.20797zM10.6184,3.20464c0,1.15098 0.95123,2.08608 2.12036,2.08608c1.16879,0 2.11967,-0.9351 2.11967,-2.08608c0,-1.14986 -0.95089,-2.08496 -2.11967,-2.08496c-1.16913,0 -2.12036,0.9351 -2.12036,2.08496zM5.38113,8.49758c0,-1.14986 -0.95089,-2.08384 -2.11967,-2.08384c-1.16947,0 -2.12059,0.93398 -2.12059,2.08384c0,1.14986 0.95112,2.08496 2.12059,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496zM14.85844,13.79051c0,-1.14986 -0.95089,-2.08608 -2.11967,-2.08608c-1.16913,0 -2.12036,0.93622 -2.12036,2.08608c0,1.14986 0.95123,2.08496 2.12036,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496z" fill="#6aa527" fill-opacity="1">
 																					</path>
 																				</svg>
 																				Поделиться с другом
@@ -992,7 +1529,7 @@
 																		<li class="card__item">
 																			<a href="#" data-popup="#popupEdited" class="card__favorite card__favorite--green">
 																				<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-																					<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
+	<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
 																					</path>
 																				</svg>
 																				Редактировать
@@ -1001,7 +1538,7 @@
 																		<li class="card__item">
 																			<button class="card__favorite card__favorite--green">
 																				<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-																					<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
+		<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
 																					</path>
 																				</svg>
 																				Отставить комментарий
@@ -1010,7 +1547,7 @@
 																		<li class="card__item">
 																			<button class="card__favorite card__favorite--green">
 																				<svg enable-background="new 0 0 48 48" width="17" height="17" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-																					<path clip-rule="evenodd" d="M43,35H29.195c0.595,3.301,2.573,5.572,4.401,7H36c0.553,0,1,0.447,1,1  s-0.447,1-1,1H12c-0.553,0-1-0.447-1-1s0.447-1,1-1h2.403c1.827-1.428,3.807-3.699,4.401-7H5c-2.209,0-4-1.791-4-4V8  c0-2.209,1.791-4,4-4h38c2.209,0,4,1.791,4,4v23C47,33.209,45.209,35,43,35z M17.397,42h13.205c-1.595-1.682-3.015-3.976-3.459-7  h-6.287C20.412,38.024,18.992,40.318,17.397,42z M45,8c0-1.104-0.896-2-2-2H5C3.896,6,3,6.896,3,8v19l0,0h42V8z M45,29H3l0,0v2  c0,1.104,0.896,2,2,2h14l0,0h10l0,0h14c1.104,0,2-0.896,2-2V29z M24,32c-0.553,0-1-0.447-1-1s0.447-1,1-1s1,0.447,1,1  S24.553,32,24,32z" fill="#619f25" fill-rule="evenodd" />
+		<path clip-rule="evenodd" d="M43,35H29.195c0.595,3.301,2.573,5.572,4.401,7H36c0.553,0,1,0.447,1,1  s-0.447,1-1,1H12c-0.553,0-1-0.447-1-1s0.447-1,1-1h2.403c1.827-1.428,3.807-3.699,4.401-7H5c-2.209,0-4-1.791-4-4V8  c0-2.209,1.791-4,4-4h38c2.209,0,4,1.791,4,4v23C47,33.209,45.209,35,43,35z M17.397,42h13.205c-1.595-1.682-3.015-3.976-3.459-7  h-6.287C20.412,38.024,18.992,40.318,17.397,42z M45,8c0-1.104-0.896-2-2-2H5C3.896,6,3,6.896,3,8v19l0,0h42V8z M45,29H3l0,0v2  c0,1.104,0.896,2,2,2h14l0,0h10l0,0h14c1.104,0,2-0.896,2-2V29z M24,32c-0.553,0-1-0.447-1-1s0.447-1,1-1s1,0.447,1,1  S24.553,32,24,32z" fill="#619f25" fill-rule="evenodd" />
 																				</svg>
 																				Добавить в CRM
 																			</button>
@@ -1018,7 +1555,7 @@
 																		<li class="card__item">
 																			<button class="card__favorite card__favorite--green">
 																				<svg fill="none" width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-																					<path d="M17.5 12C20.5376 12 23 14.4624 23 17.5C23 20.5376 20.5376 23 17.5 23C14.4624 23 12 20.5376 12 17.5C12 14.4624 14.4624 12 17.5 12ZM4 12.999L12.8094 13.0002C12.3832 13.4444 12.0194 13.949 11.7323 14.4999L4 14.499L3.89934 14.509C3.77496 14.5343 3.69 14.6018 3.646 14.645C3.6028 14.689 3.53528 14.7733 3.51 14.898L3.5 14.999V16.5C3.5 17.509 3.95 18.222 4.917 18.742C5.74315 19.1869 6.91951 19.4563 8.18258 19.4951L8.5 19.5L8.8174 19.4951C9.68108 19.4686 10.5039 19.3342 11.2024 19.1096C11.3264 19.6025 11.5082 20.0726 11.739 20.513C10.6887 20.863 9.53057 21 8.5 21C5.77787 21 2.1647 20.044 2.00545 16.7296L2 16.5V14.999C2 13.895 2.896 12.999 4 12.999ZM17.5 14.0016L17.4101 14.0096C17.206 14.0467 17.0451 14.2076 17.0081 14.4117L17 14.5016V16.9996L14.5 17L14.4101 17.0081C14.206 17.0451 14.0451 17.206 14.0081 17.4101L14 17.5L14.0081 17.5899C14.0451 17.794 14.206 17.9549 14.4101 17.9919L14.5 18L17 17.9996V20.5L17.0081 20.5899C17.0451 20.794 17.206 20.9549 17.4101 20.9919L17.5 21L17.5899 20.9919C17.794 20.9549 17.9549 20.794 17.9919 20.5899L18 20.5V17.9996L20.5 18L20.5899 17.9919C20.794 17.9549 20.9549 17.794 20.9919 17.5899L21 17.5L20.9919 17.4101C20.9549 17.206 20.794 17.0451 20.5899 17.0081L20.5 17L18 16.9996V14.5016L17.9919 14.4117C17.9549 14.2076 17.794 14.0467 17.5899 14.0096L17.5 14.0016ZM8.5 2C10.985 2 13 4.015 13 6.5C13 8.985 10.985 11 8.5 11C6.015 11 4 8.985 4 6.5C4 4.015 6.015 2 8.5 2ZM17.5 4C19.433 4 21 5.567 21 7.5C21 9.433 19.433 11 17.5 11C15.567 11 14 9.433 14 7.5C14 5.567 15.567 4 17.5 4ZM8.5 3.5C6.846 3.5 5.5 4.846 5.5 6.5C5.5 8.154 6.846 9.5 8.5 9.5C10.154 9.5 11.5 8.154 11.5 6.5C11.5 4.846 10.154 3.5 8.5 3.5ZM17.5 5.5C16.397 5.5 15.5 6.397 15.5 7.5C15.5 8.603 16.397 9.5 17.5 9.5C18.603 9.5 19.5 8.603 19.5 7.5C19.5 6.397 18.603 5.5 17.5 5.5Z" fill="#619f25" />
+	<path d="M17.5 12C20.5376 12 23 14.4624 23 17.5C23 20.5376 20.5376 23 17.5 23C14.4624 23 12 20.5376 12 17.5C12 14.4624 14.4624 12 17.5 12ZM4 12.999L12.8094 13.0002C12.3832 13.4444 12.0194 13.949 11.7323 14.4999L4 14.499L3.89934 14.509C3.77496 14.5343 3.69 14.6018 3.646 14.645C3.6028 14.689 3.53528 14.7733 3.51 14.898L3.5 14.999V16.5C3.5 17.509 3.95 18.222 4.917 18.742C5.74315 19.1869 6.91951 19.4563 8.18258 19.4951L8.5 19.5L8.8174 19.4951C9.68108 19.4686 10.5039 19.3342 11.2024 19.1096C11.3264 19.6025 11.5082 20.0726 11.739 20.513C10.6887 20.863 9.53057 21 8.5 21C5.77787 21 2.1647 20.044 2.00545 16.7296L2 16.5V14.999C2 13.895 2.896 12.999 4 12.999ZM17.5 14.0016L17.4101 14.0096C17.206 14.0467 17.0451 14.2076 17.0081 14.4117L17 14.5016V16.9996L14.5 17L14.4101 17.0081C14.206 17.0451 14.0451 17.206 14.0081 17.4101L14 17.5L14.0081 17.5899C14.0451 17.794 14.206 17.9549 14.4101 17.9919L14.5 18L17 17.9996V20.5L17.0081 20.5899C17.0451 20.794 17.206 20.9549 17.4101 20.9919L17.5 21L17.5899 20.9919C17.794 20.9549 17.9549 20.794 17.9919 20.5899L18 20.5V17.9996L20.5 18L20.5899 17.9919C20.794 17.9549 20.9549 17.794 20.9919 17.5899L21 17.5L20.9919 17.4101C20.9549 17.206 20.794 17.0451 20.5899 17.0081L20.5 17L18 16.9996V14.5016L17.9919 14.4117C17.9549 14.2076 17.794 14.0467 17.5899 14.0096L17.5 14.0016ZM8.5 2C10.985 2 13 4.015 13 6.5C13 8.985 10.985 11 8.5 11C6.015 11 4 8.985 4 6.5C4 4.015 6.015 2 8.5 2ZM17.5 4C19.433 4 21 5.567 21 7.5C21 9.433 19.433 11 17.5 11C15.567 11 14 9.433 14 7.5C14 5.567 15.567 4 17.5 4ZM8.5 3.5C6.846 3.5 5.5 4.846 5.5 6.5C5.5 8.154 6.846 9.5 8.5 9.5C10.154 9.5 11.5 8.154 11.5 6.5C11.5 4.846 10.154 3.5 8.5 3.5ZM17.5 5.5C16.397 5.5 15.5 6.397 15.5 7.5C15.5 8.603 16.397 9.5 17.5 9.5C18.603 9.5 19.5 8.603 19.5 7.5C19.5 6.397 18.603 5.5 17.5 5.5Z" fill="#619f25" />
 																				</svg>
 																				Пригласить <span>(Ранее (3))</span>
 																			</button>
@@ -1026,25 +1563,25 @@
 																		<li class="card__item">
 																			<button class="card__favorite card__favorite--green">
 																				<svg fill="none" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-																					<path d="M14.75 15C15.7165 15 16.5 15.7835 16.5 16.75L16.4989 17.7121C16.6156 19.9012 14.9879 21.009 12.0668 21.009C9.15786 21.009 7.5 19.9192 7.5 17.75V16.75C7.5 15.7835 8.2835 15 9.25 15H14.75ZM14.75 16.5H9.25C9.11193 16.5 9 16.6119 9 16.75V17.75C9 18.9262 9.88667 19.509 12.0668 19.509C14.2347 19.509 15.0625 18.9455 15 17.752V16.75C15 16.6119 14.8881 16.5 14.75 16.5ZM3.75 10L8.126 10.0001C8.04375 10.3197 8 10.6547 8 11C8 11.1691 8.01049 11.3358 8.03087 11.4993L3.75 11.5C3.61193 11.5 3.5 11.6119 3.5 11.75V12.75C3.5 13.9262 4.38667 14.509 6.56679 14.509C7.02869 14.509 7.42976 14.4835 7.77434 14.4317C7.20917 14.7897 6.78546 15.349 6.60122 16.0082L6.56679 16.009C3.65786 16.009 2 14.9192 2 12.75V11.75C2 10.7835 2.7835 10 3.75 10ZM20.25 10C21.2165 10 22 10.7835 22 11.75L21.9989 12.7121C22.1156 14.9012 20.4879 16.009 17.5668 16.009L17.3985 16.0073C17.2091 15.3302 16.767 14.7587 16.1803 14.4008C16.567 14.4733 17.0273 14.509 17.5668 14.509C19.7347 14.509 20.5625 13.9455 20.5 12.752V11.75C20.5 11.6119 20.3881 11.5 20.25 11.5L15.9692 11.4992C15.9895 11.3357 16 11.1691 16 11C16 10.6547 15.9563 10.3197 15.874 10.0001L20.25 10ZM12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8ZM12 9.5C11.1716 9.5 10.5 10.1716 10.5 11C10.5 11.8284 11.1716 12.5 12 12.5C12.8284 12.5 13.5 11.8284 13.5 11C13.5 10.1716 12.8284 9.5 12 9.5ZM6.5 3C8.15685 3 9.5 4.34315 9.5 6C9.5 7.65685 8.15685 9 6.5 9C4.84315 9 3.5 7.65685 3.5 6C3.5 4.34315 4.84315 3 6.5 3ZM17.5 3C19.1569 3 20.5 4.34315 20.5 6C20.5 7.65685 19.1569 9 17.5 9C15.8431 9 14.5 7.65685 14.5 6C14.5 4.34315 15.8431 3 17.5 3ZM6.5 4.5C5.67157 4.5 5 5.17157 5 6C5 6.82843 5.67157 7.5 6.5 7.5C7.32843 7.5 8 6.82843 8 6C8 5.17157 7.32843 4.5 6.5 4.5ZM17.5 4.5C16.6716 4.5 16 5.17157 16 6C16 6.82843 16.6716 7.5 17.5 7.5C18.3284 7.5 19 6.82843 19 6C19 5.17157 18.3284 4.5 17.5 4.5Z" fill="#619f25" />
+	<path d="M14.75 15C15.7165 15 16.5 15.7835 16.5 16.75L16.4989 17.7121C16.6156 19.9012 14.9879 21.009 12.0668 21.009C9.15786 21.009 7.5 19.9192 7.5 17.75V16.75C7.5 15.7835 8.2835 15 9.25 15H14.75ZM14.75 16.5H9.25C9.11193 16.5 9 16.6119 9 16.75V17.75C9 18.9262 9.88667 19.509 12.0668 19.509C14.2347 19.509 15.0625 18.9455 15 17.752V16.75C15 16.6119 14.8881 16.5 14.75 16.5ZM3.75 10L8.126 10.0001C8.04375 10.3197 8 10.6547 8 11C8 11.1691 8.01049 11.3358 8.03087 11.4993L3.75 11.5C3.61193 11.5 3.5 11.6119 3.5 11.75V12.75C3.5 13.9262 4.38667 14.509 6.56679 14.509C7.02869 14.509 7.42976 14.4835 7.77434 14.4317C7.20917 14.7897 6.78546 15.349 6.60122 16.0082L6.56679 16.009C3.65786 16.009 2 14.9192 2 12.75V11.75C2 10.7835 2.7835 10 3.75 10ZM20.25 10C21.2165 10 22 10.7835 22 11.75L21.9989 12.7121C22.1156 14.9012 20.4879 16.009 17.5668 16.009L17.3985 16.0073C17.2091 15.3302 16.767 14.7587 16.1803 14.4008C16.567 14.4733 17.0273 14.509 17.5668 14.509C19.7347 14.509 20.5625 13.9455 20.5 12.752V11.75C20.5 11.6119 20.3881 11.5 20.25 11.5L15.9692 11.4992C15.9895 11.3357 16 11.1691 16 11C16 10.6547 15.9563 10.3197 15.874 10.0001L20.25 10ZM12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8ZM12 9.5C11.1716 9.5 10.5 10.1716 10.5 11C10.5 11.8284 11.1716 12.5 12 12.5C12.8284 12.5 13.5 11.8284 13.5 11C13.5 10.1716 12.8284 9.5 12 9.5ZM6.5 3C8.15685 3 9.5 4.34315 9.5 6C9.5 7.65685 8.15685 9 6.5 9C4.84315 9 3.5 7.65685 3.5 6C3.5 4.34315 4.84315 3 6.5 3ZM17.5 3C19.1569 3 20.5 4.34315 20.5 6C20.5 7.65685 19.1569 9 17.5 9C15.8431 9 14.5 7.65685 14.5 6C14.5 4.34315 15.8431 3 17.5 3ZM6.5 4.5C5.67157 4.5 5 5.17157 5 6C5 6.82843 5.67157 7.5 6.5 7.5C7.32843 7.5 8 6.82843 8 6C8 5.17157 7.32843 4.5 6.5 4.5ZM17.5 4.5C16.6716 4.5 16 5.17157 16 6C16 6.82843 16.6716 7.5 17.5 7.5C18.3284 7.5 19 6.82843 19 6C19 5.17157 18.3284 4.5 17.5 4.5Z" fill="#619f25" />
 																				</svg>
 																				Приглашен
 																			</button>
 																		</li>
 																		<!-- <li class="card__item">
-                                                            <button class="card__favorite card__favorite--green">
-                                                               <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                                  <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
-                                                               </svg>
-                                                               Сведения
-                                                            </button>
-                                                         </li> -->
+                                     <button class="card__favorite card__favorite--green">
+                                     <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+                                     </svg>
+                                    Сведения
+                                    </button>
+                                     </li> -->
 																	</ul>
 																</div>
 															</div>
 															<button class="card__intelligence" data-tippy-content="Сведения">
 																<svg width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-																	<path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25" />
+	<path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25" />
 																</svg>
 															</button>
 														</div>
@@ -1053,21 +1590,21 @@
 																<div class="rating__body">
 																	<div class="rating__deactivated">
 																		<span>★★★★★</span>
-																		<!-- <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                            <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
-                                                         </svg>
-                                                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                            <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
-                                                         </svg>
-                                                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                            <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
-                                                         </svg>
-                                                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                            <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
-                                                         </svg>
-                                                         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                            <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
-                                                         </svg> -->
+													<!-- <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                         <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
+                           </svg>
+                          <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                          <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
+                                  </svg>
+                            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                           <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
+                          </svg>
+                           <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                           <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
+                              </svg>
+                       <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                        <path d="m21 10l-5.4 4.5l1.9 6.5l-5.5-4l-5.6 4l1.9-6.6l-5.3-4.4l6.5-0.1l2.5-6.9l2.4 7z" fill="none" stroke="#6aa527" stroke-width="2"/>
+                            </svg> -->
 																	</div>
 																	<div class="rating__active"></div>
 																	<div class="rating__items">
@@ -1146,17 +1683,17 @@
 													</ul>
 													<button class="card__favorite">
 														<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-															<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
+	<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
 														</svg>
 														Убрать соискателя из избранного
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
-                                                </svg>
-                                             </div> -->
+                       <button>Еще... </button>
+               <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+               <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+                 </svg>
+                  </div> -->
 														<div class="card__computed">
 															<button data-tippy-content="Нравится">
 																<svg width="13" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 13 13">
@@ -1165,7 +1702,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+	<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1177,8 +1714,8 @@
 																	<desc>Generated with Avocode.</desc>
 																	<g>
 																		<g>
-																			<title>Forma 1 копия 7</title>
-																			<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
+                                 	<title>Forma 1 копия 7</title>
+  <path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1194,7 +1731,7 @@
 														<button>
 															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 18 18">
 																<defs>
-																	<path id="avzva" d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" fill="#df2626" />
+	<path id="avzva" d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" fill="#df2626" />
 																</defs>
 																<g>
 																	<g transform="translate(-674 -144)">
@@ -1260,18 +1797,18 @@
 													</button>
 													<a href="#" data-popup="#popupEdited" class="card__favorite">
 														<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-															<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
+	<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
 															</path>
 														</svg>
 														Тут будет комментарий при нажатии...
 													</a>
 													<div class="card__row">
-														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
-                                                </svg>
-                                             </div> -->
+										<!-- <div class="card__info">
+                    <button>Еще... </button>
+                    <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+               <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+                    </svg>
+                 </div> -->
 														<div class="card__computed">
 															<div class="rating rating_set">
 																<div class="rating__body">
@@ -1392,11 +1929,11 @@
 														<li>Зарплата: <span>от 20000 руб</span>.</li>
 													</ul>
 													<!-- <button class="card__favorite card__favorite--green _add">
-                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-                                                <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737"/>
-                                             </svg>
-                                             Добавить соискателя в избранное
-                                          </button> -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
+         <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737"/>
+        </svg>
+           Добавить соискателя в избранное
+          </button> -->
 													<a href="#" data-popup="#addToFavorites" class="card__favorite card__favorite--green _add">
 														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
 															<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
@@ -1405,9 +1942,9 @@
 													</a>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+       <button>Еще... </button>
+         <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+     <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -1418,7 +1955,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+  <path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1431,7 +1968,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1 копия 7</title>
-																			<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
+	<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1442,7 +1979,7 @@
 												</div>
 											</div>
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 16" width="30" height="16">
-												<path d="m21.3 0.8q0.2-0.1 0.4-0.1q0.2 0 0.4 0.1q0.2 0.1 0.3 0.2l6.4 6.4q0.1 0.1 0.2 0.3q0 0.1 0 0.3q0 0.2 0 0.4q-0.1 0.1-0.2 0.2l-6.4 6.4q-0.1 0.1-0.3 0.2q-0.2 0.1-0.4 0.1q-0.2 0-0.4-0.1q-0.2-0.1-0.3-0.2q-0.1-0.1-0.2-0.3q-0.1-0.2-0.1-0.4q0-0.2 0.1-0.4q0.1-0.2 0.2-0.3l4.6-4.6h-23.5q-0.5 0-0.7-0.3q-0.3-0.3-0.3-0.7q0-0.4 0.3-0.7q0.2-0.3 0.7-0.3h23.5l-4.6-4.6q-0.1-0.1-0.2-0.3q-0.1-0.2-0.1-0.4q0-0.2 0.1-0.4q0.1-0.2 0.2-0.3q0.1-0.1 0.3-0.2z" fill="#bd4246" />
+	<path d="m21.3 0.8q0.2-0.1 0.4-0.1q0.2 0 0.4 0.1q0.2 0.1 0.3 0.2l6.4 6.4q0.1 0.1 0.2 0.3q0 0.1 0 0.3q0 0.2 0 0.4q-0.1 0.1-0.2 0.2l-6.4 6.4q-0.1 0.1-0.3 0.2q-0.2 0.1-0.4 0.1q-0.2 0-0.4-0.1q-0.2-0.1-0.3-0.2q-0.1-0.1-0.2-0.3q-0.1-0.2-0.1-0.4q0-0.2 0.1-0.4q0.1-0.2 0.2-0.3l4.6-4.6h-23.5q-0.5 0-0.7-0.3q-0.3-0.3-0.3-0.7q0-0.4 0.3-0.7q0.2-0.3 0.7-0.3h23.5l-4.6-4.6q-0.1-0.1-0.2-0.3q-0.1-0.2-0.1-0.4q0-0.2 0.1-0.4q0.1-0.2 0.2-0.3q0.1-0.1 0.3-0.2z" fill="#bd4246" />
 											</svg>
 										</article>
 										<article class="card">
@@ -1482,9 +2019,9 @@
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+           <button>Еще... </button>
+           <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -1757,17 +2294,17 @@
 													</ul>
 													<button class="card__favorite _remove">
 														<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-															<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
+		<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
 														</svg>
 														Убрать соискателя из избранного
 													</button>
 													<div class="card__row">
-														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
-                                                </svg>
-                                             </div> -->
+										<!-- <div class="card__info">
+              <button>Еще... </button>
+     <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+        </svg>
+        </div> -->
 														<div class="card__computed">
 															<button data-tippy-content="Нравится">
 																<svg width="13" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 13 13">
@@ -1776,7 +2313,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+		<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1789,7 +2326,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1 копия 7</title>
-																			<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
+	<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1836,9 +2373,9 @@
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+     <button>Еще... </button>
+   <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -1897,15 +2434,15 @@
 													</ul>
 													<button class="card__favorite _remove">
 														<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-															<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
+	<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
 														</svg>
 														Убрать соискателя из избранного
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+       <button>Еще... </button>
+    <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -1916,7 +2453,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+	<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1929,7 +2466,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1 копия 7</title>
-																			<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
+	<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -1980,9 +2517,9 @@
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+                     <button>Еще... </button>
+       <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -2042,22 +2579,22 @@
 														</li>
 													</ul>
 													<!-- <button class="card__favorite card__favorite--green _add">
-                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-                                                <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737"/>
-                                             </svg>
-                                             Добавить соискателя в избранное
-                                          </button> -->
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
+     <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737"/>
+  </svg>
+    Добавить соискателя в избранное
+        </button> -->
 													<a href="#" data-popup="#addToFavorites" class="card__favorite card__favorite--green _add">
 														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="21" height="19">
-															<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
+		<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
 														</svg>
 														Добавить соискателя в избранное
 													</a>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+            <button>Еще... </button>
+        <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -2141,7 +2678,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+	<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -2154,7 +2691,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1 копия 7</title>
-																			<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
+	<path d="M10.4325,7.12988v-6.23139c0.24216,-0.18568 0.54119,-0.29641 0.86655,-0.29641h0.1078c0.79605,0 1.44402,0.65882 1.44402,1.46753v3.59387c0,0.8087 -0.64796,1.46641 -1.44402,1.46641zM1.327,3.75636c-0.08904,-0.18009 -0.13584,-0.37807 -0.13584,-0.58723c0,-0.50782 0.28713,-0.95523 0.71388,-1.17335c-0.13218,-0.26733 -0.17097,-0.57493 -0.1046,-0.88141c0.12943,-0.59395 0.67989,-1.0257 1.30875,-1.0257h5.3017c0.37903,0 0.97389,0.12304 1.44424,0.34787v6.28844l-0.06935,0.03579l-1.66351,3.65987v1.98988c0,0.08948 -0.03983,0.17337 -0.10815,0.2293c-0.01831,0.01342 -0.44689,0.35681 -1.04713,0.35681c-0.66822,0 -1.73264,-1.0738 -1.73264,-2.34558c0,-0.80311 0.2829,-1.80197 0.45971,-2.34782h-3.5677c-0.77763,0 -1.43898,-0.58388 -1.50639,-1.32994c-0.03777,-0.41833 0.09991,-0.81989 0.36964,-1.12078c-0.23872,-0.2416 -0.37605,-0.56934 -0.37605,-0.92168c0,-0.51005 0.28633,-0.95635 0.71342,-1.17447z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -2207,9 +2744,8 @@
 													</button>
 													<div class="card__row">
 														<!-- <div class="card__info">
-                                                <button>Еще... </button>
-                                                <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
+    <button>Еще... </button>
+   <svg data-tippy-content="Сведения" width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">    <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" fill="#619f25"/>
                                                 </svg>
                                              </div> -->
 														<div class="card__computed">
@@ -2220,7 +2756,7 @@
 																	<g>
 																		<g>
 																			<title>Forma 1</title>
-																			<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
+	<path d="M2.42577,5.86262v6.23139c-0.24193,0.18568 -0.54119,0.29641 -0.86655,0.29641h-0.1078c-0.79571,0 -1.4439,-0.65882 -1.4439,-1.46641v-3.59499c0,-0.80759 0.64819,-1.46641 1.4439,-1.46641zM11.53161,9.23614c0.08892,0.18009 0.13561,0.37919 0.13561,0.58612c0,0.51005 -0.28725,0.95635 -0.71388,1.17447c0.13206,0.26733 0.17086,0.57605 0.10437,0.88141c-0.1292,0.59506 -0.67978,1.02458 -1.30863,1.02458h-5.3017c-0.37903,0 -0.97389,-0.1208 -1.4439,-0.34675v-6.28844l0.06924,-0.03467l1.6634,-3.66098v-1.98988c0,-0.08948 0.03983,-0.17337 0.10803,-0.22818c0.01831,-0.01566 0.44689,-0.35905 1.04713,-0.35905c0.66822,0 1.73264,1.07492 1.73264,2.3467c0,0.80423 -0.28278,1.80197 -0.45971,2.34782h3.56792c0.7774,0 1.43875,0.58388 1.50616,1.32994c0.03777,0.41722 -0.09979,0.81989 -0.3693,1.11966c0.23838,0.24272 0.37605,0.57157 0.37605,0.92503c0,0.50782 -0.28667,0.953 -0.71342,1.17223z" fill="#787668" fill-opacity="1"></path>
 																		</g>
 																	</g>
 																</svg>
@@ -5083,71 +5619,9 @@
 		</div>
 	</div>
 
-	<!-- <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js?_v=20220208163657"></script>
-<script>
-   let autoCompleteFirst = document.querySelector('#autoComplete')
-    let autoCompleteJS = new autoComplete({ 
-      placeHolder: "",
-      data: {
-         src: [
-
-            "Sauce - Thousand Island", 
-            "Wild Boar - Tenderloin", 
-            "Goat - Whole Cut",
-            "Менеджер по продажам",
-            "Менеджер по работе с клиентами",
-            "Менеджер по персоналу",
-            "Региональный менеджер",
-            "Контент менеджер",
-
-         ]
-      },
-      resultItem: {
-         highlight: {
-               render: true
-         }
-      },
-      resultsList: {
-   //  element: (list, data) => {
-   //    const info = document.createElement("p");
-   //    if (data.results.length > 0) {
-   //      info.innerHTML = `Displaying <strong>${data.results.length}</strong> out of <strong>${data.matches.length}</strong> results`;
-   //    } else {
-   //      info.innerHTML = `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
-   //    }
-   //    list.prepend(info);
-   //  },
-    noResults: true,
-    maxResults: 15,
-    tabSelect: true
-  },
-    });
-
-    
-    
-// document.querySelector("#autoComplete").addEventListener("init", function (event) {
-//     // "event.detail" carries the returned data values
-//     console.log(event);
-// });
-console.log(autoCompleteJS)
-
-    autoCompleteJS.input.addEventListener("selection", function (event) {
-      const feedback = event.detail;
-      autoCompleteJS.input.blur();
-      // Prepare User's Selected Value
-      const selection = feedback.selection.value[feedback.selection.key];
-      // Render selected choice to selection div
-      console.log(selection);
-      //   document.querySelector(".selection").innerHTML = selection;
-      // Replace Input value with the selected value
-      autoCompleteJS.input.value = feedback.selection.value;
-      // Console log autoComplete data feedback
-      console.log(feedback.selection.value);
-   });
-</script> -->
 	<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js?_v=20220208163657"></script>
 	<!--script src="js/app.min.js?_v=20220208163657"></script-->
-	<script src="js/app.js"></script>
+	<script src="js/ap.js"></script>
 	<script src="js/addition.js"></script>
 </body>
 

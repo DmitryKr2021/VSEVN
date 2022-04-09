@@ -2,6 +2,10 @@
 
 body {
   --bg-red: #ec0303;
+  --bg-white: #ffffff;
+  --bg-yellow: #ffdd00;
+  --text-color: #333333;
+  --border-color: #e1e1e1;
 }
 
 
