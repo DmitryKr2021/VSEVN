@@ -1069,17 +1069,17 @@
 
                   <div class="block6">
                   <div class="age">
-                    <p>Возраст</p>
+                    <p>Возраст, лет</p>
                     <div class="age__min-max staff-minmax">
                       <p class="age__min">14</p>
                       <p class="age__max">70</p>
                     </div>
                     <div class="age__mark mark">
-                      <div class="age__mark-left--wrap">
-                        <div class="age__mark-left"></div>
+                      <div class="age__mark-left--wrap mark-left--wrap">
+                        <div class="age__mark-left mark-left"></div>
                       </div>
-                      <div class="age__mark-right--wrap">
-                        <div class="age__mark-right"></div>
+                      <div class="age__mark-right--wrap mark-right--wrap">
+                        <div class="age__mark-right mark-right"></div>
                       </div>
                     </div><!--/age__mark-->
                     <div class="range2 range-age"></div>
@@ -1092,14 +1092,14 @@
                       <p class="salary1__max">700000</p>
                     </div>
                     <div class="salary1__mark mark">
-                      <div class="salary1__mark-left--wrap">
-                        <div class="salary1__mark-left"></div>
+                      <div class="salary1__mark-left--wrap mark-left--wrap">
+                        <div class="salary1__mark-left mark-left"></div>
                       </div>
-                      <div class="salary1__mark-right--wrap">
-                        <div class="salary1__mark-right"></div>
+                      <div class="salary1__mark-right--wrap mark-right--wrap">
+                        <div class="salary1__mark-right mark-right"></div>
                       </div>
                     </div><!--/salary__mark-->
-                    <div class="range2 range-experience"></div>
+                    <div class="range2 range-salary1"></div>
                   </div><!--/salary1-->              
                 </div><!--/block6-->
 
@@ -1112,11 +1112,11 @@
                         <p class="experience__max">56</p>
                       </div>
                       <div class="experience__mark mark">
-                        <div class="experience__mark-left--wrap">
-                          <div class="experience__mark-left"></div>
+                        <div class="experience__mark-left--wrap mark-left--wrap">
+                          <div class="experience__mark-left mark-left"></div>
                         </div>
-                        <div class="experience__mark-right--wrap">
-                          <div class="experience__mark-right"></div>
+                        <div class="experience__mark-right--wrap mark-right--wrap">
+                          <div class="experience__mark-right mark-right"></div>
                         </div>
                       </div><!--/experience__mark-->
                       <div class="range2 range-experience"></div>
@@ -1128,32 +1128,29 @@
                   <p>Выберите категорию</p>
                   <ul class="category">
                     <li class="category__item">
-                      <input class="input-radio" type="radio" id="inp301" name="category01">
-                      <label for="inp301" class="check-radio">Мужчины</label></li>
+                      <input class="input-radio" type="radio" id="inp401" name="category02">
+                      <label for="inp401" class="check-radio">Мужчины</label></li>
 
                     <li class="category__item">
-                      <input class="input-radio" type="radio" id="inp302" name="category01">
-                      <label for="inp302" class="check-radio">Женщины</label></li>
+                      <input class="input-radio" type="radio" id="inp402" name="category02">
+                      <label for="inp402" class="check-radio">Женщины</label></li>
 
                     <li class="category__item">
-                      <input class="input-radio" type="radio" id="inp303" name="category01">
-                      <label for="inp303" class="check-radio">Студенты</label></li>
+                      <input class="input-radio" type="radio" id="inp403" name="category02">
+                      <label for="inp403" class="check-radio">Студенты</label></li>
 
                     <li class="category__item">
-                      <input class="input-radio" type="radio" id="inp304" name="category01">
-                      <label for="inp304" class="check-radio">Пенсионеры</label></li>
+                      <input class="input-radio" type="radio" id="inp404" name="category02">
+                      <label for="inp404" class="check-radio">Пенсионеры</label></li>
                   </ul>
                 </div><!--/block7_2-->
 
               </div><!--/block7-->
-
-
-
                 </div><!--/form__wrap--blok-6_7-->
 
                   <div class="choose__buttons">
                     <div class="choose__buttons--wrap">
-                      <button class="choose__btn reset-all hide-block" type="reset">Очистить</button>
+                      <button class="choose__btn staff__reset-all hide-block" type="reset">Очистить</button>
                       <button class="choose__btn show-all">Показать 2 222 вакансий</button>
                     </div>
                   </div>
@@ -1164,10 +1161,156 @@
           </div> <!--/choose__staff-->
 
 
-          <div class="choose__any">
+          <div class="choose__any choose__any-hide">
             <div class="choose__any--wrap">
               <form action="#" class="choose__any--form" name="choose__any--form">
                 <div class="form__wrap">
+                  <div class="form__wrap--blok-1_2">               
+                    <div class="block1">
+                      
+                      <div class="input-container">
+                        <input id="vacation" class="input-field" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="vacation" class="placeholder">Название вакансии, должность</label>
+                      </div>
+  
+                      <div class="input-container">
+                        <input id="region" class="input-field" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="region" class="placeholder">Регион / Населенный пункт </label>
+                      </div>
+                    </div><!--/block1-->
+  
+                    <div class="block2">
+  
+                      <div class="input-container">
+                        <input id="district" class="inputselect" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow"></div>
+                          <label for="district" class="placeholder">Район</label>
+                          <ul class="input-container__ul">
+                            <li class="input-container__item"><p>Автозаводский</p></li>
+                            <li class="input-container__item"><p>Канавинский</p></li>
+                            <li class="input-container__item"><p>Ленинский</p></li>
+                            <li class="input-container__item"><p>Московский</p></li>
+                            <li class="input-container__item"><p>Нижегородский</p></li>
+                            <li class="input-container__item"><p>Приокский</p></li>
+                            <li class="input-container__item"><p>Советский</p></li>
+                            <li class="input-container__item"><p>Сормовский</p></li>
+                          </ul>
+                      </div>
+  
+                      <div class="input-container">
+                        <input id="metro" class="inputselect" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow"></div>
+                        <label for="metro" class="placeholder">Метро</label>
+                        <ul class="input-container__ul">
+                          <li class="input-container__item"><p>Горьковская</p></li>
+                          <li class="input-container__item"><p>Московская</p></li>
+                          <li class="input-container__item"><p>Чкаловская</p></li>
+                          <li class="input-container__item"><p>Ленинская</p></li>
+                          <li class="input-container__item"><p>Заречная</p></li>
+                          <li class="input-container__item"><p>Двигатель Революции</p></li>
+                          <li class="input-container__item"><p>Пролетарская</p></li>
+                          <li class="input-container__item"><p>Автозаводская</p></li>
+                          <li class="input-container__item"><p>Комсомольская</p></li>
+                          <li class="input-container__item"><p>Кировская</p></li>
+                        </ul>
+                      </div>  
+  
+                    </div><!--/block2-->
+                  </div> <!--/form__wrap--blok-1_2-->
+  
+                  <div class="form__wrap--blok-3_4">
+  
+                    <div class="block3">
+  
+                      <div class="input-container">
+                        <label for="rubricator" class="label-out">Отраслевой рубрикатор</label>
+                        <input id="rubricator" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul hidden">
+                            <li class="input-container__item"><p>Вахт. метод #1</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #2</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #3</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #4</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #5</p></li>
+                            <li class="input-container__item"><p>Вахт. метод #6</p></li>
+                          </ul>
+                      </div>
+  
+                      <div class="input-container">
+                        <label for="shedule" class="label-out">График работы</label>
+                        <input id="shedule" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                        <div class="cut"></div>
+                        <div class="input-container__arrow arrow arrow2"></div>
+                          <ul class="input-container__ul multi">
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp01" name="shedule01">
+                              <label for="inp01" class="check-multi">Вахтовый метод</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp02" name="shedule01">
+                              <label for="inp02" class="check-multi">Неполный день</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp03" name="shedule01">
+                              <label for="inp03" class="check-multi">Полный день</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp04" name="shedule01">
+                              <label for="inp04" class="check-multi">Свободный график</label></li>
+  
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp05" name="shedule01">
+                              <label for="inp05" class="check-multi">Сменный график</label></li>
+                              
+                            <li class="input-container__item item-multi">
+                              <input class="input-checkbox" type="checkbox" id="inp06" name="shedule01">
+                              <label for="inp06" class="check-multi">Удаленная работа</label></li>
+  
+                              <button class="apply" type="button">Применить</button>
+                          </ul>
+                      </div>
+                      
+                    </div><!--/block3-->
+  
+                    <div class="block4">
+  
+                      <div class="input-container">
+                        <input id="company" class="input-field" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="company" class="placeholder">Поиск компании по названию или по номеру телефона или поиск соискателя по ФИО</label>
+                      </div>
+                      
+                    </div><!--/block4-->
+                  </div><!--/form__wrap--blok-3_4-->
+  
+                  <div class="salary2">
+                    <p>Желаемая зарплата</p>
+                    <div class="salary2__min-max any-minmax">
+                      <p class="salary2__min">0</p>
+                      <p class="salary2__max">700000</p>
+                    </div>
+                    <div class="salary2__mark mark">
+                      <div class="salary2__mark-left--wrap mark-left--wrap">
+                        <div class="salary2__mark-left mark-left"></div>
+                      </div>
+                      <div class="salary2__mark-right--wrap mark-right--wrap">
+                        <div class="salary2__mark-right mark-right"></div>
+                      </div>
+                    </div><!--/salary2__mark-->
+                    <div class="range3 range-salary2"></div>
+                  </div><!--/salary2-->    
+                        
+                  <div class="choose__buttons">
+                    <div class="choose__buttons--wrap">
+                      <button class="choose__btn reset-all hide-block" type="reset">Очистить</button>
+                      <button class="choose__btn show-all">Показать 3 333 вакансий</button>
+                    </div>
+                  </div>
 
                 </div><!--/form-wrap-->
               </form>
