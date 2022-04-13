@@ -45,19 +45,39 @@ function changeSearchType(e) {
 
   switch (e.target.getAttribute('data-type')) {
     case ('staff'):
-      chooseStaff.classList.remove('choose__staff-hide');
-      chooseAny.classList.add('choose__any-hide');
-      chooseWork.classList.add('choose__work-hide');
+      setTimeout(() => {
+        chooseStaff.classList.remove('choose__staff-hide');
+        chooseAny.classList.add('choose__any-hide');
+        chooseWork.classList.add('choose__work-hide');
+      }, 100);
+
+      chooseStaff.style.display = 'block';
+      chooseAny.style.display = "none";
+      chooseWork.style.display = "none";
       break;
+
     case ('work'):
-      chooseWork.classList.remove('choose__work-hide');
-      chooseAny.classList.add('choose__any-hide');
-      chooseStaff.classList.add('choose__staff-hide');
+      setTimeout(() => {
+        chooseWork.classList.remove('choose__work-hide');
+        chooseAny.classList.add('choose__any-hide');
+        chooseStaff.classList.add('choose__staff-hide');
+      }, 100);
+
+      chooseWork.style.display = "block";
+      chooseStaff.style.display = 'none';
+      chooseAny.style.display = "none";
       break;
+
     case ('any'):
-      chooseAny.classList.remove('choose__any-hide');
-      chooseWork.classList.add('choose__work-hide');
-      chooseStaff.classList.add('choose__staff-hide');
+      setTimeout(() => {
+        chooseAny.classList.remove('choose__any-hide');
+        chooseWork.classList.add('choose__work-hide');
+        chooseStaff.classList.add('choose__staff-hide');
+      }, 100);
+
+      chooseAny.style.display = "block";
+      chooseStaff.style.display = 'none';
+      chooseWork.style.display = "none";
       break;
   }
 }
@@ -125,8 +145,12 @@ function hideSelect_1(e) {
   //нажали вне поля выбора
   if (!e.target.classList.contains('inputselect')) {
 
+    if (e.target.classList.contains('item-multi')) {
+      e.target.firstElementChild.checked = true;
+    }
+
     for (let uls of inputContainerUls) {
-      if (e.target.parentNode.parentNode !== uls) {
+      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
         uls.classList.remove('showlist');
       }
     }
@@ -161,31 +185,22 @@ function hideSelect_2(e) {
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
 
-
 //Показать выбранный select и спрятать placeholder
-//for (let item of inputContainerItems) {
-for (let item of inputMultis) {
+for (let item of inputContainerItems) {
   item.addEventListener('click', showItemSelected);
 }
 
 function showItemSelected(e) {
-  let targ = e.target.parentNode.parentNode.parentNode;
-  if (targ.classList.contains('input-container')) {
-    //обрабатываем мультиселект;
-    //return;
-  }
+  let targ = e.currentTarget.parentNode.parentNode;
   resetAll.classList.remove('hide-block');
-  //targ.querySelector('.input-container__ul').classList.toggle('showlist');
-
-  console.log(targ.querySelector('.input-container__ul'));
-
   targ.querySelector('.inputselect').value = this.innerText;
-  //targ.querySelector('.placeholder').classList.add('hide-block');
+  targ.querySelector('.placeholder').classList.add('hide-block');
+  targ.querySelector('.input-container__ul').classList.toggle('showlist');
 }
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
-const applBtns = document.querySelectorAll('.apply');
+const applBtns = chooseWork.querySelectorAll('.apply');
 for (let btn of applBtns) {
   btn.addEventListener('click', calculateNumberOfChecked);
 }
@@ -307,9 +322,9 @@ range1.oninput = () => {
   salMax.innerText = Math.round(range1.value / 1000) * 1000;
 };
 
-/**********Конец блока Управление доп.ползунком в Range1**********/
+/**********Конец блока Управление доп.ползунком в Range1********/
 
-/***********Работа с кнопкой Очистить вкладка Поиск работы**********/
+/*********Работа с кнопкой Очистить вкладка Поиск работы*********/
 resetAll.addEventListener('click', resetInputs);
 
 function resetInputs() {
@@ -337,7 +352,7 @@ function resetInputs() {
   }, 10);
 }
 /*************Конец Работа с кнопкой Очистить ************** */
-/***************Конец блока Поиск работы****************************/
+/***************Конец блока Поиск работы********************/
 
 
 /**************Блок Поиск сотрудников***************** */
@@ -353,6 +368,7 @@ const rangeSalary1 = document.querySelector('.range-salary1');
 const rangeExperience = document.querySelector('.range-experience');
 const StaffMarkLefts = chooseStaff.querySelectorAll('.mark-left');
 const StaffMarkRights = chooseStaff.querySelectorAll('.mark-right');
+const StaffResetAll = chooseStaff.querySelector('.staff__reset-all');
 const age_ = chooseStaff.querySelector('.age');
 const age_min = age_.querySelector('.age__min');
 const age_max = age_.querySelector('.age__max');
@@ -375,8 +391,6 @@ function staffShowInput(e) { //убрать placeholder и показать inpu
   if (e.target !== staffResetAll) {
     for (let inp of staffInputFields) {
       if (inp.value) {
-
-        console.log('inp=', inp.value);
         inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
         staffResetAll.classList.remove('hide-block');
       } else {
@@ -405,8 +419,16 @@ function hideSelect_staff1(e) {
   //нажали вне поля выбора
   if (!e.target.classList.contains('inputselect')) {
 
+    if (e.target.classList.contains('check-multi')) {
+      e.target.previousElementSibling.checked = true;
+    }
+
+    if (e.target.classList.contains('item-multi')) {
+      e.target.firstElementChild.checked = true;
+    }
+
     for (let uls of staffInputContainerUls) {
-      if (e.target.parentNode.parentNode !== uls) {
+      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
         uls.classList.remove('showlist');
       }
     }
@@ -426,6 +448,7 @@ for (let inp of staffInputSelects) {
 
 function hideSelect_staff2(e) {
   //обнуляем остальные поля выбора
+
   for (let inp of staffInputSelects) {
     inp.classList.remove('inputsel');
   }
@@ -447,25 +470,22 @@ for (let item of staffInputContainerItems) {
 }
 
 function showStaffItemSelected(e) {
-  let targ = e.target.parentNode.parentNode.parentNode;
-  if (targ.classList.contains('input-container')) {
-    //обрабатываем мультиселект;
-  }
+  let targ = e.currentTarget.parentNode.parentNode;
   staffResetAll.classList.remove('hide-block');
-  targ.querySelector('.input-container__ul').classList.toggle('showlist');
   targ.querySelector('.inputselect').value = this.innerText;
   targ.querySelector('.placeholder').classList.add('hide-block');
+  targ.querySelector('.input-container__ul').classList.toggle('showlist');
 }
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
-/*const applBtns = document.querySelectorAll('.apply');
-for (let btn of applBtns) {
-  btn.addEventListener('click', calculateNumberOfChecked);
+const staffApplBtns = chooseStaff.querySelectorAll('.apply');
+for (let btn of staffApplBtns) {
+  btn.addEventListener('click', staffCalculateNumberOfChecked);
 }
 
-function calculateNumberOfChecked(e) {
-  resetAll.classList.remove('hide-block');
+function staffCalculateNumberOfChecked(e) {
+  staffResetAll.classList.remove('hide-block');
   //В каком мультиселекте нажата копка Применить
   const eselect = e.target.parentNode;
   const inputs = eselect.querySelectorAll('input');
@@ -482,7 +502,7 @@ function calculateNumberOfChecked(e) {
     eselect.parentNode.querySelector('.inputselect').value = '';
     eselect.classList.remove('showlist');
   }
-}*/
+}
 /*************Конец блока селекты************** */
 
 //Управление двойными ползунками в дивах range2
@@ -815,6 +835,129 @@ function staffResetInputs() {
 
 /******************Блок Любая категория***************** */
 
+/***********Работа с полями ввода и кнопкой Очистить**********/
+const anyResetAll = chooseAny.querySelector('.any__reset-all'); //кнопка Очистить
+const anyInputFields = chooseAny.querySelectorAll('.input-field');
+window.addEventListener('click', anyShowInput);
+
+function anyShowInput(e) { //убрать placeholder и показать input
+  if (e.target !== anyResetAll) {
+    for (let inp of anyInputFields) {
+      if (inp.value) {
+        inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
+        anyResetAll.classList.remove('hide-block');
+      } else {
+        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
+      }
+    }
+  }
+}
+/**********Работа с селектами*****************/
+
+const anyInputSelects = chooseAny.querySelectorAll('.inputselect');
+const anyInputContainerUls = chooseAny.querySelectorAll('.input-container__ul');
+const anyInputContainerItems = chooseAny.querySelectorAll('.input-container__item');
+const anyInputContainerArrows = chooseAny.querySelectorAll('.input-container__arrow');
+
+chooseAny.addEventListener('click', hideSelect_any1); //Показать/убрать список select
+
+function hideSelect_any1(e) {
+  //нажали на стрелочку
+  if (e.target.classList.contains('input-container__arrow')) {
+    e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
+    e.target.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
+    e.target.classList.toggle('arrow-rotate');
+    return;
+  }
+  //нажали вне поля выбора
+  if (!e.target.classList.contains('inputselect')) {
+
+    if (e.target.classList.contains('check-multi')) {
+      e.target.previousElementSibling.checked = true;
+    }
+
+    if (e.target.classList.contains('item-multi')) {
+      e.target.firstElementChild.checked = true;
+    }
+
+    for (let uls of anyInputContainerUls) {
+      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
+        uls.classList.remove('showlist');
+      }
+    }
+    for (let item of anyInputSelects) {
+      item.classList.remove('inputsel');
+    }
+    for (let arrow of anyInputContainerArrows) {
+      arrow.classList.remove('arrow-rotate');
+    }
+  }
+}
+
+//нажали на поле выбора
+for (let inp of anyInputSelects) {
+  inp.addEventListener('click', hideSelect_any2);
+}
+
+function hideSelect_any2(e) {
+  //обнуляем остальные поля выбора
+
+  for (let inp of anyInputSelects) {
+    inp.classList.remove('inputsel');
+  }
+  for (let uls of anyInputContainerUls) {
+    uls.classList.remove('showlist');
+    uls.parentNode.querySelector('.arrow').classList.remove('arrow-rotate');
+  }
+
+  e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
+
+  e.target.classList.toggle('inputsel');
+
+  e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
+}
+
+//Показать выбранный select и спрятать placeholder
+for (let item of anyInputContainerItems) {
+  item.addEventListener('click', showAnyItemSelected);
+}
+
+function showAnyItemSelected(e) {
+  let targ = e.currentTarget.parentNode.parentNode;
+  anyResetAll.classList.remove('hide-block');
+  targ.querySelector('.inputselect').value = this.innerText;
+  targ.querySelector('.placeholder').classList.add('hide-block');
+  targ.querySelector('.input-container__ul').classList.toggle('showlist');
+}
+
+
+/*********Работа с кнопками Применить в мультиселектах*******/
+const anyApplBtns = chooseAny.querySelectorAll('.apply');
+for (let btn of anyApplBtns) {
+  btn.addEventListener('click', anyCalculateNumberOfChecked);
+}
+
+function anyCalculateNumberOfChecked(e) {
+  anyResetAll.classList.remove('hide-block');
+  //В каком мультиселекте нажата копка Применить
+  const eselect = e.target.parentNode;
+  const inputs = eselect.querySelectorAll('input');
+  let counter = 0;
+  for (let inp of inputs) {
+    if (inp.checked) {
+      counter++;
+    }
+  }
+  if (counter) {
+    eselect.parentNode.querySelector('.inputselect').value = 'Выбрано ' + counter;
+    eselect.classList.remove('showlist'); //свернуть список
+  } else {
+    eselect.parentNode.querySelector('.inputselect').value = '';
+    eselect.classList.remove('showlist');
+  }
+}
+/*************Конец блока селекты************** */
+
 /****************Шкала Зарплата2************ */
 
 const salary2Max = 700000;
@@ -852,7 +995,7 @@ function salary2LeftHandler(e) {
     }
     chooseAny.querySelector('.salary2__mark-left--wrap').style.left = newLeft - correct + 'px';
     let leftShift = newLeft / salary2_.offsetWidth * 100;
-    let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 10) / salary2_.offsetWidth * 100;
+    let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 32) / salary2_.offsetWidth * 100;
 
     range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -900,7 +1043,7 @@ function salary2RightHandler(e) {
     let rightShift = newLeft / salary2_.offsetWidth * 100;
     let leftShift = (parseFloat(getComputedStyle(salary2_min).left)) / salary2_.offsetWidth * 100;
 
-    salary2_max.style.left = newLeft + 'px';
+    salary2_max.style.left = newLeft - 30 + 'px';
 
     range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -914,6 +1057,36 @@ function salary2RightHandler(e) {
   }
 }
 /****************Конец шкала Зарплата2************ */
+
+/*********Работа с кнопкой Очистить вкладка Любая категория******/
+resetAll.addEventListener('click', resetInputs);
+
+function resetInputs() {
+
+  for (let inp of inputFields) {
+    if (inp.parentNode.querySelector('label').classList.contains('placeholder')) {
+      inp.parentNode.querySelector('label').classList.remove('hide-block');
+    }
+  }
+  for (let inp of inputSelects) {
+    inp.parentNode.querySelector('label').classList.remove('hide-block');
+  }
+
+  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
+
+  resetAll.classList.add('hide-block');
+
+  setTimeout(() => {
+    range1.value = salaryMax;
+    salMax.innerText = salaryMax;
+    salMin.innerText = 0;
+    salMinMax.style.width = salWidthInitial + 'px';
+    salMinMax.style.left = 0 + 'px';
+    salaryMarkWrap.style.left = -correct + 'px';
+  }, 10);
+}
+/*************Конец Работа с кнопкой Очистить ************** */
+
 
 /*************Конец блока Любая категория************** */
 
