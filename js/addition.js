@@ -134,6 +134,42 @@ const inputContainerArrows = chooseWork.querySelectorAll('.input-container__arro
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
+function hideSelectsAllTabs(e) {
+  //Обработка мультиселектов на всех вкладках
+  if (e.target.classList.contains('check-multi')) {
+    if (e.target.previousElementSibling.checked === true) {
+      e.target.previousElementSibling.checked = false;
+    } else {
+      e.target.previousElementSibling.checked = true;
+    }
+  }
+  if (e.target.classList.contains('item-multi')) {
+    if (e.target.firstElementChild.checked === true) {
+      e.target.firstElementChild.checked = false;
+    } else {
+      e.target.firstElementChild.checked = true;
+    }
+  }
+  if (e.target.classList.contains('input-checkbox')) {
+    if (e.target.checked === true) {
+      e.target.checked = false;
+    } else {
+      e.target.checked = true;
+    }
+  }
+}
+
+/*function showAllItemSelected(e) {
+  //Показать выбранный select и спрятать placeholder на всех вкладках
+  let targ = e.currentTarget.parentNode.parentNode;
+  staffResetAll.classList.remove('hide-block');
+  targ.querySelector('.inputselect').value = e.target.innerText;
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.add('hide-block');
+  }
+  targ.querySelector('.input-container__ul').classList.toggle('showlist');
+}*/
+
 function hideSelect_1(e) {
   //нажали на стрелочку
   if (e.target.classList.contains('input-container__arrow')) {
@@ -145,9 +181,7 @@ function hideSelect_1(e) {
   //нажали вне поля выбора
   if (!e.target.classList.contains('inputselect')) {
 
-    if (e.target.classList.contains('item-multi')) {
-      e.target.firstElementChild.checked = true;
-    }
+    hideSelectsAllTabs(e);
 
     for (let uls of inputContainerUls) {
       if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
@@ -194,7 +228,9 @@ function showItemSelected(e) {
   let targ = e.currentTarget.parentNode.parentNode;
   resetAll.classList.remove('hide-block');
   targ.querySelector('.inputselect').value = this.innerText;
-  targ.querySelector('.placeholder').classList.add('hide-block');
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.add('hide-block');
+  }
   targ.querySelector('.input-container__ul').classList.toggle('showlist');
 }
 
@@ -419,13 +455,7 @@ function hideSelect_staff1(e) {
   //нажали вне поля выбора
   if (!e.target.classList.contains('inputselect')) {
 
-    if (e.target.classList.contains('check-multi')) {
-      e.target.previousElementSibling.checked = true;
-    }
-
-    if (e.target.classList.contains('item-multi')) {
-      e.target.firstElementChild.checked = true;
-    }
+    hideSelectsAllTabs(e);
 
     for (let uls of staffInputContainerUls) {
       if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
@@ -472,8 +502,10 @@ for (let item of staffInputContainerItems) {
 function showStaffItemSelected(e) {
   let targ = e.currentTarget.parentNode.parentNode;
   staffResetAll.classList.remove('hide-block');
-  targ.querySelector('.inputselect').value = this.innerText;
-  targ.querySelector('.placeholder').classList.add('hide-block');
+  targ.querySelector('.inputselect').value = e.target.innerText;
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.add('hide-block');
+  }
   targ.querySelector('.input-container__ul').classList.toggle('showlist');
 }
 
@@ -812,21 +844,54 @@ function staffResetInputs() {
       inp.parentNode.querySelector('label').classList.remove('hide-block');
     }
   }
-  for (let inp of inputSelects) {
+  for (let inp of staffInputSelects) {
     inp.parentNode.querySelector('label').classList.remove('hide-block');
   }
 
-  //range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
+  //Обнуление шкал
+  for (let item of range2s) {
+    item.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
+  }
 
   staffResetAll.classList.add('hide-block');
 
   setTimeout(() => {
-    range1.value = salaryMax;
-    salMax.innerText = salaryMax;
-    salMin.innerText = 0;
-    salMinMax.style.width = salWidthInitial + 'px';
-    salMinMax.style.left = 0 + 'px';
-    salaryMarkWrap.style.left = -correct + 'px';
+    age_min.innerText = ageMin;
+    age_max.innerText = ageMax;
+    salary1_min.innerText = salary1Min;
+    salary1_max.innerText = salary1Max;
+    experience_min.innerText = experienceMin;
+    experience_max.innerText = experienceMax;
+    age_min.style.left = 0 + 'px';
+    salary1_min.style.left = 0 + 'px';
+    experience_min.style.left = 0 + 'px';
+
+    function resetMax(arg, wrap) {
+      const rect = wrap.getBoundingClientRect();
+      arg.style.left = rect.right - rect.left - correct + 'px';
+    }
+
+    resetMax(age_max, ageMinMax);
+    resetMax(salary1_max, salary1MinMax);
+    resetMax(experience_max, experienceMinMax);
+
+    function resetLeft(arg) {
+      arg.style.left = -correct + 'px';
+    }
+
+    function resetRigh(arg, rect) {
+      const rectBound = rect.getBoundingClientRect();
+      arg.style.left = rectBound.right - rectBound.left - 40 + 'px';
+    }
+
+    resetLeft(document.querySelector('.age__mark-left--wrap'));
+    resetLeft(document.querySelector('.salary1__mark-left--wrap'));
+    resetLeft(document.querySelector('.experience__mark-left--wrap'));
+
+    resetRigh(document.querySelector('.age__mark-right--wrap'), age_);
+    resetRigh(document.querySelector('.salary1__mark-right--wrap'), salary1_);
+    resetRigh(document.querySelector('.experience__mark-right--wrap'), experience_);
+
   }, 10);
 }
 /*************Конец блока Работа с кнопкой Очистить************** */
@@ -872,13 +937,7 @@ function hideSelect_any1(e) {
   //нажали вне поля выбора
   if (!e.target.classList.contains('inputselect')) {
 
-    if (e.target.classList.contains('check-multi')) {
-      e.target.previousElementSibling.checked = true;
-    }
-
-    if (e.target.classList.contains('item-multi')) {
-      e.target.firstElementChild.checked = true;
-    }
+    hideSelectsAllTabs(e);
 
     for (let uls of anyInputContainerUls) {
       if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
@@ -926,7 +985,9 @@ function showAnyItemSelected(e) {
   let targ = e.currentTarget.parentNode.parentNode;
   anyResetAll.classList.remove('hide-block');
   targ.querySelector('.inputselect').value = this.innerText;
-  targ.querySelector('.placeholder').classList.add('hide-block');
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.add('hide-block');
+  }
   targ.querySelector('.input-container__ul').classList.toggle('showlist');
 }
 
@@ -1059,32 +1120,55 @@ function salary2RightHandler(e) {
 /****************Конец шкала Зарплата2************ */
 
 /*********Работа с кнопкой Очистить вкладка Любая категория******/
-resetAll.addEventListener('click', resetInputs);
+anyResetAll.addEventListener('click', anyResetInputs);
 
-function resetInputs() {
+function anyResetInputs() {
 
-  for (let inp of inputFields) {
+  for (let inp of anyInputFields) {
     if (inp.parentNode.querySelector('label').classList.contains('placeholder')) {
       inp.parentNode.querySelector('label').classList.remove('hide-block');
     }
   }
-  for (let inp of inputSelects) {
+  for (let inp of anyInputSelects) {
     inp.parentNode.querySelector('label').classList.remove('hide-block');
   }
 
-  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
 
-  resetAll.classList.add('hide-block');
+  //Обнуление шкалы Зарплата2
+
+  range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
+
+  anyResetAll.classList.add('hide-block');
 
   setTimeout(() => {
-    range1.value = salaryMax;
-    salMax.innerText = salaryMax;
-    salMin.innerText = 0;
-    salMinMax.style.width = salWidthInitial + 'px';
-    salMinMax.style.left = 0 + 'px';
-    salaryMarkWrap.style.left = -correct + 'px';
+    salary2_min.innerText = salary2Min;
+    salary2_max.innerText = salary2Max;
+    salary2_min.style.left = 0 + 'px';
+
+    function anyResetMax(arg, wrap) {
+      const rect = wrap.getBoundingClientRect();
+      arg.style.left = rect.right - rect.left - 50 + 'px';
+    }
+
+    anyResetMax(salary2_max, salary2MinMax);
+
+    function anyResetLeft(arg) {
+      arg.style.left = -correct + 'px';
+    }
+
+    function anyResetRigh(arg, rect) {
+      const rectBound = rect.getBoundingClientRect();
+      arg.style.left = rectBound.right - rectBound.left - 40 + 'px';
+    }
+
+    anyResetLeft(document.querySelector('.salary2__mark-left--wrap'));
+
+    anyResetRigh(document.querySelector('.salary2__mark-right--wrap'), salary2_);
+
   }, 10);
 }
+
+
 /*************Конец Работа с кнопкой Очистить ************** */
 
 
@@ -1093,5 +1177,5 @@ function resetInputs() {
 
 
 window.onclick = (e) => {
-  console.log(e.target);
+  //console.log('target=', e.target);
 };
