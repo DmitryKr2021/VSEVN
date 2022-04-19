@@ -129,7 +129,21 @@ function showInput(e) { //убрать placeholder и показать input
 }
 /*************Конец блока с полями ввода************** */
 
+//Закрыть селектя по клику в произвольном месте
+const searchContainer = document.querySelector('.search__container');
+window.addEventListener('click', hideAllLists);
 
+function hideAllLists(e) {
+  if (e.clientX < searchContainer.getBoundingClientRect().left ||
+    e.clientX > searchContainer.getBoundingClientRect().right) {
+    for (let item of document.querySelectorAll('.showlist')) {
+      item.classList.remove('showlist');
+    }
+    for (let item of document.querySelectorAll('.inputsel')) {
+      item.classList.remove('inputsel');
+    }
+  }
+}
 /**********Работа с селектами*****************/
 
 const inputSelects = chooseWork.querySelectorAll('.inputselect');
@@ -1177,15 +1191,231 @@ function anyResetInputs() {
   }, 10);
 }
 
-
 /*************Конец Работа с кнопкой Очистить ************** */
-
-
 /*************Конец блока Любая категория************** */
 
 
+/**************Выбор региона************************** */
+
+const regions = ['Вся Россия', 'Алтайский край', 'Амурская область', 'Архангельская область', 'Астраханская область', 'Белгородская область', 'Брянская область', 'Владимирская область', 'Волгоградская область', 'Вологодская область', 'Воронежская область', 'Москва', 'Еврейская автономная область', 'Забайкальский край', 'Ивановская область', 'Иные территории, включая город и космодром Байконур', 'Иркутская область', 'Кабардино-Балкарская Республика', 'Калининградская область', 'Калужская область', 'Камчатский край', 'Карачаево-Черкесская Республика', 'Кемеровская область', 'Кировская область', 'Костромская область', 'Краснодарский край', 'Красноярский край', 'Курганская область', 'Курская область', 'Ленинградская область', 'Липецкая область', 'Магаданская область', 'Московская область', 'Мурманская область', 'Ненецкий автономный округ', 'Нижегородская область', 'Новгородская область', 'Новосибирская область', 'Омская область', 'Оренбургская область', 'Орловская область', 'Пензенская область', 'Пермский край', 'Приморский край', 'Псковская область', 'Республика Адыгея (Адыгея)', 'Республика Алтай', 'Республика Башкортостан', 'Республика Бурятия', 'Республика Дагестан', 'Республика Ингушетия', 'Республика Калмыкия', 'Республика Карелия', 'Республика Коми', 'Республика Крым', 'Республика Марий Эл', 'Республика Мордовия', 'Республика Саха (Якутия)', 'Республика Северная Осетия - Алания', 'Республика Татарстан (Татарстан)', 'Республика Тыва', 'Республика Хакасия', 'Ростовская область', 'Рязанская область', 'Самарская область', 'Санкт-Петербург', 'Саратовская область', 'Сахалинская область', 'Свердловская область', 'Севастополь', 'Смоленская область', 'Ставропольский край', 'Тамбовская область', 'Тверская область', 'Томская область', 'Тульская область', 'Тюменская область', 'Удмуртская Республика', 'Ульяновская область', 'Хабаровский край', 'Ханты-Мансийский автономный округ - Югра', 'Челябинская область', 'Чеченская Республика', 'Чувашская Республика - Чувашия', 'Чукотский автономный округ', 'Ямало-Ненецкий автономный округ', 'Ярославская область'];
+
+const leningradRegion = ['Ленинградская область', 'Агалатово', 'Аннино', 'Бегуницы', 'Бокситогорск', 'Большая Вруда', 'Большая Ижора', 'Большие Колпаны', 'Бугры', 'Будогощь', 'Важины', 'Виллози', 'Винницы', 'Вознесенье', 'Войскорово', 'Волосово', 'Волхов', 'Всеволожск', 'Выборг', 'Вырица', 'Высоцк', 'Гатчина', 'Глажево', 'Горбунки', 'Гостилицы', 'Дружная Горка', 'Дубровка', 'Елизаветино', 'Ефимовский', 'Заклинье', 'Зеленогорск', 'Ивангород', 'Каменка', 'Каменногорск', 'Кингисепп', 'Кипень', 'Кириши', 'Кировск', 'Кобралово', 'Колпино', 'Колтуши', 'Колчаново', 'Коммунар', 'Котельский', 'Красное Село', 'Красный Бор', 'Кронштадт', 'Кудрово', 'Кузнечное', 'Кузьмоловский', 'Лаголово', 'Лебяжье', 'Лесколово', 'Лесогорский', 'Лодейное Поле', 'Ломоносов', 'Луга', 'Любань', 'Малое Верево', 'Малое Карлино', 'Мга', 'Мельниково', 'Металлострой', 'Мурино', 'Назия', 'Низино', 'Никольский', 'Никольское', 'Новая Ладога', 'Новое Девяткино', 'Новоселье', 'Новый Свет', 'Новый Учхоз', 'Нурма', 'Озерки (Всеволожский район)', 'Оредеж', 'Оржицы', 'Отрадное', 'Павловск', 'Парголово', 'Паша', 'пгт имени Свердлова', 'Первомайское', 'Петергоф', 'Пикалево', 'Подпорожье', 'посёлок имени Морозова', 'Приладожский', 'Приморск', 'Приозерск', 'Пудомяги', 'Пушкин', 'Разметелево', 'Рахья', 'Репино', 'Романовка', 'Ромашкинское сельское поселение', 'Рощино', 'Русско-Высоцкое', 'Рябово', 'Светогорск', 'Селезнёво', 'Сельцо (посёлок, Волосовский район)', 'Семрино', 'Сертолово', 'Сестрорецк', 'Сиверский', 'Синявино', 'Славянка', 'Сланцы', 'Советский', 'Сосново', 'Сосновый Бор', 'Старая', 'Старая Ладога', 'Стрельна', 'Сусанино', 'Суходолье', 'Сясьстрой', 'Тайцы', 'Тельмана', 'Тихвин', 'Токсово', 'Толмачёво', 'Тосно', 'Ульяновка', 'Усть-Луга', 'Форносово', 'Шлиссельбург', 'Шушары', 'Ям-Ижора', 'Янино-'];
+
+const nijegorodRegion = ['Нижегородская область', 'Ардатов', 'Арзамас', 'Арья', 'Афанасьево', 'Афонино', 'Балахна', 'Богородск', 'Большое Болдино', 'Большое Козино', 'Большое Мурашкино', 'Бор', 'Буревестник', 'Бутурлино', 'Вад', 'Варнавино', 'Вахтан', 'Вача', 'Ветлуга', 'Виля', 'Вознесенское', 'Володарск', 'Воротынец', 'Ворсма', 'Воскресенское', 'Выездное', 'Выкса', 'Гагино', 'Гидроторф', 'Горбатов', 'Горбатовка', 'Городец', 'Гремячево', 'Дальнее Константиново', 'Дзержинск', 'Дивеево', 'Досчатое', 'Дружба', 'Ждановский', 'Заволжье', 'Ильиногорск', 'Княгинино', 'Ковернино', 'Красные Баки', 'Кстово', 'Кулебаки', 'Линда', 'Лукино', 'Лукоянов', 'Лысково', 'Мулино', 'Мухтолово', 'Навашино', 'Нижний Новгород', 'Новосмолинский', 'Павлово', 'Первомайск', 'Перевоз', 'Пижма', 'Пильна', 'посёлок Память Парижской Коммуны', 'поселок Степана Разина', 'Починки', 'Решетиха', 'Саваслейка', 'Саров', 'Сатис', 'Семенов', 'Сергач', 'Сеченово', 'Сокольское', 'Сосновское', 'Спасское', 'Суроватиха', 'Сухобезводное', 'Сява', 'Тонкино', 'Тоншаево', 'Тумботино', 'Урень', 'Федяково', 'Центральный', 'Чернуха', 'Чкаловск', 'Шаранга', 'Шатки', 'Шахунья', 'Шиморское', 'Югане'];
+
+
+//Формирование списка регионов на странице
+const regionBodyUl = document.querySelector('.region__body--ul');
+//в качестве шаблона для списка берем первый элемент
+const templ1 = regionBodyUl.firstElementChild;
+for (let i = 2; i < regions.length; i++) {
+  let newItem = templ1.cloneNode(true);
+  let atribDigit = String(i).padStart(3, '0');
+  newItem.querySelector('.input-region').setAttribute('id', `region${atribDigit}`);
+  newItem.querySelector('.region-multi').setAttribute('for', `region${atribDigit}`);
+  newItem.querySelector('.region-multi').innerText = regions[i];
+  regionBodyUl.append(newItem);
+}
+
+//Формирование списка населенных пунктов
+
+const punktRegionUls = document.querySelectorAll('.punkt__region--ul');
+//в качестве шаблона для списка берем первый элемент
+
+//Ленинградская область
+
+const templ2 = punktRegionUls[0].firstElementChild;
+for (let i = 2; i < leningradRegion.length; i++) {
+  let newItem = templ2.cloneNode(true);
+  let atribDigit = String(i).padStart(3, '0');
+  newItem.querySelector('.input-region').setAttribute('id', `punkt1_${atribDigit}`);
+  newItem.querySelector('.region-multi').setAttribute('for', `punkt1_${atribDigit}`);
+  newItem.querySelector('.region-multi').innerText = leningradRegion[i];
+  punktRegionUls[0].append(newItem);
+}
+
+//Нижегородская область
+
+const templ3 = punktRegionUls[1].firstElementChild;
+for (let i = 2; i < nijegorodRegion.length; i++) {
+  let newItem = templ3.cloneNode(true);
+  let atribDigit = String(i).padStart(3, '0');
+  newItem.querySelector('.input-region').setAttribute('id', `punkt2_${atribDigit}`);
+  newItem.querySelector('.region-multi').setAttribute('for', `punkt2_${atribDigit}`);
+  newItem.querySelector('.region-multi').innerText = nijegorodRegion[i];
+  punktRegionUls[1].append(newItem);
+}
+
+
+const chooseRegion = document.querySelector('.choose__region');
+const chooseRegionClose = document.querySelector('.choose__region--close');
+const regionWork = document.querySelector('#region');
+const regionStaff = document.querySelector('#region1');
+const regionAny = document.querySelector('#region2');
+const regionApply = document.querySelector('.region__apply');
+const punktGroup = document.querySelector('.punkt__group');
+const punktRegion = document.querySelector('.punkt__region');
+const regionAll = document.querySelector('.region__all');
+const punktAll = document.querySelector('.punkt__all');
+const labelPunktAll = document.querySelector('.punkt-all');
+const inputRegionAll = document.querySelector('.input-region-all');
+const inputPunktAll = document.querySelector('.input-punkt-all');
+const regionItems = document.querySelectorAll('.input-region-item');
+const punktGroupItems = document.querySelectorAll('.punkt__group--item');
+const inputPunktGroups = document.querySelectorAll('.input-punkt-group');
+const punktRegionItems = document.querySelectorAll('.punkt__region--item');
+const regionBody = document.querySelector('.region__body');
+const regionBodyItems = document.querySelectorAll('.region__body--item');
+const regionBodyUlItems = regionBodyUl.querySelectorAll('.region__body--item');
+const shifts = document.querySelectorAll('.shift');
+
+//Показать список регионов
+regionWork.onclick = () => {
+  chooseRegion.classList.remove('up-block');
+};
+regionStaff.onclick = () => {
+  chooseRegion.classList.remove('up-block');
+};
+regionAny.onclick = () => {
+  chooseRegion.classList.remove('up-block');
+};
+
+let closeRegions = function () {
+  chooseRegion.classList.add('up-block');
+  punktRegion.classList.add('hide-block');
+  punktGroup.classList.add('hide-block');
+  labelPunktAll.classList.remove('color-black');
+  inputPunktAll.checked = false;
+  for (let item of inputPunktGroups) {
+    item.checked = false;
+  }
+  chooseRegion.checked = false;
+  punktRegion.checked = false;
+  punktGroup.checked = false;
+  inputRegionAll.checked = false;
+  for (let item of regionItems) {
+    item.checked = false;
+  }
+};
+
+chooseRegionClose.onclick = () => closeRegions();
+regionApply.onclick = () => closeRegions();
+
+
+//Все регионы
+regionAll.onclick = (e) => {
+  punktRegion.classList.remove('hide-block');
+  punktGroup.classList.remove('hide-block');
+  labelPunktAll.classList.add('color-black');
+
+  if (inputRegionAll.checked === true) {
+    inputRegionAll.checked = false;
+    for (let item of regionItems) {
+      item.checked = false;
+    }
+  } else {
+    inputRegionAll.checked = true;
+    for (let item of regionItems) {
+      item.checked = true;
+    }
+  }
+};
+
+//Если нажали на квадратик
+
+for (let item of regionBodyItems) {
+  item.addEventListener('click', toggleCheckRegion);
+}
+
+function toggleCheck(e) {
+  if (e.target.firstElementChild) {
+    if (e.target.firstElementChild.checked === true) {
+      e.target.firstElementChild.checked = false;
+    } else {
+      e.target.firstElementChild.checked = true;
+    }
+  }
+}
+
+function toggleCheckRegion(e) {
+  labelPunktAll.classList.add('color-black');
+  toggleCheck(e);
+}
+
+
+//Очистить регионы
+const regionResets = document.querySelectorAll('.region__title--reset');
+regionResets[0].onclick = () => {
+  inputRegionAll.checked = false;
+  for (let item of regionItems) {
+    item.checked = false;
+  }
+};
+
+
+
+punktAll.onclick = (e) => {
+  if (labelPunktAll.classList.contains('color-black')) {
+
+    if (inputPunktAll.checked === true) {
+      inputPunktAll.checked = false;
+      for (let item of regionItems) {
+        //item.checked = false;
+      }
+    } else {
+      inputPunktAll.checked = true;
+      for (let item of regionItems) {
+        //item.checked = true;
+      }
+    }
+  }
+};
+
+for (let item of punktGroupItems) {
+  item.addEventListener('click', toggleCheck);
+}
+
+for (let item2 of shifts) {
+  item2.addEventListener('click', toggleCheck);
+}
+
+for (let item of punktRegionItems) {
+  item.addEventListener('click', showPunkts);
+}
+
+function showPunkts(e) {
+
+  if (e.target.firstElementChild) {
+    if (e.target.firstElementChild.checked === true) {
+      e.target.firstElementChild.checked = false;
+      for (let item1 of e.target.querySelectorAll('.input-region-item')) {
+        item1.checked = false;
+      }
+    } else {
+      e.target.firstElementChild.checked = true;
+      for (let item1 of e.target.querySelectorAll('.input-region-item')) {
+        item1.checked = true;
+      }
+    }
+  } else {
+    /*if (e.target.previousElementSibling.checked === true) {
+      e.target.previousElementSibling.checked = false;
+      for (let item1 of e.target.parentNode.querySelectorAll('.input-region-item')) {
+        item1.checked = false;
+      }
+    } else {
+      e.target.previousElementSibling.checked = true;
+      for (let item1 of e.target.parentNode.querySelectorAll('.input-region-item')) {
+        item1.checked = true;
+      }
+    }*/
+  }
+}
+
+/**************Конец Выбор региона******************** */
 
 window.onclick = (e) => {
-  //console.log('target=', e.target);
+  console.log('target=', e.target);
+  //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
 };
