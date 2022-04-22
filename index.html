@@ -518,8 +518,6 @@
             <button class="region__apply">Выбрать</button>
           </div><!--/choose__region-->
   
-
-
           <div class="choose__work">
             <div class="choose__work--wrap">
               <form action="#" class="choose__work--form" name="choose__work--form">
@@ -544,41 +542,119 @@
                   <div class="block2">
 
                     <div class="input-container">
-                      <input id="district" class="inputselect" type="text" placeholder=" " />
+                      <label for="district" class="label-out">Район</label>
+                      <input id="district" class="inputselect" type="text" placeholder="Не имеет значения" />
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow"></div>
-                        <label for="district" class="placeholder">Район</label>
-                        <ul class="input-container__ul">
-                          <li class="input-container__item"><p>Автозаводский</p></li>
-                          <li class="input-container__item"><p>Канавинский</p></li>
-                          <li class="input-container__item"><p>Ленинский</p></li>
-                          <li class="input-container__item"><p>Московский</p></li>
-                          <li class="input-container__item"><p>Нижегородский</p></li>
-                          <li class="input-container__item"><p>Приокский</p></li>
-                          <li class="input-container__item"><p>Советский</p></li>
-                          <li class="input-container__item"><p>Сормовский</p></li>
+
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d001" name="district01">
+                            <label for="d001" class="check-multi">Автозаводский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d002" name="district01">
+                            <label for="d002" class="check-multi">Канавинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d003" name="district01">
+                            <label for="d003" class="check-multi">Ленинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d004" name="district01">
+                            <label for="d004" class="check-multi">Московский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d005" name="district01">
+                            <label for="d005" class="check-multi">Нижегородский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d006" name="district01">
+                            <label for="d006" class="check-multi">Приокский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d007" name="district01">
+                            <label for="d007" class="check-multi">Советский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d008" name="district01">
+                            <label for="d008" class="check-multi">Сормовский</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+
                         </ul>
                     </div>
 
                     <div class="input-container">
-                      <input id="metro" class="inputselect" type="text" placeholder=" " />
+                      <label for="metro" class="label-out">Метро</label>
+                      <input id="metro" class="inputselect" type="text" placeholder="Не имеет значения" />
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow"></div>
-                      <label for="metro" class="placeholder">Метро</label>
-                      <ul class="input-container__ul">
-                        <li class="input-container__item"><p>Горьковская</p></li>
-                        <li class="input-container__item"><p>Московская</p></li>
-                        <li class="input-container__item"><p>Чкаловская</p></li>
-                        <li class="input-container__item"><p>Ленинская</p></li>
-                        <li class="input-container__item"><p>Заречная</p></li>
-                        <li class="input-container__item"><p>Двигатель Революции</p></li>
-                        <li class="input-container__item"><p>Пролетарская</p></li>
-                        <li class="input-container__item"><p>Автозаводская</p></li>
-                        <li class="input-container__item"><p>Комсомольская</p></li>
-                        <li class="input-container__item"><p>Кировская</p></li>
-                      </ul>
-                    </div>  
+                         <ul class="input-container__ul multi">
 
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m001" name="metro01">
+                          <label for="m001" class="check-multi">Горьковская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m002" name="metro01">
+                          <label for="m002" class="check-multi">Московская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m003" name="metro01">
+                          <label for="m003" class="check-multi">Чкаловская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m004" name="metro01">
+                          <label for="m004" class="check-multi">Ленинская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m005" name="metro01">
+                          <label for="m005" class="check-multi">Заречная</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m006" name="metro01">
+                          <label for="m006" class="check-multi">Двигатель Революции</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m007" name="metro01">
+                          <label for="m007" class="check-multi">Пролетарская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m008" name="metro01">
+                          <label for="m008" class="check-multi">Автозаводская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m009" name="metro01">
+                          <label for="m009" class="check-multi">Комсомольская</label>
+                        </li>
+
+                        <li class="input-container__item item-multi">
+                          <input class="input-checkbox" type="checkbox" id="m010" name="metro01">
+                          <label for="m010" class="check-multi">Кировская</label>
+                        </li>
+
+                      <button class="apply" type="button">Применить</button>
+
+                      </ul>                    
+                    </div>  
                   </div><!--/block2-->
                 </div> <!--/form__wrap--blok-1_2-->
 
@@ -588,17 +664,165 @@
 
                     <div class="input-container">
                       <label for="rubricator" class="label-out">Отраслевой рубрикатор</label>
-                      <input id="rubricator" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                      <input id="rubricator" class="inputselect inputselect-center" type="text" placeholder="Любая отрасль"/>                   
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow arrow2"></div>
-                        <ul class="input-container__ul hidden">
-                          <li class="input-container__item"><p>Вахт. метод #1</p></li>
-                          <li class="input-container__item"><p>Вахт. метод #2</p></li>
-                          <li class="input-container__item"><p>Вахт. метод #3</p></li>
-                          <li class="input-container__item"><p>Вахт. метод #4</p></li>
-                          <li class="input-container__item"><p>Вахт. метод #5</p></li>
-                          <li class="input-container__item"><p>Вахт. метод #6</p></li>
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub001" name="rubricator01">
+                            <label for="rub001" class="check-multi">Автобизнес</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub002" name="rubricator01">
+                            <label for="rub002" class="check-multi">Административный персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub003" name="rubricator01">
+                            <label for="rub003" class="check-multi">Безопасность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub004" name="rubricator01">
+                            <label for="rub004" class="check-multi">Благоустройство. Обслуживание инженерных систем зданий</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub005" name="rubricator01">
+                            <label for="rub005" class="check-multi">Бухгалтерия, управленческий учет, финансы предприятия</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub006" name="rubricator01">
+                            <label for="rub006" class="check-multi">Высший менеджмент</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub007" name="rubricator01">
+                            <label for="rub007" class="check-multi">Госслужба</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub008" name="rubricator01">
+                            <label for="rub008" class="check-multi">Добыча сырья</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub009" name="rubricator01">
+                            <label for="rub009" class="check-multi">Домашний персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub010" name="rubricator01">
+                            <label for="rub010" class="check-multi">Искусство, развлечения, масс-медиа</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub011" name="rubricator01">
+                            <label for="rub011" class="check-multi">Консультирование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub012" name="rubricator01">
+                            <label for="rub012" class="check-multi">Компьютеры. IT-технологии</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub013" name="rubricator01">
+                            <label for="rub013" class="check-multi">Логистика. Таможня. ВЭД</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub014" name="rubricator01">
+                            <label for="rub014" class="check-multi">Образование. Наука. Культура</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub015" name="rubricator01">
+                            <label for="rub015" class="check-multi">Полиграфия. Издательства</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub016" name="rubricator01">
+                            <label for="rub016" class="check-multi">Продажи</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub017" name="rubricator01">
+                            <label for="rub017" class="check-multi">Производство. Промышленность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub018" name="rubricator01">
+                            <label for="rub018" class="check-multi">Работа без специальной подготовки. Без опыта. Начало карьеры</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub019" name="rubricator01">
+                            <label for="rub019" class="check-multi">Рабочий персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub020" name="rubricator01">
+                            <label for="rub020" class="check-multi">Реклама. Маркетинг. PR</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub021" name="rubricator01">
+                            <label for="rub021" class="check-multi">Снабженцы. Менеджеры по закупкам. Работники АХЧ</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub022" name="rubricator01">
+                            <label for="rub022" class="check-multi">Страхование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub023" name="rubricator01">
+                            <label for="rub023" class="check-multi">Строительство. Архитектура. Недвижимость</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub024" name="rubricator01">
+                            <label for="rub024" class="check-multi">Сфера финансов</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub025" name="rubricator01">
+                            <label for="rub025" class="check-multi">Транспорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub026" name="rubricator01">
+                            <label for="rub026" class="check-multi">Туризм и гостиничное дело. Кулинария</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub027" name="rubricator01">
+                            <label for="rub027" class="check-multi">Управление персоналом</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub028" name="rubricator01">
+                            <label for="rub028" class="check-multi">Фармацевтика. Медицина</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub029" name="rubricator01">
+                            <label for="rub029" class="check-multi">Фитнес. Салоны красоты. Спорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub030" name="rubricator01">
+                            <label for="rub030" class="check-multi">Юриспруденция</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+
                         </ul>
+
                     </div>
 
                     <div class="input-container">
@@ -860,8 +1084,8 @@
                       
                 <div class="choose__buttons">
                   <div class="choose__buttons--wrap">
-                    <button class="choose__btn reset-all hide-block" type="reset">Очистить</button>
-                    <button class="choose__btn show-all">Показать 1 111 вакансий</button>
+                    <button class="choose__btn work__reset-all reset-all hide-block" type="reset">Очистить</button>
+                    <button class="choose__btn show-all" type="button">Показать</button>
                   </div>
                 </div>
               
@@ -895,39 +1119,118 @@
                     <div class="block2">
   
                       <div class="input-container">
-                        <input id="district" class="inputselect" type="text" placeholder=" " />
+                        <label for="district1" class="label-out">Район</label>
+                        <input id="district1" class="inputselect" type="text" placeholder="Не имеет значения" />
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                          <label for="district" class="placeholder">Район</label>
-                          <ul class="input-container__ul">
-                            <li class="input-container__item"><p>Автозаводский</p></li>
-                            <li class="input-container__item"><p>Канавинский</p></li>
-                            <li class="input-container__item"><p>Ленинский</p></li>
-                            <li class="input-container__item"><p>Московский</p></li>
-                            <li class="input-container__item"><p>Нижегородский</p></li>
-                            <li class="input-container__item"><p>Приокский</p></li>
-                            <li class="input-container__item"><p>Советский</p></li>
-                            <li class="input-container__item"><p>Сормовский</p></li>
-                          </ul>
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d101" name="district11">
+                            <label for="d101" class="check-multi">Автозаводский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d102" name="district11">
+                            <label for="d102" class="check-multi">Канавинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d103" name="district11">
+                            <label for="d103" class="check-multi">Ленинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d104" name="district11">
+                            <label for="d104" class="check-multi">Московский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d105" name="district11">
+                            <label for="d105" class="check-multi">Нижегородский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d106" name="district11">
+                            <label for="d106" class="check-multi">Приокский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d107" name="district11">
+                            <label for="d107" class="check-multi">Советский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d108" name="district11">
+                            <label for="d108" class="check-multi">Сормовский</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+
+                        </ul>
                       </div>
   
                       <div class="input-container">
-                        <input id="metro" class="inputselect" type="text" placeholder=" " />
+                        <label for="metro1" class="label-out">Метро</label>
+                        <input id="metro1" class="inputselect" type="text" placeholder="Не имеет значения" />
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                        <label for="metro" class="placeholder">Метро</label>
-                        <ul class="input-container__ul">
-                          <li class="input-container__item"><p>Горьковская</p></li>
-                          <li class="input-container__item"><p>Московская</p></li>
-                          <li class="input-container__item"><p>Чкаловская</p></li>
-                          <li class="input-container__item"><p>Ленинская</p></li>
-                          <li class="input-container__item"><p>Заречная</p></li>
-                          <li class="input-container__item"><p>Двигатель Революции</p></li>
-                          <li class="input-container__item"><p>Пролетарская</p></li>
-                          <li class="input-container__item"><p>Автозаводская</p></li>
-                          <li class="input-container__item"><p>Комсомольская</p></li>
-                          <li class="input-container__item"><p>Кировская</p></li>
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m101" name="metro11">
+                            <label for="m101" class="check-multi">Горьковская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m102" name="metro11">
+                            <label for="m102" class="check-multi">Московская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m103" name="metro11">
+                            <label for="m103" class="check-multi">Чкаловская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m104" name="metro11">
+                            <label for="m104" class="check-multi">Ленинская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m105" name="metro11">
+                            <label for="m105" class="check-multi">Заречная</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m106" name="metro11">
+                            <label for="m106" class="check-multi">Двигатель Революции</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m107" name="metro11">
+                            <label for="m107" class="check-multi">Пролетарская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m108" name="metro11">
+                            <label for="m108" class="check-multi">Автозаводская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m109" name="metro11">
+                            <label for="m109" class="check-multi">Комсомольская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m110" name="metro11">
+                            <label for="m110" class="check-multi">Кировская</label>
+                          </li>
+  
+                        <button class="apply" type="button">Применить</button>
+  
                         </ul>
+                        
                       </div>  
   
                     </div><!--/block2-->
@@ -939,17 +1242,165 @@
   
                       <div class="input-container">
                         <label for="rubricator1" class="label-out">Отраслевой рубрикатор</label>
-                        <input id="rubricator1" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                        <input id="rubricator1" class="inputselect inputselect-center" type="text" placeholder="Любая отрасль"/>                   
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
-                          <ul class="input-container__ul hidden">
-                            <li class="input-container__item"><p>Вахт. метод #1</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #2</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #3</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #4</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #5</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #6</p></li>
-                          </ul>
+                          
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub101" name="rubricator11">
+                            <label for="rub101" class="check-multi">Автобизнес</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub102" name="rubricator11">
+                            <label for="rub102" class="check-multi">Административный персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub103" name="rubricator11">
+                            <label for="rub103" class="check-multi">Безопасность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub104" name="rubricator11">
+                            <label for="rub104" class="check-multi">Благоустройство. Обслуживание инженерных систем зданий</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub105" name="rubricator11">
+                            <label for="rub105" class="check-multi">Бухгалтерия, управленческий учет, финансы предприятия</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub106" name="rubricator11">
+                            <label for="rub106" class="check-multi">Высший менеджмент</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub107" name="rubricator11">
+                            <label for="rub107" class="check-multi">Госслужба</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub108" name="rubricator11">
+                            <label for="rub108" class="check-multi">Добыча сырья</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub109" name="rubricator11">
+                            <label for="rub109" class="check-multi">Домашний персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub110" name="rubricator11">
+                            <label for="rub110" class="check-multi">Искусство, развлечения, масс-медиа</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub111" name="rubricator11">
+                            <label for="rub111" class="check-multi">Консультирование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub112" name="rubricator11">
+                            <label for="rub112" class="check-multi">Компьютеры. IT-технологии</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub113" name="rubricator11">
+                            <label for="rub113" class="check-multi">Логистика. Таможня. ВЭД</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub114" name="rubricator11">
+                            <label for="rub114" class="check-multi">Образование. Наука. Культура</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub115" name="rubricator11">
+                            <label for="rub115" class="check-multi">Полиграфия. Издательства</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub116" name="rubricator11">
+                            <label for="rub116" class="check-multi">Продажи</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub117" name="rubricator11">
+                            <label for="rub117" class="check-multi">Производство. Промышленность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub118" name="rubricator11">
+                            <label for="rub118" class="check-multi">Работа без специальной подготовки. Без опыта. Начало карьеры</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub119" name="rubricator11">
+                            <label for="rub119" class="check-multi">Рабочий персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub120" name="rubricator11">
+                            <label for="rub120" class="check-multi">Реклама. Маркетинг. PR</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub121" name="rubricator11">
+                            <label for="rub121" class="check-multi">Снабженцы. Менеджеры по закупкам. Работники АХЧ</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub122" name="rubricator11">
+                            <label for="rub122" class="check-multi">Страхование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub123" name="rubricator11">
+                            <label for="rub123" class="check-multi">Строительство. Архитектура. Недвижимость</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub124" name="rubricator11">
+                            <label for="rub124" class="check-multi">Сфера финансов</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub125" name="rubricator11">
+                            <label for="rub125" class="check-multi">Транспорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub126" name="rubricator11">
+                            <label for="rub126" class="check-multi">Туризм и гостиничное дело. Кулинария</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub127" name="rubricator11">
+                            <label for="rub127" class="check-multi">Управление персоналом</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub128" name="rubricator11">
+                            <label for="rub128" class="check-multi">Фармацевтика. Медицина</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub129" name="rubricator11">
+                            <label for="rub129" class="check-multi">Фитнес. Салоны красоты. Спорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub130" name="rubricator11">
+                            <label for="rub130" class="check-multi">Юриспруденция</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+
+                        </ul>
                       </div>
 
                       <div class="input-container">
@@ -1219,8 +1670,8 @@
 
                   <div class="choose__buttons">
                     <div class="choose__buttons--wrap">
-                      <button class="choose__btn staff__reset-all hide-block" type="reset">Очистить</button>
-                      <button class="choose__btn show-all">Показать 2 222 вакансий</button>
+                      <button class="choose__btn reset-all staff__reset-all hide-block" type="reset">Очистить</button>
+                      <button class="choose__btn show-all" type="button">Показать</button>
                     </div>
                   </div>
                 
@@ -1253,39 +1704,118 @@
                     <div class="block2">
   
                       <div class="input-container">
-                        <input id="district" class="inputselect" type="text" placeholder=" " />
+                        <label for="district2" class="label-out">Район</label>
+                        <input id="district2" class="inputselect" type="text" placeholder="Не имеет значения" />
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                          <label for="district" class="placeholder">Район</label>
-                          <ul class="input-container__ul">
-                            <li class="input-container__item"><p>Автозаводский</p></li>
-                            <li class="input-container__item"><p>Канавинский</p></li>
-                            <li class="input-container__item"><p>Ленинский</p></li>
-                            <li class="input-container__item"><p>Московский</p></li>
-                            <li class="input-container__item"><p>Нижегородский</p></li>
-                            <li class="input-container__item"><p>Приокский</p></li>
-                            <li class="input-container__item"><p>Советский</p></li>
-                            <li class="input-container__item"><p>Сормовский</p></li>
-                          </ul>
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d201" name="district21">
+                            <label for="d201" class="check-multi">Автозаводский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d202" name="district21">
+                            <label for="d202" class="check-multi">Канавинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d203" name="district21">
+                            <label for="d203" class="check-multi">Ленинский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d204" name="district21">
+                            <label for="d204" class="check-multi">Московский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d205" name="district21">
+                            <label for="d205" class="check-multi">Нижегородский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d206" name="district21">
+                            <label for="d206" class="check-multi">Приокский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d207" name="district21">
+                            <label for="d207" class="check-multi">Советский</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="d208" name="district21">
+                            <label for="d208" class="check-multi">Сормовский</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+                        </ul>                        
                       </div>
   
                       <div class="input-container">
-                        <input id="metro" class="inputselect" type="text" placeholder=" " />
+                        <label for="metro2" class="label-out">Метро</label>
+                        <input id="metro2" class="inputselect" type="text" placeholder="Не имеет значения" />
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                        <label for="metro" class="placeholder">Метро</label>
-                        <ul class="input-container__ul">
-                          <li class="input-container__item"><p>Горьковская</p></li>
-                          <li class="input-container__item"><p>Московская</p></li>
-                          <li class="input-container__item"><p>Чкаловская</p></li>
-                          <li class="input-container__item"><p>Ленинская</p></li>
-                          <li class="input-container__item"><p>Заречная</p></li>
-                          <li class="input-container__item"><p>Двигатель Революции</p></li>
-                          <li class="input-container__item"><p>Пролетарская</p></li>
-                          <li class="input-container__item"><p>Автозаводская</p></li>
-                          <li class="input-container__item"><p>Комсомольская</p></li>
-                          <li class="input-container__item"><p>Кировская</p></li>
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m201" name="metro21">
+                            <label for="m201" class="check-multi">Горьковская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m202" name="metro21">
+                            <label for="m202" class="check-multi">Московская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m203" name="metro21">
+                            <label for="m203" class="check-multi">Чкаловская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m204" name="metro21">
+                            <label for="m204" class="check-multi">Ленинская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m205" name="metro21">
+                            <label for="m205" class="check-multi">Заречная</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m206" name="metro21">
+                            <label for="m206" class="check-multi">Двигатель Революции</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m207" name="metro21">
+                            <label for="m207" class="check-multi">Пролетарская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m208" name="metro21">
+                            <label for="m208" class="check-multi">Автозаводская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m209" name="metro21">
+                            <label for="m209" class="check-multi">Комсомольская</label>
+                          </li>
+  
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="m210" name="metro21">
+                            <label for="m210" class="check-multi">Кировская</label>
+                          </li>
+  
+                        <button class="apply" type="button">Применить</button>
+  
                         </ul>
+                        
+
                       </div>  
   
                     </div><!--/block2-->
@@ -1297,17 +1827,165 @@
   
                       <div class="input-container">
                         <label for="rubricator2" class="label-out">Отраслевой рубрикатор</label>
-                        <input id="rubricator2" class="inputselect inputselect-center" type="text" placeholder="Работа без специальной подготовки"/>                   
+                        <input id="rubricator2" class="inputselect inputselect-center" type="text" placeholder="Любая отрасль"/>                   
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
-                          <ul class="input-container__ul hidden">
-                            <li class="input-container__item"><p>Вахт. метод #1</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #2</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #3</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #4</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #5</p></li>
-                            <li class="input-container__item"><p>Вахт. метод #6</p></li>
-                          </ul>
+                        
+                        <ul class="input-container__ul multi">
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub201" name="rubricator21">
+                            <label for="rub201" class="check-multi">Автобизнес</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub202" name="rubricator21">
+                            <label for="rub202" class="check-multi">Административный персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub203" name="rubricator21">
+                            <label for="rub203" class="check-multi">Безопасность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub204" name="rubricator21">
+                            <label for="rub204" class="check-multi">Благоустройство. Обслуживание инженерных систем зданий</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub205" name="rubricator21">
+                            <label for="rub205" class="check-multi">Бухгалтерия, управленческий учет, финансы предприятия</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub206" name="rubricator21">
+                            <label for="rub206" class="check-multi">Высший менеджмент</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub207" name="rubricator21">
+                            <label for="rub207" class="check-multi">Госслужба</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub208" name="rubricator21">
+                            <label for="rub208" class="check-multi">Добыча сырья</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub209" name="rubricator21">
+                            <label for="rub209" class="check-multi">Домашний персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub210" name="rubricator21">
+                            <label for="rub210" class="check-multi">Искусство, развлечения, масс-медиа</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub211" name="rubricator21">
+                            <label for="rub211" class="check-multi">Консультирование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub212" name="rubricator21">
+                            <label for="rub212" class="check-multi">Компьютеры. IT-технологии</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub213" name="rubricator21">
+                            <label for="rub213" class="check-multi">Логистика. Таможня. ВЭД</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub214" name="rubricator21">
+                            <label for="rub214" class="check-multi">Образование. Наука. Культура</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub215" name="rubricator21">
+                            <label for="rub215" class="check-multi">Полиграфия. Издательства</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub216" name="rubricator21">
+                            <label for="rub216" class="check-multi">Продажи</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub217" name="rubricator21">
+                            <label for="rub217" class="check-multi">Производство. Промышленность</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub218" name="rubricator21">
+                            <label for="rub218" class="check-multi">Работа без специальной подготовки. Без опыта. Начало карьеры</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub219" name="rubricator21">
+                            <label for="rub219" class="check-multi">Рабочий персонал</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub220" name="rubricator21">
+                            <label for="rub220" class="check-multi">Реклама. Маркетинг. PR</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub221" name="rubricator21">
+                            <label for="rub221" class="check-multi">Снабженцы. Менеджеры по закупкам. Работники АХЧ</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub222" name="rubricator21">
+                            <label for="rub222" class="check-multi">Страхование</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub223" name="rubricator21">
+                            <label for="rub223" class="check-multi">Строительство. Архитектура. Недвижимость</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub224" name="rubricator21">
+                            <label for="rub224" class="check-multi">Сфера финансов</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub225" name="rubricator21">
+                            <label for="rub225" class="check-multi">Транспорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub226" name="rubricator21">
+                            <label for="rub226" class="check-multi">Туризм и гостиничное дело. Кулинария</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub227" name="rubricator21">
+                            <label for="rub227" class="check-multi">Управление персоналом</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub228" name="rubricator21">
+                            <label for="rub228" class="check-multi">Фармацевтика. Медицина</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub229" name="rubricator21">
+                            <label for="rub229" class="check-multi">Фитнес. Салоны красоты. Спорт</label>
+                          </li>
+
+                          <li class="input-container__item item-multi">
+                            <input class="input-checkbox" type="checkbox" id="rub230" name="rubricator21">
+                            <label for="rub230" class="check-multi">Юриспруденция</label>
+                          </li>
+
+                          <button class="apply" type="button">Применить</button>
+
+                        </ul>
                       </div>
   
                       <div class="input-container">
@@ -1376,8 +2054,8 @@
                         
                   <div class="choose__buttons">
                     <div class="choose__buttons--wrap">
-                      <button class="choose__btn any__reset-all hide-block" type="reset">Очистить</button>
-                      <button class="choose__btn show-all">Показать 3 333 вакансий</button>
+                      <button class="choose__btn reset-all any__reset-all hide-block" type="reset">Очистить</button>
+                      <button class="choose__btn show-all" type="button">Показать</button>
                     </div>
                   </div>
 

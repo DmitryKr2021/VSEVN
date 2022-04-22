@@ -83,6 +83,41 @@ function changeSearchType(e) {
 }
 /*************Конец блока*****************/
 
+/**********Работа с кнопками Показать/Очистить ************* */
+const showAlls = document.querySelectorAll('.show-all');
+const resetAlls = document.querySelectorAll('.reset-all');
+
+for (let btn of showAlls) {
+  btn.addEventListener('click', handleShowAll);
+}
+for (let btn of resetAlls) {
+  btn.addEventListener('click', handleResetAll);
+}
+
+function handleShowAll(e) {
+  //Сузить кнопку Показать, показать кнопку Очистить
+  e.target.parentNode.querySelectorAll('button')[0].classList.add('choose__btn--mini');
+  e.target.parentNode.querySelectorAll('button')[1].classList.add('choose__btn--mini');
+  let innerText_ = 'Показать 8 456';
+  if (e.target.previousElementSibling.classList.contains('work__reset-all')) {
+    innerText_ += ' вакансий';
+  }
+  if (e.target.previousElementSibling.classList.contains('staff__reset-all')) {
+    innerText_ += ' резюме';
+  }
+  e.target.innerText = innerText_;
+  e.target.previousElementSibling.classList.remove('hide-block');
+}
+
+function handleResetAll(e) {
+  //Расширить кнопку Показать. Кнопка Очистить убирается в коде ниже
+  e.target.parentNode.querySelectorAll('button')[1].classList.remove('choose__btn--mini');
+  e.target.nextElementSibling.innerText = 'Показать';
+}
+
+/**********Конец работа с кнопками Показать/Очистить *********/
+
+
 //Скрыть/показать поисковую панель
 const rollUp = document.querySelector('.roll-up');
 const rollUpBtn = document.querySelector('.roll-up__btn');
@@ -109,7 +144,7 @@ rollUpBtn.onclick = () => {
 };
 /*************Конец блока************** */
 
-/*************************Блок Поиск работы*********************** */
+/************************Блок Поиск работы***********************/
 /***********Работа с полями ввода и кнопкой Очистить**********/
 const resetAll = chooseWork.querySelector('.reset-all'); //кнопка Очистить
 const inputFields = chooseWork.querySelectorAll('.input-field');
@@ -120,7 +155,6 @@ function showInput(e) { //убрать placeholder и показать input
     for (let inp of inputFields) {
       if (inp.value) {
         inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
-        resetAll.classList.remove('hide-block');
       } else {
         inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
       }
@@ -129,18 +163,24 @@ function showInput(e) { //убрать placeholder и показать input
 }
 /*************Конец блока с полями ввода************** */
 
-//Закрыть селектя по клику в произвольном месте
+//Закрыть селекты по клику в произвольном месте
 const searchContainer = document.querySelector('.search__container');
+const tabs = document.querySelector('.tabs');
 window.addEventListener('click', hideAllLists);
 
 function hideAllLists(e) {
   if (e.clientX < searchContainer.getBoundingClientRect().left ||
-    e.clientX > searchContainer.getBoundingClientRect().right) {
+    e.clientX > searchContainer.getBoundingClientRect().right ||
+    e.clientY < tabs.getBoundingClientRect().bottom ||
+    e.clientY > rollUp.getBoundingClientRect().top) {
     for (let item of document.querySelectorAll('.showlist')) {
       item.classList.remove('showlist');
     }
     for (let item of document.querySelectorAll('.inputsel')) {
       item.classList.remove('inputsel');
+    }
+    for (let item of document.querySelectorAll('.arrow-rotate')) {
+      item.classList.remove('arrow-rotate');
     }
   }
 }
@@ -1263,6 +1303,7 @@ const inputPunktAll = document.querySelector('.input-punkt-all');
 const regionItems = document.querySelectorAll('.input-region-item');
 const punktGroupItems = document.querySelectorAll('.punkt__group--item');
 const inputPunktGroups = document.querySelectorAll('.input-punkt-group');
+const inputPunktRegions = document.querySelectorAll('.input-punkt-region');
 const punktRegionItems = document.querySelectorAll('.punkt__region--item');
 const regionBody = document.querySelector('.region__body');
 const regionBodyItems = document.querySelectorAll('.region__body--item');
@@ -1349,6 +1390,21 @@ regionResets[0].onclick = () => {
   inputRegionAll.checked = false;
   for (let item of regionItems) {
     item.checked = false;
+  }
+  punktGroup.classList.add('hide-block');
+  punktRegion.classList.add('hide-block');
+};
+regionResets[1].onclick = () => {
+  for (let item of inputPunktGroups) {
+    item.checked = false;
+  }
+  for (let item of inputPunktRegions) {
+    item.checked = false;
+  }
+  for (let item of regionItems) {
+    if (item.parentNode.parentNode.classList.contains('punkt__region--ul')) {
+      item.checked = false;
+    }
   }
 };
 
