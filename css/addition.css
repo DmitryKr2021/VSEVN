@@ -553,14 +553,8 @@ body {
   line-height: 18px;
   pointer-events: none;
   transition: transform 300ms;
+  white-space: nowrap;
 }
-
-@media (max-width: 1320px) {
-  .placeholder {
-    font-size: 17px;
-  }
-}
-
 
 .input-field:focus~.placeholder {
   transform: translateY(-45px) translateX(-20px);
@@ -631,8 +625,30 @@ body {
   transition: 0.3s;
 }
 
+.input-popup {
+  position: fixed;
+  color: #222;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  background-color: #fef247;
+  box-shadow: 3px 3px 3px #888;
+  z-index: 100;
+}
+
+.input-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fef247 transparent transparent transparent;
+}
+
 .arrow2 {
-  top: 62%;
+  top: 67%;
 }
 
 .arrow-rotate {
@@ -1130,7 +1146,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .salary2__max {
-  left: calc(100% - 50px);
+  left: calc(100% - 65px);
   top: -20px;
 }
 
@@ -1145,7 +1161,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .choose__any .mark-right--wrap {
-  left: calc(100% - 38px);
+  left: calc(100% - 40px);
 }
 
 .choose__any .mark-left,

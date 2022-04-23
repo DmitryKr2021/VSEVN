@@ -219,10 +219,29 @@ function hideSelectsAllTabs(e) {
   }
 }
 
+//Показать выбранный select и спрятать placeholder
+for (let item of inputContainerItems) {
+  item.addEventListener('click', showAllItemSelected);
+}
+
 function showAllItemSelected(e) {
   //Показать выбранный select и спрятать placeholder на всех вкладках
   let targ = e.currentTarget.parentNode.parentNode;
-  targ.querySelector('.inputselect').value = e.target.innerText;
+  let inputString = targ.firstElementChild.innerText;
+  //выбрано одно - показать в поле ввода
+  targ.querySelector('.inputselect').value = e.currentTarget.querySelector('label').innerText;
+
+  let numb = 1;
+  let thisChecked = targ.querySelectorAll('.input-checkbox');
+  for (let item of thisChecked) {
+    if (item.checked === true) {
+      numb++;
+    }
+  }
+  if (numb > 1) {
+    targ.querySelector('.inputselect').value = `${inputString} (выбрано ${numb})`;
+  }
+
   if (targ.querySelector('.placeholder')) {
     targ.querySelector('.placeholder').classList.add('hide-block');
   }
@@ -230,6 +249,7 @@ function showAllItemSelected(e) {
     targ.querySelector('.input-container__ul').classList.toggle('showlist');
   }
 }
+
 
 function hideSelect_1(e) {
   //нажали на стрелочку
@@ -280,16 +300,6 @@ function hideSelect_2(e) {
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
 
-//Показать выбранный select и спрятать placeholder
-for (let item of inputContainerItems) {
-  item.addEventListener('click', showItemSelected);
-}
-
-function showItemSelected(e) {
-  resetAll.classList.remove('hide-block');
-  showAllItemSelected(e);
-}
-
 
 /*********Работа с кнопками Применить в мультиселектах*******/
 const applBtns = chooseWork.querySelectorAll('.apply');
@@ -323,7 +333,9 @@ function doApply(e) { //По кнопке Применить
       eselect.classList.remove('showlist'); //свернуть список
     } else {
       eselect.parentNode.querySelector('.inputselect').value = '';
-      eselect.classList.remove('showlist');
+      if (eselect.classList.contains('showlist')) {
+        eselect.classList.remove('showlist');
+      }
     }
   }
 }
@@ -385,8 +397,6 @@ function handlerMark(e) {
   salaryMarkWrap.onmouseout = () => {
     salaryMark.classList.remove('salary__mark--active');
   };
-
-
 
   e.preventDefault();
   let shiftX = e.clientX - salaryMarkWrap.getBoundingClientRect().left;
@@ -1354,6 +1364,8 @@ regionAll.onclick = (e) => {
     for (let item of regionItems) {
       item.checked = false;
     }
+    punktRegion.classList.add('hide-block');
+    punktGroup.classList.add('hide-block');
   } else {
     inputRegionAll.checked = true;
     for (let item of regionItems) {
@@ -1407,7 +1419,6 @@ regionResets[1].onclick = () => {
     }
   }
 };
-
 
 
 punktAll.onclick = (e) => {
@@ -1470,8 +1481,67 @@ function showPunkts(e) {
 
 /**************Конец Выбор региона******************** */
 
+/***Поля ввода, где текст не помещается**
+ перевод в дымку и всплывающее окно***/
+
+const charWidth = 9.5; //ширина 1 символа
+const inputContainers = document.querySelectorAll('.input-container');
+
+for (let item of inputContainers) {
+  const label_ = item.querySelector('label');
+  const input_ = item.querySelector('input');
+
+  //длина строки в символах
+  const labelText = label_.innerText.length;
+
+  //максимальная длина строки
+  const maxLength = Math.round(input_.offsetWidth / 9.5);
+
+  if (labelText > maxLength) {
+    let coef = maxLength / labelText * 100;
+    label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+
+    //при наведении показать весь текст в попапе
+    let popup;
+    input_.onmouseover = () => {
+      popup = document.createElement('div');
+      popup.innerText = label_.innerText;
+      popup.classList.add('input-popup');
+      input_.before(popup);
+      //popup.style.top = input_.getClientRects().top - 50 + 'px';
+      popup.style.top = input_.getBoundingClientRect().top - 40 + 'px';
+      popup.style.left = input_.getBoundingClientRect().left + 'px';
+
+
+    };
+    input_.onmouseout = () => {
+      popup.remove();
+    };
+  }
+}
+
+//window.addEventListener('resize', handleResize);
+
+function handleResize(e) {
+  //Если текст placeholder не помещается в поле, сделать дымку
+  const comp2 = document.getElementById('company2');
+  const label_ = comp2.previousElementSibling;
+
+  //длина строки в символах
+  const labelText = label_.innerText.length;
+
+  //максимальная длина строки, 1 символ текста занимает 10px
+  let maxLength = Math.round(comp2.offsetWidth / 9.5);
+
+  if (labelText > maxLength) {
+    let coef = maxLength / labelText * 100;
+
+    label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+  }
+
+}
 window.onclick = (e) => {
-  console.log('target=', e.target);
+  //console.log('target=', e.target);
   //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
 };
