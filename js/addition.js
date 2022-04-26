@@ -32,6 +32,11 @@ const chooseWork = document.querySelector('.choose__work');
 const chooseStaff = document.querySelector('.choose__staff');
 const chooseAny = document.querySelector('.choose__any');
 
+//кнопки Очистить
+const resetAll = chooseWork.querySelector('.reset-all');
+const staffResetAll = chooseStaff.querySelector('.staff__reset-all');
+const anyResetAll = chooseAny.querySelector('.any__reset-all');
+
 const tabsTitles = document.querySelectorAll('.tabs__title');
 for (let btn of tabsTitles) {
   btn.addEventListener('click', changeSearchType);
@@ -40,8 +45,8 @@ for (let btn of tabsTitles) {
 function changeSearchType(e) {
   for (let btn of tabsTitles) {
     btn.classList.remove('_tab-active');
-    e.target.classList.add('_tab-active');
   }
+  e.target.classList.add('_tab-active');
 
   switch (e.target.getAttribute('data-type')) {
     case ('staff'):
@@ -113,6 +118,23 @@ function handleResetAll(e) {
   //Расширить кнопку Показать. Кнопка Очистить убирается в коде ниже
   e.target.parentNode.querySelectorAll('button')[1].classList.remove('choose__btn--mini');
   e.target.nextElementSibling.innerText = 'Показать';
+  for (let item of inputResets) {
+    item.addEventListener('click', hideInputReset);
+  }
+  for (let item of inputResets) {
+    item.classList.add('hide-block'); //спрятать крестики
+  }
+
+  for (let item of document.querySelectorAll('.placeholder')) {
+    item.classList.remove('input-field-focus');
+    //вернуть placeholder на место
+  }
+  for (let item of document.querySelectorAll('.placeholder2')) {
+    //item.style.transform = 'translateY(0) translateX(0)';
+    item.classList.remove('input-field-focus');
+    //вернуть placeholder2 на место
+  }
+
 }
 
 /**********Конец работа с кнопками Показать/Очистить *********/
@@ -146,21 +168,103 @@ rollUpBtn.onclick = () => {
 
 /************************Блок Поиск работы***********************/
 /***********Работа с полями ввода и кнопкой Очистить**********/
-const resetAll = chooseWork.querySelector('.reset-all'); //кнопка Очистить
+
 const inputFields = chooseWork.querySelectorAll('.input-field');
+const inputFieldsAll = document.querySelectorAll('.input-field');
+const inputSelectsAll = document.querySelectorAll('.inputselect');
 window.addEventListener('click', showInput);
 
 function showInput(e) { //убрать placeholder и показать input
   if (e.target !== resetAll) {
     for (let inp of inputFields) {
       if (inp.value) {
-        inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
+        resetAll.classList.remove('hide-block');
       } else {
         inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
       }
     }
   }
+  /* */
+  if (e.target !== staffResetAll) {
+    for (let inp of staffInputFields) {
+      if (inp.value) {
+        staffResetAll.classList.remove('hide-block');
+      } else {
+        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
+      }
+    }
+  }
+  /* */
+  /* */
+  if (e.target !== anyResetAll) {
+    for (let inp of anyInputFields) {
+      if (inp.value) {
+        anyResetAll.classList.remove('hide-block');
+      } else {
+        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
+      }
+    }
+  }
+  /* */
 }
+
+//Работа с крестиками для очистки поля ввода 
+const inputResets = document.querySelectorAll('.input-reset');
+
+for (let item of inputFieldsAll) {
+  item.addEventListener('input', showInputReset);
+}
+
+for (let item of inputResets) {
+  item.addEventListener('click', hideInputReset);
+}
+
+function showInputReset(e) {
+  let targ = e.target.parentNode;
+  targ.querySelector('.input-reset').classList.remove('hide-block');
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.add('input-field-focus');
+  }
+
+  if (targ.querySelector('.placeholder2')) {
+    targ.querySelector('.placeholder2').classList.add('input-field-focus');
+  }
+}
+
+function hideInputReset(e) {
+  e.target.classList.add('hide-block');
+  let targ = e.target.parentNode;
+
+  if (targ.querySelector('.input-field')) {
+    targ.querySelector('.input-field').value = '';
+  }
+  if (targ.querySelector('.inputselect')) {
+    targ.querySelector('.inputselect').value = '';
+  }
+
+  //targ.querySelector('.inputselect').classList.toggle('inputsel');
+  if (targ.querySelector('.placeholder')) {
+    targ.querySelector('.placeholder').classList.remove('input-field-focus');
+  }
+
+  targ.querySelector('.inputselect').classList.remove('inputsel');
+
+  if (targ.querySelector('.placeholder2')) {
+    targ.querySelector('.placeholder2').classList.remove('input-field-focus');
+  }
+
+  if (targ.querySelector('.showlist')) {
+    targ.querySelector('.showlist').classList.remove('showlist');
+  }
+
+  for (let item of targ.querySelectorAll('.input-checkbox')) {
+    item.checked = false;
+  }
+
+  removeWide();
+}
+
+//конец работы с крестиками
 /*************Конец блока с полями ввода************** */
 
 //Закрыть селекты по клику в произвольном месте
@@ -172,18 +276,32 @@ function hideAllLists(e) {
   if (e.clientX < searchContainer.getBoundingClientRect().left ||
     e.clientX > searchContainer.getBoundingClientRect().right ||
     e.clientY < tabs.getBoundingClientRect().bottom ||
-    e.clientY > rollUp.getBoundingClientRect().top) {
+    e.clientY > rollUp.getBoundingClientRect().top ||
+    e.clientY > 700) {
     for (let item of document.querySelectorAll('.showlist')) {
       item.classList.remove('showlist');
     }
+
     for (let item of document.querySelectorAll('.inputsel')) {
       item.classList.remove('inputsel');
     }
     for (let item of document.querySelectorAll('.arrow-rotate')) {
       item.classList.remove('arrow-rotate');
     }
+
+    removeWide();
+  }
+
+  for (let item of document.querySelectorAll('.placeholder2')) {
+    if (!e.target.classList.contains('is2') && !e.target.classList.contains('input-checkbox') && !e.target.classList.contains('arrow') && !e.target.classList.contains('check-multi') && !e.target.parentNode.parentNode.parentNode.querySelector('.is2').value) {
+      if (!item.previousElementSibling.value) {
+        item.classList.remove('input-field-focus');
+      }
+    }
   }
 }
+
+
 /**********Работа с селектами*****************/
 
 const inputSelects = chooseWork.querySelectorAll('.inputselect');
@@ -193,6 +311,41 @@ const inputContainerItems = chooseWork.querySelectorAll('.input-container__item'
 const inputContainerArrows = chooseWork.querySelectorAll('.input-container__arrow');
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
+
+function hideSelect_1(e) {
+  let targ = e.target;
+  let targPN = targ.parentNode;
+  //нажали на стрелочку
+  if (targ.classList.contains('input-container__arrow')) {
+    targPN.querySelector('.input-container__ul').classList.toggle('showlist');
+    targ.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
+    targ.classList.toggle('arrow-rotate');
+    targPN.querySelector('.placeholder2').classList.add('input-field-focus');
+
+    return;
+  }
+
+  //нажали на поле, но не на стрелочку
+  if (targ.classList.contains('is2')) {
+    targPN.querySelector('.arrow').classList.add('arrow-rotate');
+    targPN.querySelector('.placeholder2').classList.add('input-field-focus');
+  }
+  //нажали вне поля выбора
+  if (!targ.classList.contains('inputselect')) {
+    for (let uls of inputContainerUls) {
+      if (targ.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
+        uls.classList.remove('showlist');
+      }
+    }
+    for (let item of inputSelects) {
+      item.classList.remove('inputsel');
+    }
+    for (let arrow of inputContainerArrows) {
+      arrow.classList.remove('arrow-rotate');
+    }
+    hideSelectsAllTabs(e);
+  }
+}
 
 function hideSelectsAllTabs(e) {
   //Обработка мультиселектов на всех вкладках
@@ -228,8 +381,19 @@ function showAllItemSelected(e) {
   //Показать выбранный select и спрятать placeholder на всех вкладках
   let targ = e.currentTarget.parentNode.parentNode;
   let inputString = targ.firstElementChild.innerText;
+
+  if (targ.querySelector('.placeholder')) {
+    inputString = targ.querySelector('.placeholder').innerText;
+  }
+  if (targ.querySelector('.placeholder2')) {
+    inputString = targ.querySelector('.placeholder2').innerText;
+  }
+
   //выбрано одно - показать в поле ввода
   targ.querySelector('.inputselect').value = e.currentTarget.querySelector('label').innerText;
+
+  targ.querySelector('.input-reset').classList.remove('hide-block');
+  //показать крестик
 
   let numb = 1;
   let thisChecked = targ.querySelectorAll('.input-checkbox');
@@ -242,39 +406,8 @@ function showAllItemSelected(e) {
     targ.querySelector('.inputselect').value = `${inputString} (выбрано ${numb})`;
   }
 
-  if (targ.querySelector('.placeholder')) {
-    targ.querySelector('.placeholder').classList.add('hide-block');
-  }
   if (!targ.querySelector('.input-container__ul').classList.contains('multi')) {
     targ.querySelector('.input-container__ul').classList.toggle('showlist');
-  }
-}
-
-
-function hideSelect_1(e) {
-  //нажали на стрелочку
-  if (e.target.classList.contains('input-container__arrow')) {
-    e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
-    e.target.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
-    e.target.classList.toggle('arrow-rotate');
-    return;
-  }
-  //нажали вне поля выбора
-  if (!e.target.classList.contains('inputselect')) {
-
-    hideSelectsAllTabs(e);
-
-    for (let uls of inputContainerUls) {
-      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
-        uls.classList.remove('showlist');
-      }
-    }
-    for (let item of inputSelects) {
-      item.classList.remove('inputsel');
-    }
-    for (let arrow of inputContainerArrows) {
-      arrow.classList.remove('arrow-rotate');
-    }
   }
 }
 
@@ -298,9 +431,26 @@ function hideSelect_2(e) {
   e.target.classList.toggle('inputsel');
 
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
+
+  // e.target.querySelector('.placeholder').classList.add('input-field-focus'); //поднять placeholder
 }
 
+const ulwide = document.querySelector('.ulwide');
+let nowWide = false;
+/*for (let item of ulwides) {
+  item.addEventListener('click', addWide);
+}*/
+ulwide.addEventListener('click', addWide);
 
+function addWide(e) {
+  e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide');
+  nowWide = true;
+}
+
+function removeWide(e) {
+  document.getElementById('wide1').classList.remove('ul-wide');
+  nowWide = false;
+}
 /*********Работа с кнопками Применить в мультиселектах*******/
 const applBtns = chooseWork.querySelectorAll('.apply');
 for (let btn of applBtns) {
@@ -309,12 +459,17 @@ for (let btn of applBtns) {
 
 function calculateNumberOfChecked(e) {
   resetAll.classList.remove('hide-block');
+  removeWide();
   doApply(e);
 }
 
 function doApply(e) { //По кнопке Применить
   const eselect = e.target.parentNode;
   let inputString = eselect.parentNode.firstElementChild.innerText;
+  if (eselect.parentNode.querySelector('.placeholder2')) {
+    inputString = eselect.parentNode.querySelector('.placeholder2').innerText;
+  }
+
   let chooseInput;
   const inputs = eselect.querySelectorAll('input');
   let counter = 0;
@@ -329,6 +484,7 @@ function doApply(e) { //По кнопке Применить
     eselect.classList.remove('showlist'); //свернуть список
   } else {
     if (counter > 1) {
+
       eselect.parentNode.querySelector('.inputselect').value = `${inputString} (выбрано ${counter})`;
       eselect.classList.remove('showlist'); //свернуть список
     } else {
@@ -338,6 +494,10 @@ function doApply(e) { //По кнопке Применить
       }
     }
   }
+  for (let item of e.target.parentNode.querySelectorAll('.input-checkbox')) {
+    item.checked = false;
+  }
+  eselect.querySelector('.inputselect').classList.remove('inputsel');
 }
 /*************Конец блока селекты************** */
 
@@ -523,58 +683,17 @@ const experience_min = experience_.querySelector('.experience__min');
 const experience_max = experience_.querySelector('.experience__max');
 const experienceMinMax = experience_.querySelector('.experience__min-max');
 
-/***********Работа с полями ввода и кнопкой Очистить**********/
-const staffResetAll = chooseStaff.querySelector('.staff__reset-all'); //кнопка Очистить
-const staffInputFields = chooseStaff.querySelectorAll('.input-field');
-window.addEventListener('click', staffShowInput);
 
-function staffShowInput(e) { //убрать placeholder и показать input
-  if (e.target !== staffResetAll) {
-    for (let inp of staffInputFields) {
-      if (inp.value) {
-        inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
-        staffResetAll.classList.remove('hide-block');
-      } else {
-        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
-      }
-    }
-  }
-}
+
 /**********Работа с селектами*****************/
 
+const staffInputFields = chooseStaff.querySelectorAll('.input-field');
 const staffInputSelects = chooseStaff.querySelectorAll('.inputselect');
 const staffInputContainerUls = chooseStaff.querySelectorAll('.input-container__ul');
 const staffInputContainerItems = chooseStaff.querySelectorAll('.input-container__item');
 const staffInputContainerArrows = chooseStaff.querySelectorAll('.input-container__arrow');
 
-chooseStaff.addEventListener('click', hideSelect_staff1); //Показать/убрать список select
-
-function hideSelect_staff1(e) {
-  //нажали на стрелочку
-  if (e.target.classList.contains('input-container__arrow')) {
-    e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
-    e.target.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
-    e.target.classList.toggle('arrow-rotate');
-    return;
-  }
-  //нажали вне поля выбора
-  if (!e.target.classList.contains('inputselect')) {
-
-    hideSelectsAllTabs(e);
-
-    for (let uls of staffInputContainerUls) {
-      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
-        uls.classList.remove('showlist');
-      }
-    }
-    for (let item of staffInputSelects) {
-      item.classList.remove('inputsel');
-    }
-    for (let arrow of staffInputContainerArrows) {
-      arrow.classList.remove('arrow-rotate');
-    }
-  }
-}
+chooseStaff.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
 //нажали на поле выбора
 for (let inp of staffInputSelects) {
@@ -990,58 +1109,15 @@ function staffResetInputs() {
 
 /******************Блок Любая категория***************** */
 
-/***********Работа с полями ввода и кнопкой Очистить**********/
-const anyResetAll = chooseAny.querySelector('.any__reset-all'); //кнопка Очистить
-const anyInputFields = chooseAny.querySelectorAll('.input-field');
-window.addEventListener('click', anyShowInput);
-
-function anyShowInput(e) { //убрать placeholder и показать input
-  if (e.target !== anyResetAll) {
-    for (let inp of anyInputFields) {
-      if (inp.value) {
-        inp.parentNode.querySelector('.placeholder').classList.add('hide-block');
-        anyResetAll.classList.remove('hide-block');
-      } else {
-        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
-      }
-    }
-  }
-}
 /**********Работа с селектами*****************/
 
+const anyInputFields = chooseAny.querySelectorAll('.input-field');
 const anyInputSelects = chooseAny.querySelectorAll('.inputselect');
 const anyInputContainerUls = chooseAny.querySelectorAll('.input-container__ul');
 const anyInputContainerItems = chooseAny.querySelectorAll('.input-container__item');
 const anyInputContainerArrows = chooseAny.querySelectorAll('.input-container__arrow');
 
-chooseAny.addEventListener('click', hideSelect_any1); //Показать/убрать список select
-
-function hideSelect_any1(e) {
-  //нажали на стрелочку
-  if (e.target.classList.contains('input-container__arrow')) {
-    e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
-    e.target.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
-    e.target.classList.toggle('arrow-rotate');
-    return;
-  }
-  //нажали вне поля выбора
-  if (!e.target.classList.contains('inputselect')) {
-
-    hideSelectsAllTabs(e);
-
-    for (let uls of anyInputContainerUls) {
-      if (e.target.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
-        uls.classList.remove('showlist');
-      }
-    }
-    for (let item of anyInputSelects) {
-      item.classList.remove('inputsel');
-    }
-    for (let arrow of anyInputContainerArrows) {
-      arrow.classList.remove('arrow-rotate');
-    }
-  }
-}
+chooseAny.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
 //нажали на поле выбора
 for (let inp of anyInputSelects) {
@@ -1485,63 +1561,54 @@ function showPunkts(e) {
  перевод в дымку и всплывающее окно***/
 
 const charWidth = 9.5; //ширина 1 символа
-const inputContainers = document.querySelectorAll('.input-container');
 
-for (let item of inputContainers) {
-  const label_ = item.querySelector('label');
-  const input_ = item.querySelector('input');
+function handleText() {
+  const inputContainers = document.querySelectorAll('.input-container');
 
-  //длина строки в символах
-  const labelText = label_.innerText.length;
+  for (let item of inputContainers) {
+    const label_ = item.querySelector('label');
+    const input_ = item.querySelector('input');
 
-  //максимальная длина строки
-  const maxLength = Math.round(input_.offsetWidth / 9.5);
+    //длина строки в символах
+    const labelText = label_.innerText.length;
 
-  if (labelText > maxLength) {
-    let coef = maxLength / labelText * 100;
-    label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+    //максимальная длина строки
+    const maxLength = Math.round(input_.offsetWidth / charWidth);
+    let popup = document.createElement('div');
+    popup.innerText = label_.innerText;
+    popup.classList.add('input-popup');
 
-    //при наведении показать весь текст в попапе
-    let popup;
-    input_.onmouseover = () => {
-      popup = document.createElement('div');
-      popup.innerText = label_.innerText;
-      popup.classList.add('input-popup');
-      input_.before(popup);
-      //popup.style.top = input_.getClientRects().top - 50 + 'px';
-      popup.style.top = input_.getBoundingClientRect().top - 40 + 'px';
-      popup.style.left = input_.getBoundingClientRect().left + 'px';
+    if (labelText > maxLength) {
+      let coef = maxLength / labelText * 100;
+      label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
-
-    };
-    input_.onmouseout = () => {
-      popup.remove();
-    };
+      //при наведении показать весь текст в попапе
+      input_.onmouseover = () => {
+        input_.before(popup);
+        popup.style.top = input_.getBoundingClientRect().top - 40 + 'px';
+        popup.style.left = input_.getBoundingClientRect().left + 'px';
+      };
+      input_.onmouseout = () => {
+        popup.remove();
+      };
+    } else {
+      label_.style.cssText = 'color: #333;';
+      input_.onmouseover = () => {
+        if (popup) {
+          popup.style.display = 'none';
+        }
+      };
+    }
   }
 }
 
-//window.addEventListener('resize', handleResize);
+handleText();
 
-function handleResize(e) {
-  //Если текст placeholder не помещается в поле, сделать дымку
-  const comp2 = document.getElementById('company2');
-  const label_ = comp2.previousElementSibling;
+window.addEventListener('resize', handleText);
 
-  //длина строки в символах
-  const labelText = label_.innerText.length;
 
-  //максимальная длина строки, 1 символ текста занимает 10px
-  let maxLength = Math.round(comp2.offsetWidth / 9.5);
-
-  if (labelText > maxLength) {
-    let coef = maxLength / labelText * 100;
-
-    label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
-  }
-
-}
 window.onclick = (e) => {
-  //console.log('target=', e.target);
+  console.log('target=', e.target);
   //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
 };

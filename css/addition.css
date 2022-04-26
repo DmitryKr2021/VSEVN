@@ -502,6 +502,7 @@ body {
 }
 
 .choose__work .block2 {
+  margin-top: 28px;
   z-index: 15;
 }
 
@@ -525,6 +526,10 @@ body {
   flex-basis: 50%;
 }
 
+.block6 .category {
+  padding-left: 24px;
+}
+
 .block5>.input-container {
   margin-top: 27px;
 }
@@ -546,7 +551,37 @@ body {
   padding: 4px 20px 0;
 }
 
+.input-reset {
+  position: absolute;
+  bottom: 14px;
+  right: 15px;
+  font-size: 25px;
+  line-height: 15px;
+  border-radius: 50%;
+  background-color: #999;
+  color: #fff;
+  padding: 2px;
+}
+
+.choose__work .block2 .input-reset {
+  bottom: 40px;
+}
+
+.btn-up {
+  bottom: 20px;
+}
+
 .placeholder {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  line-height: 18px;
+  pointer-events: none;
+  transition: transform 300ms;
+  white-space: nowrap;
+}
+
+.placeholder2 {
   position: absolute;
   left: 20px;
   top: 20px;
@@ -560,8 +595,16 @@ body {
   transform: translateY(-45px) translateX(-20px);
 }
 
+.input-field-focus {
+  transform: translateY(-45px) translateX(-20px);
+}
+
 .inputsel:focus~.placeholder {
   transform: translateY(-45px) translateX(-20px);
+}
+
+.inputsel:focus~.placeholder2 {
+  *transform: none;
 }
 
 .cut {
@@ -580,6 +623,11 @@ body {
 
 .inputsel~.cut {
   width: 100%;
+}
+
+.choose__work .block2 .cut {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .input-container__ul {
@@ -616,9 +664,10 @@ body {
 
 .input-container__arrow {
   position: absolute;
-  top: 70%;
+  /*top: 70%;*/
+  top: 40%;
   transform: translateY(-50%);
-  right: 20px;
+  right: 15px;
   width: 20px;
   height: 20px;
   background: url(../img/icons/arrow-down.svg) center no-repeat;
@@ -848,6 +897,84 @@ input[type="range"]:active::-webkit-slider-thumb {
   box-shadow: 0 0 0 11px rgba(224, 3, 3, 0.4);
 }
 
+.ul-wide {
+  padding-top: 10px;
+  display: flex;
+  width: 80vw;
+  flex-wrap: wrap;
+}
+
+.ul-wide li {
+  width: 25vw;
+  padding: 0;
+  padding-left: 30px;
+}
+
+/*.input-wide {
+  width: 80vw;
+}*/
+
+.ul-wide .item-multi:hover:after {
+  top: -5px;
+  left: 8px;
+}
+
+
+@media (max-width: 1200px) {
+
+  .search {
+    height: 1200px;
+    height: 2200px;
+    *width: 95vw;
+
+    border: 2px solid green;
+    *margin-top: -40px;
+    overflow-x: hidden;
+  }
+
+  .search__container {
+    height: 1200px;
+
+
+    border: 2px solid red;
+  }
+
+  .search-reduced {
+    *height: 420px;
+  }
+
+  .choose {
+    height: 1200px;
+    border: 2px solid blue;
+  }
+
+  .choose__work {
+    padding-right: 40px;
+  }
+
+  .choose__work .form__wrap--blok-1_2,
+  .choose__work .form__wrap--blok-3_4 {
+    flex-direction: column;
+  }
+
+  .choose__work .block2 {
+    margin-top: 20px;
+  }
+
+  .choose__work .form__wrap--blok-3_4 {
+    margin-top: 125px;
+  }
+
+  .choose__work .block4 {
+    margin-top: 20px;
+  }
+
+  .choose__work .form__wrap--blok-5_6 {
+    margin-top: 125px;
+  }
+
+}
+
 /******Кнопка Применить в мультиселектах************/
 
 .apply {
@@ -915,6 +1042,55 @@ input[type="range"]:active::-webkit-slider-thumb {
   border: 2px solid var(--bg-red);
 }
 
+
+@media (max-width: 1200px) {
+  .choose__work .choose__buttons {
+    margin-top: 50px;
+  }
+
+  .roll-up {
+    position: relative;
+    width: 100%;
+    max-width: 685px;
+    margin: -100px auto 0 auto;
+  }
+
+  .roll-up__arrow {
+    position: absolute;
+    top: calc(50% - 10px);
+    width: 20px;
+    fill: var(--bg-red);
+    transition: transform 0.3s ease;
+    transform: rotate(180deg);
+  }
+
+  .roll-up__arrow--left {
+    left: 15px;
+  }
+
+  .roll-up__arrow--right {
+    right: 15px;
+  }
+
+  .roll-up__btn {
+    position: relative;
+    width: 100%;
+    padding: 14px 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .roll-up.active .roll-up__btn {
+    background-color: var(--bg-red);
+    color: #fff;
+  }
+
+  .roll-up.active .roll-up__arrow {
+    transform: rotate(0);
+    fill: #ffffff;
+  }
+}
+
 /*********************************************/
 
 /*************choose__staff********************/
@@ -946,7 +1122,12 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .choose__staff .block2 {
+  margin-top: 28px;
   z-index: 15;
+}
+
+.choose__staff .block2 .input-reset {
+  bottom: 40px;
 }
 
 .choose__staff .form__wrap--blok-3_4 {
@@ -957,6 +1138,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   margin-top: 5px;
   display: flex;
   justify-content: space-between;
+}
+
+.choose__staff .block2 .cut {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .choose__staff .block3,
@@ -1088,7 +1274,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   padding-top: 29px;
 }
 
-.form__wrap--blok-3_4 {
+.choose__any .form__wrap--blok-3_4 {
   margin-top: 40px;
   margin-top: 60px;
   display: flex;
@@ -1108,16 +1294,43 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .choose__any .block2 {
+  margin-top: 28px;
   z-index: 15;
+}
+
+.choose__any .block2 .input-reset {
+  bottom: 17px;
+}
+
+.choose__any .block2 .input-container {
+  position: relative;
+}
+
+.choose__any .block2 .input-container__arrow {
+  top: 54% !important;
+}
+
+.choose__any .block2 .cut {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .choose__any .block4 {
   margin-top: 28px;
 }
 
-.input-container {
+.choose__any .input-container {
   position: relative;
   width: 100%;
+  height: 60px;
+}
+
+.choose__any .btn2 {
+  bottom: 16px;
+}
+
+.choose__any .btn3 {
+  bottom: -12px;
 }
 
 .choose__any .salary2 {
@@ -1193,6 +1406,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any .block2 .input-container__arrow {
   top: 100%;
+}
+
+.choose__any .arrow2 {
+  top: 58px;
 }
 
 /******Кнопка Применить в мультиселектах************/
