@@ -292,13 +292,13 @@ function hideAllLists(e) {
     removeWide();
   }
 
-  /*for (let item of document.querySelectorAll('.placeholder2')) {
+  for (let item of document.querySelectorAll('.placeholder2')) {
     if (!e.target.classList.contains('is2') && !e.target.classList.contains('input-checkbox') && !e.target.classList.contains('arrow') && !e.target.classList.contains('check-multi') && !e.target.parentNode.parentNode.parentNode.querySelector('.is2').value) {
       if (!item.previousElementSibling.value) {
         item.classList.remove('input-field-focus');
       }
     }
-  }*/
+  }
 }
 
 
