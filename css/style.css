@@ -4402,11 +4402,11 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   }
 }
 
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
   .search .tabs__navigation {
     flex-direction: column;
   }
-}
+}*/
 
 .search .tabs__title {
   background-color: #fff;
@@ -4419,19 +4419,19 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
 
 @media (min-width: 101.875em) {
   .search .tabs__title {
-    width: 18.75rem;
+    *width: 18.75rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .search .tabs__title {
-    width: clamp(9.375rem, 7.0849236641rem + 11.4503816794vw, 18.75rem);
+    *width: clamp(9.375rem, 7.0849236641rem + 11.4503816794vw, 18.75rem);
   }
 }
 
 @media (max-width: 20em) {
   .search .tabs__title {
-    width: 9.375rem;
+    *width: 9.375rem;
   }
 }
 

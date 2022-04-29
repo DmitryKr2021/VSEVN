@@ -443,8 +443,8 @@
                   </div>
                   <ul class="region__body--ul multi">
 
-                    <li class="region__body--item">
-                      <input class="input-region input-region-item" type="checkbox" id="region001" name="region-item">
+                    <li class="region__body--item item-left">
+                      <input class="input-region input-region-item region-left" type="checkbox" id="region001" name="region-item">
                       <label for="region001" class="region-multi">Алтайский край</label>
                     </li>
 
@@ -466,13 +466,13 @@
 
                   <ul class="punkt__group hide-block">
 
-                    <li class="punkt__group--item">
-                      <input class="input-punkt-group punkt-group-item" type="checkbox" id="punkt-group001" name="punkt-group-item">
+                    <li class="punkt__group--item hide-block" data-region="Ленинградская область">
+                      <input class="input-punkt-group punkt-group-item punkt-item" type="checkbox" id="punkt-group001" name="punkt-group-item">
                       <label for="punkt-group001" class="region-multi punkt-group punkt-bold">Санкт-Петербург</label>
                     </li>
 
-                    <li class="punkt__group--item">
-                      <input class="input-punkt-group punkt-group-item" type="checkbox" id="punkt-group002" name="punkt-group-item">
+                    <li class="punkt__group--item hide-block" data-region="Нижегородская область">
+                      <input class="input-punkt-group punkt-group-item punkt-item" type="checkbox" id="punkt-group002" name="punkt-group-item">
                       <label for="punkt-group002" class="region-multi punkt-group punkt-bold">Нижний Новгород</label>
                     </li>
 
@@ -480,14 +480,15 @@
 
                   <ul class="punkt__region hide-block">
 
-                    <li class="punkt__region--item">
+                    <li class="punkt__region--item hide-block" data-region="Ленинградская область">
+                      <span class="s"></span>
                       <input class="input-punkt-region punkt-region-item" type="checkbox" id="punkt-region001" name="punkt-region-item">
                       <label for="punkt-region001" class="region-multi punkt-region punkt-bold">Ленинградская область</label>
 
                       <ul class="punkt__region--ul multi">
 
-                        <li class="region__body--item shift">
-                          <input class="input-region input-region-item" type="checkbox" id="punkt1_001" name="region-item">
+                        <li class="region__body--item shift item-right">
+                          <input class="input-region input-region-item punkt-item" type="checkbox" id="punkt1_001" name="region-item">
                           <label for="punkt1_001" class="region-multi">Агалатово</label>
                         </li>
 
@@ -495,14 +496,15 @@
 
                     </li>
 
-                    <li class="punkt__region--item">
+                    <li class="punkt__region--item hide-block" data-region="Нижегородская область">
+                      <span class="s"></span>
                       <input class="input-punkt-region punkt-region-item" type="checkbox" id="punkt-region002" name="punkt-region-item">
                       <label for="punkt-region002" class="region-multi punkt-region punkt-bold">Нижегородская область</label>
 
                       <ul class="punkt__region--ul multi">
 
                         <li class="region__body--item shift">
-                          <input class="input-region input-region-item" type="checkbox" id="punkt2-001" name="region-item">
+                          <input class="input-region input-region-item punkt-item" type="checkbox" id="punkt2-001" name="region-item">
                           <label for="punkt2-001" class="region-multi">Ардатов</label>
                         </li>
 
@@ -671,11 +673,13 @@
                   <div class="block3">
 
                     <div class="input-container">
-                      <label for="rubricator" class="label-out">Отраслевой рубрикатор</label>
-                      <input id="rubricator" class="inputselect inputselect-center ulwide" type="text" placeholder="Любая отрасль"/>                   
+                
+                      <input id="rubricator" class="inputselect is2 ulwide" type="text" placeholder=" " />
+                      <label for="rubricator" class="placeholder placeholder2">Отраслевой рубрикатор</label>
+                      
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow arrow2"></div>
-                      <button class="input-reset btn-up hide-block" type="button">&#215;</button>
+                      <button class="input-reset hide-block" type="button">&#215;</button>
                         <ul class="input-container__ul multi" id="wide1">
 
                           <li class="input-container__item item-multi">
@@ -834,12 +838,14 @@
 
                     </div>
 
-                    <div class="input-container">
-                      <label for="shedule" class="label-out">График работы</label>
-                      <input id="shedule" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                    <div class="input-container to-hide">
+                
+                      <input id="shedule" class="inputselect is2" type="text" placeholder=" " />
+                      <label for="shedule" class="placeholder placeholder2">График работы</label>
+
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow arrow2"></div>
-                      <button class="input-reset btn-up hide-block" type="button">&#215;</button>
+                      <button class="input-reset hide-block" type="button">&#215;</button>
                         <ul class="input-container__ul multi">
                           <li class="input-container__item item-multi">
                             <input class="input-checkbox" type="checkbox" id="inp01" name="shedule01">
@@ -873,12 +879,14 @@
 
                   <div class="block4">
 
-                    <div class="input-container padding0">
-                      <label for="skills" class="label-out">Опыт работы</label>
-                      <input id="skills" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                    <div class="input-container padding0 to-hide">
+
+                      <input id="skills" class="inputselect is2" type="text" placeholder=" " />
+                      <label for="skills" class="placeholder placeholder2">Опыт работы</label>
+
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow arrow2"></div>
-                      <button class="input-reset btn-up hide-block" type="button">&#215;</button>
+                      <button class="input-reset hide-block" type="button">&#215;</button>
                         <ul class="input-container__ul multi">
                           <li class="input-container__item item-multi">
                             <input class="input-checkbox" type="checkbox" id="inp11" name="skills01">
@@ -937,12 +945,14 @@
                         </ul>
                     </div>
 
-                    <div class="input-container">
-                      <label for="vacansion" class="label-out">Тип вакансии</label>
-                      <input id="vacansion" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                    <div class="input-container to-hide">
+                 
+                      <input id="vacansion" class="inputselect is2" type="text" placeholder=" " />
+                      <label for="vacansion" class="placeholder placeholder2">Тип вакансии</label>
+
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow arrow2"></div>
-                      <button class="input-reset btn-up hide-block" type="button">&#215;</button>
+                      <button class="input-reset hide-block" type="button">&#215;</button>
                         <ul class="input-container__ul multi">
                           <li class="input-container__item item-multi">
                             <input class="input-checkbox" type="checkbox" id="inp21" name="vacansion01">
@@ -1262,8 +1272,10 @@
                     <div class="block3">
   
                       <div class="input-container">
-                        <label for="rubricator1" class="label-out">Отраслевой рубрикатор</label>
-                        <input id="rubricator1" class="inputselect inputselect-center" type="text" placeholder="Любая отрасль"/>                   
+                   
+                        <input id="rubricator1" class="inputselect is2 ulwide" type="text" placeholder=" " />
+                       <label for="rubricator1" class="placeholder placeholder2">Отраслевой рубрикатор</label>
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>  
@@ -1425,8 +1437,11 @@
                       </div>
 
                       <div class="input-container">
-                        <label for="education" class="label-out">Образование</label>
-                        <input id="education" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                   
+                        <input id="education" class="inputselect is2" type="text" placeholder=" " />
+                        <label for="education" class="placeholder placeholder2">Образование</label>
+
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>
@@ -1456,8 +1471,10 @@
                     <div class="block4">
   
                       <div class="input-container">
-                        <label for="shedule1" class="label-out">График работы</label>
-                        <input id="shedule1" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                
+                        <input id="shedule1" class="inputselect is2" type="text" placeholder=" " />
+                        <label for="shedule1" class="placeholder placeholder2">График работы</label>
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>
@@ -1491,8 +1508,10 @@
                       </div>
   
                       <div class="input-container">
-                        <label for="vacansion" class="label-out">Тип вакансии</label>
-                        <input id="vacansion" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                  
+                        <input id="vacansion1" class="inputselect is2" type="text" placeholder=" " />
+                        <label for="vacansion1" class="placeholder placeholder2">Тип вакансии</label>
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>
@@ -1737,7 +1756,7 @@
 
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                        <button class="input-reset btn3 hide-block" type="button">&#215;</button>
+                        <button class="input-reset hide-block" type="button">&#215;</button>
 
                         <ul class="input-container__ul multi">
 
@@ -1792,7 +1811,7 @@
 
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
-                        <button class="input-reset btn3 hide-block" type="button">&#215;</button>                     
+                        <button class="input-reset hide-block" type="button">&#215;</button>                     
                         <ul class="input-container__ul multi">
 
                           <li class="input-container__item item-multi">
@@ -1859,11 +1878,13 @@
                     <div class="block3">
   
                       <div class="input-container">
-                        <label for="rubricator2" class="label-out">Отраслевой рубрикатор</label>
-                        <input id="rubricator2" class="inputselect inputselect-center" type="text" placeholder="Любая отрасль"/>                   
+                      
+                        <input id="rubricator2" class="inputselect is2 ulwide" type="text" placeholder=" " />
+                        <label for="rubricator2" class="placeholder placeholder2">Отраслевой рубрикатор</label>
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
-                        <button class="input-reset btn3 hide-block" type="button">&#215;</button>
+                        <button class="input-reset hide-block" type="button">&#215;</button>
                         <ul class="input-container__ul multi">
 
                           <li class="input-container__item item-multi">
@@ -2022,11 +2043,13 @@
                       </div>
   
                       <div class="input-container">
-                        <label for="shedule2" class="label-out">График работы</label>
-                        <input id="shedule2" class="inputselect inputselect-center" type="text" placeholder="Не имеет значения"/>                   
+                                                      
+                        <input id="shedule2" class="inputselect is2" type="text" placeholder=" " />
+                        <label for="shedule2" class="placeholder placeholder2">График работы</label>
+
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
-                        <button class="input-reset btn3 hide-block" type="button">&#215;</button>
+                        <button class="input-reset hide-block" type="button">&#215;</button>
                           <ul class="input-container__ul multi">
                             <li class="input-container__item item-multi">
                               <input class="input-checkbox" type="checkbox" id="inp51" name="shedule51">

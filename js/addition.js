@@ -292,13 +292,13 @@ function hideAllLists(e) {
     removeWide();
   }
 
-  for (let item of document.querySelectorAll('.placeholder2')) {
+  /*for (let item of document.querySelectorAll('.placeholder2')) {
     if (!e.target.classList.contains('is2') && !e.target.classList.contains('input-checkbox') && !e.target.classList.contains('arrow') && !e.target.classList.contains('check-multi') && !e.target.parentNode.parentNode.parentNode.querySelector('.is2').value) {
       if (!item.previousElementSibling.value) {
         item.classList.remove('input-field-focus');
       }
     }
-  }
+  }*/
 }
 
 
@@ -435,7 +435,9 @@ function hideSelect_2(e) {
   // e.target.querySelector('.placeholder').classList.add('input-field-focus'); //поднять placeholder
 }
 
+/******** Расширение рубрикатора **************** */
 const ulwide = document.querySelector('.ulwide');
+const toHides = document.querySelectorAll('.to-hide');
 let nowWide = false;
 /*for (let item of ulwides) {
   item.addEventListener('click', addWide);
@@ -444,13 +446,22 @@ ulwide.addEventListener('click', addWide);
 
 function addWide(e) {
   e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide');
+  for (let item of toHides) {
+    item.classList.add('hide-block');
+  }
   nowWide = true;
 }
 
 function removeWide(e) {
   document.getElementById('wide1').classList.remove('ul-wide');
+  for (let item of toHides) {
+    item.classList.remove('hide-block');
+  }
   nowWide = false;
 }
+/***********Конец расширения рубрикатора *************/
+
+
 /*********Работа с кнопками Применить в мультиселектах*******/
 const applBtns = chooseWork.querySelectorAll('.apply');
 for (let btn of applBtns) {
@@ -497,7 +508,7 @@ function doApply(e) { //По кнопке Применить
   for (let item of e.target.parentNode.querySelectorAll('.input-checkbox')) {
     item.checked = false;
   }
-  eselect.querySelector('.inputselect').classList.remove('inputsel');
+  //eselect.querySelector('.inputselect').classList.remove('inputsel');
 }
 /*************Конец блока селекты************** */
 
@@ -1394,20 +1405,29 @@ const punktRegionItems = document.querySelectorAll('.punkt__region--item');
 const regionBody = document.querySelector('.region__body');
 const regionBodyItems = document.querySelectorAll('.region__body--item');
 const regionBodyUlItems = regionBodyUl.querySelectorAll('.region__body--item');
-const shifts = document.querySelectorAll('.shift');
+const itemLefts = document.querySelectorAll('.item-left');
+const itemRights = document.querySelectorAll('.item-right');
+const punktItems = document.querySelectorAll('.punkt-item');
+
 
 //Показать список регионов
+let outRegion;
+
 regionWork.onclick = () => {
+  outRegion = document.getElementById('region');
   chooseRegion.classList.remove('up-block');
 };
 regionStaff.onclick = () => {
+  outRegion = document.getElementById('region1');
   chooseRegion.classList.remove('up-block');
 };
 regionAny.onclick = () => {
+  outRegion = document.getElementById('region2');
   chooseRegion.classList.remove('up-block');
 };
 
 let closeRegions = function () {
+  //деактивировать все чекбоксы и спрятать попап
   chooseRegion.classList.add('up-block');
   punktRegion.classList.add('hide-block');
   punktGroup.classList.add('hide-block');
@@ -1426,14 +1446,18 @@ let closeRegions = function () {
 };
 
 chooseRegionClose.onclick = () => closeRegions();
-regionApply.onclick = () => closeRegions();
-
 
 //Все регионы
 regionAll.onclick = (e) => {
   punktRegion.classList.remove('hide-block');
   punktGroup.classList.remove('hide-block');
   labelPunktAll.classList.add('color-black');
+  for (let item of punktGroupItems) {
+    item.classList.remove('hide-block');
+  }
+  for (let item of punktRegionItems) {
+    item.classList.remove('hide-block');
+  }
 
   if (inputRegionAll.checked === true) {
     inputRegionAll.checked = false;
@@ -1442,33 +1466,69 @@ regionAll.onclick = (e) => {
     }
     punktRegion.classList.add('hide-block');
     punktGroup.classList.add('hide-block');
+
+    for (let item of punktGroupItems) {
+      item.classList.add('hide-block');
+    }
+    for (let item of punktRegionItems) {
+      item.classList.add('hide-block');
+    }
+
   } else {
     inputRegionAll.checked = true;
-    for (let item of regionItems) {
-      item.checked = true;
+    for (let item of regionBodyItems) {
+      if (item.querySelector('.region-left')) {
+        item.querySelector('.region-left').checked = true;
+      }
     }
   }
 };
 
 //Если нажали на квадратик
 
-for (let item of regionBodyItems) {
+for (let item of itemLefts) {
   item.addEventListener('click', toggleCheckRegion);
 }
-
-function toggleCheck(e) {
-  if (e.target.firstElementChild) {
-    if (e.target.firstElementChild.checked === true) {
-      e.target.firstElementChild.checked = false;
-    } else {
-      e.target.firstElementChild.checked = true;
-    }
-  }
-}
+let choosedRegion = '';
 
 function toggleCheckRegion(e) {
   labelPunktAll.classList.add('color-black');
   toggleCheck(e);
+}
+
+function toggleCheck(e) {
+  if (e.target.firstElementChild) {
+    let targ = e.target.firstElementChild;
+    targ.checked = !targ.checked;
+  }
+
+  //Выбрана область
+  choosedRegion = e.currentTarget.querySelector('.region-multi').innerText;
+  if (e.currentTarget.querySelector('.region-left').checked) {
+    for (let item of punktGroupItems) {
+      if (item.getAttribute('data-region') === choosedRegion) {
+        punktGroup.classList.remove('hide-block');
+        punktRegion.classList.remove('hide-block');
+        item.classList.remove('hide-block');
+      }
+    }
+    for (let item of punktRegionItems) {
+      if (item.getAttribute('data-region') === choosedRegion) {
+        item.classList.remove('hide-block');
+      }
+    }
+  } else {
+    for (let item of punktGroupItems) {
+      if (item.getAttribute('data-region') === choosedRegion) {
+        item.classList.add('hide-block');
+      }
+    }
+    for (let item of punktRegionItems) {
+      if (item.getAttribute('data-region') === choosedRegion) {
+        item.classList.add('hide-block');
+      }
+    }
+  }
 }
 
 
@@ -1481,6 +1541,13 @@ regionResets[0].onclick = () => {
   }
   punktGroup.classList.add('hide-block');
   punktRegion.classList.add('hide-block');
+  document.getElementById('punkt-all').checked = false;
+  for (let item of inputPunktGroups) {
+    item.checked = false;
+  }
+  for (let item of inputPunktRegions) {
+    item.checked = false;
+  }
 };
 regionResets[1].onclick = () => {
   for (let item of inputPunktGroups) {
@@ -1494,65 +1561,132 @@ regionResets[1].onclick = () => {
       item.checked = false;
     }
   }
+  document.getElementById('punkt-all').checked = false;
 };
 
-
+//Кнопка Все населенные пункты
 punktAll.onclick = (e) => {
   if (labelPunktAll.classList.contains('color-black')) {
 
     if (inputPunktAll.checked === true) {
       inputPunktAll.checked = false;
-      for (let item of regionItems) {
-        //item.checked = false;
+      for (let item of itemRights) {
+        item.firstElementChild.checked = false;
+      }
+      for (let item of inputPunktGroups) {
+        item.checked = false;
+      }
+      for (let item of inputPunktRegions) {
+        item.checked = false;
       }
     } else {
       inputPunktAll.checked = true;
-      for (let item of regionItems) {
-        //item.checked = true;
+      for (let item of itemRights) {
+        item.firstElementChild.checked = true;
+      }
+      for (let item of inputPunktGroups) {
+        item.checked = true;
+      }
+      for (let item of inputPunktRegions) {
+        item.checked = true;
       }
     }
   }
 };
 
+//Обработка нажатий на города и области
+let app = {};
+app.state = false;
+
 for (let item of punktGroupItems) {
-  item.addEventListener('click', toggleCheck);
+  item.addEventListener('click', handlerReg);
 }
-
-for (let item2 of shifts) {
-  item2.addEventListener('click', toggleCheck);
-}
-
 for (let item of punktRegionItems) {
-  item.addEventListener('click', showPunkts);
+  item.addEventListener('click', handlerReg1);
 }
 
-function showPunkts(e) {
-
-  if (e.target.firstElementChild) {
-    if (e.target.firstElementChild.checked === true) {
-      e.target.firstElementChild.checked = false;
-      for (let item1 of e.target.querySelectorAll('.input-region-item')) {
-        item1.checked = false;
-      }
-    } else {
-      e.target.firstElementChild.checked = true;
-      for (let item1 of e.target.querySelectorAll('.input-region-item')) {
-        item1.checked = true;
-      }
-    }
-  } else {
-    /*if (e.target.previousElementSibling.checked === true) {
-      e.target.previousElementSibling.checked = false;
-      for (let item1 of e.target.parentNode.querySelectorAll('.input-region-item')) {
-        item1.checked = false;
-      }
-    } else {
-      e.target.previousElementSibling.checked = true;
-      for (let item1 of e.target.parentNode.querySelectorAll('.input-region-item')) {
-        item1.checked = true;
-      }
-    }*/
+for (let item of regionBodyItems) {
+  if (!item.classList.contains('item-left')) {
+    item.addEventListener('click', handlerReg2);
   }
+}
+
+function handlerReg(e) {
+  let targ = e.currentTarget.querySelector('input');
+  targ.checked = !targ.checked;
+}
+
+function handlerReg1(e) {
+  if (app.state) {
+    return;
+  }
+
+  let targ = e.currentTarget.children[1];
+  targ.checked = !targ.checked;
+
+  for (let item of e.currentTarget.querySelectorAll('.punkt-item')) {
+    item.checked = true;
+    if (!targ.checked) {
+      item.checked = false;
+    }
+  }
+}
+
+function handlerReg2(e) {
+  let targ = e.currentTarget.firstElementChild;
+  targ.checked = !targ.checked;
+  app.state = true;
+  setTimeout(() => {
+    app.state = false;
+  }, 1000);
+}
+
+
+//Нажатие на кнопку Выбрать
+let outRegionText = '';
+let outPunktText = '';
+let outText = '';
+regionApply.addEventListener('click', handlerRegApply);
+
+function handlerRegApply() {
+  //посчитать число выбранных регионов и пунктов
+  let countRegion = 0;
+  let countPunkt = 0;
+  for (let item of itemLefts) {
+    if (item.querySelector('.input-region').checked) {
+      outRegionText = item.querySelector('label').innerText + ' ';
+      countRegion++;
+    }
+  }
+  if (!countRegion) {
+    closeRegions();
+    return;
+  }
+
+  for (let item of punktItems) {
+    if (item.checked) {
+      outPunktText = item.nextElementSibling.innerText;
+      countPunkt++;
+    }
+  }
+
+  if (countRegion > 1) {
+    outRegionText = countRegion + ' Региона, ';
+  }
+
+  if (countPunkt == 0) {
+    outPunktText = 0 + ' Насел. пункта';
+  }
+  if (countPunkt > 1) {
+    outPunktText = countPunkt + ' Насел. пункта';
+  }
+  outText = outRegionText + outPunktText;
+  outRegion.value = outText;
+
+  outRegion.nextElementSibling.classList.add('input-field-focus');
+  setTimeout(() => {
+    closeRegions();
+  }, 200);
 }
 
 /**************Конец Выбор региона******************** */
@@ -1608,7 +1742,7 @@ window.addEventListener('resize', handleText);
 
 
 window.onclick = (e) => {
-  console.log('target=', e.target);
+  //console.log('target=', e.target);
   //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
 };
