@@ -2,6 +2,30 @@ body {
   width: 100vw;
 }
 
+/******************************/
+.change-font {
+  width: 180px;
+  height: 30px;
+  border: 1px solid #000;
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.change-font div {
+  padding: 5px;
+  flex-basis: 50%;
+  cursor: pointer;
+}
+
+.change-font .active {
+  background-color: #555;
+  color: #fff;
+}
+
+/***********************************/
 .percent-scroll {
   height: 1px;
   width: 1px;
@@ -10,6 +34,16 @@ body {
 
 .hide-block {
   display: none !important;
+}
+
+.search__title--zabra {
+  font-family: ZabraPro;
+}
+
+.search__title--opensans {
+  font-family: 'Open Sans';
+  font-size: 32px;
+  font-weight: 400;
 }
 
 .search .tabs__title {
@@ -96,7 +130,7 @@ body {
   padding-top: 22px;
   height: 510px;
   font-size: 19px;
-  overflow: hidden;
+  *overflow: hidden;
   padding-left: 14px;
 }
 
@@ -341,7 +375,6 @@ body {
 
 .region__body--item label:before {
   margin-left: 20px;
-  *margin-left: 40px;
 }
 
 .punkt-all:before {
@@ -615,10 +648,6 @@ body {
 
 .inputsel:focus~.placeholder {
   transform: translateY(-45px) translateX(-20px);
-}
-
-.inputsel:focus~.placeholder2 {
-  *transform: none;
 }
 
 .cut {
@@ -910,16 +939,27 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .ul-wide {
+  position: relative;
   padding-top: 10px;
   display: flex;
-  width: 80vw;
+  flex-direction: column;
+  width: 95vw;
   flex-wrap: wrap;
+  border-radius: 5px 5px 0 0;
 }
 
 .ul-wide li {
-  flex-basis: 32%;
   padding: 0;
   padding-left: 30px;
+}
+
+.block3 .for-button {
+  position: absolute;
+  top: 363px;
+  width: 95vw;
+  background-color: #fff;
+  height: 80px;
+  border-radius: 0 0 5px 5px;
 }
 
 .ul-wide .item-multi:hover:after {
@@ -1006,19 +1046,19 @@ input[type="range"]:active::-webkit-slider-thumb {
   }
 
   .choose__work .block2 {
-    margin-top: 25px;
+    margin-top: 35px;
   }
 
   .choose__work .form__wrap--blok-3_4 {
-    margin-top: 95px;
+    margin-top: 127px;
   }
 
   .choose__work .block4 {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .choose__work .form__wrap--blok-5_6 {
-    margin-top: 125px;
+    margin-top: 80px;
   }
 
   .choose__work .choose__buttons {
@@ -1029,9 +1069,20 @@ input[type="range"]:active::-webkit-slider-thumb {
     margin: -180px auto 0 auto;
   }
 
+  .showlist {
+    max-height: 313px;
+    max-height: 400px;
+  }
+
   .ul-wide {
     width: 100%;
   }
+
+  .block3 .for-button {
+    width: 100%;
+    top: 457px;
+  }
+
 }
 
 @media (max-width: 900px) {
@@ -1456,6 +1507,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__staff .choose__buttons {
   margin-top: 15px;
+}
+
+.choose__staff .block3 .for-button {
+  top: 365px;
 }
 
 /**************************************************/

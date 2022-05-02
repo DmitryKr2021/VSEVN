@@ -1,3 +1,20 @@
+//Проверка шрифтов
+const zabra = document.querySelector('.zabra');
+const sans = document.querySelector('.sans');
+const searchTitle = document.querySelector('.search__title');
+sans.onclick = () => {
+  sans.classList.add('active');
+  zabra.classList.remove('active');
+  searchTitle.classList.add('search__title--opensans');
+  searchTitle.classList.remove('search__title--zabra');
+};
+zabra.onclick = () => {
+  sans.classList.remove('active');
+  zabra.classList.add('active');
+  searchTitle.classList.remove('search__title--opensans');
+  searchTitle.classList.add('search__title--zabra');
+};
+
 //Создание красной линии - индикатора скролла 
 
 /*scrollHeight = Math.max(
@@ -261,23 +278,27 @@ function hideInputReset(e) {
     item.checked = false;
   }
 
-  removeWide();
+  removeWide(e);
 }
 
 //конец работы с крестиками
 /*************Конец блока с полями ввода************** */
 
 //Закрыть селекты по клику в произвольном месте
+const chooseRegion = document.querySelector('.choose__region');
+const regionRect = chooseRegion.getBoundingClientRect();
 const searchContainer = document.querySelector('.search__container');
 const tabs = document.querySelector('.tabs');
 window.addEventListener('click', hideAllLists);
 
 function hideAllLists(e) {
-  if (e.clientX < searchContainer.getBoundingClientRect().left ||
-    e.clientX > searchContainer.getBoundingClientRect().right ||
-    e.clientY < tabs.getBoundingClientRect().bottom ||
-    e.clientY > rollUp.getBoundingClientRect().top ||
-    e.clientY > 700) {
+  let eX = e.clientX;
+  let eY = e.clientY;
+  if (eX < searchContainer.getBoundingClientRect().left ||
+    eX > searchContainer.getBoundingClientRect().right ||
+    eY < tabs.getBoundingClientRect().bottom ||
+    eY > rollUp.getBoundingClientRect().top ||
+    eY > 700) {
     for (let item of document.querySelectorAll('.showlist')) {
       item.classList.remove('showlist');
     }
@@ -289,7 +310,12 @@ function hideAllLists(e) {
       item.classList.remove('arrow-rotate');
     }
 
-    removeWide();
+    //Убрать блок регионов
+    if (eX < regionRect.left || eX > regionRect.right) {
+      chooseRegion.classList.add('up-block');
+    }
+
+    removeWide(e);
   }
 
   for (let item of document.querySelectorAll('.placeholder2')) {
@@ -436,26 +462,39 @@ function hideSelect_2(e) {
 }
 
 /******** Расширение рубрикатора **************** */
-const ulwide = document.querySelector('.ulwide');
+const ulwides = document.querySelectorAll('.ulwide');
 const toHides = document.querySelectorAll('.to-hide');
+//const forButton = document.querySelector('.for-button');
+//const forButtons = document.querySelectorAll('.for-button');
 let nowWide = false;
-/*for (let item of ulwides) {
+
+for (let item of ulwides) {
   item.addEventListener('click', addWide);
-}*/
-ulwide.addEventListener('click', addWide);
+}
 
 function addWide(e) {
   e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide');
   for (let item of toHides) {
     item.classList.add('hide-block');
   }
+  setTimeout(() => {
+    e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
+  }, 400);
   nowWide = true;
 }
 
 function removeWide(e) {
-  document.getElementById('wide1').classList.remove('ul-wide');
   for (let item of toHides) {
     item.classList.remove('hide-block');
+  }
+
+  if (e.target.classList.contains('input-reset')) {
+    e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
+    e.target.nextElementSibling.classList.remove('ul-wide');
+  }
+  if (e.target.classList.contains('apply')) {
+    e.target.parentNode.classList.add('hide-block');
+    e.target.parentNode.previousElementSibling.classList.remove('ul-wide');
   }
   nowWide = false;
 }
@@ -470,12 +509,15 @@ for (let btn of applBtns) {
 
 function calculateNumberOfChecked(e) {
   resetAll.classList.remove('hide-block');
-  removeWide();
+  removeWide(e);
   doApply(e);
 }
 
 function doApply(e) { //По кнопке Применить
-  const eselect = e.target.parentNode;
+  let eselect = e.target.parentNode;
+  if (eselect.classList.contains('for-button')) {
+    eselect = e.target.parentNode.parentNode;
+  }
   let inputString = eselect.parentNode.firstElementChild.innerText;
   if (eselect.parentNode.querySelector('.placeholder2')) {
     inputString = eselect.parentNode.querySelector('.placeholder2').innerText;
@@ -1384,7 +1426,7 @@ for (let i = 2; i < nijegorodRegion.length; i++) {
 }
 
 
-const chooseRegion = document.querySelector('.choose__region');
+//const chooseRegion = document.querySelector('.choose__region'); введено выше 
 const chooseRegionClose = document.querySelector('.choose__region--close');
 const regionWork = document.querySelector('#region');
 const regionStaff = document.querySelector('#region1');
