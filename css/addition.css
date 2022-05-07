@@ -600,6 +600,7 @@ body {
 }
 
 .input-reset {
+  font-family: ZabraPro;
   position: absolute;
   top: 30%;
   right: 15px;
