@@ -147,7 +147,6 @@ function handleResetAll(e) {
     //вернуть placeholder на место
   }
   for (let item of document.querySelectorAll('.placeholder2')) {
-    //item.style.transform = 'translateY(0) translateX(0)';
     item.classList.remove('input-field-focus');
     //вернуть placeholder2 на место
   }
@@ -188,7 +187,7 @@ rollUpBtn.onclick = () => {
 
 const inputFields = chooseWork.querySelectorAll('.input-field');
 const inputFieldsAll = document.querySelectorAll('.input-field');
-const inputSelectsAll = document.querySelectorAll('.inputselect');
+//const inputSelectsAll = document.querySelectorAll('.inputselect');
 window.addEventListener('click', showInput);
 
 function showInput(e) { //убрать placeholder и показать input
@@ -211,7 +210,6 @@ function showInput(e) { //убрать placeholder и показать input
       }
     }
   }
-  /* */
   /* */
   if (e.target !== anyResetAll) {
     for (let inp of anyInputFields) {
@@ -259,7 +257,6 @@ function hideInputReset(e) {
     targ.querySelector('.inputselect').value = '';
   }
 
-  //targ.querySelector('.inputselect').classList.toggle('inputsel');
   if (targ.querySelector('.placeholder')) {
     targ.querySelector('.placeholder').classList.remove('input-field-focus');
   }
@@ -279,6 +276,7 @@ function hideInputReset(e) {
   }
 
   removeWide(e);
+  removeWide2(e);
 }
 
 //конец работы с крестиками
@@ -316,6 +314,16 @@ function hideAllLists(e) {
     }
 
     removeWide(e);
+    removeWide2(e);
+    for (let item of document.querySelectorAll('.ul-wide')) {
+      item.classList.remove('ul-wide');
+    }
+    for (let item of document.querySelectorAll('.ul-wide2')) {
+      item.classList.remove('ul-wide2');
+    }
+    for (let item of document.querySelectorAll('.for-button')) {
+      item.classList.add('hide-block');
+    }
   }
 
   for (let item of document.querySelectorAll('.placeholder2')) {
@@ -330,11 +338,10 @@ function hideAllLists(e) {
 
 /**********Работа с селектами*****************/
 
-const inputSelects = chooseWork.querySelectorAll('.inputselect');
-const inputMultis = chooseWork.querySelectorAll('.item-multi');
-const inputContainerUls = chooseWork.querySelectorAll('.input-container__ul');
-const inputContainerItems = chooseWork.querySelectorAll('.input-container__item');
-const inputContainerArrows = chooseWork.querySelectorAll('.input-container__arrow');
+//const inputSelects = chooseWork.querySelectorAll('.inputselect');
+const inputSelects = document.querySelectorAll('.inputselect');
+const inputContainerUls = document.querySelectorAll('.input-container__ul');
+const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
@@ -344,9 +351,16 @@ function hideSelect_1(e) {
   //нажали на стрелочку
   if (targ.classList.contains('input-container__arrow')) {
     targPN.querySelector('.input-container__ul').classList.toggle('showlist');
-    targ.previousElementSibling.previousElementSibling.classList.toggle('inputsel');
+    targPN.querySelector('.inputselect').classList.toggle('inputsel');
     targ.classList.toggle('arrow-rotate');
-    targPN.querySelector('.placeholder2').classList.add('input-field-focus');
+    targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
+
+    if (targPN.querySelector('.inputselect').classList.contains('ulwide')) {
+      addWide(e);
+    }
+    if (targPN.querySelector('.inputselect').classList.contains('ulwide2')) {
+      addWide2(e);
+    }
 
     return;
   }
@@ -360,7 +374,9 @@ function hideSelect_1(e) {
   if (!targ.classList.contains('inputselect')) {
     for (let uls of inputContainerUls) {
       if (targ.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
-        uls.classList.remove('showlist');
+        if (!targ.parentNode.parentNode.parentNode.firstElementChild.classList.contains('ulwide2')) {
+          uls.classList.remove('showlist');
+        }
       }
     }
     for (let item of inputSelects) {
@@ -369,71 +385,66 @@ function hideSelect_1(e) {
     for (let arrow of inputContainerArrows) {
       arrow.classList.remove('arrow-rotate');
     }
-    hideSelectsAllTabs(e);
   }
 }
 
-function hideSelectsAllTabs(e) {
-  //Обработка мультиселектов на всех вкладках
-  if (e.target.classList.contains('check-multi')) {
-    if (e.target.previousElementSibling.checked === true) {
-      e.target.previousElementSibling.checked = false;
-    } else {
-      e.target.previousElementSibling.checked = true;
-    }
-  }
-  if (e.target.classList.contains('item-multi')) {
-    if (e.target.firstElementChild.checked === true) {
-      e.target.firstElementChild.checked = false;
-    } else {
-      e.target.firstElementChild.checked = true;
-    }
-  }
-  if (e.target.classList.contains('input-checkbox')) {
-    if (e.target.checked === true) {
-      e.target.checked = false;
-    } else {
-      e.target.checked = true;
-    }
-  }
-}
 
 //Показать выбранный select и спрятать placeholder
-for (let item of inputContainerItems) {
-  item.addEventListener('click', showAllItemSelected);
+
+for (let item of chooseWork.querySelectorAll('.input-container__item')) {
+  item.addEventListener('click',
+    showAllItemSelected);
 }
 
 function showAllItemSelected(e) {
   //Показать выбранный select и спрятать placeholder на всех вкладках
-  let targ = e.currentTarget.parentNode.parentNode;
-  let inputString = targ.firstElementChild.innerText;
-
-  if (targ.querySelector('.placeholder')) {
-    inputString = targ.querySelector('.placeholder').innerText;
+  let targ;
+  if (e.target.tagName === 'LI') {
+    targ = e.target;
+  } else {
+    targ = e.target.parentNode;
   }
-  if (targ.querySelector('.placeholder2')) {
-    inputString = targ.querySelector('.placeholder2').innerText;
+  let targPN = targ.parentNode;
+
+  let inputString = targ.querySelector('.check-multi').innerText;
+  let thisChecked = targPN.querySelectorAll('.input-checkbox');
+
+  if (targPN.parentNode.querySelector('.placeholder')) {
+    inputString = targPN.parentNode.querySelector('.placeholder').innerText;
+  }
+  if (targPN.parentNode.querySelector('.placeholder2')) {
+    inputString = targPN.parentNode.querySelector('.placeholder2').innerText;
   }
 
   //выбрано одно - показать в поле ввода
-  targ.querySelector('.inputselect').value = e.currentTarget.querySelector('label').innerText;
+  targPN.parentNode.querySelector('.inputselect').value = targ.querySelector('label').innerText;
+  targPN.previousElementSibling.classList.remove('hide-block'); //показать крестик
 
-  targ.querySelector('.input-reset').classList.remove('hide-block');
-  //показать крестик
+  targ.querySelector('.input-checkbox').checked = !targ.querySelector('.input-checkbox').checked;
 
-  let numb = 1;
-  let thisChecked = targ.querySelectorAll('.input-checkbox');
+  let numb = 0;
+
   for (let item of thisChecked) {
     if (item.checked === true) {
       numb++;
     }
   }
+  if (numb === 0) {
+    targPN.parentNode.querySelector('.inputselect').value = '';
+  }
+  if (numb === 1) {
+    for (let item of thisChecked) {
+      if (item.checked === true) {
+        targPN.parentNode.querySelector('.inputselect').value = item.nextElementSibling.innerText;
+      }
+    }
+  }
   if (numb > 1) {
-    targ.querySelector('.inputselect').value = `${inputString} (выбрано ${numb})`;
+    targPN.parentNode.querySelector('.inputselect').value = `${inputString} (выбрано ${numb})`;
   }
 
-  if (!targ.querySelector('.input-container__ul').classList.contains('multi')) {
-    targ.querySelector('.input-container__ul').classList.toggle('showlist');
+  if (!targPN.classList.contains('multi')) {
+    targPN.classList.toggle('showlist');
   }
 }
 
@@ -464,9 +475,6 @@ function hideSelect_2(e) {
 /******** Расширение рубрикатора **************** */
 const ulwides = document.querySelectorAll('.ulwide');
 const toHides = document.querySelectorAll('.to-hide');
-//const forButton = document.querySelector('.for-button');
-//const forButtons = document.querySelectorAll('.for-button');
-let nowWide = false;
 
 for (let item of ulwides) {
   item.addEventListener('click', addWide);
@@ -480,7 +488,6 @@ function addWide(e) {
   setTimeout(() => {
     e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
   }, 400);
-  nowWide = true;
 }
 
 function removeWide(e) {
@@ -489,16 +496,61 @@ function removeWide(e) {
   }
 
   if (e.target.classList.contains('input-reset')) {
-    e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
+    if (e.target.parentNode.querySelector('.for-button')) {
+      e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
+    }
     e.target.nextElementSibling.classList.remove('ul-wide');
   }
-  if (e.target.classList.contains('apply')) {
+  if (e.target.classList.contains('apply') && e.target.parentNode.classList.contains('for-button')) {
     e.target.parentNode.classList.add('hide-block');
     e.target.parentNode.previousElementSibling.classList.remove('ul-wide');
   }
-  nowWide = false;
 }
 /***********Конец расширения рубрикатора *************/
+
+
+/*************Расширение типа вакансии ***************/
+const ulwide2s = document.querySelectorAll('.ulwide2');
+const toHide2s = document.querySelectorAll('.to-hide2');
+
+for (let item of ulwide2s) {
+  item.addEventListener('click', addWide2);
+}
+
+function addWide2(e) {
+  e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide2');
+  for (let item of toHide2s) {
+    item.classList.add('hide-block');
+  }
+  setTimeout(() => {
+    e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
+  }, 400);
+}
+
+function removeWide2(e) {
+  for (let item of toHide2s) {
+    item.classList.remove('hide-block');
+  }
+
+  if (e.target.classList.contains('input-reset')) {
+    if (e.target.parentNode.querySelector('.for-button')) {
+      e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
+    }
+    e.target.nextElementSibling.classList.remove('ul-wide2');
+
+    /*for (let item of toHide2s) {
+      item.classList.remove('hide-block');
+    }*/
+  }
+
+
+  if (e.target.classList.contains('apply') && e.target.parentNode.classList.contains('for-button')) {
+    e.target.parentNode.classList.add('hide-block');
+    e.target.parentNode.previousElementSibling.classList.remove('ul-wide2');
+  }
+}
+
+/***********Конец расширения типа вакансии *************/
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
@@ -510,21 +562,21 @@ for (let btn of applBtns) {
 function calculateNumberOfChecked(e) {
   resetAll.classList.remove('hide-block');
   removeWide(e);
+  removeWide2(e);
   doApply(e);
 }
 
 function doApply(e) { //По кнопке Применить
   let eselect = e.target.parentNode;
-  if (eselect.classList.contains('for-button')) {
-    eselect = e.target.parentNode.parentNode;
-  }
+
   let inputString = eselect.parentNode.firstElementChild.innerText;
   if (eselect.parentNode.querySelector('.placeholder2')) {
     inputString = eselect.parentNode.querySelector('.placeholder2').innerText;
   }
 
   let chooseInput;
-  const inputs = eselect.querySelectorAll('input');
+  const inputs = eselect.parentNode.querySelectorAll('input');
+
   let counter = 0;
   for (let inp of inputs) {
     if (inp.checked) {
@@ -537,7 +589,6 @@ function doApply(e) { //По кнопке Применить
     eselect.classList.remove('showlist'); //свернуть список
   } else {
     if (counter > 1) {
-
       eselect.parentNode.querySelector('.inputselect').value = `${inputString} (выбрано ${counter})`;
       eselect.classList.remove('showlist'); //свернуть список
     } else {
@@ -791,6 +842,8 @@ for (let btn of staffApplBtns) {
 function staffCalculateNumberOfChecked(e) {
   staffResetAll.classList.remove('hide-block');
   doApply(e);
+  removeWide(e);
+  removeWide2(e);
 }
 /*************Конец блока селекты************** */
 
@@ -1156,7 +1209,7 @@ function staffResetInputs() {
 
   }, 10);
 }
-/*************Конец блока Работа с кнопкой Очистить************** */
+/************Конец блока Работа с кнопкой Очистить**************/
 /**************Конец блока Поиск сотрудников***************** */
 
 
@@ -1787,4 +1840,5 @@ window.onclick = (e) => {
   //console.log('target=', e.target);
   //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
+  //console.log(document.getElementById('wide1').getBoundingClientRect().bottom);
 };
