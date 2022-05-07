@@ -1,18 +1,18 @@
 //Проверка шрифтов
-const zabra = document.querySelector('.zabra');
-const sans = document.querySelector('.sans');
+const regular = document.querySelector('.regular');
+const medium = document.querySelector('.medium');
 const searchTitle = document.querySelector('.search__title');
-sans.onclick = () => {
-  sans.classList.add('active');
-  zabra.classList.remove('active');
-  searchTitle.classList.add('search__title--opensans');
-  searchTitle.classList.remove('search__title--zabra');
+medium.onclick = () => {
+  medium.classList.add('active');
+  regular.classList.remove('active');
+  searchTitle.classList.add('search__title--medium');
+  searchTitle.classList.remove('search__title--regular');
 };
-zabra.onclick = () => {
-  sans.classList.remove('active');
-  zabra.classList.add('active');
-  searchTitle.classList.remove('search__title--opensans');
-  searchTitle.classList.add('search__title--zabra');
+regular.onclick = () => {
+  medium.classList.remove('active');
+  regular.classList.add('active');
+  searchTitle.classList.remove('search__title--medium');
+  searchTitle.classList.add('search__title--regular');
 };
 
 //Создание красной линии - индикатора скролла 

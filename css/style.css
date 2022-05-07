@@ -65,6 +65,22 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: ZabraProTest;
+  font-display: swap;
+  src: url("../fonts/ZabraProTest-Medium.woff2") format("woff2"), url("../fonts/ZabraProTest-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ZabraProTest;
+  font-display: swap;
+  src: url("../fonts/ZabraProTest-Regular.woff2") format("woff2"), url("../fonts/ZabraProTest-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 ._not-input input {
   pointer-events: none;
 }
@@ -90,8 +106,9 @@ body {
 body {
   color: #2c2c2c;
   line-height: 1;
-  /*font-family: "Open Sans";*/
-  font-family: "ZabraPro";
+  /*font-family: "Open Sans";
+  font-family: "ZabraPro";*/
+  font-family: "ZabraProTest";
   font-size: 1rem;
   overflow-x: hidden;
   -ms-text-size-adjust: 100%;
@@ -104,8 +121,9 @@ body {
 input,
 button,
 textarea {
-  /*font-family: "Open Sans";*/
-  font-family: "ZabraPro";
+  /*font-family: "Open Sans";
+  font-family: "ZabraPro";*/
+  font-family: "ZabraProTest";
   font-size: inherit;
 }
 
