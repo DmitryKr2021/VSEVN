@@ -355,13 +355,27 @@ function hideSelect_1(e) {
     targ.classList.toggle('arrow-rotate');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
 
-    if (targPN.querySelector('.inputselect').classList.contains('ulwide')) {
+    //разворачиваем/сворачиваем рубрикатор 
+    if (!targPN.querySelector('.input-container__ul').classList.contains('ul-wide') && targPN.querySelector('.inputselect').classList.contains('ulwide')) {
       addWide(e);
-    }
-    if (targPN.querySelector('.inputselect').classList.contains('ulwide2')) {
-      addWide2(e);
+    } else {
+      targPN.querySelector('.input-container__ul').classList.remove('ul-wide');
+      for (let item of toHides) {
+        item.classList.remove('hide-block');
+      }
+      targPN.querySelector('.for-button').classList.add('hide-block');
     }
 
+    //разворачиваем/сворачиваем вакансии
+    if (!targPN.querySelector('.input-container__ul').classList.contains('ul-wide2') && targPN.querySelector('.inputselect').classList.contains('ulwide2')) {
+      addWide2(e);
+    } else {
+      targPN.querySelector('.input-container__ul').classList.remove('ul-wide2');
+      for (let item of toHide2s) {
+        item.classList.remove('hide-block');
+      }
+      targPN.querySelector('.for-button').classList.add('hide-block');
+    }
     return;
   }
 
