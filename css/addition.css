@@ -1808,7 +1808,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any .block2 {
   margin-top: 28px;
-  z-index: 15;
+  z-index: 20;
 }
 
 .choose__any .block2 .input-container:first-of-type .input-container__item {
