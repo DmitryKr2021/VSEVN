@@ -117,7 +117,7 @@ body {
 
 .search__container {
   padding-left: 0;
-  padding-right: 0;
+  padding-right: 10px;
 }
 
 .tabs {
@@ -1673,11 +1673,16 @@ input[type="range"]:active::-webkit-slider-thumb {
 .choose__staff .block6,
 .choose__staff .block7 {
   flex-basis: 48%;
+  margin-top: 0;
 }
 
 .choose__staff .salary1,
 .choose__staff .block7_2 {
   margin-top: 25px;
+}
+
+.choose__staff .block7_2 .category {
+  margin-top: 2px;
 }
 
 .choose__staff .range2 {
