@@ -1311,6 +1311,9 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 @media (max-width: 700px) {
+  .up-block {
+    transform: translate(-50%, -1000px);
+  }
 
   .choose__work .block3 .input-container:nth-child(1) .showlist {
     max-height: 420px;
