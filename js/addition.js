@@ -1,5 +1,5 @@
 //Проверка шрифтов
-const regular = document.querySelector('.regular');
+/*const regular = document.querySelector('.regular');
 const medium = document.querySelector('.medium');
 const searchTitle = document.querySelector('.search__title');
 medium.onclick = () => {
@@ -13,7 +13,7 @@ regular.onclick = () => {
   regular.classList.add('active');
   searchTitle.classList.remove('search__title--medium');
   searchTitle.classList.add('search__title--regular');
-};
+};*/
 
 //Создание красной линии - индикатора скролла 
 
@@ -161,7 +161,6 @@ const rollUp = document.querySelector('.roll-up');
 const rollUpBtn = document.querySelector('.roll-up__btn');
 const rollUpSpan = document.querySelector('.roll-up__span');
 const search = document.querySelector('.search');
-const info = document.querySelector('.info');
 let flagShow = true;
 
 rollUpBtn.onclick = () => {
@@ -170,13 +169,11 @@ rollUpBtn.onclick = () => {
     rollUp.classList.add('active');
     document.querySelector('.choose').classList.add('hide-block');
     search.classList.add('search-reduced');
-    info.classList.add('info-up');
   } else {
     rollUpSpan.innerText = 'Скрыть поисковую панель';
     rollUp.classList.remove('active');
     document.querySelector('.choose').classList.remove('hide-block');
     search.classList.remove('search-reduced');
-    info.classList.remove('info-up');
   }
   flagShow = !flagShow;
 };
@@ -274,7 +271,7 @@ function hideInputReset(e) {
   for (let item of targ.querySelectorAll('.input-checkbox')) {
     item.checked = false;
   }
-
+  tempValue = '';
   removeWide(e);
   removeWide2(e);
 }
@@ -292,6 +289,26 @@ window.addEventListener('click', hideAllLists);
 function hideAllLists(e) {
   let eX = e.clientX;
   let eY = e.clientY;
+
+  if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
+    removeWide(e);
+    for (let item of document.querySelectorAll('.ul-wide')) {
+      item.classList.remove('ul-wide');
+    }
+    for (let item of document.querySelectorAll('.for-button')) {
+      item.classList.add('hide-block');
+    }
+  }
+  if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
+    removeWide2(e);
+    for (let item of document.querySelectorAll('.ul-wide2')) {
+      item.classList.remove('ul-wide2');
+    }
+    for (let item of document.querySelectorAll('.for-button')) {
+      item.classList.add('hide-block');
+    }
+  }
+
   if (eX < searchContainer.getBoundingClientRect().left ||
     eX > searchContainer.getBoundingClientRect().right ||
     eY < tabs.getBoundingClientRect().bottom ||
@@ -579,15 +596,16 @@ function calculateNumberOfChecked(e) {
   removeWide2(e);
   doApply(e);
 }
+let tempValue; //временное хранение вводимого значения
 
 function doApply(e) { //По кнопке Применить
   let eselect = e.target.parentNode;
-
+  let eInputSelect = eselect.parentNode.querySelector('.inputselect');
   let inputString = eselect.parentNode.firstElementChild.innerText;
+
   if (eselect.parentNode.querySelector('.placeholder2')) {
     inputString = eselect.parentNode.querySelector('.placeholder2').innerText;
   }
-
   let chooseInput;
   const inputs = eselect.parentNode.querySelectorAll('input');
 
@@ -599,23 +617,24 @@ function doApply(e) { //По кнопке Применить
     }
   }
   if (counter === 1) {
-    eselect.parentNode.querySelector('.inputselect').value = chooseInput;
+    eInputSelect.value = chooseInput;
     eselect.classList.remove('showlist'); //свернуть список
+    tempValue = eInputSelect.value;
   } else {
     if (counter > 1) {
-      eselect.parentNode.querySelector('.inputselect').value = `${inputString} (выбрано ${counter})`;
+      eInputSelect.value = `${inputString} (выбрано ${counter})`;
       eselect.classList.remove('showlist'); //свернуть список
     } else {
-      eselect.parentNode.querySelector('.inputselect').value = '';
+      eInputSelect.value = '';
       if (eselect.classList.contains('showlist')) {
         eselect.classList.remove('showlist');
       }
     }
+    tempValue = eInputSelect.value;
   }
   for (let item of e.target.parentNode.querySelectorAll('.input-checkbox')) {
     item.checked = false;
   }
-  //eselect.querySelector('.inputselect').classList.remove('inputsel');
 }
 /*************Конец блока селекты************** */
 
@@ -747,7 +766,7 @@ range1.oninput = () => {
 resetAll.addEventListener('click', resetInputs);
 
 function resetInputs() {
-
+  tempValue = '';
   for (let inp of inputFields) {
     if (inp.parentNode.querySelector('label').classList.contains('placeholder')) {
       inp.parentNode.querySelector('label').classList.remove('hide-block');
@@ -1281,6 +1300,8 @@ for (let btn of anyApplBtns) {
 
 function anyCalculateNumberOfChecked(e) {
   anyResetAll.classList.remove('hide-block');
+  removeWide(e);
+  removeWide2(e);
   doApply(e);
 }
 /*************Конец блока селекты************** */
@@ -1805,49 +1826,81 @@ function handlerRegApply() {
 
 const charWidth = 9.5; //ширина 1 символа
 
+const rubric = document.getElementById('rubricator');
+const rubric1 = document.getElementById('rubricator1');
+const rubric2 = document.getElementById('rubricator2');
+let popup = document.createElement('div');
+
+function showTempValue(e) {
+  if (tempValue) {
+    popup.innerText = tempValue;
+    popup.classList.add('input-popup');
+    e.target.before(popup);
+    popup.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
+    popup.style.left = e.target.getBoundingClientRect().left + 'px';
+  }
+}
+rubric.onmouseover = (e) => {
+  showTempValue(e);
+};
+rubric.onmouseout = (e) => {
+  popup.remove(e);
+};
+rubric1.onmouseover = (e) => {
+  showTempValue(e);
+};
+rubric1.onmouseout = (e) => {
+  popup.remove(e);
+};
+rubric2.onmouseover = (e) => {
+  showTempValue(e);
+};
+rubric2.onmouseout = (e) => {
+  popup.remove(e);
+};
+
 function handleText() {
   const inputContainers = document.querySelectorAll('.input-container');
-
   for (let item of inputContainers) {
     const label_ = item.querySelector('label');
     const input_ = item.querySelector('input');
 
     //длина строки в символах
-    const labelText = label_.innerText.length;
+    const labelText = label_.innerText;
 
     //максимальная длина строки
     const maxLength = Math.round(input_.offsetWidth / charWidth);
     let popup = document.createElement('div');
-    popup.innerText = label_.innerText;
+    popup.innerText = labelText;
     popup.classList.add('input-popup');
 
-    if (labelText > maxLength) {
-      let coef = maxLength / labelText * 100;
+    if (labelText.length > maxLength) {
+      let coef = maxLength / labelText.length * 100;
       label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
-      //при наведении показать весь текст в попапе
-      input_.onmouseover = () => {
+      input_.addEventListener('mouseover', () => {
         input_.before(popup);
         popup.style.top = input_.getBoundingClientRect().top - 40 + 'px';
         popup.style.left = input_.getBoundingClientRect().left + 'px';
-      };
+      });
+
       input_.onmouseout = () => {
         popup.remove();
       };
     } else {
       label_.style.cssText = 'color: #333;';
-      input_.onmouseover = () => {
+      input_.addEventListener('mouseover', () => {
         if (popup) {
           popup.style.display = 'none';
         }
-      };
+      });
     }
   }
 }
 
 handleText();
 
-window.addEventListener('resize', handleText);
+//window.addEventListener('resize', handleText);
 
 
 window.onclick = (e) => {
