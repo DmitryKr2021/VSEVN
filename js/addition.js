@@ -1,4 +1,4 @@
-//Проверка шрифтов
+﻿//Проверка шрифтов
 /*const regular = document.querySelector('.regular');
 const medium = document.querySelector('.medium');
 const searchTitle = document.querySelector('.search__title');
@@ -1900,7 +1900,7 @@ function handleText() {
 
 handleText();
 
-//window.addEventListener('resize', handleText);
+window.addEventListener('resize', handleText);
 
 
 window.onclick = (e) => {
