@@ -50,6 +50,7 @@ body {
   font-family: ZabraProTest;
   font-weight: 500;
   font-size: 34px;
+  vertical-align: baseline;
 }
 
 .search .tabs__title {
@@ -984,6 +985,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   display: flex;
   flex-direction: column;
   width: 95vw;
+  max-width: 1500px;
   flex-wrap: wrap;
   border-radius: 5px 5px 0 0;
 }
@@ -996,6 +998,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .block3 .for-button {
   position: absolute;
   width: 95vw;
+  max-width: 1500px;
   background-color: #fff;
   height: 80px;
   border-radius: 0 0 5px 5px;
@@ -1172,6 +1175,12 @@ input[type="range"]:active::-webkit-slider-thumb {
   }
 }
 
+@media (max-width: 990px) {
+  .info__window {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .search {
     height: 1100px;
@@ -1203,6 +1212,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .choose__work .block3 .input-container:nth-child(1) {
     height: 50px;
+    padding-top: 3px;
   }
 
   .choose__work .block3 .input-container:nth-child(1) .input-reset {
@@ -1284,10 +1294,6 @@ input[type="range"]:active::-webkit-slider-thumb {
     height: 400px;
   }
 
-  .choose__work .block3 .input-container:nth-child(1) .showlist {
-    max-height: 400px;
-  }
-
   .choose__work .block3 .input-container:nth-child(1) .input-container__item {
     max-width: 340px;
   }
@@ -1313,10 +1319,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 @media (max-width: 700px) {
   .up-block {
     transform: translate(-50%, -1000px);
-  }
-
-  .choose__work .block3 .input-container:nth-child(1) .showlist {
-    max-height: 420px;
   }
 
   .choose__work .block3 .input-container:nth-child(1) .input-container__item {
@@ -1393,12 +1395,8 @@ input[type="range"]:active::-webkit-slider-thumb {
     max-width: 95%;
   }
 
-  .choose__work .block3 .input-container:nth-child(1) .showlist {
-    max-height: 630px;
-  }
-
   .choose__work .block3 .for-button {
-    top: 640px;
+    top: 440px;
   }
 
   .choose__work .block4 .for-button {
@@ -1426,25 +1424,22 @@ input[type="range"]:active::-webkit-slider-thumb {
   .choose__staff-hide {
     transform: translateX(-180vw);
   }
-
-  .choose__work .block3 .input-container:nth-child(1) .showlist {
-    max-height: 500px;
-  }
-
-  .choose__work .block3 .for-button {
-    top: 550px;
-  }
 }
 
 @media (max-width: 570px) {
+
+  .choose__work .block3 .input-container:nth-child(1) .showlist {
+    max-height: 400px;
+  }
+
   .choose__work .block3 .for-button {
-    top: 683px;
+    top: 440px;
   }
 }
 
 @media (max-width: 535px) {
-  .choose__work .block3 .for-button {
-    top: 695px;
+  .up-block {
+    transform: translate(-50%, -1200px);
   }
 }
 
@@ -1496,6 +1491,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .choose__work .block3 .input-container:nth-child(1) .inputsel~.cut {
     width: 0;
+    display: none;
   }
 
   .input-reset {
@@ -1514,7 +1510,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   .choose__work .block3,
   .choose__work .block4 {
     flex-direction: column;
-    *row-gap: 30px;
     row-gap: 40px;
     height: 140px;
     padding-top: 0;
@@ -1591,10 +1586,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   .roll-up {
     width: 94%;
     margin: -120px auto 0 auto;
-  }
-
-  .choose__work .block3 .for-button {
-    top: 550px;
   }
 }
 
@@ -1697,8 +1688,11 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 @media (max-width: 360px) {
-  .search {
-    height: 1720px;
+
+  .tabs__content {
+    width: 100%;
+    border: 2px solid blue;
+    overflow-x: hidden;
   }
 
   .search-reduced {
@@ -2149,6 +2143,34 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any .choose__buttons {
   margin-top: 40px;
+}
+
+.choose__any .ul-wide {
+  max-width: 1575px;
+}
+
+.choose__any .for-button {
+  max-width: 1575px;
+}
+
+@media (max-width: 1655px) {
+  .choose__any .ul-wide {
+    width: 98vw;
+  }
+
+  .choose__any .for-button {
+    width: 98vw;
+  }
+}
+
+@media (max-width: 1600px) {
+  .choose__any .ul-wide {
+    width: 97.7vw;
+  }
+
+  .choose__any .for-button {
+    width: 97.7vw;
+  }
 }
 
 /******Кнопка Применить в мультиселектах************/

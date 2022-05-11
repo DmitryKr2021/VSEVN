@@ -281,6 +281,7 @@ body {
   display: flex;
 }
 
+
 @media (max-width: 1450px) {
   .inputs__row:not(.inputs__row--last) .options {
     width: 100%;

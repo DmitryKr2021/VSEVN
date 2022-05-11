@@ -184,7 +184,7 @@ rollUpBtn.onclick = () => {
 
 const inputFields = chooseWork.querySelectorAll('.input-field');
 const inputFieldsAll = document.querySelectorAll('.input-field');
-//const inputSelectsAll = document.querySelectorAll('.inputselect');
+
 window.addEventListener('click', showInput);
 
 function showInput(e) { //убрать placeholder и показать input
@@ -313,7 +313,7 @@ function hideAllLists(e) {
     eX > searchContainer.getBoundingClientRect().right ||
     eY < tabs.getBoundingClientRect().bottom ||
     eY > rollUp.getBoundingClientRect().top ||
-    eY > 700) {
+    eY > 900) {
     for (let item of document.querySelectorAll('.showlist')) {
       item.classList.remove('showlist');
     }
@@ -350,6 +350,22 @@ function hideAllLists(e) {
       }
     }
   }
+
+  /*const inputsChooseWork = chooseWork.querySelectorAll('.input-container');
+  for (let item of inputsChooseWork) {
+    const icwRect = {
+      x1: item.getBoundingClientRect().left,
+      x2: item.getBoundingClientRect().right,
+      y1: item.getBoundingClientRect().top,
+      y2: item.getBoundingClientRect().bottom,
+    };
+    if (eX < icwRect.x1 || eX > icwRect.x2 || eY < icwRect.y1 || eY > icwRect.y2 && item.firstElementChild.value) {
+      for (let item of document.querySelectorAll('.inputsel')) {
+        //item.classList.remove('inputsel');
+      }
+    }
+  }*/
+
 }
 
 
@@ -411,7 +427,9 @@ function hideSelect_1(e) {
       }
     }
     for (let item of inputSelects) {
-      item.classList.remove('inputsel');
+      if (!item.value) {
+        item.classList.remove('inputsel');
+      }
     }
     for (let arrow of inputContainerArrows) {
       arrow.classList.remove('arrow-rotate');
@@ -568,10 +586,6 @@ function removeWide2(e) {
       e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
     }
     e.target.nextElementSibling.classList.remove('ul-wide2');
-
-    /*for (let item of toHide2s) {
-      item.classList.remove('hide-block');
-    }*/
   }
 
 
@@ -766,6 +780,12 @@ range1.oninput = () => {
 resetAll.addEventListener('click', resetInputs);
 
 function resetInputs() {
+  for (let item of document.querySelectorAll('.inputsel')) {
+    item.classList.remove('inputsel');
+  }
+
+  document.getElementById('region').classList.remove('inputsel');
+
   tempValue = '';
   for (let inp of inputFields) {
     if (inp.parentNode.querySelector('label').classList.contains('placeholder')) {
@@ -1195,7 +1215,10 @@ function staffResetInputs() {
   for (let inp of staffInputSelects) {
     inp.parentNode.querySelector('label').classList.remove('hide-block');
   }
-
+  document.getElementById('region1').classList.remove('inputsel');
+  for (let item of chooseStaff.querySelectorAll('.inputsel')) {
+    item.classList.remove('inputsel');
+  }
   //Обнуление шкал
   for (let item of range2s) {
     item.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
@@ -1422,8 +1445,10 @@ function anyResetInputs() {
   for (let inp of anyInputSelects) {
     inp.parentNode.querySelector('label').classList.remove('hide-block');
   }
-
-
+  document.getElementById('region2').classList.remove('inputsel');
+  for (let item of chooseAny.querySelectorAll('.inputsel')) {
+    item.classList.remove('inputsel');
+  }
   //Обнуление шкалы Зарплата2
 
   range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
@@ -1813,6 +1838,10 @@ function handlerRegApply() {
   outText = outRegionText + outPunktText;
   outRegion.value = outText;
 
+  if (outRegion.value) {
+    outRegion.classList.add('inputsel'); //сохранили подчеркивание
+  }
+
   outRegion.nextElementSibling.classList.add('input-field-focus');
   setTimeout(() => {
     closeRegions();
@@ -1824,7 +1853,7 @@ function handlerRegApply() {
 /***Поля ввода, где текст не помещается**
  перевод в дымку и всплывающее окно***/
 
-const charWidth = 9.5; //ширина 1 символа
+const charWidth = 10; //ширина 1 символа
 
 const rubric = document.getElementById('rubricator');
 const rubric1 = document.getElementById('rubricator1');
@@ -1900,7 +1929,7 @@ function handleText() {
 
 handleText();
 
-window.addEventListener('resize', handleText);
+//window.addEventListener('resize', handleText);
 
 
 window.onclick = (e) => {
