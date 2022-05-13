@@ -47,6 +47,7 @@ body {
   font-size: 34px;
 }*/
 .search__title {
+  margin-top: 20px;
   font-family: ZabraProTest;
   font-weight: 500;
   font-size: 34px;
@@ -1183,7 +1184,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 @media (max-width: 900px) {
   .search {
-    height: 1100px;
+    height: 1120px;
   }
 
   .search__container {
@@ -1343,9 +1344,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 @media (max-width: 650px) {
-
-  .search__container {
-    height: 1020px;
+  .search {
+    height: 1200px;
   }
 
   .search .tabs__title {
@@ -1434,6 +1434,16 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .choose__work .block3 .for-button {
     top: 440px;
+  }
+}
+
+@media (max-width: 540px) {
+  .search {
+    height: 1220px;
+  }
+
+  .search-reduced {
+    height: 450px;
   }
 }
 
@@ -1670,6 +1680,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .choose__work .block3 .for-button {
     top: 740px;
+  }
+
+  .header {
+    display: none;
   }
 }
 
@@ -2173,7 +2187,209 @@ input[type="range"]:active::-webkit-slider-thumb {
   }
 }
 
-/******Кнопка Применить в мультиселектах************/
+/*************** Блок info **********************/
+.initial-hide {
+  display: none;
+}
+
+.info__initial {
+  position: relative;
+}
 
 
+/*************** Баннер Девушка ****************/
+/*
+.yellow path:nth-child(4) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow path:nth-child(6) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow path:nth-child(8) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow path:nth-child(10) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow path:nth-child(11) {
+  fill: var(--yellow1) !important;
+}
+
+.yellow path:nth-child(12) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow path:nth-child(13) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow path:nth-child(15) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow1 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow2 path:nth-child(21) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow2 path:nth-child(22) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow2 path:nth-child(23) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow2 path:nth-child(32) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow2 path:nth-child(33) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow2 path:nth-child(37) {
+  fill: var(--yellow1) !important;
+}
+
+.yellow2 path:nth-child(38) {
+  fill: var(--yellow1) !important;
+}
+
+.yellow2 path:nth-child(40) {
+  fill: var(--yellow1) !important;
+}
+
+.yellow2 path:nth-child(41) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow3 path:nth-child(6) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow3 path:nth-child(10) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow4 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow5 path:nth-child(3) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow5 path:nth-child(4) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow6 path:nth-child(1) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow6 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow6 path:nth-child(4) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow6 path:nth-child(6) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow7 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow7 path:nth-child(4) {
+  fill: var(--yellow0) !important;
+}
+
+.yellow8 path:nth-child(4) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow9 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow9 path:nth-child(5) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow10 path:nth-child(1) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow10 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow10 path:nth-child(3) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow11 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow11 path:nth-child(3) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow11 path:nth-child(4) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow12 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow12 path:nth-child(3) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow13 path:nth-child(3) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow14 path:nth-child(3) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow15 path:nth-child(2) {
+  fill: var(--yellow3) !important;
+}
+
+.yellow16 path:nth-child(1) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow16 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+
+.yellow17 path:nth-child(2) {
+  fill: var(--yellow2) !important;
+}
+*/
 /****************************************************/
+.header__wrap {
+  height: 110px !important;
+}
+
+@media (max-width: 1025px) {
+  .header__wrap {
+    height: 40px !important;
+  }
+}

@@ -43,6 +43,18 @@ document.onscroll = (e) => {
 };
 /*************Конец блока*****************/
 
+/*********** Работа с верхним бургер-меню**********/
+const iconMenu = document.querySelector('.icon-menu');
+const dropdownList = document.querySelector('.dropdown-list');
+
+iconMenu.addEventListener('click', openIconMenu);
+
+function openIconMenu() {
+  dropdownList.classList.toggle('_active');
+  document.documentElement.classList.toggle("menu-open");
+}
+/********* Конец работы с верхним бургер-меню*******/
+
 
 /**********Управление кнопками выбора типа поиска**********/
 const chooseWork = document.querySelector('.choose__work');

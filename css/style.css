@@ -6,6 +6,10 @@ body {
   --bg-yellow: #ffdd00;
   --text-color: #333333;
   --border-color: #e1e1e1;
+  --yellow0: rgb(255, 237, 78);
+  --yellow1: rgb(255, 241, 112);
+  --yellow2: rgb(255, 255, 240);
+  --yellow3: rgb(254, 245, 197);
 }
 
 
@@ -4049,10 +4053,10 @@ svg path {
 }
 
 .dropdown-list {
-  min-width: 155px;
   position: absolute;
   top: 42px;
   right: 0;
+  min-width: 155px;
   padding: 5px 0 0 0;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: #fff;
@@ -4060,11 +4064,8 @@ svg path {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease 0s;
-  z-index: 1000;
+  z-index: 30;
   border-bottom-left-radius: 5px;
-}
-
-.dropdown-list {
   overflow: auto;
   height: 650px;
   max-height: 70vh;
