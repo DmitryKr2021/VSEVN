@@ -1,21 +1,4 @@
-﻿//Проверка шрифтов
-/*const regular = document.querySelector('.regular');
-const medium = document.querySelector('.medium');
-const searchTitle = document.querySelector('.search__title');
-medium.onclick = () => {
-  medium.classList.add('active');
-  regular.classList.remove('active');
-  searchTitle.classList.add('search__title--medium');
-  searchTitle.classList.remove('search__title--regular');
-};
-regular.onclick = () => {
-  medium.classList.remove('active');
-  regular.classList.add('active');
-  searchTitle.classList.remove('search__title--medium');
-  searchTitle.classList.add('search__title--regular');
-};*/
-
-//Создание красной линии - индикатора скролла 
+﻿//Создание красной линии - индикатора скролла 
 
 /*scrollHeight = Math.max(
   document.body.scrollHeight, document.documentElement.scrollHeight,
@@ -296,6 +279,7 @@ const chooseRegion = document.querySelector('.choose__region');
 const regionRect = chooseRegion.getBoundingClientRect();
 const searchContainer = document.querySelector('.search__container');
 const tabs = document.querySelector('.tabs');
+const inputContainerUls = document.querySelectorAll('.input-container__ul');
 window.addEventListener('click', hideAllLists);
 
 function hideAllLists(e) {
@@ -327,7 +311,9 @@ function hideAllLists(e) {
     eY > rollUp.getBoundingClientRect().top ||
     eY > 900) {
     for (let item of document.querySelectorAll('.showlist')) {
-      item.classList.remove('showlist');
+      if (document.documentElement.clientWidth > 500) {
+        item.classList.remove('showlist');
+      }
     }
 
     for (let item of document.querySelectorAll('.inputsel')) {
@@ -363,6 +349,7 @@ function hideAllLists(e) {
     }
   }
 
+
   /*const inputsChooseWork = chooseWork.querySelectorAll('.input-container');
   for (let item of inputsChooseWork) {
     const icwRect = {
@@ -380,12 +367,29 @@ function hideAllLists(e) {
 
 }
 
+window.addEventListener('click', isDark);
+
+function isDark() { //затемнение поля, если открыт селект
+
+  function isShowList() {
+    for (let item of inputContainerUls) {
+      if (item.classList.contains('showlist')) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (isShowList()) {
+    searchContainer.classList.remove('search-dark');
+  } else {
+    //searchContainer.classList.add('search-dark');
+  }
+}
 
 /**********Работа с селектами*****************/
-
-//const inputSelects = chooseWork.querySelectorAll('.inputselect');
 const inputSelects = document.querySelectorAll('.inputselect');
-const inputContainerUls = document.querySelectorAll('.input-container__ul');
+//const inputContainerUls = document.querySelectorAll('.input-container__ul'); определено выше
 const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
@@ -399,6 +403,26 @@ function hideSelect_1(e) {
     targPN.querySelector('.inputselect').classList.toggle('inputsel');
     targ.classList.toggle('arrow-rotate');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
+
+    //Для мобильной версии (<500рх) поднять инпут с селектом вверх и оставить на старом месте копию инпута
+    const headerTop = document.querySelector('.header__top');
+    const headerMenu = document.querySelector('.header__menu');
+    targPN.classList.add('fixed-top');
+    targPN.parentNode.classList.add('high-zindex');
+    headerMenu.classList.add('hide-block');
+    headerTop.classList.add('hide-block');
+    chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
+    window.onscroll = () => {
+      //прячем остальные инпуты, чтобы не видно при скролле вверох
+      for (let item of inputSelects) {
+        if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
+          item.parentNode.classList.add('invisible');
+        } else {
+          item.parentNode.classList.remove('invisible');
+        }
+      }
+    };
+
 
     //разворачиваем/сворачиваем рубрикатор 
     if (!targPN.querySelector('.input-container__ul').classList.contains('ul-wide') && targPN.querySelector('.inputselect').classList.contains('ulwide')) {
@@ -425,6 +449,7 @@ function hideSelect_1(e) {
   }
 
   //нажали на поле, но не на стрелочку
+
   if (targ.classList.contains('is2')) {
     targPN.querySelector('.arrow').classList.add('arrow-rotate');
     targPN.querySelector('.placeholder2').classList.add('input-field-focus');

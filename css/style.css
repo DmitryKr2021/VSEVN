@@ -110,8 +110,8 @@ body {
 body {
   color: #2c2c2c;
   line-height: 1;
-  /*font-family: "Open Sans";
-  font-family: "ZabraPro";*/
+  /*font-family: "Open Sans";*/
+  /*font-family: "ZabraPro";*/
   font-family: "ZabraProTest";
   font-size: 1rem;
   overflow-x: hidden;
@@ -4338,31 +4338,31 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
 }
 
 .search__title {
-  color: #ffffff;
+  /*color: #ffffff;
   line-height: normal;
   text-align: center;
   text-transform: uppercase;
   max-width: 800px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;*/
 }
 
 @media (min-width: 101.875em) {
   .search__title {
-    font-size: 2.25rem;
+    *font-size: 2.25rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .search__title {
-    font-size: clamp(1.25rem, 1.0057251908rem + 1.2213740458vw, 2.25rem);
+    *font-size: clamp(1.25rem, 1.0057251908rem + 1.2213740458vw, 2.25rem);
   }
 }
 
 @media (max-width: 20em) {
   .search__title {
-    font-size: 1.25rem;
+    *font-size: 1.25rem;
   }
 }
 
