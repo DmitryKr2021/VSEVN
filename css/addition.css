@@ -795,8 +795,7 @@ body {
 
 .input-container__arrow {
   position: absolute;
-  top: 50%;
-  bottom: 14px;
+  top: 54%;
   transform: translateY(-50%);
   right: 15px;
   width: 20px;
@@ -832,7 +831,19 @@ body {
   background-color: #fff;
 }
 
+.choose__work .block4 .input-container:nth-child(2) {
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 #rubricator {
+  background: linear-gradient(to right, #000 60%, #777 70%, #ddd 80%, transparent 90%, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#vacansion {
   background: linear-gradient(to right, #000 60%, #777 70%, #ddd 80%, transparent 90%, transparent);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1909,7 +1920,19 @@ input[type="range"]:active::-webkit-slider-thumb {
   background-color: #fff;
 }
 
+.choose__staff .block4 .input-container:nth-child(2) {
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 #rubricator1 {
+  background: linear-gradient(to right, #000 60%, #777 70%, #ddd 80%, transparent 90%, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#vacansion1 {
   background: linear-gradient(to right, #000 60%, #777 70%, #ddd 80%, transparent 90%, transparent);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1919,6 +1942,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 .choose__staff .block4 .input-container:nth-of-type(2) .input-container__item {
   padding-top: 0px;
   padding-bottom: 3px;
+}
+
+.choose__staff .block4 .input-container:nth-of-type(1) .item-multi:hover:after {
+  top: 5px;
 }
 
 .choose__staff .block5 {
@@ -2106,10 +2133,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   top: 50%;
 }
 
-.choose__any .block3 .input-container:nth-child(1) .input-reset {
-  top: 35%;
-}
-
 #rubricator2 {
   background: linear-gradient(to right, #000 60%, #777 70%, #ddd 80%, transparent 90%, transparent);
   -webkit-background-clip: text;
@@ -2138,10 +2161,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any .check-radio {
   padding-top: 0px;
-}
-
-.choose__any .input-reset {
-  top: 22px;
 }
 
 .choose__any .block2 .cut,

@@ -514,15 +514,15 @@
                var ratio = 0;  
                function startFunc () { 
                var list = document.getElementsByTagName("div"); 
-               ratio = list[0].offsetWidth / list[0].offsetHeight; console.log(list[0].offsetWidth); 
+               ratio = list[0].offsetWidth / list[0].offsetHeight; /*console.log(list[0].offsetWidth); 
                console.log(list[0].offsetHeight); 
-               console.log("Ratio 1 = "+ratio); } 
+               console.log("Ratio 1 = "+ratio);*/ } 
                window.addEventListener("load", function(event) { startFunc(); fit(); });  
                fit(); 
                window.addEventListener("resize", fit , true );  function fit() { startFunc(); 
                let cont_height = window.innerHeight; 
                let cont_width =  window.innerWidth; 
-               console.log("Ratio = "+ratio); 
+               //console.log("Ratio = "+ratio); 
                if ( window.innerHeight*ratio > window.innerWidth ) { console.log("width - is bottleneck"); 
                cont_width = window.innerWidth; 
                cont_height = cont_width/ratio; }
@@ -897,14 +897,14 @@
                 
                   <div class="block1">
                     
-                    <div class="input-container">
+                    <div class="input-container" id="inp_cont0">
                       <input id="vacation" class="input-field" type="text" placeholder=" " />
                       <label for="vacation" class="placeholder">Название вакансии, должность</label>
                       <div class="cut"></div>
                       <button class="input-reset hide-block" type="button">&#215;</button>
                     </div>
 
-                    <div class="input-container">
+                    <div class="input-container" id="inp_cont1">
                       <input id="region" class="input-field" type="text" placeholder=" " />
                       <label for="region" class="placeholder">Регион / Населенный пункт </label>
                       <div class="cut"></div>
@@ -914,10 +914,9 @@
 
                   <div class="block2">
 
-                    <div class="input-container">
-
+                    <div class="input-container" id="inp_cont2">
                       <input id="district" class="inputselect is2" type="text" placeholder="" />
-                      <label for="district" class="placeholde placeholder2">Район</label>                  
+                      <label for="district" class="placeholder placeholder2">Район</label>                  
                                     
                       <div class="cut"></div>
                       <div class="input-container__arrow arrow"></div>
@@ -970,8 +969,7 @@
                         </ul>
                     </div>
 
-                    <div class="input-container">
-
+                    <div class="input-container" id="inp_cont3">
                       <input id="metro" class="inputselect is2" type="text" placeholder=" " />
                       <label for="metro" class="placeholder placeholder2">Метро</label>
 
@@ -1041,8 +1039,7 @@
 
                   <div class="block3">
 
-                    <div class="input-container">
-                
+                    <div class="input-container" id="inp_cont4">               
                       <input id="rubricator" class="inputselect is2 ulwide" type="text" placeholder=" " />
                       <label for="rubricator" class="placeholder placeholder2">Отраслевой рубрикатор</label>
                       
@@ -1207,8 +1204,7 @@
                           </div>
                     </div>
 
-                    <div class="input-container to-hide">
-                
+                    <div class="input-container to-hide" id="inp_cont5">              
                       <input id="shedule" class="inputselect is2" type="text" placeholder=" " />
                       <label for="shedule" class="placeholder placeholder2">График работы</label>
 
@@ -1248,8 +1244,7 @@
 
                   <div class="block4">
 
-                    <div class="input-container padding0 to-hide to-hide2">
-
+                    <div class="input-container padding0 to-hide to-hide2" id="inp_cont6">
                       <input id="skills" class="inputselect is2" type="text" placeholder=" " />
                       <label for="skills" class="placeholder placeholder2">Опыт работы</label>
 
@@ -1314,8 +1309,7 @@
                         </ul>
                     </div>
 
-                    <div class="input-container to-hide">
-                 
+                    <div class="input-container to-hide" id="inp_cont7">                
                       <input id="vacansion" class="inputselect is2 ulwide2" type="text" placeholder=" " />
                       <label for="vacansion" class="placeholder placeholder2">Тип вакансии</label>
 
@@ -1432,7 +1426,7 @@
 
                   <div class="block5">
                     
-                  <div class="input-container">
+                  <div class="input-container" id="inp_cont8">
                     <input id="company" class="input-field" type="text" placeholder=" " />
                     <label for="company" class="placeholder">Поиск компании по названию или по номеру телефона</label>
                     <div class="cut"></div>
@@ -1497,14 +1491,14 @@
                 
                     <div class="block1">
                       
-                      <div class="input-container">
+                      <div class="input-container" id="inp_cont9">
                         <input id="vacation" class="input-field" type="text" placeholder=" " />
                         <label for="vacation" class="placeholder">Название вакансии, должность</label>
                         <div class="cut"></div>
                         <button class="input-reset hide-block" type="button">&#215;</button>
                       </div>
   
-                      <div class="input-container">
+                      <div class="input-container" id="inp_cont10">
                         <input id="region1" class="input-field" type="text" placeholder=" " />
                         <label for="region1" class="placeholder">Регион / Населенный пункт </label>
                         <div class="cut"></div>
@@ -1514,10 +1508,9 @@
   
                     <div class="block2">
   
-                      <div class="input-container">
-
+                      <div class="input-container" id="inp_cont11">
                         <input id="district1" class="inputselect is2" type="text" placeholder="" />
-                        <label for="district1" class="placeholde placeholder2">Район</label>    
+                        <label for="district1" class="placeholder placeholder2">Район</label>    
 
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
@@ -1569,8 +1562,7 @@
                         </ul>
                       </div>
   
-                      <div class="input-container">
-
+                      <div class="input-container" id="inp_cont12">
                         <input id="metro1" class="inputselect is2" type="text" placeholder=" " />
                         <label for="metro1" class="placeholder placeholder2">Метро</label>
 
@@ -1642,8 +1634,8 @@
   
                     <div class="block3">
   
-                      <div class="input-container">
-                   
+                      <div class="input-container" id="inp_cont13">
+
                         <input id="rubricator1" class="inputselect is2 ulwide" type="text" placeholder=" " />
                        <label for="rubricator1" class="placeholder placeholder2">Отраслевой рубрикатор</label>
 
@@ -1809,12 +1801,10 @@
 
                       </div>
 
-                      <div class="input-container to-hide">
+                      <div class="input-container to-hide" id="inp_cont14">
                    
                         <input id="education" class="inputselect is2" type="text" placeholder=" " />
                         <label for="education" class="placeholder placeholder2">Образование</label>
-
-
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>
@@ -1843,7 +1833,7 @@
   
                     <div class="block4">
   
-                      <div class="input-container to-hide to-hide2">
+                      <div class="input-container to-hide to-hide2" id="inp_cont15">
                 
                         <input id="shedule1" class="inputselect is2" type="text" placeholder=" " />
                         <label for="shedule1" class="placeholder placeholder2">График работы</label>
@@ -1880,11 +1870,10 @@
                           </ul>
                       </div>
   
-                      <div class="input-container to-hide">
+                      <div class="input-container to-hide" id="inp_cont16">
                   
                         <input id="vacansion1" class="inputselect is2 ulwide2" type="text" placeholder=" " />
                         <label for="vacansion1" class="placeholder placeholder2">Тип вакансии</label>
-
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset btn-up hide-block" type="button">&#215;</button>
@@ -1995,7 +1984,7 @@
                   </div><!--/form__wrap--blok-3_4-->
   
                     <div class="block5">                     
-                    <div class="input-container">
+                    <div class="input-container" id="inp_cont17">
                       <input id="company1" class="input-field" type="text" placeholder="Ведите ФИО соискателя или название навыка, например, PHP, и нажмите кнопку «Показать»" />
                       <label for="company1" class="placeholder">Поиск соискателя по ФИО или поиск навыка</label>
                       <div class="cut"></div>
@@ -2107,14 +2096,14 @@
                   <div class="form__wrap--blok-1_2">               
                     <div class="block1">
                       
-                      <div class="input-container">
+                      <div class="input-container" id="inp_cont18">
                         <input id="vacation" class="input-field" type="text" placeholder=" " />
                         <label for="vacation" class="placeholder">Название вакансии, должность</label>
                         <div class="cut"></div>
                         <button class="input-reset btn2 hide-block" type="button">&#215;</button>
                       </div>
   
-                      <div class="input-container">
+                      <div class="input-container" id="inp_cont19">
                         <input id="region2" class="input-field" type="text" placeholder=" " />
                         <label for="region2" class="placeholder">Регион / Населенный пункт </label>
                         <div class="cut"></div>
@@ -2124,11 +2113,10 @@
   
                     <div class="block2">
   
-                      <div class="input-container">
+                      <div class="input-container" id="inp_cont20">
 
                         <input id="district2" class="inputselect is2" type="text" placeholder="" />
                         <label for="district2" class="placeholde placeholder2">Район</label>
-
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
                         <button class="input-reset hide-block" type="button">&#215;</button>
@@ -2179,11 +2167,10 @@
                         </ul>                        
                       </div>
   
-                      <div class="input-container">
+                      <div class="input-container"  id="inp_cont21">
 
                         <input id="metro2" class="inputselect is2" type="text" placeholder=" " />
                         <label for="metro2" class="placeholder placeholder2">Метро</label>
-
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow"></div>
                         <button class="input-reset hide-block" type="button">&#215;</button>                     
@@ -2252,11 +2239,10 @@
   
                     <div class="block3">
   
-                      <div class="input-container">
+                      <div class="input-container"  id="inp_cont22">
                       
                         <input id="rubricator2" class="inputselect is2 ulwide" type="text" placeholder=" " />
                         <label for="rubricator2" class="placeholder placeholder2">Отраслевой рубрикатор</label>
-
                         <div class="cut"></div>
                         <div class="input-container__arrow arrow arrow2"></div>
                         <button class="input-reset hide-block" type="button">&#215;</button>
@@ -2418,7 +2404,7 @@
 
                       </div>
   
-                      <div class="input-container to-hide">
+                      <div class="input-container to-hide"  id="inp_cont23">
                                                       
                         <input id="shedule2" class="inputselect is2" type="text" placeholder=" " />
                         <label for="shedule2" class="placeholder placeholder2">График работы</label>
@@ -2459,7 +2445,7 @@
   
                     <div class="block4">
   
-                      <div class="input-container">
+                      <div class="input-container"  id="inp_cont24">
                         <label for="company2" class="placeholder">Поиск компании по названию или по номеру телефона или поиск соискателя по ФИО</label>
                         <input id="company2" class="input-field" type="text" placeholder=" " />
                         <div class="cut"></div>
@@ -5660,7 +5646,16 @@
                   </svg>
                   </div> 
                    
-                   <script> var ratio = 0;  function startFunc () { var list = document.getElementsByTagName("div"); ratio = list[0].offsetWidth / list[0].offsetHeight; console.log(list[0].offsetWidth); console.log(list[0].offsetHeight); console.log("Ratio 1 = "+ratio); } window.addEventListener("load", function(event) { startFunc(); fit(); });  fit(); window.addEventListener("resize", fit , true );  function fit() { startFunc(); let cont_height = window.innerHeight; let cont_width =  window.innerWidth; console.log("Ratio = "+ratio); if ( window.innerHeight*ratio > window.innerWidth ) { console.log("width - is bottleneck"); cont_width = window.innerWidth; cont_height = cont_width/ratio; }else{ console.log("height - is bottleneck"); cont_height = window.innerHeight; cont_width = cont_height*ratio; }  var cont = document.getElementsByTagName("div")[0]; cont.style.height = cont_height + "px"; cont.style.width = cont_width + "px"; }  </script> 
+                   <script> var ratio = 0;  function startFunc () { var list = document.getElementsByTagName("div"); ratio = list[0].offsetWidth / list[0].offsetHeight; 
+                   //console.log(list[0].offsetWidth); 
+                   //console.log(list[0].offsetHeight); 
+                   //console.log("Ratio 1 = "+ratio); 
+                  } 
+                   window.addEventListener("load", function(event) { startFunc(); fit(); });  fit(); window.addEventListener("resize", fit , true );  function fit() { startFunc(); let cont_height = window.innerHeight; let cont_width =  window.innerWidth; 
+                   //console.log("Ratio = "+ratio); 
+                   if ( window.innerHeight*ratio > window.innerWidth ) { 
+                     //console.log("width - is bottleneck"); 
+                     cont_width = window.innerWidth; cont_height = cont_width/ratio; }else{ console.log("height - is bottleneck"); cont_height = window.innerHeight; cont_width = cont_height*ratio; }  var cont = document.getElementsByTagName("div")[0]; cont.style.height = cont_height + "px"; cont.style.width = cont_width + "px"; }  </script> 
             </div>
             
 						

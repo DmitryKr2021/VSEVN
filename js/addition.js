@@ -127,6 +127,12 @@ function handleShowAll(e) {
 }
 
 function handleResetAll(e) {
+  //Обнулить объекты инпутов
+  for (let item of inpConts) {
+    item.open = false;
+    item.filled = false;
+  }
+
   //Расширить кнопку Показать. Кнопка Очистить убирается в коде ниже
   e.target.parentNode.querySelectorAll('button')[1].classList.remove('choose__btn--mini');
   e.target.nextElementSibling.innerText = 'Показать';
@@ -145,7 +151,6 @@ function handleResetAll(e) {
     item.classList.remove('input-field-focus');
     //вернуть placeholder2 на место
   }
-
 }
 
 /**********Конец работа с кнопками Показать/Очистить *********/
@@ -179,6 +184,8 @@ rollUpBtn.onclick = () => {
 
 const inputFields = chooseWork.querySelectorAll('.input-field');
 const inputFieldsAll = document.querySelectorAll('.input-field');
+let tempValueRubr; //временное хранение вводимого значения
+let tempValueVacans; //временное хранение вводимого значения
 
 window.addEventListener('click', showInput);
 
@@ -253,8 +260,6 @@ function hideInputReset(e) {
     targ.querySelector('.placeholder').classList.remove('input-field-focus');
   }
 
-  targ.querySelector('.inputselect').classList.remove('inputsel');
-
   if (targ.querySelector('.placeholder2')) {
     targ.querySelector('.placeholder2').classList.remove('input-field-focus');
   }
@@ -266,7 +271,15 @@ function hideInputReset(e) {
   for (let item of targ.querySelectorAll('.input-checkbox')) {
     item.checked = false;
   }
-  tempValue = '';
+
+  for (let item of inpConts) {
+    if (item.reset === e.target) {
+      item.filled = false;
+    }
+  }
+
+  tempValueRubr = '';
+  tempValueVacans = '';
   removeWide(e);
   removeWide2(e);
 }
@@ -274,13 +287,41 @@ function hideInputReset(e) {
 //конец работы с крестиками
 /*************Конец блока с полями ввода************** */
 
+
 //Закрыть селекты по клику в произвольном месте
 const chooseRegion = document.querySelector('.choose__region');
 const regionRect = chooseRegion.getBoundingClientRect();
 const searchContainer = document.querySelector('.search__container');
 const tabs = document.querySelector('.tabs');
+const inputSelects = document.querySelectorAll('.inputselect');
 const inputContainerUls = document.querySelectorAll('.input-container__ul');
+let x1rubric;
+let x2rubric; //координаты расширенного блока рубрикатора
+let x1vacansion;
+let x2vacansion; //координаты расширенного блока вакансий
+
 window.addEventListener('click', hideAllLists);
+
+function isNoInRect(e, rect) {
+  let eX = e.clientX;
+  let eY = e.clientY;
+  if (eX < rect.x1 || eX > rect.x2 || eY < rect.y1 || eY > rect.y2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isNoInRectUl(e, rect) {
+  let eX = e.clientX;
+  let eY = e.clientY;
+  let rectBound = rect.getBoundingClientRect();
+  if (eX < rectBound.left || eX > rectBound.right || eY < rectBound.top || eY > rectBound.bottom) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function hideAllLists(e) {
   let eX = e.clientX;
@@ -295,17 +336,73 @@ function hideAllLists(e) {
       item.classList.add('hide-block');
     }
   }
+
   if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
     removeWide2(e);
     for (let item of document.querySelectorAll('.ul-wide2')) {
       item.classList.remove('ul-wide2');
     }
-    for (let item of document.querySelectorAll('.for-button')) {
-      item.classList.add('hide-block');
+  }
+  /*for (let item of document.querySelectorAll('.for-button')) {
+    item.classList.add('hide-block');
+  }*/ //На удаление
+
+
+
+  for (let item of inpConts) {
+    if (item.ul) {
+      if (isNoInRect(e, item) && isNoInRectUl(e, item.ul)) {
+        item.ul.classList.remove('showlist');
+        item.open = false;
+
+        if (item.arrow.classList.contains('arrow-rotate')) {
+          item.arrow.classList.remove('arrow-rotate');
+        }
+      }
+
+      if (e.clientX < x1rubric || e.clientX > x2rubric) {
+        for (let item of toHides) {
+          item.classList.remove('hide-block');
+        }
+        item.ul.classList.remove('ul-wide');
+        for (let item of document.querySelectorAll('.for-button')) {
+          item.classList.add('hide-block');
+        }
+      }
+
+      if (e.clientX < x1vacansion || e.clientX > x2vacansion) {
+        for (let item of toHide2s) {
+          item.classList.remove('hide-block');
+        }
+        item.ul.classList.remove('ul-wide2');
+        for (let item of document.querySelectorAll('.for-button')) {
+          if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
+            item.classList.add('hide-block');
+          }
+        }
+      }
+    }
+    if (item.ph2) {
+      if (item.filled) {
+        item.ph2.classList.add('input-field-focus');
+      } else {
+        if (!item.open && !e.target.classList.contains('input-container__arrow')) {
+          item.input.classList.remove('inputsel');
+        }
+        if (!e.target.classList.contains('input-container__arrow')) {
+          if (!item.ul.classList.contains('showlist')) {
+            item.ph2.classList.remove('input-field-focus');
+          }
+        }
+      }
     }
   }
+  //Убрать блок регионов
+  if (eX < regionRect.left || eX > regionRect.right) {
+    chooseRegion.classList.add('up-block');
+  }
 
-  if (eX < searchContainer.getBoundingClientRect().left ||
+  /*if (eX < searchContainer.getBoundingClientRect().left ||
     eX > searchContainer.getBoundingClientRect().right ||
     eY < tabs.getBoundingClientRect().bottom ||
     eY > rollUp.getBoundingClientRect().top ||
@@ -323,73 +420,82 @@ function hideAllLists(e) {
       item.classList.remove('arrow-rotate');
     }
 
-    //Убрать блок регионов
-    if (eX < regionRect.left || eX > regionRect.right) {
-      chooseRegion.classList.add('up-block');
-    }
+}
 
-    removeWide(e);
-    removeWide2(e);
-    for (let item of document.querySelectorAll('.ul-wide')) {
-      item.classList.remove('ul-wide');
-    }
-    for (let item of document.querySelectorAll('.ul-wide2')) {
-      item.classList.remove('ul-wide2');
-    }
-    for (let item of document.querySelectorAll('.for-button')) {
-      item.classList.add('hide-block');
-    }
+  removeWide(e);
+  removeWide2(e);
+  for (let item of document.querySelectorAll('.ul-wide')) {
+    item.classList.remove('ul-wide');
+  }
+  for (let item of document.querySelectorAll('.ul-wide2')) {
+    item.classList.remove('ul-wide2');
+  }
+  for (let item of document.querySelectorAll('.for-button')) {
+    item.classList.add('hide-block');
   }
 
-  for (let item of document.querySelectorAll('.placeholder2')) {
+*/
+
+
+
+  /*for (let item of document.querySelectorAll('.placeholder2')) {
     if (!e.target.classList.contains('is2') && !e.target.classList.contains('input-checkbox') && !e.target.classList.contains('arrow') && !e.target.classList.contains('check-multi') && !e.target.parentNode.parentNode.parentNode.querySelector('.is2').value) {
       if (!item.previousElementSibling.value) {
         item.classList.remove('input-field-focus');
-      }
-    }
-  }
-
-
-  /*const inputsChooseWork = chooseWork.querySelectorAll('.input-container');
-  for (let item of inputsChooseWork) {
-    const icwRect = {
-      x1: item.getBoundingClientRect().left,
-      x2: item.getBoundingClientRect().right,
-      y1: item.getBoundingClientRect().top,
-      y2: item.getBoundingClientRect().bottom,
-    };
-    if (eX < icwRect.x1 || eX > icwRect.x2 || eY < icwRect.y1 || eY > icwRect.y2 && item.firstElementChild.value) {
-      for (let item of document.querySelectorAll('.inputsel')) {
-        //item.classList.remove('inputsel');
       }
     }
   }*/
 
 }
 
-window.addEventListener('click', isDark);
 
-function isDark() { //затемнение поля, если открыт селект
+/***********Создание объектов инпутов ************/
+class InputContainer {
+  constructor(item) {
+    this.x1 = item.getBoundingClientRect().left;
+    this.x2 = item.getBoundingClientRect().right;
+    this.y1 = item.getBoundingClientRect().top;
+    this.y2 = item.getBoundingClientRect().bottom;
 
-  function isShowList() {
-    for (let item of inputContainerUls) {
-      if (item.classList.contains('showlist')) {
-        return false;
-      }
-    }
-    return true;
+    this.open = false;
+    this.active = false;
+    this.filled = false;
+
+    this.input = item.firstElementChild;
+    this.ph2 = item.querySelector('.placeholder2') || null;
+    this.ul = item.querySelector('.input-container__ul') || null;
+    this.reset = item.querySelector('.input-reset') || null;
+    this.apply = item.querySelector('.apply') || null;
+    this.arrow = item.querySelector('.arrow') || null;
   }
+}
+let inpContTemp;
+let inpConts = [];
+for (let i = 0; i < 25; i++) {
+  inpConts[i] = new InputContainer(document.getElementById(`inp_cont${i}`));
+}
 
-  if (isShowList()) {
-    searchContainer.classList.remove('search-dark');
-  } else {
-    //searchContainer.classList.add('search-dark');
+for (let item of inputSelects) {
+  item.addEventListener('click', func);
+}
+
+function func(e) {
+  inpContTemp = new InputContainer(e.target.parentNode);
+  inpContTemp.open = true;
+  for (let i = 0; i < inpConts.length; i++) {
+    if (e.target === inpConts[i].input) {
+      inpConts[i] = inpContTemp;
+    }
   }
 }
 
+/************************************/
+
+
+
 /**********Работа с селектами*****************/
-const inputSelects = document.querySelectorAll('.inputselect');
-//const inputContainerUls = document.querySelectorAll('.input-container__ul'); определено выше
+/*const inputSelects = document.querySelectorAll('.inputselect');
+const inputContainerUls = document.querySelectorAll('.input-container__ul'); определены выше*/
 const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
@@ -401,6 +507,7 @@ function hideSelect_1(e) {
   if (targ.classList.contains('input-container__arrow')) {
     targPN.querySelector('.input-container__ul').classList.toggle('showlist');
     targPN.querySelector('.inputselect').classList.toggle('inputsel');
+    //targPN.querySelector('.inputselect').classList.add('inputsel');
     targ.classList.toggle('arrow-rotate');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
 
@@ -432,7 +539,9 @@ function hideSelect_1(e) {
       for (let item of toHides) {
         item.classList.remove('hide-block');
       }
-      targPN.querySelector('.for-button').classList.add('hide-block');
+      if (targPN.querySelector('.for-button')) {
+        targPN.querySelector('.for-button').classList.add('hide-block');
+      }
     }
 
     //разворачиваем/сворачиваем вакансии
@@ -443,7 +552,9 @@ function hideSelect_1(e) {
       for (let item of toHide2s) {
         item.classList.remove('hide-block');
       }
-      targPN.querySelector('.for-button').classList.add('hide-block');
+      if (targPN.querySelector('.for-button')) {
+        targPN.querySelector('.for-button').classList.add('hide-block');
+      }
     }
     return;
   }
@@ -452,17 +563,11 @@ function hideSelect_1(e) {
 
   if (targ.classList.contains('is2')) {
     targPN.querySelector('.arrow').classList.add('arrow-rotate');
-    targPN.querySelector('.placeholder2').classList.add('input-field-focus');
+    //targPN.querySelector('.placeholder2').classList.add('input-field-focus');
+    targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
   }
   //нажали вне поля выбора
   if (!targ.classList.contains('inputselect')) {
-    for (let uls of inputContainerUls) {
-      if (targ.parentNode.parentNode !== uls && !e.target.classList.contains('item-multi')) {
-        if (!targ.parentNode.parentNode.parentNode.firstElementChild.classList.contains('ulwide2')) {
-          uls.classList.remove('showlist');
-        }
-      }
-    }
     for (let item of inputSelects) {
       if (!item.value) {
         item.classList.remove('inputsel');
@@ -473,7 +578,6 @@ function hideSelect_1(e) {
     }
   }
 }
-
 
 //Показать выбранный select и спрятать placeholder
 
@@ -532,6 +636,14 @@ function showAllItemSelected(e) {
   if (!targPN.classList.contains('multi')) {
     targPN.classList.toggle('showlist');
   }
+
+  if (numb > 0) {
+    for (let item of inpConts) {
+      if (item.ul === targPN) {
+        item.filled = true;
+      }
+    }
+  }
 }
 
 //нажали на поле выбора
@@ -542,7 +654,7 @@ for (let inp of inputSelects) {
 function hideSelect_2(e) {
   //обнуляем остальные поля выбора
   for (let inp of inputSelects) {
-    inp.classList.remove('inputsel');
+    //inp.classList.remove('inputsel');
   }
   for (let uls of inputContainerUls) {
     uls.classList.remove('showlist');
@@ -551,11 +663,10 @@ function hideSelect_2(e) {
 
   e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
 
-  e.target.classList.toggle('inputsel');
+  //e.target.classList.toggle('inputsel');
+  e.target.classList.add('inputsel');
 
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
-
-  // e.target.querySelector('.placeholder').classList.add('input-field-focus'); //поднять placeholder
 }
 
 /******** Расширение рубрикатора **************** */
@@ -567,6 +678,10 @@ for (let item of ulwides) {
 }
 
 function addWide(e) {
+  let ulRubric = e.target.parentNode.querySelector('.input-container__ul');
+  ulRubric.classList.add('ul-wide');
+  x1rubric = ulRubric.getBoundingClientRect().left;
+  x2rubric = ulRubric.getBoundingClientRect().right;
   e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide');
   for (let item of toHides) {
     item.classList.add('hide-block');
@@ -604,7 +719,10 @@ for (let item of ulwide2s) {
 }
 
 function addWide2(e) {
-  e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide2');
+  let ulVacansion = e.target.parentNode.querySelector('.input-container__ul');
+  ulVacansion.classList.add('ul-wide2');
+  x1vacansion = ulVacansion.getBoundingClientRect().left;
+  x2vacansion = ulVacansion.getBoundingClientRect().right;
   for (let item of toHide2s) {
     item.classList.add('hide-block');
   }
@@ -625,13 +743,11 @@ function removeWide2(e) {
     e.target.nextElementSibling.classList.remove('ul-wide2');
   }
 
-
   if (e.target.classList.contains('apply') && e.target.parentNode.classList.contains('for-button')) {
     e.target.parentNode.classList.add('hide-block');
     e.target.parentNode.previousElementSibling.classList.remove('ul-wide2');
   }
 }
-
 /***********Конец расширения типа вакансии *************/
 
 
@@ -647,7 +763,6 @@ function calculateNumberOfChecked(e) {
   removeWide2(e);
   doApply(e);
 }
-let tempValue; //временное хранение вводимого значения
 
 function doApply(e) { //По кнопке Применить
   let eselect = e.target.parentNode;
@@ -670,18 +785,29 @@ function doApply(e) { //По кнопке Применить
   if (counter === 1) {
     eInputSelect.value = chooseInput;
     eselect.classList.remove('showlist'); //свернуть список
-    tempValue = eInputSelect.value;
+    if (inputString === 'Отраслевой рубрикатор') {
+      tempValueRubr = eInputSelect.value;
+    }
+    if (inputString === 'Тип вакансии') {
+      tempValueVacans = eInputSelect.value;
+    }
   } else {
     if (counter > 1) {
       eInputSelect.value = `${inputString} (выбрано ${counter})`;
       eselect.classList.remove('showlist'); //свернуть список
     } else {
       eInputSelect.value = '';
+      eselect.parentNode.querySelector('.placeholder').classList.remove('input-field-focus');
       if (eselect.classList.contains('showlist')) {
         eselect.classList.remove('showlist');
       }
     }
-    tempValue = eInputSelect.value;
+    if (inputString === 'Отраслевой рубрикатор') {
+      tempValueRubr = eInputSelect.value;
+    }
+    if (inputString === 'Тип вакансии') {
+      tempValueVacans = eInputSelect.value;
+    }
   }
   for (let item of e.target.parentNode.querySelectorAll('.input-checkbox')) {
     item.checked = false;
@@ -821,9 +947,14 @@ function resetInputs() {
     item.classList.remove('inputsel');
   }
 
-  document.getElementById('region').classList.remove('inputsel');
+  for (let item of inpConts) {
+    item.filled = false;
+    item.open = false;
+  }
 
-  tempValue = '';
+  document.getElementById('region').classList.remove('inputsel');
+  tempValueRubr = '';
+  tempValueVacans = '';
   for (let inp of inputFields) {
     if (inp.parentNode.querySelector('label').classList.contains('placeholder')) {
       inp.parentNode.querySelector('label').classList.remove('hide-block');
@@ -897,9 +1028,9 @@ for (let inp of staffInputSelects) {
 function hideSelect_staff2(e) {
   //обнуляем остальные поля выбора
 
-  for (let inp of staffInputSelects) {
+  /*for (let inp of staffInputSelects) {
     inp.classList.remove('inputsel');
-  }
+  }*/ //На удаление
   for (let uls of staffInputContainerUls) {
     uls.classList.remove('showlist');
     uls.parentNode.querySelector('.arrow').classList.remove('arrow-rotate');
@@ -907,7 +1038,8 @@ function hideSelect_staff2(e) {
 
   e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
 
-  e.target.classList.toggle('inputsel');
+  //e.target.classList.toggle('inputsel');
+  e.target.classList.add('inputsel');
 
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
@@ -1336,7 +1468,8 @@ function hideSelect_any2(e) {
 
   e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
 
-  e.target.classList.toggle('inputsel');
+  //e.target.classList.toggle('inputsel');
+  e.target.classList.add('inputsel');
 
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
@@ -1605,18 +1738,24 @@ const punktItems = document.querySelectorAll('.punkt-item');
 //Показать список регионов
 let outRegion;
 
-regionWork.onclick = () => {
+regionWork.addEventListener('click', handl0);
+regionStaff.addEventListener('click', handl1);
+regionAny.addEventListener('click', handl2);
+
+function handl0() {
   outRegion = document.getElementById('region');
   chooseRegion.classList.remove('up-block');
-};
-regionStaff.onclick = () => {
+}
+
+function handl1() {
   outRegion = document.getElementById('region1');
   chooseRegion.classList.remove('up-block');
-};
-regionAny.onclick = () => {
+}
+
+function handl2() {
   outRegion = document.getElementById('region2');
   chooseRegion.classList.remove('up-block');
-};
+}
 
 let closeRegions = function () {
   //деактивировать все чекбоксы и спрятать попап
@@ -1841,6 +1980,9 @@ let outText = '';
 regionApply.addEventListener('click', handlerRegApply);
 
 function handlerRegApply() {
+
+  chooseRegion.classList.add('up-block');
+
   //посчитать число выбранных регионов и пунктов
   let countRegion = 0;
   let countPunkt = 0;
@@ -1895,35 +2037,63 @@ const charWidth = 10; //ширина 1 символа
 const rubric = document.getElementById('rubricator');
 const rubric1 = document.getElementById('rubricator1');
 const rubric2 = document.getElementById('rubricator2');
-let popup = document.createElement('div');
+let popup1 = document.createElement('div');
 
-function showTempValue(e) {
-  if (tempValue) {
-    popup.innerText = tempValue;
-    popup.classList.add('input-popup');
-    e.target.before(popup);
-    popup.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
-    popup.style.left = e.target.getBoundingClientRect().left + 'px';
+const vacans = document.getElementById('vacansion');
+const vacans1 = document.getElementById('vacansion1');
+let popup2 = document.createElement('div');
+
+function showTempValueRubr(e) {
+  if (tempValueRubr) {
+    popup1.innerText = tempValueRubr;
+    popup1.classList.add('input-popup');
+    e.target.before(popup1);
+    popup1.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
+    popup1.style.left = e.target.getBoundingClientRect().left + 'px';
   }
 }
+
+function showTempValueVacans(e) {
+  if (tempValueVacans) {
+    popup2.innerText = tempValueVacans;
+    popup2.classList.add('input-popup');
+    e.target.before(popup2);
+    popup2.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
+    popup2.style.left = e.target.getBoundingClientRect().left + 'px';
+  }
+}
+
 rubric.onmouseover = (e) => {
-  showTempValue(e);
+  showTempValueRubr(e);
 };
-rubric.onmouseout = (e) => {
-  popup.remove(e);
-};
+rubric.addEventListener('mouseout', function () {
+  popup1.remove();
+});
 rubric1.onmouseover = (e) => {
-  showTempValue(e);
+  showTempValueRubr(e);
 };
-rubric1.onmouseout = (e) => {
-  popup.remove(e);
-};
+rubric1.addEventListener('mouseout', function () {
+  popup1.remove();
+});
 rubric2.onmouseover = (e) => {
-  showTempValue(e);
+  showTempValueRubr(e);
 };
-rubric2.onmouseout = (e) => {
-  popup.remove(e);
+rubric2.addEventListener('mouseout', function () {
+  popup1.remove();
+});
+
+vacans.onmouseover = (e) => {
+  showTempValueVacans(e);
 };
+vacans.addEventListener('mouseout', function () {
+  popup2.remove();
+});
+vacans1.onmouseover = (e) => {
+  showTempValueVacans(e);
+};
+vacans1.addEventListener('mouseout', function () {
+  popup2.remove();
+});
 
 function handleText() {
   const inputContainers = document.querySelectorAll('.input-container');
@@ -1935,7 +2105,7 @@ function handleText() {
     const labelText = label_.innerText;
 
     //максимальная длина строки
-    const maxLength = Math.round(input_.offsetWidth / charWidth);
+    const maxLength = Math.round(input_.offsetWidth / charWidth) * 0.83;
     let popup = document.createElement('div');
     popup.innerText = labelText;
     popup.classList.add('input-popup');
@@ -1961,6 +2131,14 @@ function handleText() {
         }
       });
     }
+
+    input_.addEventListener('click', function () {
+      label_.style.cssText = 'color: #333;';
+      if (popup) {
+        popup.style.display = 'none';
+      }
+    });
+
   }
 }
 
@@ -1968,10 +2146,45 @@ handleText();
 
 //window.addEventListener('resize', handleText);
 
+/**********Затемнение желтого поля при активации селектов ******/
+window.addEventListener('click', isDark);
 
-window.onclick = (e) => {
+function isDark(e) {
+  if (e.target.classList.contains('input-field')) {
+    return;
+  }
+
+  function isShowList(e) {
+    if (!chooseRegion.classList.contains('up-block')) {
+      return false;
+    }
+    for (let item of inputContainerUls) {
+      if (item.classList.contains('showlist')) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (isShowList(e)) {
+    searchContainer.classList.remove('search-dark');
+  } else {
+    searchContainer.classList.add('search-dark');
+  }
+}
+
+for (let item of inputFieldsAll) { //для регионов и инпутов без селектов 
+  item.addEventListener('click', () => {
+    searchContainer.classList.add('search-dark');
+  });
+}
+/**********Конец затемнения желтого поля ******/
+
+/*window.onclick = (e) => {
   //console.log('target=', e.target);
   //console.log('currenttarget=', e.currentTarget);
   //alert(e.clientY);
   //console.log(document.getElementById('wide1').getBoundingClientRect().bottom);
-};
+};*/
+
+//window.addEventListener('click', hideAllLists);
