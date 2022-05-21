@@ -294,11 +294,13 @@ const regionRect = chooseRegion.getBoundingClientRect();
 const searchContainer = document.querySelector('.search__container');
 const tabs = document.querySelector('.tabs');
 const inputSelects = document.querySelectorAll('.inputselect');
+const inputContainers = document.querySelectorAll('.input-container');
 const inputContainerUls = document.querySelectorAll('.input-container__ul');
 let x1rubric;
 let x2rubric; //координаты расширенного блока рубрикатора
 let x1vacansion;
-let x2vacansion; //координаты расширенного блока вакансий
+let x2vacansion;
+let y2vacansion; //координаты расширенного блока вакансий
 
 window.addEventListener('click', hideAllLists);
 
@@ -335,6 +337,7 @@ function hideAllLists(e) {
     for (let item of document.querySelectorAll('.for-button')) {
       item.classList.add('hide-block');
     }
+    document.getElementById('inp_cont6').style.display = 'block';
   }
 
   if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
@@ -342,19 +345,39 @@ function hideAllLists(e) {
     for (let item of document.querySelectorAll('.ul-wide2')) {
       item.classList.remove('ul-wide2');
     }
+    for (let item of document.querySelectorAll('.for-button')) {
+      if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
+        item.classList.add('hide-block');
+      }
+    }
   }
-  /*for (let item of document.querySelectorAll('.for-button')) {
-    item.classList.add('hide-block');
-  }*/ //На удаление
+  if (e.clientX < x1vacansion || e.clientX > x2vacansion - 60) {
+    for (let item of toHide2s) {
+      item.classList.remove('hide-block');
+    }
+    for (let item of document.querySelectorAll('.input-container__ul')) {
+      if (item.classList.contains('ul-wide2')) {
+        item.classList.remove('ul-wide2');
+      }
+    }
+    for (let item of document.querySelectorAll('.for-button')) {
+      if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
+        item.classList.add('hide-block');
+      }
+    }
+  }
+  //Убрать блок регионов
+  if (eX < regionRect.left || eX > regionRect.right) {
+    chooseRegion.classList.add('up-block');
+  }
 
-
-
+  /*if (document.documentElement.clientWidth > 500) {*/
+  //Для широких экранов
   for (let item of inpConts) {
     if (item.ul) {
       if (isNoInRect(e, item) && isNoInRectUl(e, item.ul)) {
         item.ul.classList.remove('showlist');
         item.open = false;
-
         if (item.arrow.classList.contains('arrow-rotate')) {
           item.arrow.classList.remove('arrow-rotate');
         }
@@ -367,18 +390,6 @@ function hideAllLists(e) {
         item.ul.classList.remove('ul-wide');
         for (let item of document.querySelectorAll('.for-button')) {
           item.classList.add('hide-block');
-        }
-      }
-
-      if (e.clientX < x1vacansion || e.clientX > x2vacansion) {
-        for (let item of toHide2s) {
-          item.classList.remove('hide-block');
-        }
-        item.ul.classList.remove('ul-wide2');
-        for (let item of document.querySelectorAll('.for-button')) {
-          if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
-            item.classList.add('hide-block');
-          }
         }
       }
     }
@@ -397,10 +408,28 @@ function hideAllLists(e) {
       }
     }
   }
-  //Убрать блок регионов
-  if (eX < regionRect.left || eX > regionRect.right) {
-    chooseRegion.classList.add('up-block');
-  }
+
+
+
+
+  // } 
+  /*else {
+    //Для мобильных
+
+    //Опустить и свернуть поднятый инпут
+    for (let item of inputContainers) {
+      if (!e.target.classList.contains('arrow')) {
+        item.classList.remove('fixed-top');
+        if (item.querySelector('.input-container__ul')) {
+          item.querySelector('.input-container__ul').classList.remove('showlist');
+        }
+        if (item.querySelector('.placeholder2')) {
+          item.querySelector('.placeholder2').classList.remove('input-field-focus');
+        }
+        chooseWork.querySelector('.choose__work--wrap').classList.remove('input-down');
+      }
+    }
+  }*/
 
   /*if (eX < searchContainer.getBoundingClientRect().left ||
     eX > searchContainer.getBoundingClientRect().right ||
@@ -512,7 +541,7 @@ function hideSelect_1(e) {
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
 
     //Для мобильной версии (<500рх) поднять инпут с селектом вверх и оставить на старом месте копию инпута
-    const headerTop = document.querySelector('.header__top');
+    /*const headerTop = document.querySelector('.header__top');
     const headerMenu = document.querySelector('.header__menu');
     targPN.classList.add('fixed-top');
     targPN.parentNode.classList.add('high-zindex');
@@ -520,7 +549,7 @@ function hideSelect_1(e) {
     headerTop.classList.add('hide-block');
     chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
     window.onscroll = () => {
-      //прячем остальные инпуты, чтобы не видно при скролле вверох
+      //прячем остальные инпуты, чтобы не видно при скролле вверх
       for (let item of inputSelects) {
         if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
           item.parentNode.classList.add('invisible');
@@ -528,7 +557,7 @@ function hideSelect_1(e) {
           item.parentNode.classList.remove('invisible');
         }
       }
-    };
+    };*/
 
 
     //разворачиваем/сворачиваем рубрикатор 
@@ -686,16 +715,18 @@ function addWide(e) {
   for (let item of toHides) {
     item.classList.add('hide-block');
   }
+  document.getElementById('inp_cont6').style.display = 'none';
+
   setTimeout(() => {
     e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
   }, 400);
 }
 
 function removeWide(e) {
+  document.getElementById('inp_cont6').style.display = 'block';
   for (let item of toHides) {
     item.classList.remove('hide-block');
   }
-
   if (e.target.classList.contains('input-reset')) {
     if (e.target.parentNode.querySelector('.for-button')) {
       e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
@@ -719,10 +750,11 @@ for (let item of ulwide2s) {
 }
 
 function addWide2(e) {
+  e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide2');
   let ulVacansion = e.target.parentNode.querySelector('.input-container__ul');
-  ulVacansion.classList.add('ul-wide2');
   x1vacansion = ulVacansion.getBoundingClientRect().left;
   x2vacansion = ulVacansion.getBoundingClientRect().right;
+  y2vacansion = ulVacansion.getBoundingClientRect().bottom;
   for (let item of toHide2s) {
     item.classList.add('hide-block');
   }

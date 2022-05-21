@@ -1520,9 +1520,9 @@ input[type="range"]:active::-webkit-slider-thumb {
     margin-top: -30px;
   }
 
-  /*********Стили для всплытия инпутов наверх**********/
+  /*********Стили для всплытия инпутов наверх**********
 
-  /*.fixed-top {
+  .fixed-top {
     position: fixed;
     left: 3%;
     top: 35px;
@@ -1544,9 +1544,9 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .invisible {
     visibility: hidden;
-  }*/
+  }
 
-  /**************************/
+  **************************/
 
   .up-block {
     transform: translate(-50%, -110vh);
