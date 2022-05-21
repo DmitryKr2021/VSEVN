@@ -329,6 +329,11 @@ function hideAllLists(e) {
   let eX = e.clientX;
   let eY = e.clientY;
 
+
+  document.getElementById('inp_cont6').style.display = 'block';
+  document.getElementById('inp_cont15').style.display = 'block';
+
+
   if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
     removeWide(e);
     for (let item of document.querySelectorAll('.ul-wide')) {
@@ -337,7 +342,6 @@ function hideAllLists(e) {
     for (let item of document.querySelectorAll('.for-button')) {
       item.classList.add('hide-block');
     }
-    document.getElementById('inp_cont6').style.display = 'block';
   }
 
   if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
@@ -716,6 +720,7 @@ function addWide(e) {
     item.classList.add('hide-block');
   }
   document.getElementById('inp_cont6').style.display = 'none';
+  document.getElementById('inp_cont15').style.display = 'none';
 
   setTimeout(() => {
     e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
