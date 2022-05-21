@@ -329,9 +329,12 @@ function hideAllLists(e) {
   let eX = e.clientX;
   let eY = e.clientY;
 
+  /*alert(document.getElementById('inp_cont6').getBoundingClientRect().left);
+  if (document.getElementById('inp_cont6').getBoundingClientRect().left < 800) {
+    //document.getElementById('inp_cont6').style.display = 'block';
 
-  document.getElementById('inp_cont6').style.display = 'block';
-  document.getElementById('inp_cont15').style.display = 'block';
+  }*/
+  //document.getElementById('inp_cont15').style.display = 'block';
 
 
   if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
@@ -719,8 +722,23 @@ function addWide(e) {
   for (let item of toHides) {
     item.classList.add('hide-block');
   }
-  document.getElementById('inp_cont6').style.display = 'none';
+
+  if (document.getElementById('inp_cont6').getBoundingClientRect().left > 800) {
+    document.getElementById('inp_cont6').style.display = 'none';
+
+  }
   document.getElementById('inp_cont15').style.display = 'none';
+
+  setTimeout(() => {
+    if (document.getElementById('inp_cont6').getBoundingClientRect().left > 800) {
+      document.getElementById('inp_cont6').style.display = 'none';
+    }
+  }, 10);
+  setTimeout(() => {
+    if (document.getElementById('inp_cont15').getBoundingClientRect().left > 800) {
+      document.getElementById('inp_cont15').style.display = 'none';
+    }
+  }, 10);
 
   setTimeout(() => {
     e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
