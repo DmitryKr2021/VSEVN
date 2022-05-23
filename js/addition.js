@@ -329,14 +329,6 @@ function hideAllLists(e) {
   let eX = e.clientX;
   let eY = e.clientY;
 
-  /*alert(document.getElementById('inp_cont6').getBoundingClientRect().left);
-  if (document.getElementById('inp_cont6').getBoundingClientRect().left < 800) {
-    //document.getElementById('inp_cont6').style.display = 'block';
-
-  }*/
-  //document.getElementById('inp_cont15').style.display = 'block';
-
-
   if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
     removeWide(e);
     for (let item of document.querySelectorAll('.ul-wide')) {
@@ -358,7 +350,8 @@ function hideAllLists(e) {
       }
     }
   }
-  if (e.clientX < x1vacansion || e.clientX > x2vacansion - 60) {
+
+  if (e.clientX < x1vacansion || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
     for (let item of toHide2s) {
       item.classList.remove('hide-block');
     }
@@ -378,65 +371,88 @@ function hideAllLists(e) {
     chooseRegion.classList.add('up-block');
   }
 
-  /*if (document.documentElement.clientWidth > 500) {*/
-  //Для широких экранов
-  for (let item of inpConts) {
-    if (item.ul) {
-      if (isNoInRect(e, item) && isNoInRectUl(e, item.ul)) {
-        item.ul.classList.remove('showlist');
-        item.open = false;
-        if (item.arrow.classList.contains('arrow-rotate')) {
-          item.arrow.classList.remove('arrow-rotate');
+  if (document.documentElement.clientWidth > 500) {
+    //Для широких экранов
+    for (let item of inpConts) {
+      if (item.ul) {
+        if (isNoInRect(e, item) && isNoInRectUl(e, item.ul)) {
+          item.ul.classList.remove('showlist');
+          item.open = false;
+          if (item.arrow.classList.contains('arrow-rotate')) {
+            item.arrow.classList.remove('arrow-rotate');
+          }
+        }
+
+        if (e.clientX < x1rubric || e.clientX > x2rubric) {
+          for (let item of toHides) {
+            item.classList.remove('hide-block');
+          }
+          item.ul.classList.remove('ul-wide');
+          for (let item of document.querySelectorAll('.for-button')) {
+            item.classList.add('hide-block');
+          }
+        }
+      }
+      if (item.ph2) {
+        if (item.filled) {
+          item.ph2.classList.add('input-field-focus');
+        } else {
+          if (!item.open && !e.target.classList.contains('input-container__arrow')) {
+            item.input.classList.remove('inputsel');
+          }
+          if (!e.target.classList.contains('input-container__arrow')) {
+            if (!item.ul.classList.contains('showlist')) {
+              item.ph2.classList.remove('input-field-focus');
+            }
+          }
+        }
+      }
+    }
+  } else {
+    //Для мобильных <=500px
+    //Не сворачивать инпут, если выбран вариант
+    if (e.target.classList.contains('input-container__item') || e.target.parentNode.classList.contains('input-container__item')) {
+      return;
+    }
+    //перестать прятать блоки при расширении рубрикатора
+    for (let item of toHides) {
+      item.classList.remove('hide-block');
+    }
+
+    //Опустить и свернуть поднятый инпут
+    let t1 = false;
+    for (let item of inputContainers) {
+      for (let inp of inpConts) {
+        if (inp.id_ === item.id) {
+          inp.fixedTop = false;
+          t1 = inp.filled;
         }
       }
 
-      if (e.clientX < x1rubric || e.clientX > x2rubric) {
-        for (let item of toHides) {
-          item.classList.remove('hide-block');
+      if (!e.target.classList.contains('arrow') && !e.target.classList.contains('is2') || e.target.classList.contains('arrow-rotate')) {
+        item.classList.remove('fixed-top');
+        if (item.querySelector('.input-container__ul')) {
+          item.querySelector('.input-container__ul').classList.remove('showlist');
         }
-        item.ul.classList.remove('ul-wide');
+        if (item.querySelector('.placeholder2') && !t1) {
+          item.querySelector('.placeholder2').classList.remove('input-field-focus');
+        }
+        rollUp.classList.remove('roll-up2');
+        search.classList.remove('search2');
+        chooseWork.querySelector('.choose__work--wrap').classList.remove('input-down');
+
+        for (let item of document.querySelectorAll('.ul-wide')) {
+          item.classList.remove('ul-wide');
+        }
+        for (let item of document.querySelectorAll('.ul-wide2')) {
+          item.classList.remove('ul-wide2');
+        }
         for (let item of document.querySelectorAll('.for-button')) {
           item.classList.add('hide-block');
         }
       }
     }
-    if (item.ph2) {
-      if (item.filled) {
-        item.ph2.classList.add('input-field-focus');
-      } else {
-        if (!item.open && !e.target.classList.contains('input-container__arrow')) {
-          item.input.classList.remove('inputsel');
-        }
-        if (!e.target.classList.contains('input-container__arrow')) {
-          if (!item.ul.classList.contains('showlist')) {
-            item.ph2.classList.remove('input-field-focus');
-          }
-        }
-      }
-    }
   }
-
-
-
-
-  // } 
-  /*else {
-    //Для мобильных
-
-    //Опустить и свернуть поднятый инпут
-    for (let item of inputContainers) {
-      if (!e.target.classList.contains('arrow')) {
-        item.classList.remove('fixed-top');
-        if (item.querySelector('.input-container__ul')) {
-          item.querySelector('.input-container__ul').classList.remove('showlist');
-        }
-        if (item.querySelector('.placeholder2')) {
-          item.querySelector('.placeholder2').classList.remove('input-field-focus');
-        }
-        chooseWork.querySelector('.choose__work--wrap').classList.remove('input-down');
-      }
-    }
-  }*/
 
   /*if (eX < searchContainer.getBoundingClientRect().left ||
     eX > searchContainer.getBoundingClientRect().right ||
@@ -496,7 +512,9 @@ class InputContainer {
     this.open = false;
     this.active = false;
     this.filled = false;
+    this.fixedTop = false;
 
+    this.id_ = item.id;
     this.input = item.firstElementChild;
     this.ph2 = item.querySelector('.placeholder2') || null;
     this.ul = item.querySelector('.input-container__ul') || null;
@@ -536,6 +554,58 @@ const inputContainerArrows = document.querySelectorAll('.input-container__arrow'
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
+function inputUp(targPN) {
+  const rollUp = document.querySelector('.roll-up');
+  const search = document.querySelector('.search');
+  const searchContainer = document.querySelector('.search__container');
+  const headerTop = document.querySelector('.header__top');
+  const headerMenu = document.querySelector('.header__menu');
+
+  if (document.documentElement.clientWidth <= 500) {
+    //вначале все инпуты опустить и деактивировать
+    for (let item of inputContainers) {
+      item.classList.remove('fixed-top');
+      item.parentNode.classList.remove('high-zindex');
+      if (item.querySelector('.input-container__ul')) {
+        item.querySelector('.input-container__ul').classList.remove('showlist');
+      }
+
+      setTimeout(() => {
+        item.querySelector('.arrow') && !item.classList.contains('fixed-top') && item.querySelector('.arrow').classList.remove('arrow-rotate');
+
+        item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
+
+        item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
+      }, 100);
+    }
+    //Поднять выбранный инпут
+    targPN.classList.add('fixed-top');
+    targPN.querySelector('.input-container__ul').classList.toggle('showlist');
+    rollUp.classList.add('roll-up2');
+    search.classList.add('search2');
+    searchContainer.classList.add('search__container2');
+    for (let item of inpConts) {
+      if (item.id_ === targPN.id) {
+        item.fixedTop = true;
+      }
+    }
+    targPN.parentNode.classList.add('high-zindex');
+    headerMenu.classList.add('hide-block');
+    headerTop.classList.add('hide-block');
+    chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
+    window.onscroll = () => {
+      //прячем остальные инпуты, чтобы не видно при скролле вверху
+      for (let item of inputSelects) {
+        if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
+          item.parentNode.classList.add('invisible');
+        } else {
+          item.parentNode.classList.remove('invisible');
+        }
+      }
+    };
+  }
+}
+
 function hideSelect_1(e) {
   let targ = e.target;
   let targPN = targ.parentNode;
@@ -544,28 +614,72 @@ function hideSelect_1(e) {
     targPN.querySelector('.input-container__ul').classList.toggle('showlist');
     targPN.querySelector('.inputselect').classList.toggle('inputsel');
     //targPN.querySelector('.inputselect').classList.add('inputsel');
-    targ.classList.toggle('arrow-rotate');
+    setTimeout(() => {
+      targ.classList.toggle('arrow-rotate');
+    }, 50);
+
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
 
-    //Для мобильной версии (<500рх) поднять инпут с селектом вверх и оставить на старом месте копию инпута
-    /*const headerTop = document.querySelector('.header__top');
+    /*Для мобильной версии (<500рх) поднять инпут с селектом вверх */
+    inputUp(targPN);
+
+
+    /*function inputUp() {
+
+    const rollUp = document.querySelector('.roll-up');
+    const search = document.querySelector('.search');
+    const searchContainer = document.querySelector('.search__container');
+    const headerTop = document.querySelector('.header__top');
     const headerMenu = document.querySelector('.header__menu');
-    targPN.classList.add('fixed-top');
-    targPN.parentNode.classList.add('high-zindex');
-    headerMenu.classList.add('hide-block');
-    headerTop.classList.add('hide-block');
-    chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
-    window.onscroll = () => {
-      //прячем остальные инпуты, чтобы не видно при скролле вверх
-      for (let item of inputSelects) {
-        if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
-          item.parentNode.classList.add('invisible');
-        } else {
-          item.parentNode.classList.remove('invisible');
+
+    if (document.documentElement.clientWidth <= 500) {
+      //вначале все инпуты опустить и деактивировать
+      for (let item of inputContainers) {
+        item.classList.remove('fixed-top');
+        item.parentNode.classList.remove('high-zindex');
+        if (item.querySelector('.input-container__ul')) {
+          item.querySelector('.input-container__ul').classList.remove('showlist');
+        }
+
+        setTimeout(() => {
+          item.querySelector('.arrow') && !item.classList.contains('fixed-top') && item.querySelector('.arrow').classList.remove('arrow-rotate');
+
+          item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
+
+          item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
+        }, 100);
+      }
+      //Поднять выбранный инпут
+      targPN.classList.add('fixed-top');
+      targPN.querySelector('.input-container__ul').classList.toggle('showlist');
+      rollUp.classList.add('roll-up2');
+      search.classList.add('search2');
+      searchContainer.classList.add('search__container2');
+      for (let item of inpConts) {
+        if (item.id_ === targPN.id) {
+          item.fixedTop = true;
         }
       }
-    };*/
+      targPN.parentNode.classList.add('high-zindex');
+      headerMenu.classList.add('hide-block');
+      headerTop.classList.add('hide-block');
+      chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
+      window.onscroll = () => {
+        //прячем остальные инпуты, чтобы не видно при скролле вверху
+        for (let item of inputSelects) {
+          if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
+            item.parentNode.classList.add('invisible');
+          } else {
+            item.parentNode.classList.remove('invisible');
+          }
+        }
+      };
+    }
+  }*/
 
+
+
+    /*************************** */
 
     //разворачиваем/сворачиваем рубрикатор 
     if (!targPN.querySelector('.input-container__ul').classList.contains('ul-wide') && targPN.querySelector('.inputselect').classList.contains('ulwide')) {
@@ -601,7 +715,11 @@ function hideSelect_1(e) {
     targPN.querySelector('.arrow').classList.add('arrow-rotate');
     //targPN.querySelector('.placeholder2').classList.add('input-field-focus');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
+    //Для мобильных <=500px
+    inputUp(targPN);
   }
+
+
   //нажали вне поля выбора
   if (!targ.classList.contains('inputselect')) {
     for (let item of inputSelects) {
@@ -723,17 +841,12 @@ function addWide(e) {
     item.classList.add('hide-block');
   }
 
-  if (document.getElementById('inp_cont6').getBoundingClientRect().left > 800) {
-    document.getElementById('inp_cont6').style.display = 'none';
-
-  }
-  document.getElementById('inp_cont15').style.display = 'none';
-
   setTimeout(() => {
     if (document.getElementById('inp_cont6').getBoundingClientRect().left > 800) {
       document.getElementById('inp_cont6').style.display = 'none';
     }
   }, 10);
+
   setTimeout(() => {
     if (document.getElementById('inp_cont15').getBoundingClientRect().left > 800) {
       document.getElementById('inp_cont15').style.display = 'none';
@@ -781,12 +894,20 @@ function addWide2(e) {
   for (let item of toHide2s) {
     item.classList.add('hide-block');
   }
+
+  setTimeout(() => {
+    if (document.getElementById('inp_cont15').getBoundingClientRect().left > 800) {
+      document.getElementById('inp_cont15').style.display = 'none';
+    }
+  }, 10);
+
   setTimeout(() => {
     e.target.parentNode.querySelector('.for-button').classList.remove('hide-block');
   }, 400);
 }
 
 function removeWide2(e) {
+  document.getElementById('inp_cont15').style.display = 'block';
   for (let item of toHide2s) {
     item.classList.remove('hide-block');
   }
