@@ -573,9 +573,15 @@ function inputUp(targPN) {
       setTimeout(() => {
         item.querySelector('.arrow') && !item.classList.contains('fixed-top') && item.querySelector('.arrow').classList.remove('arrow-rotate');
 
-        item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
+        for (let i = 0; i < inpConts.length; i++) {
+          if (item.querySelector('.inputselect') === inpConts[i].input) {
+            if (!inpConts[i].filled) {
+              item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
 
-        item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
+              item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
+            }
+          }
+        }
       }, 100);
     }
     //Поднять выбранный инпут
@@ -622,62 +628,6 @@ function hideSelect_1(e) {
 
     /*Для мобильной версии (<500рх) поднять инпут с селектом вверх */
     inputUp(targPN);
-
-
-    /*function inputUp() {
-
-    const rollUp = document.querySelector('.roll-up');
-    const search = document.querySelector('.search');
-    const searchContainer = document.querySelector('.search__container');
-    const headerTop = document.querySelector('.header__top');
-    const headerMenu = document.querySelector('.header__menu');
-
-    if (document.documentElement.clientWidth <= 500) {
-      //вначале все инпуты опустить и деактивировать
-      for (let item of inputContainers) {
-        item.classList.remove('fixed-top');
-        item.parentNode.classList.remove('high-zindex');
-        if (item.querySelector('.input-container__ul')) {
-          item.querySelector('.input-container__ul').classList.remove('showlist');
-        }
-
-        setTimeout(() => {
-          item.querySelector('.arrow') && !item.classList.contains('fixed-top') && item.querySelector('.arrow').classList.remove('arrow-rotate');
-
-          item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
-
-          item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
-        }, 100);
-      }
-      //Поднять выбранный инпут
-      targPN.classList.add('fixed-top');
-      targPN.querySelector('.input-container__ul').classList.toggle('showlist');
-      rollUp.classList.add('roll-up2');
-      search.classList.add('search2');
-      searchContainer.classList.add('search__container2');
-      for (let item of inpConts) {
-        if (item.id_ === targPN.id) {
-          item.fixedTop = true;
-        }
-      }
-      targPN.parentNode.classList.add('high-zindex');
-      headerMenu.classList.add('hide-block');
-      headerTop.classList.add('hide-block');
-      chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
-      window.onscroll = () => {
-        //прячем остальные инпуты, чтобы не видно при скролле вверху
-        for (let item of inputSelects) {
-          if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
-            item.parentNode.classList.add('invisible');
-          } else {
-            item.parentNode.classList.remove('invisible');
-          }
-        }
-      };
-    }
-  }*/
-
-
 
     /*************************** */
 
