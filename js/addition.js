@@ -14,6 +14,8 @@ let scrollRightBlock = windowRowRight.getBoundingClientRect().top;
 let rightBlockStart = scrollRightBlock;
 
 document.onscroll = (e) => {
+  /* Старая версия для прокрутки всей страницы
+
   let timerScroll = setInterval(scrollHandler, 10);
   let correction = 0;
   denominator = document.documentElement.scrollHeight + windowRowRight.clientHeight;
@@ -23,7 +25,39 @@ document.onscroll = (e) => {
     numerator = window.pageYOffset + correction;
     percentScrollDiv.style.width = `${document.documentElement.scrollWidth*1.05*numerator/denominator}px`;
   }
+*/
+
+  /* Для прокрутки верхнего желтого поля */
+
+  let timerScroll = setInterval(scrollHandler, 10);
+  denominator = document.querySelector('.search').scrollHeight;
 };
+
+let rollUpActive = false;
+let scrollCorrect = 0;
+let coef = 1.2;
+if (document.documentElement.clientWidth < 500) {
+  coef = 1;
+}
+
+function scrollHandler() {
+  numerator = window.pageYOffset;
+  percentScrollDiv.style.width = `${document.documentElement.scrollWidth*coef*numerator/denominator}px`;
+  if (rollUpActive) {
+    percentScrollDiv.style.width = `${document.documentElement.scrollWidth*0.6*numerator/denominator+scrollCorrect}px`;
+  }
+}
+
+document.querySelector('.roll-up').addEventListener('click',
+  function () {
+    if (!rollUpActive) {
+      scrollCorrect = document.documentElement.clientWidth * 0.62;
+    } else {
+      scrollCorrect = 0;
+    }
+    rollUpActive = !rollUpActive;
+    percentScrollDiv.style.width = scrollCorrect + 'px';
+  });
 /*************Конец блока*****************/
 
 /*********** Работа с верхним бургер-меню**********/
