@@ -70,17 +70,17 @@ body {
 }
 
 @font-face {
-  font-family: ZabraProTest;
+  font-family: ZabraProTest3;
   font-display: swap;
-  src: url("../fonts/ZabraProTest-Medium.woff2") format("woff2"), url("../fonts/ZabraProTest-Medium.woff") format("woff");
+  src: url("../fonts/ZabraProTest3-Medium.woff2") format("woff2"), url("../fonts/ZabraProTest3-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: ZabraProTest;
+  font-family: ZabraProTest3;
   font-display: swap;
-  src: url("../fonts/ZabraProTest-Regular.woff2") format("woff2"), url("../fonts/ZabraProTest-Regular.woff") format("woff");
+  src: url("../fonts/ZabraProTest3-Regular.woff2") format("woff2"), url("../fonts/ZabraProTest3-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -112,7 +112,7 @@ body {
   line-height: 1;
   /*font-family: "Open Sans";*/
   /*font-family: "ZabraPro";*/
-  font-family: "ZabraProTest";
+  font-family: "ZabraProTest3";
   font-size: 1rem;
   overflow-x: hidden;
   -ms-text-size-adjust: 100%;
@@ -127,7 +127,7 @@ button,
 textarea {
   /*font-family: "Open Sans";
   font-family: "ZabraPro";*/
-  font-family: "ZabraProTest";
+  font-family: "ZabraProTest3";
   font-size: inherit;
 }
 
