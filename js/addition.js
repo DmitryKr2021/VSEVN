@@ -328,30 +328,39 @@ function isNoInRectUl(e, rect) {
 function hideAllLists(e) {
   let eX = e.clientX;
   let eY = e.clientY;
+  if (document.documentElement.clientWidth > 500) {
 
-  if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
-    removeWide(e);
-    for (let item of document.querySelectorAll('.ul-wide')) {
-      item.classList.remove('ul-wide');
-    }
-    for (let item of document.querySelectorAll('.for-button')) {
-      item.classList.add('hide-block');
-    }
-  }
-
-  if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
-    removeWide2(e);
-    for (let item of document.querySelectorAll('.ul-wide2')) {
-      item.classList.remove('ul-wide2');
-    }
-    for (let item of document.querySelectorAll('.for-button')) {
-      if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
+    if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
+      removeWide(e);
+      for (let item of document.querySelectorAll('.ul-wide')) {
+        item.classList.remove('ul-wide');
+      }
+      for (let item of document.querySelectorAll('.for-button')) {
         item.classList.add('hide-block');
       }
     }
+
+    if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
+      removeWide2(e);
+      for (let item of document.querySelectorAll('.ul-wide2')) {
+        item.classList.remove('ul-wide2');
+      }
+      for (let item of document.querySelectorAll('.for-button')) {
+        if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
+          item.classList.add('hide-block');
+        }
+      }
+    }
+
   }
 
-  if (e.clientX < x1vacansion || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
+
+  let vacLeft = x1vacansion;
+  if (document.documentElement.clientWidth < 1200) {
+    vacLeft = 15;
+  }
+
+  if (e.clientX < vacLeft || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
     for (let item of toHide2s) {
       item.classList.remove('hide-block');
     }
@@ -366,6 +375,8 @@ function hideAllLists(e) {
       }
     }
   }
+
+
   //Убрать блок регионов
   if (eX < regionRect.left || eX > regionRect.right) {
     chooseRegion.classList.add('up-block');
@@ -383,7 +394,8 @@ function hideAllLists(e) {
           }
         }
 
-        if (e.clientX < x1rubric || e.clientX > x2rubric) {
+        if (e.clientX < x1rubric || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
+
           for (let item of toHides) {
             item.classList.remove('hide-block');
           }
@@ -430,6 +442,8 @@ function hideAllLists(e) {
       }
 
       if (!e.target.classList.contains('arrow') && !e.target.classList.contains('is2') || e.target.classList.contains('arrow-rotate')) {
+        headerMenu.classList.remove('hide-block');
+        headerTop.classList.remove('hide-block');
         item.classList.remove('fixed-top');
         if (item.querySelector('.input-container__ul')) {
           item.querySelector('.input-container__ul').classList.remove('showlist');
@@ -453,51 +467,6 @@ function hideAllLists(e) {
       }
     }
   }
-
-  /*if (eX < searchContainer.getBoundingClientRect().left ||
-    eX > searchContainer.getBoundingClientRect().right ||
-    eY < tabs.getBoundingClientRect().bottom ||
-    eY > rollUp.getBoundingClientRect().top ||
-    eY > 900) {
-    for (let item of document.querySelectorAll('.showlist')) {
-      if (document.documentElement.clientWidth > 500) {
-        item.classList.remove('showlist');
-      }
-    }
-
-    for (let item of document.querySelectorAll('.inputsel')) {
-      item.classList.remove('inputsel');
-    }
-    for (let item of document.querySelectorAll('.arrow-rotate')) {
-      item.classList.remove('arrow-rotate');
-    }
-
-}
-
-  removeWide(e);
-  removeWide2(e);
-  for (let item of document.querySelectorAll('.ul-wide')) {
-    item.classList.remove('ul-wide');
-  }
-  for (let item of document.querySelectorAll('.ul-wide2')) {
-    item.classList.remove('ul-wide2');
-  }
-  for (let item of document.querySelectorAll('.for-button')) {
-    item.classList.add('hide-block');
-  }
-
-*/
-
-
-
-  /*for (let item of document.querySelectorAll('.placeholder2')) {
-    if (!e.target.classList.contains('is2') && !e.target.classList.contains('input-checkbox') && !e.target.classList.contains('arrow') && !e.target.classList.contains('check-multi') && !e.target.parentNode.parentNode.parentNode.querySelector('.is2').value) {
-      if (!item.previousElementSibling.value) {
-        item.classList.remove('input-field-focus');
-      }
-    }
-  }*/
-
 }
 
 
@@ -551,6 +520,8 @@ function func(e) {
 /*const inputSelects = document.querySelectorAll('.inputselect');
 const inputContainerUls = document.querySelectorAll('.input-container__ul'); определены выше*/
 const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
+const headerTop = document.querySelector('.header__top');
+const headerMenu = document.querySelector('.header__menu');
 
 chooseWork.addEventListener('click', hideSelect_1); //Показать/убрать список select
 
@@ -558,8 +529,6 @@ function inputUp(targPN) {
   const rollUp = document.querySelector('.roll-up');
   const search = document.querySelector('.search');
   const searchContainer = document.querySelector('.search__container');
-  const headerTop = document.querySelector('.header__top');
-  const headerMenu = document.querySelector('.header__menu');
 
   if (document.documentElement.clientWidth <= 500) {
     //вначале все инпуты опустить и деактивировать
@@ -599,9 +568,10 @@ function inputUp(targPN) {
     headerMenu.classList.add('hide-block');
     headerTop.classList.add('hide-block');
     chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
+
     window.onscroll = () => {
       //прячем остальные инпуты, чтобы не видно при скролле вверху
-      for (let item of inputSelects) {
+      for (let item of currentBlock().querySelectorAll('.inputselect')) {
         if (item.getBoundingClientRect().top < 50 && item.parentNode !== targPN) {
           item.parentNode.classList.add('invisible');
         } else {
@@ -609,6 +579,18 @@ function inputUp(targPN) {
         }
       }
     };
+  }
+}
+
+function currentBlock() {
+  if (getComputedStyle(chooseWork).display == 'block') {
+    return chooseWork;
+  }
+  if (getComputedStyle(chooseStaff).display == 'block') {
+    return chooseStaff;
+  }
+  if (getComputedStyle(chooseAny).display == 'block') {
+    return chooseAny;
   }
 }
 
@@ -627,7 +609,9 @@ function hideSelect_1(e) {
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
 
     /*Для мобильной версии (<500рх) поднять инпут с селектом вверх */
-    inputUp(targPN);
+    if (document.documentElement.clientWidth <= 500) {
+      inputUp(targPN);
+    }
 
     /*************************** */
 
@@ -666,7 +650,9 @@ function hideSelect_1(e) {
     //targPN.querySelector('.placeholder2').classList.add('input-field-focus');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
     //Для мобильных <=500px
-    inputUp(targPN);
+    if (document.documentElement.clientWidth <= 500) {
+      inputUp(targPN);
+    }
   }
 
 
@@ -685,7 +671,8 @@ function hideSelect_1(e) {
 
 //Показать выбранный select и спрятать placeholder
 
-for (let item of chooseWork.querySelectorAll('.input-container__item')) {
+//for (let item of chooseWork.querySelectorAll('.input-container__item')) {
+for (let item of document.querySelectorAll('.input-container__item')) {
   item.addEventListener('click',
     showAllItemSelected);
 }
@@ -786,7 +773,6 @@ function addWide(e) {
   ulRubric.classList.add('ul-wide');
   x1rubric = ulRubric.getBoundingClientRect().left;
   x2rubric = ulRubric.getBoundingClientRect().right;
-  e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide');
   for (let item of toHides) {
     item.classList.add('hide-block');
   }
@@ -841,6 +827,7 @@ function addWide2(e) {
   x1vacansion = ulVacansion.getBoundingClientRect().left;
   x2vacansion = ulVacansion.getBoundingClientRect().right;
   y2vacansion = ulVacansion.getBoundingClientRect().bottom;
+
   for (let item of toHide2s) {
     item.classList.add('hide-block');
   }
@@ -1171,14 +1158,14 @@ function hideSelect_staff2(e) {
 }
 
 //Показать выбранный select и спрятать placeholder
-for (let item of staffInputContainerItems) {
+/*for (let item of staffInputContainerItems) {
   item.addEventListener('click', showStaffItemSelected);
 }
 
 function showStaffItemSelected(e) {
   staffResetAll.classList.remove('hide-block');
   showAllItemSelected(e);
-}
+}*/
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
@@ -1387,7 +1374,7 @@ function salary1RightHandler(e) {
     let rightShift = newLeft / salary1_.offsetWidth * 100;
     let leftShift = (parseFloat(getComputedStyle(salary1_min).left)) / salary1_.offsetWidth * 100;
 
-    salary1_max.style.left = newLeft + 'px';
+    salary1_max.style.left = newLeft - 30 + 'px';
 
     rangeSalary1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1601,14 +1588,14 @@ function hideSelect_any2(e) {
 }
 
 //Показать выбранный select и спрятать placeholder
-for (let item of anyInputContainerItems) {
+/*for (let item of anyInputContainerItems) {
   item.addEventListener('click', showAnyItemSelected);
 }
 
 function showAnyItemSelected(e) {
   anyResetAll.classList.remove('hide-block');
   showAllItemSelected(e);
-}
+}*/
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
