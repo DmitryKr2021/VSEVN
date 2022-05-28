@@ -385,7 +385,6 @@ function hideAllLists(e) {
         }
       }
     }
-
   }
 
 
@@ -598,7 +597,7 @@ function inputUp(targPN) {
         item.fixedTop = true;
       }
     }
-    targPN.parentNode.classList.add('high-zindex');
+    //targPN.parentNode.classList.add('high-zindex');
     headerMenu.classList.add('hide-block');
     headerTop.classList.add('hide-block');
     chooseWork.querySelector('.choose__work--wrap').classList.add('input-down');
@@ -779,7 +778,7 @@ for (let inp of inputSelects) {
 function hideSelect_2(e) {
   //обнуляем остальные поля выбора
   for (let inp of inputSelects) {
-    //inp.classList.remove('inputsel');
+    //inp.classList.remove('inputsel');//на удаление
   }
   for (let uls of inputContainerUls) {
     uls.classList.remove('showlist');
@@ -915,7 +914,6 @@ function doApply(e) { //По кнопке Применить
   let eselect = e.target.parentNode;
   let eInputSelect = eselect.parentNode.querySelector('.inputselect');
   let inputString = eselect.parentNode.firstElementChild.innerText;
-
   if (eselect.parentNode.querySelector('.placeholder2')) {
     inputString = eselect.parentNode.querySelector('.placeholder2').innerText;
   }
@@ -958,6 +956,13 @@ function doApply(e) { //По кнопке Применить
   }
   for (let item of e.target.parentNode.querySelectorAll('.input-checkbox')) {
     item.checked = false;
+  }
+  for (let item of document.querySelectorAll('.white-font')) {
+    item.classList.remove('white-font');
+  }
+  document.querySelector('.header').classList.remove('body-dark');
+  for (let item of document.querySelectorAll('.zindex50')) {
+    item.classList.remove('zindex50');
   }
 }
 /*************Конец блока селекты************** */
@@ -1921,6 +1926,13 @@ let closeRegions = function () {
   for (let item of regionItems) {
     item.checked = false;
   }
+  for (let item of document.querySelectorAll('.white-font')) {
+    item.classList.remove('white-font');
+  }
+  document.querySelector('.header').classList.remove('body-dark');
+  for (let item of document.querySelectorAll('.zindex50')) {
+    item.classList.remove('zindex50');
+  }
 };
 
 chooseRegionClose.onclick = () => closeRegions();
@@ -2127,6 +2139,13 @@ let outText = '';
 regionApply.addEventListener('click', handlerRegApply);
 
 function handlerRegApply() {
+  for (let item of document.querySelectorAll('.white-font')) {
+    item.classList.remove('white-font');
+  }
+  document.querySelector('.header').classList.remove('body-dark');
+  for (let item of document.querySelectorAll('.zindex50')) {
+    item.classList.remove('zindex50');
+  }
 
   chooseRegion.classList.add('up-block');
 
@@ -2293,7 +2312,7 @@ handleText();
 
 //window.addEventListener('resize', handleText);
 
-/**********Затемнение желтого поля при активации селектов ******/
+/**********Затемнение страницы при активации селектов ******/
 window.addEventListener('click', isDark);
 
 function isDark(e) {
@@ -2313,19 +2332,57 @@ function isDark(e) {
     return true;
   }
 
+  e.target.parentNode.classList.add('zindex50');
+  e.target.parentNode.querySelector('.placeholder') && e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
+
   if (isShowList(e)) {
-    searchContainer.classList.remove('search-dark');
+    document.querySelector('.header').classList.remove('body-dark');
+    document.querySelector('.salary__mark').classList.add('zindex5');
+    for (let item of document.querySelectorAll('.zindex50')) {
+      item.classList.remove('zindex50');
+    }
+    for (let item of document.querySelectorAll('.white-font')) {
+      item.classList.remove('white-font');
+    }
+    /*для мобильных*/
+    for (let item of document.querySelectorAll('.inputsel')) {
+      if (!item.value) {
+        item.classList.remove('inputsel');
+      }
+    }
+    for (let item of document.querySelectorAll('.arrow-rotate')) {
+      item.classList.remove('arrow-rotate');
+    }
+    /* */
   } else {
-    searchContainer.classList.add('search-dark');
+    handlZindex();
   }
 }
 
 for (let item of inputFieldsAll) { //для регионов и инпутов без селектов 
-  item.addEventListener('click', () => {
-    searchContainer.classList.add('search-dark');
+  item.addEventListener('click', (e) => {
+    handlZindex();
+    e.target.parentNode.classList.add('zindex50');
+    e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
   });
 }
-/**********Конец затемнения желтого поля ******/
+
+function handlZindex() {
+  for (let item of document.querySelectorAll('.zindex2')) {
+    item.classList.remove('zindex2');
+  }
+  for (let item of document.querySelectorAll('.zindex5')) {
+    item.classList.remove('zindex5');
+  }
+  for (let item of document.querySelectorAll('.zindex10')) {
+    item.classList.remove('zindex10');
+  }
+  for (let item of document.querySelectorAll('.zindex15')) {
+    item.classList.remove('zindex15');
+  }
+  document.querySelector('.header').classList.add('body-dark');
+}
+/**********Конец затемнения страницы ******/
 
 /*window.onclick = (e) => {
   //console.log('target=', e.target);

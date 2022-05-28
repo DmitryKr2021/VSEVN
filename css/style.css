@@ -4301,7 +4301,7 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   transition: all 0.5s ease 0s;
 }
 
-@media (min-width: 101.875em) {
+/*@media (min-width: 101.875em) {
   .search {
     padding-bottom: 2.5rem;
   }
@@ -4335,8 +4335,8 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   .search {
     margin-bottom: 0.9375rem;
   }
-}
-
+}   МОЕ выделение
+*/
 .search__title {
   /*color: #ffffff;
   line-height: normal;
@@ -4348,30 +4348,30 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   flex-direction: column;*/
 }
 
-@media (min-width: 101.875em) {
+/*@media (min-width: 101.875em) {
   .search__title {
-    *font-size: 2.25rem;
+    font-size: 2.25rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .search__title {
-    *font-size: clamp(1.25rem, 1.0057251908rem + 1.2213740458vw, 2.25rem);
+    font-size: clamp(1.25rem, 1.0057251908rem + 1.2213740458vw, 2.25rem);
   }
 }
 
 @media (max-width: 20em) {
   .search__title {
-    *font-size: 1.25rem;
+    font-size: 1.25rem;
   }
-}
+}*/
 
 .search__title span {
   color: #b83539;
   color: var(--bg-red);
 }
 
-@media (min-width: 101.875em) {
+/*@media (min-width: 101.875em) {
   .search__title {
     margin-bottom: 1.875rem;
   }
@@ -4387,7 +4387,7 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   .search__title {
     margin-bottom: 0.9375rem;
   }
-}
+}*/
 
 .search {
   overflow: hidden;
