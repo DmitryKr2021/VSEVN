@@ -77,19 +77,20 @@ function openIconMenu() {
 const chooseWork = document.querySelector('.choose__work');
 const chooseStaff = document.querySelector('.choose__staff');
 const chooseAny = document.querySelector('.choose__any');
+const search = document.querySelector('.search');
 
 //кнопки Очистить
 const resetAll = chooseWork.querySelector('.reset-all');
 const staffResetAll = chooseStaff.querySelector('.staff__reset-all');
 const anyResetAll = chooseAny.querySelector('.any__reset-all');
 
-const tabsTitles = document.querySelectorAll('.tabs__title');
-for (let btn of tabsTitles) {
+const searchTabsTitles = search.querySelectorAll('.tabs__title');
+for (let btn of searchTabsTitles) {
   btn.addEventListener('click', changeSearchType);
 }
 
 function changeSearchType(e) {
-  for (let btn of tabsTitles) {
+  for (let btn of searchTabsTitles) {
     btn.classList.remove('_tab-active');
   }
   e.target.classList.add('_tab-active');
@@ -194,7 +195,7 @@ function handleResetAll(e) {
 const rollUp = document.querySelector('.roll-up');
 const rollUpBtn = document.querySelector('.roll-up__btn');
 const rollUpSpan = document.querySelector('.roll-up__span');
-const search = document.querySelector('.search');
+//const search = document.querySelector('.search');//Определено выше
 let flagShow = true;
 
 rollUpBtn.onclick = () => {
@@ -218,8 +219,8 @@ rollUpBtn.onclick = () => {
 
 const inputFields = chooseWork.querySelectorAll('.input-field');
 const inputFieldsAll = document.querySelectorAll('.input-field');
-let tempValueRubr; //временное хранение вводимого значения
-let tempValueVacans; //временное хранение вводимого значения
+let tempValueRubr; //временное хранение вводимого значения рубрикатора
+let tempValueVacans; //временное хранение вводимого значения вакансий
 
 window.addEventListener('click', showInput);
 
@@ -330,6 +331,7 @@ const tabs = document.querySelector('.tabs');
 const inputSelects = document.querySelectorAll('.inputselect');
 const inputContainers = document.querySelectorAll('.input-container');
 const inputContainerUls = document.querySelectorAll('.input-container__ul');
+const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
 let x1rubric;
 let x2rubric; //координаты расширенного блока рубрикатора
 let x1vacansion;
@@ -438,12 +440,12 @@ function hideAllLists(e) {
           }
         }
       }
-      if (item.ph2) {
-        if (item.filled) {
-          item.ph2.classList.add('input-field-focus');
+      if (item.ph2) { //если имеется placeholder2
+        if (item.filled) { //если инпут заполнен
+          item.ph2.classList.add('input-field-focus'); //плейсхолдерт поднят
         } else {
           if (!item.open && !e.target.classList.contains('input-container__arrow')) {
-            item.input.classList.remove('inputsel');
+            item.input.classList.remove('inputsel'); //удалить подчеркивание
           }
           if (!e.target.classList.contains('input-container__arrow')) {
             if (!item.ul.classList.contains('showlist')) {
@@ -526,20 +528,26 @@ class InputContainer {
   }
 }
 let inpContTemp;
+//создать 26 объектов по числу инпутов
 let inpConts = [];
 for (let i = 0; i < 25; i++) {
   inpConts[i] = new InputContainer(document.getElementById(`inp_cont${i}`));
 }
 
+//Обновить объект инпута при клике на этот инпут или его стрелку(нужно при смене вкладки для получения новых координат инпута для его закрытия при произвольном клике)
 for (let item of inputSelects) {
+  item.addEventListener('click', func);
+}
+for (let item of inputContainerArrows) {
   item.addEventListener('click', func);
 }
 
 function func(e) {
   inpContTemp = new InputContainer(e.target.parentNode);
   inpContTemp.open = true;
+  const targPN = e.target.parentNode;
   for (let i = 0; i < inpConts.length; i++) {
-    if (e.target === inpConts[i].input) {
+    if (targPN.querySelector('.inputselect') === inpConts[i].input) {
       inpConts[i] = inpContTemp;
     }
   }
@@ -551,8 +559,8 @@ function func(e) {
 
 /**********Работа с селектами*****************/
 /*const inputSelects = document.querySelectorAll('.inputselect');
-const inputContainerUls = document.querySelectorAll('.input-container__ul'); определены выше*/
-const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
+const inputContainerUls = document.querySelectorAll('.input-container__ul'); 
+const inputContainerArrows = document.querySelectorAll('.input-container__arrow');определены выше*/
 const headerTop = document.querySelector('.header__top');
 const headerMenu = document.querySelector('.header__menu');
 
@@ -630,16 +638,17 @@ function currentBlock() {
 function hideSelect_1(e) {
   let targ = e.target;
   let targPN = targ.parentNode;
+
   //нажали на стрелочку
   if (targ.classList.contains('input-container__arrow')) {
-    targPN.querySelector('.input-container__ul').classList.toggle('showlist');
-    targPN.querySelector('.inputselect').classList.toggle('inputsel');
-    //targPN.querySelector('.inputselect').classList.add('inputsel');
+    targPN.querySelector('.input-container__ul').classList.toggle('showlist'); //развернуть селект
+    targPN.querySelector('.inputselect').classList.toggle('inputsel'); //развернуть красное подчеркивание
+
     setTimeout(() => {
-      targ.classList.toggle('arrow-rotate');
+      targ.classList.toggle('arrow-rotate'); //повернуть стрелочку на 180
     }, 50);
 
-    targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
+    targPN.querySelector('.placeholder2').classList.toggle('input-field-focus'); //поднять placeholder
 
     /*Для мобильной версии (<500рх) поднять инпут с селектом вверх */
     if (document.documentElement.clientWidth <= 500) {
@@ -650,11 +659,17 @@ function hideSelect_1(e) {
 
     //разворачиваем/сворачиваем рубрикатор 
     if (!targPN.querySelector('.input-container__ul').classList.contains('ul-wide') && targPN.querySelector('.inputselect').classList.contains('ulwide')) {
-      addWide(e);
+      addWide(e); //если свернут - развернуть
     } else {
-      targPN.querySelector('.input-container__ul').classList.remove('ul-wide');
+      targPN.querySelector('.input-container__ul').classList.remove('ul-wide'); //если развернут - свернуть
       for (let item of toHides) {
         item.classList.remove('hide-block');
+        if (document.getElementById('inp_cont6').style.display === 'none') {
+          document.getElementById('inp_cont6').style.display = 'block';
+        }
+        if (document.getElementById('inp_cont15').style.display === 'none') {
+          document.getElementById('inp_cont15').style.display = 'block';
+        }
       }
       if (targPN.querySelector('.for-button')) {
         targPN.querySelector('.for-button').classList.add('hide-block');
@@ -680,14 +695,12 @@ function hideSelect_1(e) {
 
   if (targ.classList.contains('is2')) {
     targPN.querySelector('.arrow').classList.add('arrow-rotate');
-    //targPN.querySelector('.placeholder2').classList.add('input-field-focus');
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
     //Для мобильных <=500px
     if (document.documentElement.clientWidth <= 500) {
       inputUp(targPN);
     }
   }
-
 
   //нажали вне поля выбора
   if (!targ.classList.contains('inputselect')) {
@@ -703,8 +716,6 @@ function hideSelect_1(e) {
 }
 
 //Показать выбранный select и спрятать placeholder
-
-//for (let item of chooseWork.querySelectorAll('.input-container__item')) {
 for (let item of document.querySelectorAll('.input-container__item')) {
   item.addEventListener('click',
     showAllItemSelected);
@@ -786,10 +797,7 @@ function hideSelect_2(e) {
   }
 
   e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
-
-  //e.target.classList.toggle('inputsel');
   e.target.classList.add('inputsel');
-
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
 
@@ -2317,23 +2325,25 @@ window.addEventListener('click', isDark);
 
 function isDark(e) {
   if (e.target.classList.contains('input-field')) {
-    return;
+    return; //если нажат input без селекта
   }
 
   function isShowList(e) {
     if (!chooseRegion.classList.contains('up-block')) {
-      return false;
+      return false; //если активирован попап регионов
     }
     for (let item of inputContainerUls) {
       if (item.classList.contains('showlist')) {
-        return false;
+        return false; //если развернут любой селект
       }
     }
     return true;
   }
 
-  e.target.parentNode.classList.add('zindex50');
-  e.target.parentNode.querySelector('.placeholder') && e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
+  if (e.target.parentNode.classList.contains('input-container')) {
+    e.target.parentNode.classList.add('zindex50');
+    e.target.parentNode.querySelector('.placeholder') && e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
+  }
 
   if (isShowList(e)) {
     document.querySelector('.header').classList.remove('body-dark');
@@ -2345,13 +2355,15 @@ function isDark(e) {
       item.classList.remove('white-font');
     }
     /*для мобильных*/
-    for (let item of document.querySelectorAll('.inputsel')) {
-      if (!item.value) {
-        item.classList.remove('inputsel');
+    if (document.documentElement.clientWidth <= 500) {
+      for (let item of document.querySelectorAll('.inputsel')) {
+        if (!item.value) {
+          item.classList.remove('inputsel');
+        }
       }
-    }
-    for (let item of document.querySelectorAll('.arrow-rotate')) {
-      item.classList.remove('arrow-rotate');
+      for (let item of document.querySelectorAll('.arrow-rotate')) {
+        item.classList.remove('arrow-rotate');
+      }
     }
     /* */
   } else {
@@ -2383,6 +2395,105 @@ function handlZindex() {
   document.querySelector('.header').classList.add('body-dark');
 }
 /**********Конец затемнения страницы ******/
+
+
+/**************Смена цвета в рисунке девушки *************/
+/************Расширение/сужение полей *************/
+const infoSidebar = document.querySelector('.info__sidebar');
+const infoWindow = document.querySelector('.info__window');
+const colVacans = document.querySelector('.col__vacans');
+const tabsWrap = document.querySelector('.tabs__wrap');
+const tabsBodys = document.querySelectorAll('.tabs__body');
+
+let arrYellow = [];
+arrYellow[0] = 'yellow';
+for (let i = 1; i < 18; i++) {
+  arrYellow.push(`yellow${i}`);
+}
+
+for (let btn of showAlls) {
+  btn.addEventListener('click', changeColorGreen);
+}
+
+function changeColorGreen() {
+  for (let i = 0; i < arrYellow.length; i++) {
+    document.querySelector(`.${arrYellow[i]}`).classList.add(`c${i}`);
+    document.querySelector(`.${arrYellow[i]}`).classList.remove(`${arrYellow[i]}`);
+  }
+  infoSidebar.classList.add('info__sidebar-narrow');
+  infoWindow.classList.add('info__window-wide');
+  colVacans.classList.add('hide-block');
+  tabsWrap.classList.remove('initial-hide');
+  tabsBodys[0].classList.remove('initial-hide');
+}
+
+for (let btn of resetAlls) {
+  btn.addEventListener('click', changeColorYellow);
+}
+
+function changeColorYellow() {
+  for (let i = 0; i < arrYellow.length; i++) {
+    document.querySelector(`.c${i}`).classList.add(`${arrYellow[i]}`);
+  }
+  infoSidebar.classList.remove('info__sidebar-narrow');
+  infoWindow.classList.remove('info__window-wide');
+  colVacans.classList.remove('hide-block');
+  tabsWrap.classList.add('initial-hide');
+  tabsBodys[0].classList.add('initial-hide');
+}
+
+/***********Конец смены цвета в рисунке девушки **********/
+
+/**Переключение вкладок Актуальные вакансии/В тексте объявления**/
+const infoContainer = document.querySelector('.info__container');
+const infoTabsTitles = infoContainer.querySelectorAll('.tabs__title');
+for (let btn of infoTabsTitles) {
+  btn.addEventListener('click', function (e) {
+    for (let btn of infoTabsTitles) {
+      btn.classList.remove('_tab-active');
+    }
+    e.currentTarget.classList.add('_tab-active');
+  });
+}
+
+/***********Работа с сортировкой по дате/периоду *********/
+
+const selectDateDiv = document.querySelector('.select1');
+const selectPeriodDiv = document.querySelector('.select2');
+const selectDateInput = document.querySelector('#select__date');
+const selectPeriodInput = document.querySelector('#select__period');
+const selectDateUl = document.querySelector('.select__date');
+const selectPeriodUl = document.querySelector('.select__period');
+const selectDateItems = document.querySelectorAll('.select__date-item');
+const selectPeriodItems = document.querySelectorAll('.select__period-item');
+
+//развернуть селект
+selectDateDiv.addEventListener('click', function (e) {
+  selectDateUl.classList.add('show__date');
+});
+selectPeriodDiv.addEventListener('click', function (e) {
+  selectPeriodUl.classList.add('show__date');
+});
+
+//показать выбранное значение и свернуть селект
+for (let item of selectDateItems) {
+  item.addEventListener('click', function (e) {
+    selectDateInput.value = e.target.innerText;
+    setTimeout(() => {
+      selectDateUl.classList.remove('show__date');
+    }, 50);
+  });
+}
+
+for (let item of selectPeriodItems) {
+  item.addEventListener('click', function (e) {
+    selectPeriodInput.value = e.target.innerText;
+    setTimeout(() => {
+      selectPeriodUl.classList.remove('show__date');
+    }, 50);
+  });
+}
+
 
 /*window.onclick = (e) => {
   //console.log('target=', e.target);

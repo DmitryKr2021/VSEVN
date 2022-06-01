@@ -42,17 +42,17 @@ body {
   margin: 24px auto;
   font-family: ZabraProTest3;
   font-weight: 500;
-  font-size: 34px;
-  margin-bottom: 30px;
+  font-size: 40px;
 }
 
 .search .tabs {
-  margin-top: 22px;
+  margin-top: 30px;
+  height: 65px;
   padding-left: 10px;
 }
 
 .search .tabs__title {
-  width: 200px;
+  width: 280px;
   padding-bottom: 3px;
 }
 
@@ -127,12 +127,6 @@ body {
   height: 100%;
   padding-left: 0;
   padding-right: 15px;
-}
-
-.tabs {
-  margin-top: -20px;
-  margin-bottom: 0 !important;
-  height: 65px;
 }
 
 .choose {
@@ -1048,7 +1042,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   display: flex;
   flex-direction: column;
   width: 95vw;
-  max-width: 1500px;
+  max-width: 1580px;
   flex-wrap: wrap;
   border-radius: 5px 5px 0 0;
 }
@@ -1062,7 +1056,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .block3 .for-button {
   position: absolute;
   width: 95vw;
-  max-width: 1500px;
+  max-width: 1580px;
   background-color: #fff;
   height: 80px;
   border-radius: 0 0 5px 5px;
@@ -1147,7 +1141,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 @media (max-width: 1200px) {
   .search {
-    height: 1100px;
+    height: 1120px;
     overflow-x: hidden;
   }
 
@@ -1556,6 +1550,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   .choose__any .block3 .input-container:nth-child(1) .input-container__item {
     max-width: 370px;
   }
+
+  .roll-up {
+    margin: -280px auto 0 auto;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1603,7 +1601,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
   .roll-up {
     width: 97.5%;
-    margin: -230px auto 0 auto;
+    margin: -250px auto 0 auto;
   }
 
   .salary {
@@ -2087,28 +2085,36 @@ input[type="range"]:active::-webkit-slider-thumb {
     height: 1660px;
   }
 
+  .search .tabs__navigation {
+    flex-direction: column;
+  }
+
   .choose {
     height: 1300px;
   }
 
   .choose__work .block1 {
-    margin-top: 35px;
+    margin-top: 48px;
   }
 
   .choose__work .block3 {
-    margin-top: 185px;
+    margin-top: 198px;
   }
 
   .choose__work .block5 {
-    margin-top: 115px;
+    margin-top: 128px;
+  }
+
+  .choose__staff .form__wrap--blok-1_2 {
+    margin-top: 35px;
+  }
+
+  .choose__any .form__wrap--blok-1_2 {
+    margin-top: 48px;
   }
 
   .choose__staff-hide {
     transform: translateX(-250vw);
-  }
-
-  .search .tabs__navigation {
-    flex-direction: column;
   }
 
   .search .tabs__title {
@@ -2136,7 +2142,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 @media (max-width: 426px) {
   .search {
-    height: 1720px;
+    height: 1780px;
   }
 
   .search-reduced {
@@ -2150,7 +2156,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 @media (max-width: 400px) {
   .search {
-    height: 1730px;
+    height: 1760px;
   }
 
   .search-reduced {
@@ -2164,7 +2170,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 @media (max-width: 390px) {
   .search {
-    height: 1730px;
+    height: 1750px;
   }
 
   .search-reduced {
@@ -2685,22 +2691,15 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 
-/*************** Блок info **********************/
-.info {
-  margin-top: 30px;
-}
-
-.initial-hide {
-  display: none;
-}
-
-.info__initial {
-  position: relative;
-}
-
-
 /*************** Баннер Девушка ****************/
-/*
+.main_box_U1FbnBH0mjIcPe5 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 400px;
+  padding-left: 100px;
+}
+
 .yellow path:nth-child(4) {
   fill: var(--yellow2) !important;
 }
@@ -2884,7 +2883,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .yellow17 path:nth-child(2) {
   fill: var(--yellow2) !important;
 }
-*/
+
 /****************************************************/
 .header__wrap {
   height: 110px !important;
@@ -2927,4 +2926,147 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .zindex50 {
   z-index: 50;
+}
+
+/*************** Блок info **********************/
+.info {
+  margin-top: 30px;
+}
+
+.initial-hide {
+  display: none;
+}
+
+.info__initial {
+  position: relative;
+}
+
+.cards {
+  background-color: #fff;
+  z-index: 1;
+}
+
+.info__window {
+  height: 10250px;
+  background-color: #fff;
+}
+
+.info__container {
+  display: flex;
+}
+
+.info__container .info__sidebar {
+  flex-basis: 50%;
+}
+
+.info__container .info__window {
+  flex-basis: 50%;
+}
+
+.info .info__container .info__sidebar-narrow {
+  flex-basis: 25%;
+  max-width: 420px;
+}
+
+.info__container .info__window-wide {
+  flex-basis: 75%;
+}
+
+.col__vacans {
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.info__offer {
+  margin-top: 750px;
+  text-align: center;
+}
+
+.info__offer-title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.info__offer-text {
+  font-size: 19px;
+  margin-top: 5px;
+}
+
+.filters .filters__col {
+  max-width: 50%;
+  width: 50%;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select1,
+.select2 {
+  position: relative;
+  background-color: #fff;
+}
+
+.filters__col .form {
+  width: 100%;
+  padding: 8px;
+  padding-bottom: 9px;
+  font-size: 10px;
+  border-radius: 5px;
+  color: #777;
+}
+
+.select__date,
+.select__period {
+  position: absolute;
+  top: 20px;
+  top: 24px;
+  left: -1px;
+  width: 101.5%;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease-out, box-shadow 0.3s ease-out;
+  ;
+  z-index: 5;
+}
+
+.show__date {
+  top: 20px;
+  max-height: 200px;
+  box-shadow: 5px 5px 3px rgba(55, 55, 55, 0.1), -5px 5px 3px rgba(55, 55, 55, 0.1);
+}
+
+.select__date-item,
+.select__period-item {
+  font-size: 10px;
+  padding: 8px;
+  background-color: #fff;
+}
+
+.select__date-item:first-of-type,
+.select__period-item:first-of-type {
+  position: relative;
+  margin-top: 12px;
+}
+
+.select__date-item:first-of-type:before,
+.select__period-item:first-of-type:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.select__date-item:hover,
+.select__period-item:hover {
+  background-color: var(--bg-yellow);
 }

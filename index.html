@@ -2525,6 +2525,9 @@
 				<div class="info__container _activeWindow">
 					<sidebar class="info__sidebar info__col">
 						<div data-tabs class="tabs">
+              <div class="col__vacans">
+                36.329 Вакансий 24.560 Резюме
+              </div>
 							<div class="tabs__wrap initial-hide">
 								<nav data-tabs-titles class="tabs__navigation">
 									<button type="button" class="tabs__title">
@@ -2540,27 +2543,35 @@
 							<div data-tabs-body class="tabs__content">
 								<div class="tabs__body initial-hide">
 									<div class="filters _not-input">
-										<div class="filters__col">
-											<select name="form[]" class="form">
-												<option value="1" selected>Сортировка по дате добавления</option>
-												<option value="2">Сортировка по дате добавления (по дате убывания)</option>
-												<option value="3">Сортировка по зарплате (по возрастанию)</option>
-												<option value="4">Сортировка по зарплате (по убыванию)</option>
-												<option value="5">Сортировка (только с типом оплаты: Договорная</option>
-											</select>
-										</div>
-										<div class="filters__col">
-											<select name="form[]" class="form">
-												<option value="1" selected>Период: За весь период</option>
-												<option value="2">Период: За сутки</option>
-												<option value="3">Период: За 3 дня</option>
-												<option value="4">Период: За неделю</option>
-												<option value="5">Период: За месяц</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="tabs__body">
+										<div class="filters__col select1">
+                      <input id="select__date" class="form" type="text" value="Сортировка по дате добавления"/>   
+                      <div class="input-container__arrow arrow"></div>
+                      <ul class="select__date">
+                        <li class="select__date-item">Сортировка по дате добавления</li>
+                        <li class="select__date-item">Сортировка по дате добавления (по дате убывания)</li>
+                        <li class="select__date-item">Сортировка по зарплате (по возрастанию)</li>
+                        <li class="select__date-item">Сортировка по зарплате (по убыванию)</li>
+                        <li class="select__date-item">Сортировка (только с типом оплаты: Договорная)</li>
+                      </ul>
+										</div><!--/select1-->
+
+										<div class="filters__col select2">
+                      <input id="select__period" class="form" type="text" value="Период: За весь период"/>   
+                      <div class="input-container__arrow arrow"></div>
+                      <ul class="select__period">
+                        <li class="select__period-item">Период: За весь период</li>
+                        <li class="select__period-item">Период: За сутки</li>
+                        <li class="select__period-item">Период: За 3 дня</li>
+                        <li class="select__period-item">Период: За неделю</li>
+                        <li class="select__period-item">Период: За месяц</li>
+                      </ul>
+										</div><!--/select2-->
+									</div><!--/filters-->					
+                </div>
+
+								<div class="tabs__body zindex1">
+ 
+ <!--
 									<div class="filters _not-input initial-hide">
 										<div class="filters__col">
 											<select name="form[]" class="form">
@@ -2581,7 +2592,7 @@
 											</select>
 										</div>
 									</div>
-
+  -->
 
 									<div class="cards">
 										<article class="card">
@@ -4885,16 +4896,14 @@
               <style>
                 .main_box_U1FbnBH0mjIcPe5 {
                   margin:0; 
-                  *position: absolute; 
+                  /*position: absolute; 
                   top: 50%; 
                   left:50%; 
-                  *-ms-transform: translateY(-10%)  translateX(-50%); 
-                  *transform: translateY(-10%)  translateX(-50%);
-                  width:689.2px;
-                  
-                  *width:450px;
-                  height: 450px;
-                  border: 1px solid blue;
+                  -ms-transform: translateY(-10%)  translateX(-50%); 
+                  transform: translateY(-10%)  translateX(-50%);*/
+                  *width:689.2px;                  
+                  width:550px;
+                  height: 450px;               
                   z-index: 100;}
                 .svg_U1FbnBH0mjIcPe5 {
                   display:block; 
@@ -5643,9 +5652,20 @@
                      //console.log("width - is bottleneck"); 
                      cont_width = window.innerWidth; cont_height = cont_width/ratio; }else{ console.log("height - is bottleneck"); cont_height = window.innerHeight; cont_width = cont_height*ratio; }  var cont = document.getElementsByTagName("div")[0]; cont.style.height = cont_height + "px"; cont.style.width = cont_width + "px"; }  </script> 
             </div>
-            
-						
-						<div class="window__row window__row--right">
+
+            <div class="info__offer">
+              <p class="info__offer-title">
+                Вы ищете? Мы подобрали для вас варианты! 
+              </p>
+              <p class="info__offer-text">
+                Хотите узнать больше, вам нужны подробности?
+              </p>
+              <p class="info__offer-text">
+                Выберите нужное из списка предложений.
+              </p>
+            </div>
+            					
+						<div class="window__row window__row--right initial-hide">
 							<div data-tabs class="window__tabs window-tabs">
 								<nav data-tabs-titles class="window-tabs__navigation">
 									<button type="button" class="window-tabs__title">
