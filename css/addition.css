@@ -3021,7 +3021,8 @@ input[type="range"]:active::-webkit-slider-thumb {
   top: 20px;
   top: 24px;
   left: -1px;
-  width: 101.5%;
+  /*width: 100%;*/
+  width: calc(100% + 2px);
   padding-top: 0px;
   padding-bottom: 5px;
   background-color: var(--bg-white);
@@ -3032,7 +3033,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   overflow-y: hidden;
   transition: max-height 0.3s ease-out, box-shadow 0.3s ease-out;
   ;
-  z-index: 5;
+  z-index: 50;
 }
 
 .show__date {
@@ -3069,4 +3070,114 @@ input[type="range"]:active::-webkit-slider-thumb {
 .select__date-item:hover,
 .select__period-item:hover {
   background-color: var(--bg-yellow);
+}
+
+.info .online {
+  font-size: 16px;
+}
+
+.card__col .card__supname {
+  line-height: 24px;
+}
+
+.card__col .card__supname a {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.card__col .card__supname a:hover,
+.card__col .card__favorite--remove:hover {
+  color: var(--card-hover);
+}
+
+.card__col .card__favorite--remove:hover svg path {
+  fill: var(--card-hover);
+}
+
+.card__col .card__favorite:hover {
+  color: var(--card-hoverdark);
+}
+
+.card__col .card__favorite:hover svg path {
+  fill: var(--card-hoverdark);
+}
+
+.card__col .card__favorite--green:hover {
+  color: var(--card-hoverdark);
+}
+
+.card__col .card__favorite--green:hover a {
+  color: var(--card-hoverdark);
+}
+
+.card__col .card__favorite--green:hover svg path {
+  fill: var(--card-hoverdark);
+}
+
+.card__col .card__name,
+.card__col .card__place {
+  color: var(--card-hover);
+  font-size: 18px;
+}
+
+.card__col .card__name:hover,
+.card__col .card__place a:hover {
+  color: var(--card-hoverdark);
+}
+
+.card__col .card__desc li {
+  font-size: 18px;
+  color: #333;
+}
+
+.card__col .card__wrap button:hover {
+  color: var(--card-hoverdark);
+}
+
+.article-list__title {
+  font-weight: 600;
+}
+
+.article-list__item h3 {
+  font-family: ZabraProTest3;
+  font-size: 18px;
+}
+
+.article-list__link {
+  font-family: ZabraProTest3;
+  font-size: 18px;
+  color: var(--card-hover);
+}
+
+.article-list__link:hover {
+  color: var(--card-hoverdark);
+}
+
+.current-searches a {
+  font-size: 18px;
+  padding-left: 20px;
+  color: var(--card-hover);
+}
+
+.current-searches a:hover {
+  text-decoration: none;
+  color: var(--card-hoverdark);
+}
+
+.current-searches__title {
+  font-weight: 600;
+}
+
+/**********Стилизация предприятия***********/
+.window-tabs__navigation {
+  padding-top: 10px;
+}
+
+.rating--col {
+  margin-bottom: 0;
+}
+
+.rating--col .rating__body {
+  margin-top: 10px;
+  margin-bottom: 0;
 }

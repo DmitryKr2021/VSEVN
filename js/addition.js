@@ -376,7 +376,8 @@ function hideAllLists(e) {
       }
     }
 
-    if (eY < document.getElementById('vacansion').getBoundingClientRect().top || eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
+    if (eY < document.getElementById('vacansion').getBoundingClientRect().top ||
+      eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
       removeWide2(e);
       for (let item of document.querySelectorAll('.ul-wide2')) {
         item.classList.remove('ul-wide2');
@@ -458,7 +459,8 @@ function hideAllLists(e) {
   } else {
     //Для мобильных <=500px
     //Не сворачивать инпут, если выбран вариант
-    if (e.target.classList.contains('input-container__item') || e.target.parentNode.classList.contains('input-container__item')) {
+    if (e.target.classList.contains('input-container__item') ||
+      e.target.parentNode.classList.contains('input-container__item')) {
       return;
     }
     //перестать прятать блоки при расширении рубрикатора
@@ -476,7 +478,8 @@ function hideAllLists(e) {
         }
       }
 
-      if (!e.target.classList.contains('arrow') && !e.target.classList.contains('is2') || e.target.classList.contains('arrow-rotate')) {
+      if (!e.target.classList.contains('arrow') && !e.target.classList.contains('is2') ||
+        e.target.classList.contains('arrow-rotate')) {
         headerMenu.classList.remove('hide-block');
         headerTop.classList.remove('hide-block');
         item.classList.remove('fixed-top');
@@ -534,7 +537,8 @@ for (let i = 0; i < 25; i++) {
   inpConts[i] = new InputContainer(document.getElementById(`inp_cont${i}`));
 }
 
-//Обновить объект инпута при клике на этот инпут или его стрелку(нужно при смене вкладки для получения новых координат инпута для его закрытия при произвольном клике)
+/*Обновить объект инпута при клике на этот инпут 
+или его стрелку(нужно при смене вкладки для получения новых координат инпута для его закрытия при произвольном клике)*/
 for (let item of inputSelects) {
   item.addEventListener('click', func);
 }
@@ -581,12 +585,16 @@ function inputUp(targPN) {
       }
 
       setTimeout(() => {
-        item.querySelector('.arrow') && !item.classList.contains('fixed-top') && item.querySelector('.arrow').classList.remove('arrow-rotate');
+        item.querySelector('.arrow') &&
+          !item.classList.contains('fixed-top') &&
+          item.querySelector('.arrow').classList.remove('arrow-rotate');
 
         for (let i = 0; i < inpConts.length; i++) {
           if (item.querySelector('.inputselect') === inpConts[i].input) {
             if (!inpConts[i].filled) {
-              item.querySelector('.placeholder2') && !item.classList.contains('fixed-top') && item.querySelector('.placeholder2').classList.remove('input-field-focus');
+              item.querySelector('.placeholder2') &&
+                !item.classList.contains('fixed-top') &&
+                item.querySelector('.placeholder2').classList.remove('input-field-focus');
 
               item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
             }
@@ -2286,7 +2294,9 @@ function handleText() {
 
     if (labelText.length > maxLength) {
       let coef = maxLength / labelText.length * 100;
-      label_.style.cssText = `background: linear-gradient(to right,#000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+      label_.style.cssText = `background: linear-gradient(to right,
+        #000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%,
+         transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
       input_.addEventListener('mouseover', () => {
         input_.before(popup);
@@ -2470,17 +2480,26 @@ const selectPeriodItems = document.querySelectorAll('.select__period-item');
 //развернуть селект
 selectDateDiv.addEventListener('click', function (e) {
   selectDateUl.classList.add('show__date');
+  e.target.querySelector('.arrow') && e.target.querySelector('.arrow').classList.add('arrow-rotate');
 });
+
 selectPeriodDiv.addEventListener('click', function (e) {
   selectPeriodUl.classList.add('show__date');
+  e.target.querySelector('.arrow').classList.add('arrow-rotate');
 });
 
 //показать выбранное значение и свернуть селект
 for (let item of selectDateItems) {
   item.addEventListener('click', function (e) {
     selectDateInput.value = e.target.innerText;
+    //Показать дымку в селекте по дате
+    selectDateInput.style.cssText = `background: linear-gradient(to
+       right,#000 60%, #777 70%, #ddd 75%, transparent 90%, 
+       transparent); -webkit-background-clip: text; 
+       -webkit-text-fill-color: transparent;`;
     setTimeout(() => {
       selectDateUl.classList.remove('show__date');
+      e.target.parentNode.previousElementSibling.classList.remove('arrow-rotate');
     }, 50);
   });
 }
@@ -2490,9 +2509,39 @@ for (let item of selectPeriodItems) {
     selectPeriodInput.value = e.target.innerText;
     setTimeout(() => {
       selectPeriodUl.classList.remove('show__date');
+      e.target.parentNode.previousElementSibling.classList.remove('arrow-rotate');
     }, 50);
   });
 }
+/***********Конец работа с сортировкой по дате/периоду *********/
+
+
+/***********Показать предприятие ***********/
+
+//Запретить переход по ссылкам в карточках
+const cardCol = document.querySelectorAll('.card__col');
+for (let card of cardCol) {
+  for (let item of card.querySelectorAll('a')) {
+    item.onclick = (e) => {
+      e.preventDefault();
+    };
+  }
+}
+
+const girl = document.querySelector('.main_box_U1FbnBH0mjIcPe5');
+const infoOffer = document.querySelector('.info__offer');
+const cardFabrics = document.querySelectorAll('.card__fabric');
+for (let card of cardFabrics) {
+  card.addEventListener('click', function () {
+    windowRowRight.classList.remove('initial-hide');
+    girl.classList.add('hide-block');
+    infoOffer.classList.add('hide-block');
+    infoSidebar.classList.add('info__sidebar-narrow');
+    infoWindow.classList.add('info__window-wide');
+  });
+}
+
+/******Конец показать предприятие **********/
 
 
 /*window.onclick = (e) => {

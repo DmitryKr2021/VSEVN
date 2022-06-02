@@ -10,6 +10,8 @@ body {
   --yellow1: rgb(255, 241, 112);
   --yellow2: rgb(255, 255, 240);
   --yellow3: rgb(254, 245, 197);
+  --card-hover: #619f00;
+  --card-hoverdark: #356201;
 }
 
 
@@ -6823,7 +6825,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5px;
+  /*margin-bottom: 5px;*/
 }
 
 .card__supname a {
@@ -7108,12 +7110,13 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 21px;
-  height: 21px;
-  background-color: #b83539;
+  width: 31px;
+  height: 31px;
+  /*background-color: #b83539;*/
   background-color: var(--bg-red);
   color: #ffffff;
-  font-size: 10px;
+  /*font-size: 10px;*/
+  font-size: 17px;
   border-radius: 100%;
   flex-shrink: 0;
 }
@@ -7121,7 +7124,7 @@ input {
 .card__name {
   display: block;
   color: #619f00;
-  margin-bottom: 7px;
+  /*margin-bottom: 7px;*/
   white-space: nowrap;
   position: relative;
   overflow: hidden;
@@ -7197,7 +7200,7 @@ input {
 .card__place {
   display: flex;
   color: #737f90;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 
 @media (min-width: 101.875em) {
@@ -14451,7 +14454,11 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
 
 .vacancies__desc {
   margin: 0 auto;
-  width: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*width: max-content;*/
+  width: 60%;
   color: #8b8b8b;
   font-weight: 300;
 }
@@ -14498,9 +14505,9 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
   position: relative;
 }
 
-.vacancies__start {
+/*.vacancies__start {
   margin-bottom: 10px;
-}
+}*/
 
 @media (min-width: 101.875em) {
   .vacancies__start svg {
