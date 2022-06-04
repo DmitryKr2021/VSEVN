@@ -2445,8 +2445,6 @@ function changeColorYellow() {
   for (let i = 0; i < arrYellow.length; i++) {
     document.querySelector(`.c${i}`).classList.add(`${arrYellow[i]}`);
   }
-  infoSidebar.classList.remove('info__sidebar-narrow');
-  infoWindow.classList.remove('info__window-wide');
   colVacans.classList.remove('hide-block');
   tabsWrap.classList.add('initial-hide');
   tabsBodys[0].classList.add('initial-hide');
