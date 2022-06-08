@@ -2409,11 +2409,14 @@ function handlZindex() {
 
 /**************Смена цвета в рисунке девушки *************/
 /************Расширение/сужение полей *************/
+const info = document.querySelector('.info');
 const infoSidebar = document.querySelector('.info__sidebar');
 const infoWindow = document.querySelector('.info__window');
 const colVacans = document.querySelector('.col__vacans');
 const tabsWrap = document.querySelector('.tabs__wrap');
 const tabsBodys = document.querySelectorAll('.tabs__body');
+const girlWrapper = document.querySelector('.girl__wrapper');
+let green = false;
 
 let arrYellow = [];
 arrYellow[0] = 'yellow';
@@ -2427,14 +2430,23 @@ for (let btn of showAlls) {
 
 function changeColorGreen() {
   for (let i = 0; i < arrYellow.length; i++) {
-    document.querySelector(`.${arrYellow[i]}`).classList.add(`c${i}`);
-    document.querySelector(`.${arrYellow[i]}`).classList.remove(`${arrYellow[i]}`);
+    if (document.querySelector(`.${arrYellow[i]}`)) {
+      document.querySelector(`.${arrYellow[i]}`).classList.add(`c${i}`);
+    }
+    if (document.querySelector(`.${arrYellow[i]}`)) {
+      document.querySelector(`.${arrYellow[i]}`).classList.remove(`${arrYellow[i]}`);
+    }
   }
   infoSidebar.classList.add('info__sidebar-narrow');
   infoWindow.classList.add('info__window-wide');
   colVacans.classList.add('hide-block');
   tabsWrap.classList.remove('initial-hide');
   tabsBodys[0].classList.remove('initial-hide');
+  if (info.getBoundingClientRect().top < 100) {
+    girlWrapper.classList.add('fixed');
+    girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
+  }
+  green = true;
 }
 
 for (let btn of resetAlls) {
@@ -2450,6 +2462,22 @@ function changeColorYellow() {
   tabsBodys[0].classList.add('initial-hide');
 }
 
+//При клике ниже желтого поля развернуть зеленую девушку 
+window.addEventListener('click', function (e) {
+  if (e.clientY > info.getBoundingClientRect().top - 30) {
+    changeColorGreen();
+  }
+});
+
+//Отцентровать девушку при скролле
+window.addEventListener('scroll', function () {
+  if (info.getBoundingClientRect().top < 100) {
+    girlWrapper.classList.add('fixed');
+    girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
+  } else {
+    girlWrapper.classList.remove('fixed');
+  }
+});
 /***********Конец смены цвета в рисунке девушки **********/
 
 /**Переключение вкладок Актуальные вакансии/В тексте объявления**/
@@ -2516,6 +2544,11 @@ for (let item of selectPeriodItems) {
 
 /***********Показать предприятие ***********/
 
+const infoOffer = document.querySelector('.info__offer');
+const cardFabrics = document.querySelectorAll('.card__fabric');
+const pretendentCard = document.querySelector('.pretendent-card');
+const cardPretendents = document.querySelectorAll('.card__pretendent');
+
 //Запретить переход по ссылкам в карточках
 const cardCol = document.querySelectorAll('.card__col');
 for (let card of cardCol) {
@@ -2526,20 +2559,216 @@ for (let card of cardCol) {
   }
 }
 
-const girl = document.querySelector('.main_box_U1FbnBH0mjIcPe5');
-const infoOffer = document.querySelector('.info__offer');
-const cardFabrics = document.querySelectorAll('.card__fabric');
 for (let card of cardFabrics) {
   card.addEventListener('click', function () {
     windowRowRight.classList.remove('initial-hide');
-    girl.classList.add('hide-block');
+    pretendentCard.classList.add('initial-hide');
+    girlWrapper.classList.add('hide-block');
     infoOffer.classList.add('hide-block');
     infoSidebar.classList.add('info__sidebar-narrow');
     infoWindow.classList.add('info__window-wide');
   });
 }
-
 /******Конец показать предприятие **********/
+
+/***********Показать соискателя ***********/
+for (let card of cardPretendents) {
+  card.addEventListener('click', function () {
+    pretendentCard.classList.remove('initial-hide');
+    windowRowRight.classList.add('initial-hide');
+    girlWrapper.classList.add('hide-block');
+    infoOffer.classList.add('hide-block');
+    infoSidebar.classList.add('info__sidebar-narrow');
+    infoWindow.classList.add('info__window-wide');
+  });
+}
+/*********Конец показать соискателя *********/
+
+
+
+//Добавить/убрать соискателя/работодателя в избранное
+const cardFavoritesPerson = document.querySelectorAll('.card__favorite.person');
+const cardFavoritesEmployer = document.querySelectorAll('.card__favorite.employer');
+const addPerson = 'Добавить соискателя в избранное';
+const removePerson = 'Убрать соискателя из избранного';
+const addEmployer = 'Добавить работодателя в избранное';
+const removeEmployer = 'Убрать работодателя из избранного';
+
+for (let item of cardFavoritesPerson) {
+  item.innerHTML += addPerson;
+  item.setAttribute('data-add', 'add');
+}
+
+for (let item of cardFavoritesPerson) {
+  item.addEventListener('click', function (e) {
+    e.target.classList.toggle('add');
+    if (e.target.getAttribute('data-add') === 'add') {
+      let innerHTML_ = e.target.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
+      e.target.innerHTML = tempStr + removePerson;
+      e.target.setAttribute('data-add', 'remove');
+    } else {
+      e.target.setAttribute('data-add', 'add');
+      let innerHTML_ = e.target.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
+      e.target.innerHTML = tempStr + addPerson;
+    }
+  });
+}
+
+for (let item of cardFavoritesEmployer) {
+  item.innerHTML += addEmployer;
+  item.setAttribute('data-add', 'add');
+}
+
+for (let item of cardFavoritesEmployer) {
+  item.addEventListener('click', function (e) {
+    e.target.classList.toggle('add');
+    if (e.target.getAttribute('data-add') === 'add') {
+      let innerHTML_ = e.target.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
+      e.target.innerHTML = tempStr + removeEmployer;
+      e.target.setAttribute('data-add', 'remove');
+    } else {
+      e.target.setAttribute('data-add', 'add');
+      let innerHTML_ = e.target.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
+      e.target.innerHTML = tempStr + addEmployer;
+    }
+  });
+}
+
+//О фабрике читать/скрыть
+const readMore = document.querySelector('.read-more');
+const hideMore = document.querySelector('.hide-more');
+const readMoreBlocks = document.querySelectorAll('.read-more__block');
+
+readMore.addEventListener('click', function () {
+  for (let item of readMoreBlocks) {
+    item.classList.remove('hide-block');
+  }
+  readMore.classList.add('hide-block');
+});
+
+hideMore.addEventListener('click', function () {
+  for (let item of readMoreBlocks) {
+    item.classList.add('hide-block');
+  }
+  readMore.classList.remove('hide-block');
+});
+
+//Пагинация
+const pageNavigationPages = document.querySelector('.page-navigation__pages');
+const lastItem = document.querySelector('.last-item');
+const toBegin = document.querySelector('.to-begin');
+const toPrevious = document.querySelector('.to-previous');
+const toNext = document.querySelector('.to-next');
+const inputPage = document.querySelector('.input-page');
+const oK = document.querySelector('.ok');
+
+let count = 1;
+
+toBegin.addEventListener('click', () => {
+  pageNavigationPages.innerText = '1 ИЗ 94';
+  count = 1;
+  toBegin.classList.add('nonactive');
+  toPrevious.classList.add('nonactive');
+});
+
+toNext.addEventListener('click', () => {
+  if (count < 94) {
+    count++;
+  } else {
+    return;
+  }
+  toBegin.classList.remove('nonactive');
+  toPrevious.classList.remove('nonactive');
+  pageNavigationPages.innerText = `${count} ИЗ 94`;
+});
+
+toPrevious.addEventListener('click', () => {
+  if (count > 1) {
+    count--;
+    if (count == 1) {
+      toBegin.classList.add('nonactive');
+      toPrevious.classList.add('nonactive');
+    }
+  } else {
+    return;
+  }
+  pageNavigationPages.innerText = `${count} ИЗ 94`;
+});
+
+oK.addEventListener('mouseover', function () {
+  if (inputPage.value < 1 || inputPage.value > 94 || inputPage.value == count) {
+    lastItem.classList.add('nonactive');
+  } else {
+    lastItem.classList.remove('nonactive');
+  }
+});
+
+oK.addEventListener('click', function () {
+  if (inputPage.value >= 1 && inputPage.value <= 94 && inputPage.value !== count) {
+    pageNavigationPages.innerText = `${inputPage.value} ИЗ 94`;
+    count = inputPage.value;
+    if (inputPage.value > 1) {
+      toBegin.classList.remove('nonactive');
+      toPrevious.classList.remove('nonactive');
+    } else {
+      toBegin.classList.add('nonactive');
+      toPrevious.classList.add('nonactive');
+    }
+  } else {
+    return;
+  }
+});
+
+/**************Работа с анкетой ************* */
+const married = document.querySelector('.married');
+const selectMarried = document.querySelector('.select__married');
+const selectMarriedItems = document.querySelectorAll('.select__married-item');
+const formArrows = document.querySelectorAll('.form-arrow');
+
+married.addEventListener('click', function (e) {
+  e.target.firstElementChild.classList.toggle('arrow-rotate');
+  selectMarried.classList.toggle('show_');
+});
+
+for (let item of selectMarriedItems) {
+  item.addEventListener('click', function (e) {
+    e.target.parentNode.previousElementSibling.value = e.target.innerText;
+    e.target.parentNode.parentNode.firstElementChild.classList.toggle('arrow-rotate');
+    selectMarried.classList.toggle('show_');
+  });
+}
+
+const flat = document.querySelector('.flat');
+const selectFlat = document.querySelector('.select__flat');
+const selectFlatItems = document.querySelectorAll('.select__flat-item');
+
+flat.addEventListener('click', function (e) {
+  e.target.firstElementChild.classList.toggle('arrow-rotate');
+  selectFlat.classList.toggle('show_');
+});
+
+for (let item of selectFlatItems) {
+  item.addEventListener('click', function (e) {
+    e.target.parentNode.previousElementSibling.value = e.target.innerText;
+    e.target.parentNode.parentNode.firstElementChild.classList.toggle('arrow-rotate');
+    selectFlat.classList.toggle('show_');
+  });
+}
+
+for (let arrow of formArrows) {
+  arrow.addEventListener('click', handleArrow);
+}
+
+function handleArrow(e) {
+  e.target.classList.toggle('arrow-rotate');
+  e.target.parentNode.querySelector('ul').classList.toggle('show_')
+}
+/***********Конец работа с анкетой ************/
+
 
 
 /*window.onclick = (e) => {
