@@ -11,11 +11,11 @@ body {
   --yellow2: rgb(255, 255, 240);
   --yellow3: rgb(254, 245, 197);
   --card-hover: #619f00;
-  /*--card-name: #377800;*/
   --card-name: #619f00;
-  --card-hoverdark: #356201;
+  --card-hoverdark: #377800;
   --vacansion-dark: #142542;
-  --vacansion-light: #7c8797;
+  /*--vacansion-light: #7c8797;*/
+  --vacansion-light: #435269;
 }
 
 
@@ -978,7 +978,7 @@ html {
   overflow: hidden;
 }
 
-.rating__deactivated svg:not(:last-child) {
+/*.rating__deactivated svg:not(:last-child) {
   margin-right: 2px;
 }
 
@@ -990,27 +990,22 @@ html {
   top: 50%;
   transform: translate(0, -50%);
   left: 0;
-  /*color: #6aa527;*/
-}
+  color: #6aa527;*
+}*/
 
-.rating--col .rating__active::before {
-  /*color: #f6ce08;*/
+/*.rating--col .rating__active::before {
+  /*color: #f6ce08;
   transform: translate(0, -65%);
-}
+}*/
 
 .rating__items {
   display: flex;
-  position: absolute;
+  /*position: absolute;*/
+  column-gap: 3px;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-}
-
-.rating__item {
-  flex: 0 0 20%;
-  height: 100%;
-  opacity: 0;
 }
 
 .rating__value {
@@ -5558,6 +5553,7 @@ input {
 
 .info .tabs__title {
   color: #757575;
+  font-size: 15px;
   font-weight: 300;
   display: flex;
   flex-direction: column;
@@ -5567,19 +5563,19 @@ input {
 
 @media (min-width: 101.875em) {
   .info .tabs__title {
-    font-size: 0.75rem;
+    *font-size: 0.75rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .info .tabs__title {
-    font-size: clamp(0.625rem, 0.5944656489rem + 0.1526717557vw, 0.75rem);
+    *font-size: clamp(0.625rem, 0.5944656489rem + 0.1526717557vw, 0.75rem);
   }
 }
 
 @media (max-width: 20em) {
   .info .tabs__title {
-    font-size: 0.625rem;
+    *font-size: 0.625rem;
   }
 }
 
@@ -7194,7 +7190,8 @@ input {
 
 .card__place {
   display: flex;
-  color: #737f90;
+  /*color: #737f90;*/
+  color: #7c8797;
   margin-bottom: 7px;
 }
 
@@ -14186,19 +14183,19 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
 
 @media (min-width: 101.875em) {
   .chart__link {
-    margin-bottom: 1.25rem;
+    *margin-bottom: 1.25rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .chart__link {
-    margin-bottom: clamp(0.9375rem, 0.8611641221rem + 0.3816793893vw, 1.25rem);
+    *margin-bottom: clamp(0.9375rem, 0.8611641221rem + 0.3816793893vw, 1.25rem);
   }
 }
 
 @media (max-width: 20em) {
   .chart__link {
-    margin-bottom: 0.9375rem;
+    *margin-bottom: 0.9375rem;
   }
 }
 

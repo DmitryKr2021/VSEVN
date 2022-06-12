@@ -2322,7 +2322,6 @@ function handleText() {
         popup.style.display = 'none';
       }
     });
-
   }
 }
 
@@ -2443,8 +2442,12 @@ function changeColorGreen() {
   tabsWrap.classList.remove('initial-hide');
   tabsBodys[0].classList.remove('initial-hide');
   if (info.getBoundingClientRect().top < 100) {
-    girlWrapper.classList.add('fixed');
-    girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
+    setTimeout(() => {
+      girlWrapper.classList.add('fixed');
+      girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 - 275 + 'px';
+      girlWrapper.style.transitionProperty = 'left';
+      girlWrapper.style.transitionDuration = '0.3s';
+    }, 300);
   }
   green = true;
 }
@@ -2502,17 +2505,39 @@ const selectDateUl = document.querySelector('.select__date');
 const selectPeriodUl = document.querySelector('.select__period');
 const selectDateItems = document.querySelectorAll('.select__date-item');
 const selectPeriodItems = document.querySelectorAll('.select__period-item');
+let f1 = false;
+let f2 = false;
 
-//развернуть селект
+//развернуть/свернуть селект
 selectDateDiv.addEventListener('click', function (e) {
-  selectDateUl.classList.add('show__date');
-  e.target.querySelector('.arrow') && e.target.querySelector('.arrow').classList.add('arrow-rotate');
+  f1 = true;
+  selectDateUl.classList.toggle('show__date');
+  e.target.querySelector('.arrow') && e.target.querySelector('.arrow').classList.toggle('arrow-rotate');
 });
 
 selectPeriodDiv.addEventListener('click', function (e) {
-  selectPeriodUl.classList.add('show__date');
-  e.target.querySelector('.arrow').classList.add('arrow-rotate');
+  f2 = true;
+  selectPeriodUl.classList.toggle('show__date');
+  e.target.querySelector('.arrow').classList.toggle('arrow-rotate');
 });
+
+selectDateDiv.querySelector('.arrow').addEventListener('click', function (e) {
+  if (!f1) {
+    selectDateUl.classList.toggle('show__date');
+  }
+  e.target.classList.toggle('arrow-rotate');
+});
+
+selectPeriodDiv.querySelector('.arrow').addEventListener('click', function (e) {
+  if (!f2) {
+    selectPeriodUl.classList.toggle('show__date');
+  }
+  e.target.classList.toggle('arrow-rotate');
+});
+
+
+//Изначальная дымка
+selectDateInput.style.cssText = `background: linear-gradient(to right, #222 60%, #777 70%, #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
 //показать выбранное значение и свернуть селект
 for (let item of selectDateItems) {
@@ -2520,7 +2545,7 @@ for (let item of selectDateItems) {
     selectDateInput.value = e.target.innerText;
     //Показать дымку в селекте по дате
     selectDateInput.style.cssText = `background: linear-gradient(to
-       right,#000 60%, #777 70%, #ddd 75%, transparent 90%, 
+       right,#222 60%, #777 70%, #ddd 75%, transparent 90%, 
        transparent); -webkit-background-clip: text; 
        -webkit-text-fill-color: transparent;`;
     setTimeout(() => {
@@ -2529,6 +2554,20 @@ for (let item of selectDateItems) {
     }, 50);
   });
 }
+
+let popup3 = document.createElement('div');
+
+selectDateDiv.addEventListener('mouseover', function () {
+  popup3.innerText = selectDateInput.value;
+  popup3.classList.add('input-popup');
+  selectDateInput.before(popup3);
+  popup3.style.top = selectDateInput.getBoundingClientRect().top - 40 + 'px';
+  popup3.style.left = selectDateInput.getBoundingClientRect().left + 'px';
+});
+
+selectDateDiv.addEventListener('mouseout', function () {
+  popup3.remove();
+});
 
 for (let item of selectPeriodItems) {
   item.addEventListener('click', function (e) {
@@ -2541,6 +2580,65 @@ for (let item of selectPeriodItems) {
 }
 /***********Конец работа с сортировкой по дате/периоду *********/
 
+
+/*************Работа с рейтингом**************/
+const ratingItem = document.querySelectorAll('.rating__item');
+
+for (let item of ratingItem) {
+  item.addEventListener('mouseover', function (e) {
+    e.target.classList.add('rating__item-yellow');
+    let targPN = e.target.parentNode;
+    const thisItems = targPN.querySelectorAll('.rating__item');
+    for (let i = 0; i < thisItems.length; i++) {
+      if (thisItems[i] !== e.target) {
+        thisItems[i].classList.add('rating__item-yellow');
+      } else {
+        return;
+      }
+    }
+  });
+}
+
+for (let item of ratingItem) {
+  item.addEventListener('click', function (e) {
+    let targPN = e.target.parentNode;
+    const thisItems = targPN.querySelectorAll('.rating__item');
+    for (let item of thisItems) {
+      item.classList.remove('rating__item-yellow');
+      item.classList.remove('yellow');
+    }
+    e.target.classList.add('rating__item-yellow');
+    e.target.classList.add('yellow');
+    for (let i = 0; i < thisItems.length; i++) {
+      if (thisItems[i] !== e.target) {
+        thisItems[i].classList.add('rating__item-yellow');
+        thisItems[i].classList.add('yellow');
+      } else {
+        return;
+      }
+    }
+  });
+}
+
+for (let item of ratingItem) {
+  item.addEventListener('mouseout', function (e) {
+    let targPN = e.target.parentNode;
+    const thisItems = targPN.querySelectorAll('.rating__item');
+    if (!e.target.classList.contains('yellow')) {
+      e.target.classList.remove('rating__item-yellow');
+    }
+    for (let i = 0; i < thisItems.length; i++) {
+      if (thisItems[i] !== e.target) {
+        if (!thisItems[i].classList.contains('yellow')) {
+          thisItems[i].classList.remove('rating__item-yellow');
+        }
+      } else {
+        return;
+      }
+    }
+  });
+}
+/********Конец работа с рейтингом*************/
 
 /***********Показать предприятие ***********/
 
@@ -2767,6 +2865,8 @@ function handleArrow(e) {
   e.target.classList.toggle('arrow-rotate');
   e.target.parentNode.querySelector('ul').classList.toggle('show_')
 }
+
+
 /***********Конец работа с анкетой ************/
 
 
