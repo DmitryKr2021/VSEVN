@@ -2428,6 +2428,11 @@ for (let btn of showAlls) {
 }
 
 function changeColorGreen() {
+  if (girlWrapper.classList.contains('fixed1')) {
+    girlWrapper.classList.add('fixed3');
+  } else {
+    girlWrapper.classList.add('fixed2');
+  }
   for (let i = 0; i < arrYellow.length; i++) {
     if (document.querySelector(`.${arrYellow[i]}`)) {
       document.querySelector(`.${arrYellow[i]}`).classList.add(`c${i}`);
@@ -2443,8 +2448,7 @@ function changeColorGreen() {
   tabsBodys[0].classList.remove('initial-hide');
   if (info.getBoundingClientRect().top < 100) {
     setTimeout(() => {
-      girlWrapper.classList.add('fixed');
-      girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 - 275 + 'px';
+      girlWrapper.classList.add('fixed2');
       girlWrapper.style.transitionProperty = 'left';
       girlWrapper.style.transitionDuration = '0.3s';
     }, 300);
@@ -2475,10 +2479,14 @@ window.addEventListener('click', function (e) {
 //Отцентровать девушку при скролле
 window.addEventListener('scroll', function () {
   if (info.getBoundingClientRect().top < 100) {
-    girlWrapper.classList.add('fixed');
-    girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
+    girlWrapper.classList.add('fixed1');
+    if (girlWrapper.classList.contains('fixed2')) {
+      girlWrapper.classList.add('fixed3');
+    }
+    //girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
   } else {
-    girlWrapper.classList.remove('fixed');
+    girlWrapper.classList.remove('fixed1');
+    girlWrapper.classList.remove('fixed3');
   }
 });
 /***********Конец смены цвета в рисунке девушки **********/
@@ -2539,6 +2547,8 @@ selectPeriodDiv.querySelector('.arrow').addEventListener('click', function (e) {
 //Изначальная дымка
 selectDateInput.style.cssText = `background: linear-gradient(to right, #222 60%, #777 70%, #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
+selectPeriodInput.style.cssText = `background: linear-gradient(to right, #222 60%, #777 70%, #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+
 //показать выбранное значение и свернуть селект
 for (let item of selectDateItems) {
   item.addEventListener('click', function (e) {
@@ -2556,6 +2566,7 @@ for (let item of selectDateItems) {
 }
 
 let popup3 = document.createElement('div');
+let popup4 = document.createElement('div');
 
 selectDateDiv.addEventListener('mouseover', function () {
   popup3.innerText = selectDateInput.value;
@@ -2572,12 +2583,28 @@ selectDateDiv.addEventListener('mouseout', function () {
 for (let item of selectPeriodItems) {
   item.addEventListener('click', function (e) {
     selectPeriodInput.value = e.target.innerText;
+    //Показать дымку в селекте по дате
+    selectPeriodInput.style.cssText = `background: linear-gradient(to right,#222 60%, #777 70%, #ddd 75%, transparent 90%, 
+      transparent); -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;`;
     setTimeout(() => {
       selectPeriodUl.classList.remove('show__date');
       e.target.parentNode.previousElementSibling.classList.remove('arrow-rotate');
     }, 50);
   });
 }
+
+selectPeriodDiv.addEventListener('mouseover', function () {
+  popup4.innerText = selectPeriodInput.value;
+  popup4.classList.add('input-popup');
+  selectPeriodInput.before(popup4);
+  popup4.style.top = selectPeriodInput.getBoundingClientRect().top - 40 + 'px';
+  popup4.style.left = selectPeriodInput.getBoundingClientRect().left + 'px';
+});
+
+selectPeriodDiv.addEventListener('mouseout', function () {
+  popup4.remove();
+});
 /***********Конец работа с сортировкой по дате/периоду *********/
 
 

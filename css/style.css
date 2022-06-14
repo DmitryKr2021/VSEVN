@@ -5902,7 +5902,7 @@ input {
 
 @media (max-width: 980px) {
   .card--attention>svg {
-    display: none;
+    *display: none;
   }
 }
 
@@ -6871,25 +6871,25 @@ input {
 
 @media (min-width: 101.875em) {
   .card--yellow .card__supname {
-    padding-right: 0.625rem;
+    *padding-right: 0.625rem;
   }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   .card--yellow .card__supname {
-    padding-right: clamp(0.3125rem, 0.2361641221rem + 0.3816793893vw, 0.625rem);
+    *padding-right: clamp(0.3125rem, 0.2361641221rem + 0.3816793893vw, 0.625rem);
   }
 }
 
 @media (max-width: 20em) {
   .card--yellow .card__supname {
-    padding-right: 0.3125rem;
+    *padding-right: 0.3125rem;
   }
 }
 
 @media (min-width: 101.875em) {
   .card--yellow .card__supname {
-    padding-left: 0.625rem;
+    *padding-left: 0.625rem;
   }
 }
 
@@ -7913,42 +7913,6 @@ input {
 
 @media (min-width: 101.875em) {
   .info__window {
-    *padding-top: 1.875rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .info__window {
-    *padding-top: clamp(1.25rem, 1.0973282443rem + 0.7633587786vw, 1.875rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .info__window {
-    *padding-top: 1.25rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .info__window {
-    padding-bottom: 1.875rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .info__window {
-    padding-bottom: clamp(1.25rem, 1.0973282443rem + 0.7633587786vw, 1.875rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .info__window {
-    padding-bottom: 1.25rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .info__window {
     padding-right: 1.5rem;
   }
 }
@@ -8486,7 +8450,7 @@ input {
 }
 
 @media (max-width: 980px) {
-  .window {
+  /*.window {
     position: fixed !important;
     top: 0;
     left: 0;
@@ -8498,9 +8462,9 @@ input {
     pointer-events: none;
     transition: all 0.5s ease 0s;
     transform: scale(0);
-  }
+  }*/
 
-  .window__close {
+  /*.window__close {
     display: block;
     position: absolute;
     top: 15px;
@@ -8512,7 +8476,7 @@ input {
     visibility: visible;
     pointer-events: all;
     transform: scale(1);
-  }
+  }*/
 }
 
 .window__row {

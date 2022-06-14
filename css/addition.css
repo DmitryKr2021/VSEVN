@@ -1350,12 +1350,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   }
 }
 
-@media (max-width: 990px) {
-  .info__window {
-    display: none;
-  }
-}
-
 @media (max-width: 900px) {
   .search {
     height: 1120px;
@@ -2166,6 +2160,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   .search2 {
     height: 1800px;
   }
+
+  .down {
+    display: inline-block;
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 390px) {
@@ -2553,10 +2552,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   padding-bottom: 0;
 }
 
-/*.choose__any .block3 {
-  z-index: 15;
-}*/
-
 .choose__any .block4 {
   margin-top: 38px;
 }
@@ -2693,21 +2688,38 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 /*************** Баннер Девушка ****************/
 .girl__wrapper {
-  *margin-top: 300px;
   margin-top: calc(50vh - 200px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .main_box_U1FbnBH0mjIcPe5 {
   padding-left: 100px;
 }
 
-.fixed {
+.fixed1 {
+  width: 39%;
   position: fixed;
   top: 95px;
+  right: 9%;
+  *border: 1px solid red;
+}
+
+.fixed2 {
+  width: 100%;
+  right: 5%;
+}
+
+.fixed3 {
+  width: 60%;
+  position: fixed;
+  top: 95px;
+  right: 8.5%;
 }
 
 .info__offer {
@@ -2954,7 +2966,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 /*************** Блок info **********************/
 .info {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .initial-hide {
@@ -2986,6 +2998,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .info__container .info__window {
   flex-basis: 50%;
+  margin-left: -2px;
 }
 
 .info .info__container .info__sidebar-narrow {
@@ -3004,6 +3017,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .col__vacans {
   font-size: 20px;
+  padding-left: 10px;
+}
+
+.info .tabs__body {
   padding-left: 10px;
 }
 
@@ -3096,8 +3113,121 @@ input[type="range"]:active::-webkit-slider-thumb {
   text-align: center;
 }
 
+@media (max-width: 1850px) {
+  .fixed1 {
+    width: 40vw;
+    right: 7vw;
+  }
+
+  .fixed3 {
+    width: 60vw;
+    right: 8vw;
+  }
+}
+
+@media (max-width: 1820px) {
+  .fixed3 {
+    right: 7vw;
+  }
+}
+
+@media (max-width: 1660px) {
+  .fixed3 {
+    right: 6vw;
+  }
+}
+
+@media (max-width: 1490px) {
+  .fixed2 {
+    right: 5vw;
+  }
+}
+
+@media (max-width: 1420px) {
+  .fixed2 {
+    right: 3vw;
+  }
+}
+
+@media (max-width: 1020px) {
+  .fixed2 {
+    width: 40%;
+    right: 10%;
+  }
+}
+
+@media (max-width: 850px) {
+  .fixed2 {
+    right: 6%;
+  }
+}
+
+@media (max-width: 1250px) {
+  .info .info__container .info__sidebar {
+    border-right: 1px solid var(--border-color);
+    z-index: 10;
+  }
+
+  .info .info__container .info__sidebar-narrow {
+    max-width: 355px;
+    margin-left: -15px;
+    border-right: 1px solid var(--border-color);
+    border-top-right-radius: 0;
+  }
+
+  .info__container .info__window {
+    border-top-left-radius: 0;
+    margin-left: -13px;
+  }
+
+  .card__col.n3 .card__num {
+    position: absolute;
+    top: -3px;
+  }
+}
+
+@media (max-width: 820px) {
+  .card__col.n3 .card__num {
+    right: 5px;
+  }
+}
+
+@media (max-width: 1052px) {
+  .info__offer {
+    width: 70%;
+  }
+}
+
+@media (max-width: 720px) {
+  .info__container .info__window {
+    display: none;
+  }
+
+  .info .info__container._activeWindow {
+    width: 100%;
+  }
+
+  .info .info__container .info__col {
+    width: 100%;
+    transform: translateX(-15px);
+  }
+
+  .info .info__container .info__sidebar,
+  .info .info__container .info__sidebar-narrow {
+    max-width: 100%;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .card__col.n3 .card__num {
+    right: 0;
+  }
+}
+
+
 .card__columns {
-  padding-left: 15px;
+  padding-left: 5px;
 }
 
 .card__columns .card__col:nth-child(2) {
@@ -3114,6 +3244,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .card__col .card__supname {
   position: relative;
+  color: #142542;
 }
 
 .card__col .card__supname a {
@@ -3138,6 +3269,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 16px;
   height: 25px;
   margin-bottom: 10px;
+  color: #619f00;
 }
 
 .card__col .card__supname a:hover,
@@ -3187,6 +3319,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 .card__col .card__name {
   margin-top: 5px;
   font-size: 16px;
+  color: #619f00;
+  font-weight: 500;
 }
 
 .card__col.card-up .card__name {
@@ -3196,6 +3330,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .card__col .card__place {
   margin-top: 9px;
   font-size: 16px;
+  color: #435269;
 }
 
 .card__col .card__place a:hover {
@@ -3221,7 +3356,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .rating__items .rating__item:first-child {
-  *visibility: hidden;
   display: none;
 }
 
