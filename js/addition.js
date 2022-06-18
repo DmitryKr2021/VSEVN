@@ -2892,11 +2892,50 @@ function handleArrow(e) {
   e.target.classList.toggle('arrow-rotate');
   e.target.parentNode.querySelector('ul').classList.toggle('show_')
 }
-
-
 /***********Конец работа с анкетой ************/
 
+/********Оповещение о вакансии  *************/
+const cardBellInputs = document.querySelectorAll('.card__bell-input');
+const cardBellAlarm = document.querySelector('.card__bell-alarm');
+const cardBellFooter = document.querySelector('.card__bell-footer');
+const cardBellClose = document.querySelector('.card__bell-close');
 
+for (let input_ of cardBellInputs) {
+  input_.querySelector('input').onfocus = addFocus;
+  input_.querySelector('input').onblur = removeFocus;
+}
+
+function addFocus(e) {
+  e.target.parentNode.classList.add('card__bell-focus');
+  e.target.nextElementSibling.classList.add('card__bell-iconLabelActive');
+}
+
+function removeFocus(e) {
+  e.target.parentNode.classList.remove('card__bell-focus');
+  e.target.nextElementSibling.classList.remove('card__bell-iconLabelActive');
+}
+
+cardBellAlarm.onclick = () => {
+  cardBellFooter.classList.remove('hide-block');
+};
+
+cardBellClose.onclick = () => {
+  cardBellFooter.classList.add('hide-block');
+};
+/*******Конец оповещение о вакансии  ********/
+
+/************Показать еще ценности **********/
+const moreValueShow = document.querySelector('.more__value-show');
+const valueItems = document.querySelectorAll('.value__item');
+moreValueShow.onclick = () => {
+  moreValueShow.classList.add('hide-block');
+  for (let item of valueItems) {
+    item.classList.remove('hide-block');
+  }
+};
+
+
+/*********Конец показать еще ценности *******/
 
 /*window.onclick = (e) => {
   //console.log('target=', e.target);
