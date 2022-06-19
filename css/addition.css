@@ -3235,6 +3235,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 17px;
   font-weight: 500;
   line-height: 120%;
+  padding-left: 10px;
 }
 
 .card-up .card__supname a {
@@ -3287,6 +3288,14 @@ input[type="range"]:active::-webkit-slider-thumb {
 .card__col .card__favorite--green:hover svg path {
   fill: var(--card-hoverdark);
   *fill: #6EA737;
+}
+
+.urgently {
+  margin-top: 10px;
+}
+
+.span-urgently {
+  margin-top: 12px;
 }
 
 .card__logo:not(.company) a source,
@@ -3342,6 +3351,14 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 16px;
 }
 
+/***********Попап Еще*************/
+.card__wrap-list {
+  background-color: #fff;
+  z-index: 100;
+}
+
+/********Конец попап Еще**********/
+
 .rating__items .rating__item:first-child {
   display: none;
 }
@@ -3355,7 +3372,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .rating__items .rating__item-yellow {
-  background: url(../img/icons/aster-yellow.png);
+  /*background: url(../img/icons/aster-yellow.png);*/
+  background: url(../img/icons/aster.png);
   background-position: 0 0;
   background-size: 100%;
 }
@@ -3720,6 +3738,10 @@ button.card__bell-submitButton {
   transition: opacity 0.3s;
 }
 
+.card__favorite.emp2:before {
+  top: 2px;
+}
+
 .card__favorite.employer.add:before {
   opacity: 1;
 }
@@ -4080,7 +4102,6 @@ button.card__bell-submitButton {
 .vacancy__item {
   flex-basis: 33%;
   position: relative;
-  height: 250px;
   padding: 15px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
@@ -4088,6 +4109,7 @@ button.card__bell-submitButton {
 
 .vacancy__item-title {
   margin-top: 30px;
+  min-height: 42px;
   font-size: 18px;
   color: #142542;
   cursor: pointer;
@@ -4113,13 +4135,11 @@ button.card__bell-submitButton {
 }
 
 .vacancy__item-place {
-  position: absolute;
-  top: 90px;
+  margin-top: 5px;
 }
 
 .vacancy__item-text {
-  position: absolute;
-  top: 115px;
+  margin-top: 5px;
   line-height: 125%;
 }
 
