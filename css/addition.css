@@ -3235,7 +3235,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 17px;
   font-weight: 500;
   line-height: 120%;
-  padding-left: 10px;
 }
 
 .card-up .card__supname a {
@@ -3288,6 +3287,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 .card__col .card__favorite--green:hover svg path {
   fill: var(--card-hoverdark);
   *fill: #6EA737;
+}
+
+.urgent {
+  padding-left: 10px;
 }
 
 .urgently {
