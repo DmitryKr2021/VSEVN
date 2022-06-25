@@ -13,8 +13,8 @@ let denominator;
 let scrollRightBlock = windowRowRight.getBoundingClientRect().top;
 let rightBlockStart = scrollRightBlock;
 
-document.onscroll = (e) => {
-  /* Старая версия для прокрутки всей страницы
+//document.onscroll = (e) => {
+/* Старая версия для прокрутки всей страницы
 
   let timerScroll = setInterval(scrollHandler, 10);
   let correction = 0;
@@ -27,9 +27,9 @@ document.onscroll = (e) => {
   }
 */
 
-  /* Для прокрутки верхнего желтого поля */
+/* Старая версия №2 для прокрутки верхнего желтого поля */
 
-  let timerScroll = setInterval(scrollHandler, 10);
+/*let timerScroll = setInterval(scrollHandler, 10);
   denominator = document.querySelector('.search').scrollHeight;
 };
 
@@ -58,6 +58,16 @@ document.querySelector('.roll-up').addEventListener('click',
     rollUpActive = !rollUpActive;
     percentScrollDiv.style.width = scrollCorrect + 'px';
   });
+
+/******Вариант для полной прокрутки при начале скролла ******/
+document.onscroll = (e) => {
+  if (window.pageYOffset > 5) {
+    percentScrollDiv.classList.add('percent-scrollFull');
+  } else {
+    percentScrollDiv.classList.remove('percent-scrollFull');
+  }
+};
+
 /*************Конец блока*****************/
 
 /*********** Работа с верхним бургер-меню**********/
@@ -2333,6 +2343,7 @@ handleText();
 window.addEventListener('click', isDark);
 
 function isDark(e) {
+
   if (e.target.classList.contains('input-field')) {
     return; //если нажат input без селекта
   }
@@ -2416,6 +2427,7 @@ const tabsWrap = document.querySelector('.tabs__wrap');
 const tabsBodys = document.querySelectorAll('.tabs__body');
 const girlWrapper = document.querySelector('.girl__wrapper');
 let green = false;
+const ratings = document.querySelectorAll('.ratings');
 
 let arrYellow = [];
 arrYellow[0] = 'yellow';
@@ -2452,6 +2464,9 @@ function changeColorGreen() {
       girlWrapper.style.transitionProperty = 'left';
       girlWrapper.style.transitionDuration = '0.3s';
     }, 300);
+  }
+  for (let item of ratings) {
+    item.classList.remove('ratings-up');
   }
   green = true;
 }
@@ -2726,17 +2741,18 @@ for (let item of cardFavoritesPerson) {
 
 for (let item of cardFavoritesPerson) {
   item.addEventListener('click', function (e) {
-    e.target.classList.toggle('add');
-    if (e.target.getAttribute('data-add') === 'add') {
-      let innerHTML_ = e.target.innerHTML;
+    let targ = e.target;
+    targ.classList.toggle('add');
+    if (targ.getAttribute('data-add') === 'add') {
+      let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
-      e.target.innerHTML = tempStr + removePerson;
-      e.target.setAttribute('data-add', 'remove');
+      targ.innerHTML = tempStr + removePerson;
+      targ.setAttribute('data-add', 'remove');
     } else {
-      e.target.setAttribute('data-add', 'add');
-      let innerHTML_ = e.target.innerHTML;
+      targ.setAttribute('data-add', 'add');
+      let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
-      e.target.innerHTML = tempStr + addPerson;
+      targ.innerHTML = tempStr + addPerson;
     }
   });
 }
@@ -2748,17 +2764,18 @@ for (let item of cardFavoritesEmployer) {
 
 for (let item of cardFavoritesEmployer) {
   item.addEventListener('click', function (e) {
-    e.target.classList.toggle('add');
-    if (e.target.getAttribute('data-add') === 'add') {
-      let innerHTML_ = e.target.innerHTML;
+    let targ = e.target;
+    targ.classList.toggle('add');
+    if (targ.getAttribute('data-add') === 'add') {
+      let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
-      e.target.innerHTML = tempStr + removeEmployer;
-      e.target.setAttribute('data-add', 'remove');
+      targ.innerHTML = tempStr + removeEmployer;
+      targ.setAttribute('data-add', 'remove');
     } else {
-      e.target.setAttribute('data-add', 'add');
-      let innerHTML_ = e.target.innerHTML;
+      targ.setAttribute('data-add', 'add');
+      let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
-      e.target.innerHTML = tempStr + addEmployer;
+      targ.innerHTML = tempStr + addEmployer;
     }
   });
 }
@@ -2890,7 +2907,7 @@ for (let arrow of formArrows) {
 
 function handleArrow(e) {
   e.target.classList.toggle('arrow-rotate');
-  e.target.parentNode.querySelector('ul').classList.toggle('show_')
+  e.target.parentNode.querySelector('ul').classList.toggle('show_');
 }
 /***********Конец работа с анкетой ************/
 
@@ -2933,9 +2950,337 @@ moreValueShow.onclick = () => {
     item.classList.remove('hide-block');
   }
 };
-
-
 /*********Конец показать еще ценности *******/
+
+
+/********************************************** */
+/************Работа с попапом Еще************* */
+/********************************************* */
+
+/***********Оставить комментарий ***********/
+const cardWrapList = document.querySelectorAll('.card__wrap-list');
+
+for (let list of cardWrapList) {
+  list.querySelector('.card__comment').onclick = showComment;
+}
+
+function showComment(e) {
+  e.target.parentNode.querySelector('.place-comment').classList.remove('hide-block');
+}
+
+for (let list of cardWrapList) {
+  list.onmouseleave = (e) => {
+    e.target.parentNode.querySelector('.place-comment').classList.add('hide-block');
+  };
+}
+/********Конец оставить комментарий ********/
+
+/************Черный список********** */
+const removeFromBlack = 'Убрать из черного списка';
+const addToBlack = 'Внести в черный список';
+
+for (let item of cardWrapList) {
+  item.querySelector('.to-blacklist').innerHTML += addToBlack;
+  item.querySelector('.to-blacklist').setAttribute('data-add', 'add');
+}
+
+for (let item of cardWrapList) {
+  item.querySelector('.to-blacklist').addEventListener('click', function (e) {
+    let targ = e.target;
+    const favorit = targ.closest('.card__wrap-list').
+    querySelector('.no-inblacklist').
+    querySelector('.card__favorite');
+
+    let cardColumns = targ.closest('.card__columns');
+    const blackList = cardColumns.querySelectorAll('.black-list');
+    //вносим в черный список
+    targ.classList.toggle('add');
+    if (targ.getAttribute('data-add') === 'add') {
+      let innerHTML_ = targ.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 22));
+      targ.innerHTML = tempStr + removeFromBlack;
+      targ.setAttribute('data-add', 'remove');
+      targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.add('hide-block');
+      //показать метку черного списка
+      for (let item of blackList) {
+        item.classList.remove('hide-block');
+      }
+      //удалить из избранного
+      favorit.setAttribute('data-add', 'add');
+      let favoritHTML_ = favorit.innerHTML;
+      favorit.classList.toggle('add');
+      if (favoritHTML_.includes('работодателя')) {
+        let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
+        favorit.innerHTML = favoritStr + addEmployer;
+      } else {
+        let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
+        favorit.innerHTML = favoritStr + addPerson;
+      }
+    } else {
+      //убираем из черного списка
+      favorit.classList.remove('add');
+      targ.setAttribute('data-add', 'add');
+      let innerHTML_ = targ.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
+      targ.innerHTML = tempStr + addToBlack;
+      targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.remove('hide-block');
+      for (let item of blackList) {
+        item.classList.add('hide-block');
+      }
+    }
+  });
+}
+//Убрать из черного списка из самой карточки
+const blackListBtns = document.querySelectorAll('.black-list');
+for (let btn of blackListBtns) {
+  btn.addEventListener('click', function (e) {
+    let targ = e.target;
+    targ.classList.add('hide-block');
+    targ.parentNode.previousElementSibling.querySelector('.black-list').classList.add('hide-block');
+    targ.nextElementSibling.querySelector('.no-inblacklist').classList.remove('hide-block');
+    targ.nextElementSibling.querySelector('.employer').classList.remove('add');
+    const temp = targ.nextElementSibling.querySelector('.to-blacklist');
+    temp.setAttribute('data-add', 'add');
+    let innerHTML_ = temp.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
+    temp.innerHTML = tempStr + addToBlack;
+  });
+}
+/*********Конец черный список******* */
+
+/*************Работа с CRM *************** */
+const addToCrm = 'Добавить в CRM';
+const removeFromCrm = 'Убрать из CRM';
+const toCrms = document.querySelectorAll('.to-crm');
+
+for (let item of toCrms) {
+  item.innerHTML += addToCrm;
+  item.setAttribute('data-add', 'add');
+}
+for (let item of toCrms) {
+  item.addEventListener('click', function (e) {
+    let targ = e.target;
+    if (targ.getAttribute('data-add') === 'add') {
+      targ.setAttribute('data-add', 'remove');
+      let innerHTML_ = targ.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 14));
+      targ.innerHTML = tempStr + removeFromCrm;
+    } else {
+      targ.setAttribute('data-add', 'add');
+      let innerHTML_ = targ.innerHTML;
+      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 14));
+      targ.innerHTML = tempStr + addToCrm;
+    }
+  });
+}
+/*********Конец работа с CRM ************* */
+
+/**************Поделиться с другом ********** */
+const cardShare = document.querySelectorAll('.card-share');
+const popapShares = document.querySelectorAll('.popup__share');
+const slideControlChanges = document.querySelectorAll('.slide__control-change');
+const headerList = document.querySelector('.header__list');
+const popupShareCloses = document.querySelectorAll('.popup__share-close');
+const shares = [document.querySelector('.share1'),
+  document.querySelector('.share2'),
+  document.querySelector('.share3')
+];
+
+for (let item of cardShare) {
+  item.addEventListener('click', shareInfo);
+}
+
+function shareInfo(e) {
+  headerList.classList.add('body-dark');
+  let targ = e.target.closest('.card__wrap');
+  targ.querySelector('.popup__share').classList.remove('hide-block');
+  targ.parentNode.querySelector('ul').classList.add('hide-block');
+}
+
+//слайдер
+let step = 0;
+let d = 315;
+for (let item of slideControlChanges) {
+  item.addEventListener('click', slideChange);
+}
+
+function slideChange(e) {
+  switch (e.target.id) {
+    case 'scc1':
+      step = 0;
+      goStep();
+      break;
+    case 'scc2':
+      step = -1;
+      goStep();
+      break;
+    case 'scc3':
+      step = -2;
+      goStep();
+      break;
+  }
+}
+
+function goStep() {
+  for (let share of shares) {
+    share.style.transform = `translateX(${step*d}px)`;
+    share.style.transition = '0.5s';
+  }
+}
+
+setInterval(() => {
+  if (step > -2) {
+    step--;
+  } else {
+    step = 0;
+  }
+  switch (step) {
+    case 0:
+      document.getElementById('scc1').checked = true;
+      break;
+    case -1:
+      document.getElementById('scc2').checked = true;
+      break;
+    case -2:
+      document.getElementById('scc3').checked = true;
+      break;
+  }
+  goStep();
+}, 2000);
+//конец слайдера
+
+for (let item of popupShareCloses) {
+  item.addEventListener('click', shareClose);
+}
+
+function shareClose(e) {
+  e.target.parentNode.classList.add('hide-block');
+  headerList.classList.remove('body-dark');
+  e.target.parentNode.parentNode.querySelector('ul').classList.remove('hide-block');
+}
+
+
+
+/**********Конец поделиться с другом **********/
+
+/*************************************************** */
+/************Конец работа с попапом Еще************* */
+/*************************************************** */
+
+
+/****************Кнопка Инфо *************** */
+const cardIntelligences = document.querySelectorAll('.card__intelligence');
+const cardCloses = document.querySelectorAll('.card__close');
+
+for (let btn of cardIntelligences) {
+  btn.onclick = (e) => {
+    e.target.closest('.card').querySelector('.card__banner').classList.remove('hide-block');
+  };
+}
+
+for (let btn of cardCloses) {
+  btn.onclick = (e) => {
+    e.target.closest('.card').querySelector('.card__banner').classList.add('hide-block');
+  };
+}
+/*************Конец кнопка Инфо ************ */
+
+
+/*********Тут будет комментарий при нажатии**********/
+const aComments = document.querySelectorAll('.a-comment');
+const popupCommentTexts = document.querySelectorAll('.popup__comment-text');
+const btnSaves = document.querySelectorAll('.btn-save');
+const btnBreaks = document.querySelectorAll('.btn-break');
+const addComment = 'Добавить комментарий';
+const editComment = 'Редактировать комментарий';
+const deleteComment = 'Удалить комментарий';
+const nowBreak = 'Отмена';
+const nowSave = 'Сохранить';
+const newComment = 'Обновить';
+let commentSave = false;
+const popupCommentCloses = document.querySelectorAll('.popup__comment-close');
+
+for (let item of aComments) {
+  item.addEventListener('click', showCommentBlock);
+}
+
+function showCommentBlock(e) {
+  headerList.classList.add('body-dark');
+  let targ = e.target.closest('article').nextElementSibling;
+  targ.classList.remove('hide-block');
+  if (commentSave) {
+    targ.querySelector('.popup__comment-title').innerText = editComment;
+    targ.querySelector('.btn-save').innerText = newComment;
+    targ.querySelector('.btn-break').innerText = deleteComment;
+    targ.querySelector('.popup__comment-text').classList.add('edit');
+  }
+}
+
+for (let item of popupCommentTexts) {
+  item.addEventListener('input', isTextLong);
+}
+
+function isTextLong(e) {
+  const targ = e.target;
+  const charNumber = targ.parentNode.querySelector('.char-number');
+  charNumber.innerText = targ.value.length;
+  if (targ.value.length > 200) {
+    targ.parentNode.querySelector('.too-long').classList.remove('hide-block');
+    targ.parentNode.querySelector('.popup__comment-length').classList.add('long');
+    targ.classList.add('long');
+    targ.nextElementSibling.querySelector('.btn-save').classList.add('long');
+    targ.parentNode.querySelector('.popup__comment-text').classList.remove('edit');
+  } else {
+    targ.parentNode.querySelector('.too-long').classList.add('hide-block');
+    targ.parentNode.querySelector('.popup__comment-length').classList.remove('long');
+    targ.classList.remove('long');
+    targ.nextElementSibling.querySelector('.btn-save').classList.remove('long');
+  }
+}
+
+for (let btn of btnSaves) {
+  btn.addEventListener('click', saveComment);
+}
+
+function saveComment(e) {
+  let targ = e.target.closest('.popup__comment');
+  if (!e.target.classList.contains('long')) {
+    targ.classList.add('hide-block');
+    commentSave = true;
+    headerList.classList.remove('body-dark');
+  }
+}
+
+for (let btn of btnBreaks) {
+  btn.addEventListener('click', breakComment);
+}
+
+function breakComment(e) {
+  let targ = e.target.closest('.popup__comment');
+  targ.querySelector('.char-number').innerText = '0';
+  targ.querySelector('.popup__comment-text').value = '';
+  targ.classList.add('hide-block');
+  targ.querySelector('.too-long').classList.add('hide-block');
+  targ.querySelector('.popup__comment-length').classList.remove('long');
+  targ.querySelector('.popup__comment-text').classList.remove('long');
+  targ.querySelector('.btn-save').classList.remove('long');
+  commentSave = false;
+  targ.querySelector('.popup__comment-title').innerText = addComment;
+  targ.querySelector('.btn-save').innerText = nowSave;
+  targ.querySelector('.btn-break').innerText = nowBreak;
+  targ.querySelector('.popup__comment-text').classList.remove('edit');
+  headerList.classList.remove('body-dark');
+}
+
+for (let item of popupCommentCloses) {
+  item.addEventListener('click', commentClose);
+}
+
+function commentClose(e) {
+  e.target.parentNode.classList.add('hide-block');
+  headerList.classList.remove('body-dark');
+}
+/******Конец тут будет комментарий при нажатии*******/
 
 /*window.onclick = (e) => {
   //console.log('target=', e.target);
