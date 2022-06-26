@@ -4098,6 +4098,12 @@ button.card__bell-submitButton {
 }
 
 .card__favorite.person.add svg path {
+  fill: transparent;
+  stroke-width: 22px;
+  stroke: #377800;
+}
+
+.card__favorite.person.add svg path {
   /*fill: #619f00;*/
   fill: #377800;
 }
