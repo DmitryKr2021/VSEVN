@@ -7808,6 +7808,17 @@ input {
   border-radius: 100%;
 }
 
+.card__banner li:nth-child(6)::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #ccd8d4;
+  position: absolute;
+  left: -15px;
+  top: 4.5px;
+  border-radius: 100%;
+}
+
 @media (max-width: 767.98px) {
   .card__banner li:nth-child(2)::before {
     left: -10px;

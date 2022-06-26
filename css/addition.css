@@ -3552,7 +3552,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .popup__share-social {
-  margin-top: 20px;
+  margin-top: 25px;
+  display: flex;
   padding-top: 10px;
   color: #142542;
   border-top: 1px solid var(--border-color);
@@ -4097,7 +4098,8 @@ button.card__bell-submitButton {
 }
 
 .card__favorite.person.add svg path {
-  fill: #619f00;
+  /*fill: #619f00;*/
+  fill: #377800;
 }
 
 .card__favorite.employer.add {
@@ -4142,7 +4144,7 @@ button.card__bell-submitButton {
 }
 
 .card__favorite.employer.add svg path {
-  fill: #6EA737;
+  fill: #619f00;
 }
 
 .rating__deactivated {
