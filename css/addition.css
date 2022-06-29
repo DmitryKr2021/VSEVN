@@ -15,6 +15,165 @@ body {
   pointer-events: none;
 }
 
+/********Стили для импортированной шапки*************/
+.visible-xs {
+  display: none;
+}
+
+.hidden-lg {
+  display: none;
+}
+
+.width999 {
+  display: none;
+}
+
+.navbar-nav {
+  display: flex;
+  column-gap: 10px;
+}
+
+.header__wrap {
+  background-color: #ffdd00;
+  height: 100px;
+}
+
+.header__menu {
+  position: relative;
+  display: none;
+}
+
+.a__logo1 {
+  width: 155px;
+}
+
+.a__logo2 {
+  display: none;
+}
+
+.btn-primary {
+  padding: 18px 13px;
+}
+
+.header .nav {
+  font-family: ZabraProTest3;
+  font-size: 16px;
+}
+
+.header__top {
+  position: relative;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.5);
+  height: 50px;
+}
+
+.header__top-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1640px;
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-right: 5px;
+}
+
+.header__top .btn-prim {
+  padding-top: 3px;
+  padding-bottom: 9px;
+  transform: translateY(-5px);
+}
+
+.header__bottom {
+  position: relative;
+  height: 50px;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.5);
+}
+
+.header__bottom-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1640px;
+  padding-left: 25px;
+  padding-right: 5px;
+  font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+  .width999 {
+    display: block;
+  }
+
+  .header__wrap {
+    height: 50px;
+  }
+
+  .header__top {
+    display: none;
+  }
+
+  .header__bottom-wrap {
+    height: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .a__logo1 {
+    display: none;
+  }
+
+  .a__logo2 {
+    display: block;
+  }
+
+  .width1000 {
+    display: none;
+  }
+
+  .header__menu {
+    display: block;
+    margin-right: 15px;
+  }
+
+
+  /****************************/
+  .header__menu.menu ul {
+    position: fixed;
+  }
+
+  /****************************/
+
+  .header__bottom-wrapRight {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-email {
+    position: relative;
+  }
+
+  .navbar-email-namber {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #fff;
+    color: red;
+    font-weight: 600;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}
+
+/*******Конец стили для импортированной шапки*********/
 .wrapper {
   width: 100%;
 }
@@ -32,24 +191,6 @@ body {
 
 .percent-scrollFull {
   width: 100%;
-}
-
-@media (max-width: 1340px) {
-  .percent-scroll {
-    margin-top: 5px;
-  }
-}
-
-@media (max-width: 1025px) {
-  .percent-scroll {
-    margin-top: 15px;
-  }
-}
-
-@media (max-width: 500px) {
-  .percent-scroll {
-    margin-top: 5px;
-  }
 }
 
 .hide-block {
@@ -2899,17 +3040,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   fill: var(--yellow2) !important;
 }
 
-/****************************************************/
-.header__wrap {
-  height: 110px !important;
-}
-
-@media (max-width: 1025px) {
-  .header__wrap {
-    height: 40px !important;
-  }
-}
-
 /****** Создание темного фона**************/
 .white-font {
   color: #fff !important;
@@ -3418,17 +3548,21 @@ input[type="range"]:active::-webkit-slider-thumb {
   display: flex;
   justify-content: center;
   width: 90%;
-  height: 430px;
+  height: 450px;
   margin-left: 5%;
   background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .popup__share-bgimg {
   position: relative;
   flex-basis: 50%;
   height: 100%;
-  background-image: linear-gradient(to bottom, #ffd537, #fff1a1);
+  /*background-image: linear-gradient(to bottom, #ffd537, #fff1a1);*/
+  background-image: linear-gradient(to bottom, #ffd537, #fff);
   overflow-x: hidden;
+  border-radius: 6px 0 0 6px;
 }
 
 .bgimg-wrap {
@@ -3441,22 +3575,32 @@ input[type="range"]:active::-webkit-slider-thumb {
   flex-basis: 33.33%;
 }
 
-.share1 {
-  background: url(../img/popup/popup-share.svg) no-repeat;
-  background-position: center 0;
-  background-size: 85%;
-}
-
-.share2 {
-  background: url(../img/popup/popup-share-2.svg) no-repeat;
-  background-position: center 0;
-  background-size: 85%;
-}
-
+.share1,
+.share2,
 .share3 {
-  background: url(../img/popup/popup-share-3.svg) no-repeat;
-  background-position: center 0;
-  background-size: 85%;
+  position: relative;
+  overflow: hidden;
+}
+
+.share1 .main_box_oPijCFyf4W10SR5 {
+  top: 0;
+  left: 0;
+  width: 360px;
+  transform: translate(0, 0);
+}
+
+.share2 .main_box_Ux7FHipfq08BVZL {
+  top: 0;
+  left: 0;
+  width: 360px;
+  transform: translate(0, 0);
+}
+
+.share3 .main_box_bArv1g4eUWpEq3B {
+  top: 0;
+  left: 0;
+  width: 360px;
+  transform: translate(0, 0);
 }
 
 .slide__control {
@@ -3554,6 +3698,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .popup__share-social {
   margin-top: 25px;
   display: flex;
+  justify-content: space-between;
   padding-top: 10px;
   color: #142542;
   border-top: 1px solid var(--border-color);
@@ -3905,7 +4050,7 @@ button.card__bell-submitButton {
 
   .header {
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
 
   .info__sidebar .tabs__body .cards {
@@ -3920,38 +4065,49 @@ button.card__bell-submitButton {
   left: 50%;
   transform: translateX(-50%);
   width: 700px;
-  height: 500px;
+  height: 600px;
   padding-top: 80px;
   z-index: 100;
 }
 
 .popup__comment-close {
   position: absolute;
-  top: 40px;
-  right: 25px;
-  transform: scale(1.2);
+  top: 45px;
+  right: -15px;
   color: #fff;
   transition: 0.2s;
 }
 
 .popup__comment-close:hover {
-  transform: scale(1.4);
+  transform: scale(1.2);
   color: #fff !important;
 }
 
 .popup__comment-wrap {
   display: flex;
   justify-content: center;
-  width: 82%;
+  width: 90%;
+  height: 450px;
   margin-left: 9%;
   background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .popup__comment-bgimg {
+  position: relative;
   flex-basis: 50%;
-  background: url(../img/popup/temp.JPG) no-repeat;
-  background-size: cover;
-  height: 340px;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.popup__comment-bgimg .main_box_ECP83FMj0NvgbqR {
+  width: 320px;
+  top: 0;
+  left: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  transform: translate(0, 0);
 }
 
 .popup__comment-content {

@@ -207,7 +207,7 @@ html {
   max-width: 100rem;
   box-sizing: content-box;
   margin: 0 auto;
-  padding: 0 0.9375rem;
+  *padding: 0 0.9375rem;
 }
 
 .simplebar-content-wrapper {
@@ -3735,7 +3735,6 @@ svg path {
 
 .header {
   padding-right: inherit;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
   position: fixed;
   width: 100%;
   top: 0;
@@ -3744,112 +3743,8 @@ svg path {
   z-index: 99;
 }
 
-.header__wrap {
-  background-color: #ffdd00;
-  padding-top: 6px;
-}
-
-@media (min-width: 101.875em) {
-  .header__wrap {
-    padding-bottom: 0.625rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .header__wrap {
-    padding-bottom: clamp(0.375rem, 0.3139312977rem + 0.3053435115vw, 0.625rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .header__wrap {
-    padding-bottom: 0.375rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .header__wrap {
-    padding-bottom: 15px;
-  }
-}
-
-.header__menu {
-  position: relative;
-}
-
 .header__container {
-  *max-width: 1170px;
-}
-
-@media (max-width: 1024px) {
-  .header__container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-  }
-}
-
-@media (max-width: 500px) {
-  .header__container {
-    flex-direction: column-reverse;
-  }
-}
-
-.header__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
-  width: 100%;
-}
-
-@media (min-width: 101.875em) {
-  .header__top {
-    padding-bottom: 1.125rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .header__top {
-    padding-bottom: clamp(0.6875rem, 0.580629771rem + 0.534351145vw, 1.125rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .header__top {
-    padding-bottom: 0.6875rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .header__top {
-    margin-bottom: 0.5625rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .header__top {
-    margin-bottom: clamp(0.375rem, 0.3291984733rem + 0.2290076336vw, 0.5625rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .header__top {
-    margin-bottom: 0.375rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .header__top {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border-bottom: none;
-    *width: max-content;
-  }
-
-  .header__top ul:first-child {
-    display: none;
-  }
+  max-width: 100%;
 }
 
 .header__list {
@@ -3866,12 +3761,6 @@ svg path {
 .header__item>a {
   display: flex;
   align-items: center;
-}
-
-@media (max-width: 500px) {
-  .header__item {
-    font-size: 18px;
-  }
 }
 
 .header__item svg {
@@ -3928,50 +3817,11 @@ svg path {
   color: var(--bg-red);
 }
 
-.header__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.125rem;
-  width: 100%;
-}
-
 @media (max-width: 1024px) {
 
   .header__bottom>a,
   .header__bottom>button {
     display: none;
-  }
-}
-
-@media (max-width: 1024px) {
-  .header__bottom {
-    flex: 1 1 auto;
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 101.875em) {
-  .header__bottom {
-    margin-right: 1.875rem;
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 20em) and (max-width: 101.875em) {
-  .header__bottom {
-    margin-right: clamp(0.9375rem, 0.7084923664rem + 1.1450381679vw, 1.875rem);
-  }
-}
-
-@media (max-width: 1024px) and (max-width: 20em) {
-  .header__bottom {
-    margin-right: 0.9375rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .header__bottom {
-    margin-bottom: 15px;
-    margin-right: 0;
   }
 }
 
@@ -3984,20 +3834,6 @@ svg path {
   z-index: 5;
 }
 
-@media (max-width: 980px) {
-  .icon-menu {
-    width: 25px;
-    height: 15px;
-  }
-}
-
-@media (max-width: 500px) {
-  .icon-menu {
-    width: 35px;
-    height: 24px;
-  }
-}
-
 .icon-menu span,
 .icon-menu::before,
 .icon-menu::after {
@@ -4006,30 +3842,20 @@ svg path {
   left: 0px;
   position: absolute;
   width: 100%;
-  height: 2px;
-  background-color: #b83539;
-  background-color: var(--bg-red);
-}
-
-@media (max-width: 500px) {
-
-  .icon-menu span,
-  .icon-menu::before,
-  .icon-menu::after {
-    height: 3px;
-  }
+  height: 3px;
+  background-color: #000;
 }
 
 .icon-menu::before {
-  top: 0px;
+  top: 16px;
 }
 
 .icon-menu::after {
-  bottom: 0px;
+  bottom: 16px;
 }
 
 .icon-menu span {
-  top: calc(50% - 1px);
+  top: calc(48% - 1px);
 }
 
 .menu-open .icon-menu span {
@@ -4038,12 +3864,12 @@ svg path {
 
 .menu-open .icon-menu::before {
   transform: rotate(-45deg);
-  top: calc(50% - 1px);
+  top: calc(45% - 1px);
 }
 
 .menu-open .icon-menu::after {
   transform: rotate(45deg);
-  bottom: calc(50% - 1px);
+  bottom: calc(48% - 1px);
 }
 
 .dropdown-list {

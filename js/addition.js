@@ -3078,57 +3078,81 @@ for (let item of toCrms) {
 /**************Поделиться с другом ********** */
 const cardShare = document.querySelectorAll('.card-share');
 const popapShares = document.querySelectorAll('.popup__share');
+const slideControls = document.querySelectorAll('.slide__control');
 const slideControlChanges = document.querySelectorAll('.slide__control-change');
-const headerList = document.querySelector('.header__list');
+const headerList = document.querySelector('.header__list'); //для темного фона
 const popupShareCloses = document.querySelectorAll('.popup__share-close');
-const shares = [document.querySelector('.share1'),
-  document.querySelector('.share2'),
-  document.querySelector('.share3')
+const bgimgWraps = document.querySelectorAll('.bgimg-wrap');
+let dataShare;
+
+const shares = [document.querySelectorAll('.share1'),
+  document.querySelectorAll('.share2'),
+  document.querySelectorAll('.share3')
 ];
+
+const template01 = document.querySelector('.template01').innerHTML;
+const template02 = document.querySelector('.template02').innerHTML;
+const template03 = document.querySelector('.template03').innerHTML;
 
 for (let item of cardShare) {
   item.addEventListener('click', shareInfo);
 }
+let step = 0;
+let intervalID;
 
 function shareInfo(e) {
+  dataShare = e.target.getAttribute('data-share');
+  if (dataShare !== 'share01') {
+    cloneShare();
+  }
   headerList.classList.add('body-dark');
   let targ = e.target.closest('.card__wrap');
   targ.querySelector('.popup__share').classList.remove('hide-block');
   targ.parentNode.querySelector('ul').classList.add('hide-block');
+  clearInterval(intervalID);
+  slideShow();
 }
 
 //слайдер
-let step = 0;
 let d = 315;
 for (let item of slideControlChanges) {
   item.addEventListener('click', slideChange);
 }
 
 function slideChange(e) {
-  switch (e.target.id) {
-    case 'scc1':
-      step = 0;
-      goStep();
-      break;
-    case 'scc2':
-      step = -1;
-      goStep();
-      break;
-    case 'scc3':
-      step = -2;
-      goStep();
-      break;
+  let targ = e.target.classList;
+  if (targ.contains('scc1')) {
+    step = 0;
   }
+  if (targ.contains('scc2')) {
+    step = -1;
+  }
+  if (targ.contains('scc3')) {
+    step = -2;
+  }
+  goStep();
 }
 
 function goStep() {
   for (let share of shares) {
-    share.style.transform = `translateX(${step*d}px)`;
-    share.style.transition = '0.5s';
+    for (let item of share) {
+      if (item.parentNode.getAttribute('data-share') === dataShare) {
+        item.style.transform = `translateX(${step*d}px)`;
+        item.style.transition = '0.5s';
+      }
+    }
   }
 }
 
-setInterval(() => {
+function slideShow() {
+  for (let item of slideControls) {
+    if (item.getAttribute('data-share') === dataShare) {
+      intervalID = setInterval(changeInput, 5000, item);
+    }
+  }
+}
+
+function changeInput(item) {
   if (step > -2) {
     step--;
   } else {
@@ -3136,17 +3160,17 @@ setInterval(() => {
   }
   switch (step) {
     case 0:
-      document.getElementById('scc1').checked = true;
+      item.querySelector('.scc1').checked = true;
       break;
     case -1:
-      document.getElementById('scc2').checked = true;
+      item.querySelector('.scc2').checked = true;
       break;
     case -2:
-      document.getElementById('scc3').checked = true;
+      item.querySelector('.scc3').checked = true;
       break;
   }
   goStep();
-}, 2000);
+}
 //конец слайдера
 
 for (let item of popupShareCloses) {
@@ -3159,7 +3183,20 @@ function shareClose(e) {
   e.target.parentNode.parentNode.querySelector('ul').classList.remove('hide-block');
 }
 
-
+function cloneShare() { //клонирование картинок
+  for (let item of bgimgWraps) {
+    item.querySelector('.share1').innerHTML = '';
+    item.querySelector('.share2').innerHTML = '';
+    item.querySelector('.share3').innerHTML = '';
+  }
+  for (let item of bgimgWraps) {
+    if (item.getAttribute('data-share') === dataShare) {
+      item.querySelector('.share1').innerHTML = template01;
+      item.querySelector('.share2').innerHTML = template02;
+      item.querySelector('.share3').innerHTML = template03;
+    }
+  }
+}
 
 /**********Конец поделиться с другом **********/
 
