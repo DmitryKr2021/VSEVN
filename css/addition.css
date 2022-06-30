@@ -3678,6 +3678,12 @@ input[type="range"]:active::-webkit-slider-thumb {
   border: 1px solid var(--border-color);
 }
 
+.popup__share-capcha {
+  margin-top: 10px;
+  height: 50px;
+  border: 1px solid red;
+}
+
 .popup__share-btn {
   display: inline-block;
   margin-top: 20px;

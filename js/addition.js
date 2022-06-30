@@ -3080,7 +3080,7 @@ const cardShare = document.querySelectorAll('.card-share');
 const popapShares = document.querySelectorAll('.popup__share');
 const slideControls = document.querySelectorAll('.slide__control');
 const slideControlChanges = document.querySelectorAll('.slide__control-change');
-const headerList = document.querySelector('.header__list'); //для темного фона
+const headerContainer = document.querySelector('.header__container'); //для темного фона
 const popupShareCloses = document.querySelectorAll('.popup__share-close');
 const bgimgWraps = document.querySelectorAll('.bgimg-wrap');
 let dataShare;
@@ -3105,7 +3105,7 @@ function shareInfo(e) {
   if (dataShare !== 'share01') {
     cloneShare();
   }
-  headerList.classList.add('body-dark');
+  headerContainer.classList.add('body-dark');
   let targ = e.target.closest('.card__wrap');
   targ.querySelector('.popup__share').classList.remove('hide-block');
   targ.parentNode.querySelector('ul').classList.add('hide-block');
@@ -3179,7 +3179,7 @@ for (let item of popupShareCloses) {
 
 function shareClose(e) {
   e.target.parentNode.classList.add('hide-block');
-  headerList.classList.remove('body-dark');
+  headerContainer.classList.remove('body-dark');
   e.target.parentNode.parentNode.querySelector('ul').classList.remove('hide-block');
 }
 
@@ -3242,7 +3242,7 @@ for (let item of aComments) {
 }
 
 function showCommentBlock(e) {
-  headerList.classList.add('body-dark');
+  headerContainer.classList.add('body-dark');
   let targ = e.target.closest('article').nextElementSibling;
   targ.classList.remove('hide-block');
   if (commentSave) {
@@ -3284,7 +3284,7 @@ function saveComment(e) {
   if (!e.target.classList.contains('long')) {
     targ.classList.add('hide-block');
     commentSave = true;
-    headerList.classList.remove('body-dark');
+    headerContainer.classList.remove('body-dark');
   }
 }
 
@@ -3306,7 +3306,7 @@ function breakComment(e) {
   targ.querySelector('.btn-save').innerText = nowSave;
   targ.querySelector('.btn-break').innerText = nowBreak;
   targ.querySelector('.popup__comment-text').classList.remove('edit');
-  headerList.classList.remove('body-dark');
+  headerContainer.classList.remove('body-dark');
 }
 
 for (let item of popupCommentCloses) {
@@ -3315,7 +3315,7 @@ for (let item of popupCommentCloses) {
 
 function commentClose(e) {
   e.target.parentNode.classList.add('hide-block');
-  headerList.classList.remove('body-dark');
+  headerContainer.classList.remove('body-dark');
 }
 /******Конец тут будет комментарий при нажатии*******/
 

@@ -1445,24 +1445,25 @@ html {
   z-index: 149;
 }*/
 body.popup-show::after {
-  opacity: 1;
+  *opacity: 1;
 }
 
 .popup {
   position: fixed;
-  top: 0;
+  *top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   padding: 30px 10px;
-  transition: visibility 1s ease 0s;
+  *transition: visibility 1s ease 0s;
   visibility: hidden;
   pointer-events: none;
   z-index: 150;
+  z-index: 1500;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
+  *min-width: 0;
 }
 
 .popup__buttons {
@@ -1927,7 +1928,7 @@ body.popup-show::after {
 
 .popup__content {
   visibility: hidden;
-  transform: scale(0);
+  /*transform: scale(0);*/
   transition: transform 0.3s ease 0s;
   background-color: #eee;
   margin: 15px;
@@ -1967,7 +1968,7 @@ body.popup-show::after {
 
 .popup-sigin,
 .popup-share {
-  min-width: 0;
+  /*min-width: 0;*/
 }
 
 .slider {
