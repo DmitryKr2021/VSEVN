@@ -16110,12 +16110,14 @@
             <input class="popup__share-input" type="text" id="popup__share-name" placeholder="Виктор"> 
             <label class="popup__share-label lab2" for="popup__share-mail">E-mail друга</label>          
             <input class="popup__share-input" type="email" id="popup__share-mail" placeholder="email@mail.ru"> 
-            <div class="popup__share-capcha">                   
-              <button class="popup__share-btn g-recaptcha" 
-              data-sitekey="6LfgU7UgAAAAAJe03XJZkisYqkNC8i7nMqNBskX2" 
+            <div class="popup__share-captcha">
+              <button class="popup__share-btn" 
               data-callback='onSubmit' 
               data-action='submit'
-              type="button">Отправить</button>
+              type="submit">Отправить</button>
+              <div class="g-recaptcha"
+              data-sitekey="6LfgU7UgAAAAAJe03XJZkisYqkNC8i7nMqNBskX2">
+              </div>
             </div>          
             <div class="popup__share-social">
               <div class="social-text">
