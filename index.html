@@ -19,17 +19,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=MunUo1KAPVzwRoctzwVIe5tzu4m15o35O7K_mBsUgrQMe2_KspvrMmHmzsh_3e-7IKToSYWw0c7oqqz7Rp46aQ" charset="UTF-8"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-
-<!--
-<script src="https://www.google.com/recaptcha/enterprise.js?render=6LdN064gAAAAAD7OwyDnr9msY_N-gJj4vclDxV02"></script>
 <script>
-grecaptcha.enterprise.ready(function() {
-    grecaptcha.enterprise.execute('6LdN064gAAAAAD7OwyDnr9msY_N-gJj4vclDxV02', {action: 'login'}).then(function(token) {
-       //...
-    });
-});
+  function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+  }
 </script>
--->
 
 </head>
 
@@ -2667,7 +2661,7 @@ grecaptcha.enterprise.ready(function() {
                       <div class="card__wrap">
                         <button>Еще...</button>
 <div class="card__wrap-list">
-<ul class="card__list">
+<ul class="card__list employer">
   <li class="card__item"></li>
 
   <li class="card__item no-inblacklist">
@@ -16116,11 +16110,13 @@ grecaptcha.enterprise.ready(function() {
             <input class="popup__share-input" type="text" id="popup__share-name" placeholder="Виктор"> 
             <label class="popup__share-label lab2" for="popup__share-mail">E-mail друга</label>          
             <input class="popup__share-input" type="email" id="popup__share-mail" placeholder="email@mail.ru"> 
-            <div class="popup__share-capcha">
-              <!--div class="g-recaptcha" data-sitekey="6LdN064gAAAAAD7OwyDnr9msY_N-gJj4vclDxV02"></div-->           
-              <div class="g-recaptcha" data-sitekey="6LcsrbMgAAAAACVIvT71L54hoNzKbEkBuIvDcCTR"></div>           
+            <div class="popup__share-capcha">                   
+              <button class="popup__share-btn g-recaptcha" 
+              data-sitekey="6LfgU7UgAAAAAJe03XJZkisYqkNC8i7nMqNBskX2" 
+              data-callback='onSubmit' 
+              data-action='submit'
+              type="button">Отправить</button>
             </div>          
-            <button class="popup__share-btn" type="submit">Отправить</button>
             <div class="popup__share-social">
               <div class="social-text">
                 Поделиться:
@@ -16198,10 +16194,8 @@ grecaptcha.enterprise.ready(function() {
                 </ul>
               </div>                  
             </article>
-
             
             <!--/Дополнительные блоки компаний-->
-
 
 										<article class="card">
 											<div class="card__columns">
@@ -16209,7 +16203,7 @@ grecaptcha.enterprise.ready(function() {
 													<div class="card__logo company">
 														<a href="" data-gallery src="https://picsum.photos/300/300" data-lg-size="300-62">
 															<picture>
-                                <img src="" alt="Logo" class="card__img">
+                                <!--img src="" alt="Logo" class="card__img"-->
                               </picture>
 														</a>
 													</div>
@@ -16248,138 +16242,7 @@ grecaptcha.enterprise.ready(function() {
 														<div class="card__info">
 															<div class="card__wrap">
 																<button>Еще...</button>
-			<div class="card__wrap-list">
-				<ul class="card__list">
-					<li class="card__item"></li>
-
-					<li class="card__item no-inblacklist">
-						<a href="#" data-popup="#addToFavorites" class="card__favorite employer pop card__favorite--green _add">
-				<!--Добавить работодателя в избранное-->
-																			</a>
-																		</li>
-
-					<!--li class="card__item no-inblacklist">
-						<a href="#" data-popup="#addToFavorites" class="card__favorite person card__favorite--green _add">
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
-	<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
-							</svg>
-				<-Добавить соискателя в избранное->
-																			</a>
-																		</li-->
-
-
-	      <li class="card__item">
-					<a href="" data-popup="#popup-share" class="card__favorite card__favorite--green card-share" data-share="share08">
-	<svg width="16" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 17">
-	<path d="M15.99964,13.79051c0,1.76841 -1.4629,3.20797 -3.26088,3.20797c-1.79855,0 -3.26145,-1.43956 -3.26145,-3.20797c0,-0.37583 0.06649,-0.736 0.1878,-1.07156l-3.89511,-2.17444c-0.59853,0.70804 -1.50078,1.15993 -2.50854,1.15993c-1.79855,0 -3.26202,-1.43844 -3.26202,-3.20686c0,-1.76841 1.46347,-3.20686 3.26202,-3.20686c1.00777,0 1.91002,0.45189 2.50877,1.16105l3.89488,-2.17556c-0.12131,-0.33556 -0.1878,-0.69573 -0.1878,-1.07156c0,-1.76841 1.46313,-3.20686 3.26145,-3.20686c1.79798,0 3.26088,1.43844 3.26088,3.20686c0,1.76953 -1.4629,3.20909 -3.26122,3.20909c-1.008,0 -1.91059,-0.45301 -2.509,-1.16216l-3.89488,2.17556c0.12131,0.33444 0.1878,0.69573 0.1878,1.07044c0,0.37583 -0.06649,0.736 -0.1878,1.07156l3.89511,2.17444c0.59875,-0.70804 1.50101,-1.16105 2.50912,-1.16105c1.79798,0 3.26088,1.43956 3.26088,3.20797zM10.6184,3.20464c0,1.15098 0.95123,2.08608 2.12036,2.08608c1.16879,0 2.11967,-0.9351 2.11967,-2.08608c0,-1.14986 -0.95089,-2.08496 -2.11967,-2.08496c-1.16913,0 -2.12036,0.9351 -2.12036,2.08496zM5.38113,8.49758c0,-1.14986 -0.95089,-2.08384 -2.11967,-2.08384c-1.16947,0 -2.12059,0.93398 -2.12059,2.08384c0,1.14986 0.95112,2.08496 2.12059,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496zM14.85844,13.79051c0,-1.14986 -0.95089,-2.08608 -2.11967,-2.08608c-1.16913,0 -2.12036,0.93622 -2.12036,2.08608c0,1.14986 0.95123,2.08496 2.12036,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496z" fill="#6aa527" fill-opacity="1">
-																					</path>
-																				</svg>
-							Поделиться с другом
-																			</a>
-																		</li>
-		<li class="card__item">
-			<a href="#" data-popup="#popupEdited" class="card__favorite card__favorite--green">
-		<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-	<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
-																					</path>
-																				</svg>
-										Редактировать
-										</a>
-																		</li>
-			<li class="card__item">
-				<button class="card__favorite card__favorite--green card__comment">
-			<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-		<path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
-											</path>
-						</svg>
-						Оставить комментарий
-																			</button>
-      <textarea name="" id="" cols="40" rows="5" placeholder="Комментарий" class="place-comment hide-block" contenteditable="true">
-      </textarea>
-																		</li>
-
-
-			<li class="card__item">
-			<button class="card__favorite card__favorite--green to-blacklist">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261 328" width="20" height="17">
-          <path d="m260.1 17.5v16.5v156.9c-4.7 0.8-10 1.5-16 2.2c-11 1.3-24 3.3-38.7 3.3c-24.7 0-47.5-4.9-69.5-9.6c-21.7-4.7-42.1-13-63.9-13c-30.1 0-45.9 4.4-51.9 6.9v143.3h-16v-142.1v-161.7v-2.6l3.4-2.4c1.6-1.1 17.5-11.2 64.4-11.2c23.5 0 45.7 4.7 67.2 9.3c21.2 4.5 42.1 10.2 65.2 10.2c14.8 0 28.7-2.1 39.7-3.5c6-0.8 11.4-1.6 16.1-2.5z" fill="#777777"/> </svg>
-						<!--Внести в черный список-->
-																			</button>
-																		</li>
-			<li class="card__item">
-			<button class="card__favorite card__favorite--green to-crm">
-			<svg enable-background="new 0 0 48 48" width="17" height="17" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		<path clip-rule="evenodd" d="M43,35H29.195c0.595,3.301,2.573,5.572,4.401,7H36c0.553,0,1,0.447,1,1  s-0.447,1-1,1H12c-0.553,0-1-0.447-1-1s0.447-1,1-1h2.403c1.827-1.428,3.807-3.699,4.401-7H5c-2.209,0-4-1.791-4-4V8  c0-2.209,1.791-4,4-4h38c2.209,0,4,1.791,4,4v23C47,33.209,45.209,35,43,35z M17.397,42h13.205c-1.595-1.682-3.015-3.976-3.459-7  h-6.287C20.412,38.024,18.992,40.318,17.397,42z M45,8c0-1.104-0.896-2-2-2H5C3.896,6,3,6.896,3,8v19l0,0h42V8z M45,29H3l0,0v2  c0,1.104,0.896,2,2,2h14l0,0h10l0,0h14c1.104,0,2-0.896,2-2V29z M24,32c-0.553,0-1-0.447-1-1s0.447-1,1-1s1,0.447,1,1  S24.553,32,24,32z" fill="#619f25" fill-rule="evenodd"/>
-																				</svg>
-						<!--Добавить в CRM-->
-																			</button>
-																		</li>
-
-
-			<li class="card__item">
-				<button class="card__favorite card__favorite--green">
-	<svg fill="none" width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<path d="M17.5 12C20.5376 12 23 14.4624 23 17.5C23 20.5376 20.5376 23 17.5 23C14.4624 23 12 20.5376 12 17.5C12 14.4624 14.4624 12 17.5 12ZM4 12.999L12.8094 13.0002C12.3832 13.4444 12.0194 13.949 11.7323 14.4999L4 14.499L3.89934 14.509C3.77496 14.5343 3.69 14.6018 3.646 14.645C3.6028 14.689 3.53528 14.7733 3.51 14.898L3.5 14.999V16.5C3.5 17.509 3.95 18.222 4.917 18.742C5.74315 19.1869 6.91951 19.4563 8.18258 19.4951L8.5 19.5L8.8174 19.4951C9.68108 19.4686 10.5039 19.3342 11.2024 19.1096C11.3264 19.6025 11.5082 20.0726 11.739 20.513C10.6887 20.863 9.53057 21 8.5 21C5.77787 21 2.1647 20.044 2.00545 16.7296L2 16.5V14.999C2 13.895 2.896 12.999 4 12.999ZM17.5 14.0016L17.4101 14.0096C17.206 14.0467 17.0451 14.2076 17.0081 14.4117L17 14.5016V16.9996L14.5 17L14.4101 17.0081C14.206 17.0451 14.0451 17.206 14.0081 17.4101L14 17.5L14.0081 17.5899C14.0451 17.794 14.206 17.9549 14.4101 17.9919L14.5 18L17 17.9996V20.5L17.0081 20.5899C17.0451 20.794 17.206 20.9549 17.4101 20.9919L17.5 21L17.5899 20.9919C17.794 20.9549 17.9549 20.794 17.9919 20.5899L18 20.5V17.9996L20.5 18L20.5899 17.9919C20.794 17.9549 20.9549 17.794 20.9919 17.5899L21 17.5L20.9919 17.4101C20.9549 17.206 20.794 17.0451 20.5899 17.0081L20.5 17L18 16.9996V14.5016L17.9919 14.4117C17.9549 14.2076 17.794 14.0467 17.5899 14.0096L17.5 14.0016ZM8.5 2C10.985 2 13 4.015 13 6.5C13 8.985 10.985 11 8.5 11C6.015 11 4 8.985 4 6.5C4 4.015 6.015 2 8.5 2ZM17.5 4C19.433 4 21 5.567 21 7.5C21 9.433 19.433 11 17.5 11C15.567 11 14 9.433 14 7.5C14 5.567 15.567 4 17.5 4ZM8.5 3.5C6.846 3.5 5.5 4.846 5.5 6.5C5.5 8.154 6.846 9.5 8.5 9.5C10.154 9.5 11.5 8.154 11.5 6.5C11.5 4.846 10.154 3.5 8.5 3.5ZM17.5 5.5C16.397 5.5 15.5 6.397 15.5 7.5C15.5 8.603 16.397 9.5 17.5 9.5C18.603 9.5 19.5 8.603 19.5 7.5C19.5 6.397 18.603 5.5 17.5 5.5Z" fill="#619f25" />
-																				</svg>
-			Пригласить <span>(Ранее (3))</span>
-																			</button>
-																		</li>
-       <li class="card__item">
-			<button class="card__favorite card__favorite--green">
-		<svg fill="none" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<path d="M14.75 15C15.7165 15 16.5 15.7835 16.5 16.75L16.4989 17.7121C16.6156 19.9012 14.9879 21.009 12.0668 21.009C9.15786 21.009 7.5 19.9192 7.5 17.75V16.75C7.5 15.7835 8.2835 15 9.25 15H14.75ZM14.75 16.5H9.25C9.11193 16.5 9 16.6119 9 16.75V17.75C9 18.9262 9.88667 19.509 12.0668 19.509C14.2347 19.509 15.0625 18.9455 15 17.752V16.75C15 16.6119 14.8881 16.5 14.75 16.5ZM3.75 10L8.126 10.0001C8.04375 10.3197 8 10.6547 8 11C8 11.1691 8.01049 11.3358 8.03087 11.4993L3.75 11.5C3.61193 11.5 3.5 11.6119 3.5 11.75V12.75C3.5 13.9262 4.38667 14.509 6.56679 14.509C7.02869 14.509 7.42976 14.4835 7.77434 14.4317C7.20917 14.7897 6.78546 15.349 6.60122 16.0082L6.56679 16.009C3.65786 16.009 2 14.9192 2 12.75V11.75C2 10.7835 2.7835 10 3.75 10ZM20.25 10C21.2165 10 22 10.7835 22 11.75L21.9989 12.7121C22.1156 14.9012 20.4879 16.009 17.5668 16.009L17.3985 16.0073C17.2091 15.3302 16.767 14.7587 16.1803 14.4008C16.567 14.4733 17.0273 14.509 17.5668 14.509C19.7347 14.509 20.5625 13.9455 20.5 12.752V11.75C20.5 11.6119 20.3881 11.5 20.25 11.5L15.9692 11.4992C15.9895 11.3357 16 11.1691 16 11C16 10.6547 15.9563 10.3197 15.874 10.0001L20.25 10ZM12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8ZM12 9.5C11.1716 9.5 10.5 10.1716 10.5 11C10.5 11.8284 11.1716 12.5 12 12.5C12.8284 12.5 13.5 11.8284 13.5 11C13.5 10.1716 12.8284 9.5 12 9.5ZM6.5 3C8.15685 3 9.5 4.34315 9.5 6C9.5 7.65685 8.15685 9 6.5 9C4.84315 9 3.5 7.65685 3.5 6C3.5 4.34315 4.84315 3 6.5 3ZM17.5 3C19.1569 3 20.5 4.34315 20.5 6C20.5 7.65685 19.1569 9 17.5 9C15.8431 9 14.5 7.65685 14.5 6C14.5 4.34315 15.8431 3 17.5 3ZM6.5 4.5C5.67157 4.5 5 5.17157 5 6C5 6.82843 5.67157 7.5 6.5 7.5C7.32843 7.5 8 6.82843 8 6C8 5.17157 7.32843 4.5 6.5 4.5ZM17.5 4.5C16.6716 4.5 16 5.17157 16 6C16 6.82843 16.6716 7.5 17.5 7.5C18.3284 7.5 19 6.82843 19 6C19 5.17157 18.3284 4.5 17.5 4.5Z" fill="#619f25" />
-																				</svg>
-																				Приглашен
-																			</button>
-																		</li>
-																	</ul>
-																</div><!--/card__wrap-list-->
-
-          <div class="popup__share hide-block">
-            <button class="popup__share-close">&#10006;</button>
-            <div class="popup__share-wrap">
-              <div class="popup__share-bgimg">
-                <div class="bgimg-wrap" data-share="share08">
-                  <div class="share1"></div>
-                  <div class="share2"></div>
-                  <div class="share3"></div>
-                </div>
-                <div class="slide__control" data-share="share08">
-                  <input type="radio" name="scc" id="scc71" class="slide__control-change scc1" checked>
-                  <label for="scc71"></label>
-                  <input type="radio" name="scc" id="scc72" class="slide__control-change scc2">
-                  <label for="scc72"></label>
-                  <input type="radio" name="scc" id="scc73" class="slide__control-change scc3">
-                  <label for="scc73"></label>
-                </div>
-              </div>
-              <div class="popup__share-content"> 
-                <div class="popup__share-logo"></div>  
-                <h2 class="popup__share-title">
-                   Поделиться с другом:
-                </h2>
-                <form class="popup__share-form">
-                  <div class="popup__share-formwrap">
-                    <label class="popup__share-label" for="popup__share-name">Ваше имя</label>          
-                    <input class="popup__share-input" type="text" id="popup__share-name" placeholder="Виктор"> 
-                    <label class="popup__share-label lab2" for="popup__share-mail">E-mail друга</label>          
-                    <input class="popup__share-input" type="email" id="popup__share-mail" placeholder="email@mail.ru">           
-                    <button class="popup__share-btn" type="submit">Отправить</button>
-                    <div class="popup__share-social">
-                      <div class="social-text">
-                        Поделиться:
-                      </div>
-                      <div class="social-ico">
-                        <script src="https://yastatic.net/share2/share.js"></script>
-                        <div class="ya-share2" data-curtain data-size="s" data-services="vkontakte,odnoklassniki,telegram,twitter,moimir,pinterest"></div>
-                      </div>
-                    </div>
-                  </div><!--/popup__share-formwrap-->
-                </form><!--/popup__share-form-->
-              </div><!--/popup__share-content-->
-            </div><!--/popup__share-wrap-->
-          </div><!--/popup__share-->            
-
+			
 															</div><!--/card__wrap-->
 
 															<button class="card__intelligence" data-tippy-content="Сведения">
@@ -16498,129 +16361,7 @@ grecaptcha.enterprise.ready(function() {
                             <div class="card__info">
                               <div class="card__wrap">
                                 <button>Еще...</button>
-        <div class="card__wrap-list">
-        <ul class="card__list">
-          <li class="card__item"></li>
-        
-          <li class="card__item no-inblacklist">
-            <a href="#" data-popup="#addToFavorites" class="card__favorite person card__favorite--green _add">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
-        <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#6EA737" />
-              </svg>
-        <!--Добавить соискателя в избранное-->
-                                      </a>
-                                    </li>
-        
-        
-        <li class="card__item">
-          <a href="" data-popup="#popup-share" class="card__favorite card__favorite--green card-share" data-share="share09">
-        <svg width="16" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 17">
-        <path d="M15.99964,13.79051c0,1.76841 -1.4629,3.20797 -3.26088,3.20797c-1.79855,0 -3.26145,-1.43956 -3.26145,-3.20797c0,-0.37583 0.06649,-0.736 0.1878,-1.07156l-3.89511,-2.17444c-0.59853,0.70804 -1.50078,1.15993 -2.50854,1.15993c-1.79855,0 -3.26202,-1.43844 -3.26202,-3.20686c0,-1.76841 1.46347,-3.20686 3.26202,-3.20686c1.00777,0 1.91002,0.45189 2.50877,1.16105l3.89488,-2.17556c-0.12131,-0.33556 -0.1878,-0.69573 -0.1878,-1.07156c0,-1.76841 1.46313,-3.20686 3.26145,-3.20686c1.79798,0 3.26088,1.43844 3.26088,3.20686c0,1.76953 -1.4629,3.20909 -3.26122,3.20909c-1.008,0 -1.91059,-0.45301 -2.509,-1.16216l-3.89488,2.17556c0.12131,0.33444 0.1878,0.69573 0.1878,1.07044c0,0.37583 -0.06649,0.736 -0.1878,1.07156l3.89511,2.17444c0.59875,-0.70804 1.50101,-1.16105 2.50912,-1.16105c1.79798,0 3.26088,1.43956 3.26088,3.20797zM10.6184,3.20464c0,1.15098 0.95123,2.08608 2.12036,2.08608c1.16879,0 2.11967,-0.9351 2.11967,-2.08608c0,-1.14986 -0.95089,-2.08496 -2.11967,-2.08496c-1.16913,0 -2.12036,0.9351 -2.12036,2.08496zM5.38113,8.49758c0,-1.14986 -0.95089,-2.08384 -2.11967,-2.08384c-1.16947,0 -2.12059,0.93398 -2.12059,2.08384c0,1.14986 0.95112,2.08496 2.12059,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496zM14.85844,13.79051c0,-1.14986 -0.95089,-2.08608 -2.11967,-2.08608c-1.16913,0 -2.12036,0.93622 -2.12036,2.08608c0,1.14986 0.95123,2.08496 2.12036,2.08496c1.16879,0 2.11967,-0.9351 2.11967,-2.08496z" fill="#6aa527" fill-opacity="1">
-                                          </path>
-                                        </svg>
-              Поделиться с другом
-                                      </a>
-                                    </li>
-        <li class="card__item">
-        <a href="#" data-popup="#popupEdited" class="card__favorite card__favorite--green">
-        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-        <path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
-                                          </path>
-                                        </svg>
-                    Редактировать
-                    </a>
-                                    </li>
-        <li class="card__item">
-        <button class="card__favorite card__favorite--green card__comment">
-        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
-        <path d="M13.42576,5.19879l-2.64416,-2.65206l1.05766,-1.06038c0.21549,-0.21476 0.59086,-0.21476 0.80624,0l1.83781,1.84559c0.22202,0.22147 0.22202,0.585 0,0.80647zM3.00282,10.34855l6.83544,-6.85665l2.64404,2.65206l-6.83533,6.85665zM4.37062,13.61245l-2.75505,0.77739l0.77694,-2.7628zM13.58895,0.54119c-0.359,-0.35905 -1.65504,-1.03912 -2.68982,0l-9.31297,9.33646c-0.08148,0.08165 -0.1403,0.18009 -0.1696,0.29194l-1.40373,5.00547c-0.06535,0.23266 0.00332,0.48097 0.16972,0.65435c0.16972,0.17337 0.50926,0.20246 0.65289,0.17002l4.99432,-1.40936c0.11101,-0.0302 0.20885,-0.08836 0.29057,-0.17002l9.30634,-9.33646c0.741,-0.74159 0.741,-1.95185 0,-2.6968z" fill="#619f25" fill-opacity="1">
-                      </path>
-            </svg>
-            Оставить комментарий
-                                      </button>
-        <textarea name="" id="" cols="40" rows="5" placeholder="Комментарий" class="place-comment hide-block" contenteditable="true">
-        </textarea>
-                                    </li>
-            
-        <li class="card__item">
-        <button class="card__favorite card__favorite--green to-blacklist">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261 328" width="20" height="17">
-          <path d="m260.1 17.5v16.5v156.9c-4.7 0.8-10 1.5-16 2.2c-11 1.3-24 3.3-38.7 3.3c-24.7 0-47.5-4.9-69.5-9.6c-21.7-4.7-42.1-13-63.9-13c-30.1 0-45.9 4.4-51.9 6.9v143.3h-16v-142.1v-161.7v-2.6l3.4-2.4c1.6-1.1 17.5-11.2 64.4-11.2c23.5 0 45.7 4.7 67.2 9.3c21.2 4.5 42.1 10.2 65.2 10.2c14.8 0 28.7-2.1 39.7-3.5c6-0.8 11.4-1.6 16.1-2.5z" fill="#777777"/> </svg>
-            <!--Внести в черный список-->
-                                      </button>
-                                    </li>
-        <li class="card__item">
-        <button class="card__favorite card__favorite--green to-crm">
-        <svg enable-background="new 0 0 48 48" width="17" height="17" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <path clip-rule="evenodd" d="M43,35H29.195c0.595,3.301,2.573,5.572,4.401,7H36c0.553,0,1,0.447,1,1  s-0.447,1-1,1H12c-0.553,0-1-0.447-1-1s0.447-1,1-1h2.403c1.827-1.428,3.807-3.699,4.401-7H5c-2.209,0-4-1.791-4-4V8  c0-2.209,1.791-4,4-4h38c2.209,0,4,1.791,4,4v23C47,33.209,45.209,35,43,35z M17.397,42h13.205c-1.595-1.682-3.015-3.976-3.459-7  h-6.287C20.412,38.024,18.992,40.318,17.397,42z M45,8c0-1.104-0.896-2-2-2H5C3.896,6,3,6.896,3,8v19l0,0h42V8z M45,29H3l0,0v2  c0,1.104,0.896,2,2,2h14l0,0h10l0,0h14c1.104,0,2-0.896,2-2V29z M24,32c-0.553,0-1-0.447-1-1s0.447-1,1-1s1,0.447,1,1  S24.553,32,24,32z" fill="#619f25" fill-rule="evenodd"/>
-                                        </svg>
-            <!--Добавить в CRM-->
-                                      </button>
-                                    </li>
-      
-        <li class="card__item">
-        <button class="card__favorite card__favorite--green">
-        <svg fill="none" width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.5 12C20.5376 12 23 14.4624 23 17.5C23 20.5376 20.5376 23 17.5 23C14.4624 23 12 20.5376 12 17.5C12 14.4624 14.4624 12 17.5 12ZM4 12.999L12.8094 13.0002C12.3832 13.4444 12.0194 13.949 11.7323 14.4999L4 14.499L3.89934 14.509C3.77496 14.5343 3.69 14.6018 3.646 14.645C3.6028 14.689 3.53528 14.7733 3.51 14.898L3.5 14.999V16.5C3.5 17.509 3.95 18.222 4.917 18.742C5.74315 19.1869 6.91951 19.4563 8.18258 19.4951L8.5 19.5L8.8174 19.4951C9.68108 19.4686 10.5039 19.3342 11.2024 19.1096C11.3264 19.6025 11.5082 20.0726 11.739 20.513C10.6887 20.863 9.53057 21 8.5 21C5.77787 21 2.1647 20.044 2.00545 16.7296L2 16.5V14.999C2 13.895 2.896 12.999 4 12.999ZM17.5 14.0016L17.4101 14.0096C17.206 14.0467 17.0451 14.2076 17.0081 14.4117L17 14.5016V16.9996L14.5 17L14.4101 17.0081C14.206 17.0451 14.0451 17.206 14.0081 17.4101L14 17.5L14.0081 17.5899C14.0451 17.794 14.206 17.9549 14.4101 17.9919L14.5 18L17 17.9996V20.5L17.0081 20.5899C17.0451 20.794 17.206 20.9549 17.4101 20.9919L17.5 21L17.5899 20.9919C17.794 20.9549 17.9549 20.794 17.9919 20.5899L18 20.5V17.9996L20.5 18L20.5899 17.9919C20.794 17.9549 20.9549 17.794 20.9919 17.5899L21 17.5L20.9919 17.4101C20.9549 17.206 20.794 17.0451 20.5899 17.0081L20.5 17L18 16.9996V14.5016L17.9919 14.4117C17.9549 14.2076 17.794 14.0467 17.5899 14.0096L17.5 14.0016ZM8.5 2C10.985 2 13 4.015 13 6.5C13 8.985 10.985 11 8.5 11C6.015 11 4 8.985 4 6.5C4 4.015 6.015 2 8.5 2ZM17.5 4C19.433 4 21 5.567 21 7.5C21 9.433 19.433 11 17.5 11C15.567 11 14 9.433 14 7.5C14 5.567 15.567 4 17.5 4ZM8.5 3.5C6.846 3.5 5.5 4.846 5.5 6.5C5.5 8.154 6.846 9.5 8.5 9.5C10.154 9.5 11.5 8.154 11.5 6.5C11.5 4.846 10.154 3.5 8.5 3.5ZM17.5 5.5C16.397 5.5 15.5 6.397 15.5 7.5C15.5 8.603 16.397 9.5 17.5 9.5C18.603 9.5 19.5 8.603 19.5 7.5C19.5 6.397 18.603 5.5 17.5 5.5Z" fill="#619f25" />
-                                        </svg>
-        Пригласить <span>(Ранее (3))</span>
-                                      </button>
-                                    </li>
-        <li class="card__item">
-        <button class="card__favorite card__favorite--green">
-        <svg fill="none" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.75 15C15.7165 15 16.5 15.7835 16.5 16.75L16.4989 17.7121C16.6156 19.9012 14.9879 21.009 12.0668 21.009C9.15786 21.009 7.5 19.9192 7.5 17.75V16.75C7.5 15.7835 8.2835 15 9.25 15H14.75ZM14.75 16.5H9.25C9.11193 16.5 9 16.6119 9 16.75V17.75C9 18.9262 9.88667 19.509 12.0668 19.509C14.2347 19.509 15.0625 18.9455 15 17.752V16.75C15 16.6119 14.8881 16.5 14.75 16.5ZM3.75 10L8.126 10.0001C8.04375 10.3197 8 10.6547 8 11C8 11.1691 8.01049 11.3358 8.03087 11.4993L3.75 11.5C3.61193 11.5 3.5 11.6119 3.5 11.75V12.75C3.5 13.9262 4.38667 14.509 6.56679 14.509C7.02869 14.509 7.42976 14.4835 7.77434 14.4317C7.20917 14.7897 6.78546 15.349 6.60122 16.0082L6.56679 16.009C3.65786 16.009 2 14.9192 2 12.75V11.75C2 10.7835 2.7835 10 3.75 10ZM20.25 10C21.2165 10 22 10.7835 22 11.75L21.9989 12.7121C22.1156 14.9012 20.4879 16.009 17.5668 16.009L17.3985 16.0073C17.2091 15.3302 16.767 14.7587 16.1803 14.4008C16.567 14.4733 17.0273 14.509 17.5668 14.509C19.7347 14.509 20.5625 13.9455 20.5 12.752V11.75C20.5 11.6119 20.3881 11.5 20.25 11.5L15.9692 11.4992C15.9895 11.3357 16 11.1691 16 11C16 10.6547 15.9563 10.3197 15.874 10.0001L20.25 10ZM12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8ZM12 9.5C11.1716 9.5 10.5 10.1716 10.5 11C10.5 11.8284 11.1716 12.5 12 12.5C12.8284 12.5 13.5 11.8284 13.5 11C13.5 10.1716 12.8284 9.5 12 9.5ZM6.5 3C8.15685 3 9.5 4.34315 9.5 6C9.5 7.65685 8.15685 9 6.5 9C4.84315 9 3.5 7.65685 3.5 6C3.5 4.34315 4.84315 3 6.5 3ZM17.5 3C19.1569 3 20.5 4.34315 20.5 6C20.5 7.65685 19.1569 9 17.5 9C15.8431 9 14.5 7.65685 14.5 6C14.5 4.34315 15.8431 3 17.5 3ZM6.5 4.5C5.67157 4.5 5 5.17157 5 6C5 6.82843 5.67157 7.5 6.5 7.5C7.32843 7.5 8 6.82843 8 6C8 5.17157 7.32843 4.5 6.5 4.5ZM17.5 4.5C16.6716 4.5 16 5.17157 16 6C16 6.82843 16.6716 7.5 17.5 7.5C18.3284 7.5 19 6.82843 19 6C19 5.17157 18.3284 4.5 17.5 4.5Z" fill="#619f25" />
-                                        </svg>
-                                        Приглашена
-                                      </button>
-                                    </li>
-                                  </ul>
-                                </div><!--/card__wrap-list-->
-        
-          <div class="popup__share hide-block">
-            <button class="popup__share-close">&#10006;</button>
-            <div class="popup__share-wrap">
-              <div class="popup__share-bgimg">
-                <div class="bgimg-wrap" data-share="share09">
-                  <div class="share1"></div>
-                  <div class="share2"></div>
-                  <div class="share3"></div>
-                </div>
-                <div class="slide__control" data-share="share09">
-                  <input type="radio" name="scc" id="scc81" class="slide__control-change scc1" checked>
-                  <label for="scc81"></label>
-                  <input type="radio" name="scc" id="scc82" class="slide__control-change scc2">
-                  <label for="scc82"></label>
-                  <input type="radio" name="scc" id="scc83" class="slide__control-change scc3">
-                  <label for="scc83"></label>
-                </div>
-              </div>
-              <div class="popup__share-content"> 
-                <div class="popup__share-logo"></div>  
-                <h2 class="popup__share-title">
-                   Поделиться с другом:
-                </h2>
-                <form class="popup__share-form">
-                  <div class="popup__share-formwrap">
-                    <label class="popup__share-label" for="popup__share-name">Ваше имя</label>          
-                    <input class="popup__share-input" type="text" id="popup__share-name" placeholder="Виктор"> 
-                    <label class="popup__share-label lab2" for="popup__share-mail">E-mail друга</label>          
-                    <input class="popup__share-input" type="email" id="popup__share-mail" placeholder="email@mail.ru">           
-                    <button class="popup__share-btn" type="submit">Отправить</button>
-                    <div class="popup__share-social">
-                      <div class="social-text">
-                        Поделиться:
-                      </div>
-                      <div class="social-ico">
-                        <script src="https://yastatic.net/share2/share.js"></script>
-                        <div class="ya-share2" data-curtain data-size="s" data-services="vkontakte,odnoklassniki,telegram,twitter,moimir,pinterest"></div>
-                      </div>
-                    </div>
-                  </div><!--/popup__share-formwrap-->
-                </form><!--/popup__share-form-->
-              </div><!--/popup__share-content-->
-            </div><!--/popup__share-wrap-->
-          </div><!--/popup__share-->            
+                    
         
                               </div><!--/card__wrap-->
         
@@ -28227,8 +27968,8 @@ grecaptcha.enterprise.ready(function() {
 														<li><span>Район Приокский </span>,<span> проспект Гагарина</span></li>
 													</ul>
 													<button class="card__favorite person _remove">
-														<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
-	<path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
+	 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+	 <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
 														</svg>
 														<!--Убрать соискателя из избранного-->
 													</button>
@@ -28287,7 +28028,7 @@ grecaptcha.enterprise.ready(function() {
 													</a>
 													<div class="card__place">
 														<a href="">Нижний Новгород</a>
-														<a href="">11.02.</a>
+														<a href="">11.2.</a>
 													</div>
 													<ul class="card__desc card__desc--col">
 														<li>Возраст: <span>54 года</span> <span class="card__separator"> • </span> Образование: <span>среднее</span></li>
@@ -28298,10 +28039,11 @@ grecaptcha.enterprise.ready(function() {
 														<li>Место проживания: <span>г.Н.Новгород,</span>,</li>
 														<li><span>Район Приокский </span>,<span> проспект Гагарина</span></li>
 													</ul>
-													<button class="card__favorite employer card__favorite--green">
+													<button class="card__favorite person card__favorite--green">
 
-                            <svg viewBox="0 0 17 20" width="20" height="25" class="m-icon m-icon--small "><path fill="currentColor" d="M4.28 16.33a.82.82 0 0 1-.47-.15.8.8 0 0 1-.29-.9l1.54-4.79-3.78-3.25a.8.8 0 0 1-.23-.88.81.81 0 0 1 .75-.52h4.53l1.6-4.27c.11-.3.41-.5.75-.5s.63.2.75.5l1.6 4.27h4.53c.33 0 .63.21.75.52.12.31.02.67-.23.89l-3.77 3.24 1.7 4.79a.8.8 0 0 1-.23.86c-.27.25-.69.22-.95.08l-.05-.03-4.11-2.87-3.93 2.87a.8.8 0 0 1-.46.14zm.2-.74zm4.2-3.39c.1 0 .2.03.29.09l3.89 2.72-1.61-4.51a.5.5 0 0 1 .15-.55l3.62-3.11h-4.33a.5.5 0 0 1-.47-.32l-1.53-4.1-1.53 4.1a.49.49 0 0 1-.47.32H2.34l3.62 3.11c.15.13.21.34.15.53l-1.45 4.53 3.72-2.71a.5.5 0 0 1 .3-.1zm6.75-5.72zm-13.5 0z"></path></svg>
-														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить работодателя в избранное--></a>
+      <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+      <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />   </svg>                     
+														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить соискателя в избранное--></a>
 													</button>
 													<div class="card__row ratings ratings-up">
 														
@@ -28422,9 +28164,11 @@ grecaptcha.enterprise.ready(function() {
 															предлагаем:, Своевременную выплату...
 														</li>
 													</ul>
-													<button class="card__favorite employer card__favorite--green">
-                            <svg viewBox="0 0 17 20" width="20" height="25" class="m-icon m-icon--small "><path fill="currentColor" d="M4.28 16.33a.82.82 0 0 1-.47-.15.8.8 0 0 1-.29-.9l1.54-4.79-3.78-3.25a.8.8 0 0 1-.23-.88.81.81 0 0 1 .75-.52h4.53l1.6-4.27c.11-.3.41-.5.75-.5s.63.2.75.5l1.6 4.27h4.53c.33 0 .63.21.75.52.12.31.02.67-.23.89l-3.77 3.24 1.7 4.79a.8.8 0 0 1-.23.86c-.27.25-.69.22-.95.08l-.05-.03-4.11-2.87-3.93 2.87a.8.8 0 0 1-.46.14zm.2-.74zm4.2-3.39c.1 0 .2.03.29.09l3.89 2.72-1.61-4.51a.5.5 0 0 1 .15-.55l3.62-3.11h-4.33a.5.5 0 0 1-.47-.32l-1.53-4.1-1.53 4.1a.49.49 0 0 1-.47.32H2.34l3.62 3.11c.15.13.21.34.15.53l-1.45 4.53 3.72-2.71a.5.5 0 0 1 .3-.1zm6.75-5.72zm-13.5 0z"></path></svg>
-														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить работодателя в избранное--></a>
+													<button class="card__favorite person card__favorite--green">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+    <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
+               </svg>                     
+														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить соискателя в избранное--></a>
 													</button>
 													<div class="card__row">		             
 														<div class="card__computed">
@@ -28690,9 +28434,11 @@ grecaptcha.enterprise.ready(function() {
 															предлагаем:, Своевременную выплату...
 														</li>
 													</ul>
-													<button class="card__favorite employer card__favorite--green">
-                            <svg viewBox="0 0 17 20" width="20" height="25" class="m-icon m-icon--small "><path fill="currentColor" d="M4.28 16.33a.82.82 0 0 1-.47-.15.8.8 0 0 1-.29-.9l1.54-4.79-3.78-3.25a.8.8 0 0 1-.23-.88.81.81 0 0 1 .75-.52h4.53l1.6-4.27c.11-.3.41-.5.75-.5s.63.2.75.5l1.6 4.27h4.53c.33 0 .63.21.75.52.12.31.02.67-.23.89l-3.77 3.24 1.7 4.79a.8.8 0 0 1-.23.86c-.27.25-.69.22-.95.08l-.05-.03-4.11-2.87-3.93 2.87a.8.8 0 0 1-.46.14zm.2-.74zm4.2-3.39c.1 0 .2.03.29.09l3.89 2.72-1.61-4.51a.5.5 0 0 1 .15-.55l3.62-3.11h-4.33a.5.5 0 0 1-.47-.32l-1.53-4.1-1.53 4.1a.49.49 0 0 1-.47.32H2.34l3.62 3.11c.15.13.21.34.15.53l-1.45 4.53 3.72-2.71a.5.5 0 0 1 .3-.1zm6.75-5.72zm-13.5 0z"></path></svg>											
-														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить работодателя в избранное--></a>
+													<button class="card__favorite person card__favorite--green">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+    <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
+             </svg>                     										
+														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить соискателя в избранное--></a>
 													</button>
 													<div class="card__row">
 														
@@ -28971,9 +28717,11 @@ grecaptcha.enterprise.ready(function() {
 														<li>Место проживания: <span>г.Н.Новгород,</span>,</li>
 														<li><span>Район Приокский </span>,<span> проспект Гагарина</span></li>
 													</ul>
-													<button class="card__favorite employer card__favorite--green">
-														<svg viewBox="0 0 17 20" width="20" height="25" class="m-icon m-icon--small "><path fill="currentColor" d="M4.28 16.33a.82.82 0 0 1-.47-.15.8.8 0 0 1-.29-.9l1.54-4.79-3.78-3.25a.8.8 0 0 1-.23-.88.81.81 0 0 1 .75-.52h4.53l1.6-4.27c.11-.3.41-.5.75-.5s.63.2.75.5l1.6 4.27h4.53c.33 0 .63.21.75.52.12.31.02.67-.23.89l-3.77 3.24 1.7 4.79a.8.8 0 0 1-.23.86c-.27.25-.69.22-.95.08l-.05-.03-4.11-2.87-3.93 2.87a.8.8 0 0 1-.46.14zm.2-.74zm4.2-3.39c.1 0 .2.03.29.09l3.89 2.72-1.61-4.51a.5.5 0 0 1 .15-.55l3.62-3.11h-4.33a.5.5 0 0 1-.47-.32l-1.53-4.1-1.53 4.1a.49.49 0 0 1-.47.32H2.34l3.62 3.11c.15.13.21.34.15.53l-1.45 4.53 3.72-2.71a.5.5 0 0 1 .3-.1zm6.75-5.72zm-13.5 0z"></path></svg>
-														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить работодателя в избранное--></a>
+													<button class="card__favorite person card__favorite--green">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+    <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
+         </svg>										
+														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить соискателя в избранное--></a>
 													</button>
 													<div class="card__row ratings ratings-up">
 														
@@ -29094,9 +28842,11 @@ grecaptcha.enterprise.ready(function() {
 															предлагаем:, Своевременную выплату...
 														</li>
 													</ul>
-													<button class="card__favorite employer card__favorite--green">
-														<svg viewBox="0 0 17 20" width="20" height="25" class="m-icon m-icon--small "><path fill="currentColor" d="M4.28 16.33a.82.82 0 0 1-.47-.15.8.8 0 0 1-.29-.9l1.54-4.79-3.78-3.25a.8.8 0 0 1-.23-.88.81.81 0 0 1 .75-.52h4.53l1.6-4.27c.11-.3.41-.5.75-.5s.63.2.75.5l1.6 4.27h4.53c.33 0 .63.21.75.52.12.31.02.67-.23.89l-3.77 3.24 1.7 4.79a.8.8 0 0 1-.23.86c-.27.25-.69.22-.95.08l-.05-.03-4.11-2.87-3.93 2.87a.8.8 0 0 1-.46.14zm.2-.74zm4.2-3.39c.1 0 .2.03.29.09l3.89 2.72-1.61-4.51a.5.5 0 0 1 .15-.55l3.62-3.11h-4.33a.5.5 0 0 1-.47-.32l-1.53-4.1-1.53 4.1a.49.49 0 0 1-.47.32H2.34l3.62 3.11c.15.13.21.34.15.53l-1.45 4.53 3.72-2.71a.5.5 0 0 1 .3-.1zm6.75-5.72zm-13.5 0z"></path></svg>
-														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить работодателя в избранное--></a>
+													<button class="card__favorite person card__favorite--green">
+		<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 355" width="18" height="15">
+    <path d="m388 111.7c0 29.6-11.8 57.2-32.8 77.5l-148.3 149.8l-10.9 11l-10.9-11l-151.2-152.7c-19.3-20.2-29.9-46.7-29.9-74.6c0-59.4 48.1-107.7 107.2-107.7c33.8 0 64.8 15.8 84.8 41.8c20-26 51-41.8 84.8-41.8c59.1 0 107.2 48.3 107.2 107.7z" fill="#619f00" stroke="#619f00" />
+                  </svg>
+														<a href="#" data-popup="#addToFavoritesСompany"><!--Добавить соискателя в избранное--></a>
 													</button>
 													<div class="card__row">
 													
@@ -31999,11 +31749,7 @@ grecaptcha.enterprise.ready(function() {
 		</footer>
 	</div>
 
-	<div class="popup-bg d-none">
-    8888888888888888888888
-  </div>
-
-	<div id="popupEdited" aria-hidden="true" class="popup_ popup--popupEdited">
+	<div id="popupEdited" aria-hidden="true" class="popup popup--popupEdited">
 		<div class="popup__wrapper">
 			<form accept="" class="popup__content">
 				<div class="popup__title">
@@ -32039,10 +31785,9 @@ grecaptcha.enterprise.ready(function() {
 		</div>
 	</div>
 
-
-	<div id="addToBlackList" aria-hidden="true" class="popup">
+	<div id="addToBlackList" class="popup__ hide-block">
 		<div class="popup__wrapper">
-			<form accept="" class="popup__content popup__content--notp">
+			<form accept="" class="popup__content--notp">
 				<div class="popup__row">
 					<div class="popup__col">
 						<picture><source srcset="img/popup/chicken.webp" type="image/webp"><img src="img/popup/chicken.png" width="290" height="265" alt=""></picture>
@@ -32056,91 +31801,37 @@ grecaptcha.enterprise.ready(function() {
 								</div>
 								<div class="options__item">
 									<input hidden id="op_2" class="options__input" type="radio" value="2" name="optionAddToFavorites">
-									<label for="op_2" class="options__label"><span class="options__text">Поместить все объявления от этой компании в игнорируемые</span></label>
+									<label for="op_2" class="options__label label_02"><span class="options__text">Поместить все объявления от этой компании в игнорируемые</span></label>
 								</div>
 							</div>
-							<button data-close type="submit" class="_btn _bg _yellow">
+							<button data-close type="button" class="_btn _bg _yellow">
 								Применить
 							</button>
 						</div>
-					</div>
-				
-				</div>
-				<button data-close type="button" class="popup__close">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 18 18">
-						<defs>
-							<path id="avzva" d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" />
-						</defs>
-						<g>
-							<g transform="translate(-674 -144)">
-								<use fill="#776511" xlink:href="#avzva" />
-							</g>
-						</g>
-					</svg>
-				</button>
+					</div><!--/popup__col-->				
+				</div><!--/popup__row-->     
 			</form>
-		</div>
+      <button class="popup__toBlack-close">&#10006;</button>
+		</div><!--/popup__wrapper-->
 	</div>
 
-	<div id="addToFavorites" aria-hidden="true" class="popup">
+	<div id="addToFavoritesСompany" class="popup__ hide-block">
 		<div class="popup__wrapper">
-			<form accept="" class="popup__content popup__content--notp">
+			<form accept="" class="popup__content--notp">
 				<div class="popup__row">
 					<div class="popup__col">
-						<picture><source srcset="img/popup/01.webp"type="image/webp"><img src="img/popup/01.png" width="290" height="265" alt=""></picture>
-					</div>
-					<div class="popup__col">
-						<div class="popup__col-wrap">
-							<div class="options">
-								<div class="options__item">
-									<input hidden id="op_1" class="options__input" checked type="radio" value="1" name="optionAddToFavorites">
-									<label for="op_1" class="options__label"><span class="options__text">Поместить только это объявление в черный список</span></label>
-								</div>
-								<div class="options__item">
-									<input hidden id="op_2" class="options__input" type="radio" value="2" name="optionAddToFavorites">
-									<label for="op_2" class="options__label"><span class="options__text">Поместить все объявления от этой компании в игнорируемые</span></label>
-								</div>
-							</div>
-							<button data-close type="submit" class="_btn _bg _yellow">
-								Применить
-							</button>
-						</div>
-					</div>
-				
-				</div>
-				<button data-close type="button" class="popup__close">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 18 18">
-						<defs>
-							<path id="avzva" d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" />
-						</defs>
-						<g>
-							<g transform="translate(-674 -144)">
-								<use fill="#776511" xlink:href="#avzva" />
-							</g>
-						</g>
-					</svg>
-				</button>
-			</form>
-		</div>
-	</div>
-
-	<div id="addToFavoritesСompany" aria-hidden="true" class="popup">
-		<div class="popup__wrapper">
-			<form accept="" class="popup__content popup__content--notp">
-				<div class="popup__row">
-					<div class="popup__col">
-						<picture><source srcset="img/popup/01.webp"type="image/webp"><img src="img/popup/01.png" width="290" height="265" alt=""></picture>
+						<picture><source srcset="img/popup/chicken.webp"type="image/webp"><img src="img/popup/chicken.png" width="290" height="265" alt=""></picture>
 					</div>
 					<div class="popup__col">
 						<div class="popup__col-wrap">
 							<div class="options">
 								<div class="options__item">
 									<input hidden id="op_3" class="options__input" checked type="radio" value="1" name="optionAddToFavoritesСompany">
-									<label for="op_3" class="options__label"><span class="options__text">Добавить объявление в избранное</span></label>
+									<label for="op_3" class="options__label label_03"><span class="options__text">Добавить объявление в избранное</span></label>
 								</div>
 								<div class="options__item">
 									<input hidden id="op_4" class="options__input" type="radio" value="2" name="optionAddToFavoritesСompany">
-									<label for="op_4" class="options__label">
+									<label for="op_4" class="options__label label_04">
 										<span class="options__text">
 											Добавить компанию в избранное
 											<span>Тогда все объявления от компании попадают в избранное</span>
@@ -32148,27 +31839,15 @@ grecaptcha.enterprise.ready(function() {
 									</label>
 								</div>
 							</div>
-							<button data-close type="submit" class="_btn _bg _yellow">
+							<button data-close type="button" class="_btn _bg _yellow">
 								Применить
 							</button>
 						</div>
-					</div>
-				
-				</div>
-				<button data-close type="button" class="popup__close">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 18 18">
-						<defs>
-							<path id="avzva" d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" />
-						</defs>
-						<g>
-							<g transform="translate(-674 -144)">
-								<use fill="#776511" xlink:href="#avzva" />
-							</g>
-						</g>
-					</svg>
-				</button>
+					</div><!--/popup__col-->	
+				</div><!--/popup__row-->
 			</form>
-		</div>
+      <button class="popup__toFavorite-close">&#10006;</button>
+		</div><!--/popup__wrapper-->
 	</div>
 
 
@@ -32234,56 +31913,8 @@ grecaptcha.enterprise.ready(function() {
 				<p class="signup-text">Присоединившись, вы соглашаетесь с <a href="#">Условиями использования сервиса</a> и <a href="#">Политикой конфиденциальности</a></p>
 			</div>
 		</div>
-		
 	</div>
-	<div id="popup-share" aria-hidden="true" class="popup">
-		<div class="popup__content popup__content--notp">
-			<div class="popup-share">
-			
-				<div class="left">
-					
-					<div class="swiper-container">
-						
-						<div class="swiper-wrapper">
-							
-							<div class="swiper-slide popup-share__slide"></div>
-							<div class="swiper-slide popup-share__slide"></div>
-							<div class="swiper-slide popup-share__slide"></div>
-						</div>
-			
-						<div class="swiper-pagination"></div>
-					</div>
-				</div>
-				<div class="right">
-					<picture><source srcset="img/logo-popup.webp"type="image/webp"><img src="img/logo-popup.png" alt="" style="height: 42px; width: 132px;"></picture>
-					<h3 class="popup-share__title">Поделиться с другом</h3>
-					<form action="/">
-						<p>Ваше имя</p>
-						<input type="text" placeholder="Виктор">
-						<p>E-mail друга</p>
-						<input type="text" placeholder="email@mail.ru">
-						<button class="popup-share__btn">Отправить</button>
-					</form>
 
-					<div class="popup-share__socials">
-						<span>Поделиться:</span>
-						<div class="popup-share__row">
-							<button class="popup-share__btn" data-sharer="facebook" data-url="ryzerrast.com">
-								<svg enable-background="new 0 0 56.693 56.693" viewBox="0 0 56.693 56.693" height="30px" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<path d="M40.43,21.739h-7.645v-5.014c0-1.883,1.248-2.322,2.127-2.322c0.877,0,5.395,0,5.395,0V6.125l-7.43-0.029  c-8.248,0-10.125,6.174-10.125,10.125v5.518h-4.77v8.53h4.77c0,10.947,0,24.137,0,24.137h10.033c0,0,0-13.32,0-24.137h6.77  L40.43,21.739z" />
-								</svg>
-							</button>
-							<button class="popup-share__btn" data-sharer="twitter" data-url="ryzerrast.com">
-								<svg enable-background="new 0 0 56.693 56.693" height="30px" viewBox="0 0 56.693 56.693" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<path d="M52.837,15.065c-1.811,0.805-3.76,1.348-5.805,1.591c2.088-1.25,3.689-3.23,4.444-5.592c-1.953,1.159-4.115,2-6.418,2.454  c-1.843-1.964-4.47-3.192-7.377-3.192c-5.581,0-10.106,4.525-10.106,10.107c0,0.791,0.089,1.562,0.262,2.303  c-8.4-0.422-15.848-4.445-20.833-10.56c-0.87,1.492-1.368,3.228-1.368,5.082c0,3.506,1.784,6.6,4.496,8.412  c-1.656-0.053-3.215-0.508-4.578-1.265c-0.001,0.042-0.001,0.085-0.001,0.128c0,4.896,3.484,8.98,8.108,9.91  c-0.848,0.23-1.741,0.354-2.663,0.354c-0.652,0-1.285-0.063-1.902-0.182c1.287,4.015,5.019,6.938,9.441,7.019  c-3.459,2.711-7.816,4.327-12.552,4.327c-0.815,0-1.62-0.048-2.411-0.142c4.474,2.869,9.786,4.541,15.493,4.541  c18.591,0,28.756-15.4,28.756-28.756c0-0.438-0.009-0.875-0.028-1.309C49.769,18.873,51.483,17.092,52.837,15.065z" />
-								</svg>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div id="popup-enter" aria-hidden="true" class="popup">
 		<div class="popup__content popup-sigin popup-sigin-sigin">

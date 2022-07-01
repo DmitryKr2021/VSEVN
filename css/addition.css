@@ -3487,7 +3487,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .card__col .card__desc {
-  *margin-top: 0;
   margin-top: 4px;
 }
 
@@ -3501,7 +3500,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 16px;
 }
 
-/***********Попап Еще*************/
+
+/*******************************************/
+/****************Попап Еще******************/
+/*******************************************/
 .card__wrap-list {
   background-color: #fff;
   z-index: 100;
@@ -3517,6 +3519,40 @@ input[type="range"]:active::-webkit-slider-thumb {
   padding: 5px;
   color: #142542;
 }
+
+/************Внести в избранное***********/
+.popup__ {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*pointer-events: none;*/
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+#addToFavoritesСompany {
+  background-color: #fff;
+}
+
+.popup__toFavorite-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: red;
+  transition: 0.3s;
+}
+
+.popup__totoFavorite-close:hover {
+  transform: scale(1.2);
+}
+
+/*********Конец внести в избранное*********/
+
+
 
 /*************Поделиться с другом************/
 .popup__share {
@@ -3711,7 +3747,44 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 /**********Конец поделиться с другом*********/
+
+/************Внести в черный список***********/
+.popup__ {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*pointer-events: none;*/
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+#addToBlackList {
+  background-color: #fff;
+}
+
+.popup__toBlack-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: red;
+  transition: 0.3s;
+}
+
+.popup__toBlack-close:hover {
+  transform: scale(1.2);
+}
+
+/*********Конец внести в черный список*********/
+
+
+
+/********************************************/
 /*************Конец попап Еще****************/
+/********************************************/
 
 .a-comment:hover {
   text-decoration: underline dotted var(--card-hoverdark);

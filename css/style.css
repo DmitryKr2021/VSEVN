@@ -1450,20 +1450,19 @@ body.popup-show::after {
 
 .popup {
   position: fixed;
-  *top: 0;
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   padding: 30px 10px;
-  *transition: visibility 1s ease 0s;
+  transition: visibility 1s ease 0s;
   visibility: hidden;
   pointer-events: none;
   z-index: 150;
-  z-index: 1500;
   display: flex;
   align-items: center;
   justify-content: center;
-  *min-width: 0;
+  min-width: 0;
 }
 
 .popup__buttons {
@@ -1915,20 +1914,19 @@ body.popup-show::after {
 }
 
 .popup__wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 100%;
   flex: 1 1 auto;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .popup__content {
   visibility: hidden;
-  /*transform: scale(0);*/
+  transform: scale(0);
   transition: transform 0.3s ease 0s;
   background-color: #eee;
   margin: 15px;
@@ -5969,7 +5967,8 @@ input {
 .card__wrap-list {
   position: absolute;
   padding-top: 10px;
-  left: 0;
+  /*left: 0;*/
+  left: -30px;
   top: 100%;
   z-index: 10;
   padding-top: 10px;
@@ -7301,40 +7300,9 @@ input {
   background-color: #8bc72a;
 }
 
-@media (min-width: 101.875em) {
-  .card__label {
-    font-size: 0.625rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .card__label {
-    font-size: clamp(0.5rem, 0.4694656489rem + 0.1526717557vw, 0.625rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .card__label {
-    font-size: 0.5rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .card__label {
-    height: 1rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .card__label {
-    height: clamp(0.875rem, 0.8444656489rem + 0.1526717557vw, 1rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .card__label {
-    height: 0.875rem;
-  }
+.card__labels .card__label {
+  font-size: 10px;
+  font-family: ZabraProTest3;
 }
 
 .card__label:not(:last-child) {
@@ -7343,6 +7311,7 @@ input {
 
 .card__label--green {
   background-color: #619f00;
+  margin-top: 5px;
 }
 
 .card__label--gray {

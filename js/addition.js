@@ -2733,6 +2733,7 @@ const addPerson = 'Добавить соискателя в избранное';
 const removePerson = 'Убрать соискателя из избранного';
 const addEmployer = 'Добавить работодателя в избранное';
 const removeEmployer = 'Убрать работодателя из избранного';
+let popupFavorite = false; //не внесено в избранное
 
 for (let item of cardFavoritesPerson) {
   item.innerHTML += addPerson;
@@ -2740,21 +2741,25 @@ for (let item of cardFavoritesPerson) {
 }
 
 for (let item of cardFavoritesPerson) {
-  item.addEventListener('click', function (e) {
-    let targ = e.target;
-    targ.classList.toggle('add');
-    if (targ.getAttribute('data-add') === 'add') {
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
-      targ.innerHTML = tempStr + removePerson;
-      targ.setAttribute('data-add', 'remove');
-    } else {
-      targ.setAttribute('data-add', 'add');
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
-      targ.innerHTML = tempStr + addPerson;
-    }
-  });
+  item.addEventListener('click', goToFavoritePerson);
+}
+
+function goToFavoritePerson(e) {
+  let targ = e.target;
+  targ.classList.toggle('add');
+  if (targ.getAttribute('data-add') === 'add') {
+    popupFavorite = true;
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
+    targ.innerHTML = tempStr + removePerson;
+    targ.setAttribute('data-add', 'remove');
+  } else {
+    popupFavorite = false;
+    targ.setAttribute('data-add', 'add');
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 32));
+    targ.innerHTML = tempStr + addPerson;
+  }
 }
 
 for (let item of cardFavoritesEmployer) {
@@ -2763,22 +2768,27 @@ for (let item of cardFavoritesEmployer) {
 }
 
 for (let item of cardFavoritesEmployer) {
-  item.addEventListener('click', function (e) {
-    let targ = e.target;
-    targ.classList.toggle('add');
-    if (targ.getAttribute('data-add') === 'add') {
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
-      targ.innerHTML = tempStr + removeEmployer;
-      targ.setAttribute('data-add', 'remove');
-    } else {
-      targ.setAttribute('data-add', 'add');
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
-      targ.innerHTML = tempStr + addEmployer;
-    }
-  });
+  item.addEventListener('click', goToFavoriteEmployer);
 }
+
+function goToFavoriteEmployer(e) {
+  let targ = e.target;
+  targ.classList.toggle('add');
+  if (targ.getAttribute('data-add') === 'add') {
+    popupFavorite = true;
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
+    targ.innerHTML = tempStr + removeEmployer;
+    targ.setAttribute('data-add', 'remove');
+  } else {
+    targ.setAttribute('data-add', 'add');
+    popupFavorite = false;
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 34));
+    targ.innerHTML = tempStr + addEmployer;
+  }
+}
+
 
 //О фабрике читать/скрыть
 const readMore = document.querySelector('.read-more');
@@ -2957,6 +2967,53 @@ moreValueShow.onclick = () => {
 /************Работа с попапом Еще************* */
 /********************************************* */
 
+/********Добавить работодателя/соискателя в избранное******* */
+const addToFavoritesСompany = document.getElementById('addToFavoritesСompany');
+const toFavorites = document.querySelectorAll('._add');
+const employerToFavorites = 'Добавить объявление в избранное';
+const personToFavorites = 'Добавить соискателя в избранное';
+const allEmployerToFavorites = '';
+const allPersonToFavorites = 'Добавить объявление в избранное';
+
+
+const label_03 = addToFavoritesСompany.querySelector('.label_03');
+const label_04 = addToFavoritesСompany.querySelector('.label_04');
+const popupFavoriteClose = document.querySelector('.popup__toFavorite-close');
+const popupFavoriteApply = addToFavoritesСompany.querySelector('._yellow');
+
+for (let item of toFavorites) {
+  item.addEventListener('click', insertToFavorites);
+}
+
+function insertToFavorites(e) {
+  if (popupFavorite) {
+    closestCardlist = e.target.closest('.card__list');
+    headerContainer.classList.add('body-dark');
+    if (e.target.classList.contains('employer')) {
+      label_03.innerText = employerToFavorites;
+    } else {
+      label_03.innerText = personToFavorites;
+      label_04.innerText = allPersonToFavorites;
+    }
+    addToFavoritesСompany.classList.remove('hide-block');
+    closestCardlist.classList.add('hide-block');
+  }
+}
+
+popupFavoriteClose.onclick = (e) => {
+  headerContainer.classList.remove('body-dark');
+  e.target.closest('#addToFavoritesСompany').classList.add('hide-block');
+  closestCardlist.classList.remove('hide-block');
+};
+
+popupFavoriteApply.onclick = (e) => {
+  headerContainer.classList.remove('body-dark');
+  e.target.closest('#addToFavoritesСompany').classList.add('hide-block');
+  closestCardlist.classList.remove('hide-block');
+};
+
+/*****Конец добавить работодателя/соискателя в избранное*******/
+
 /***********Оставить комментарий ***********/
 const cardWrapList = document.querySelectorAll('.card__wrap-list');
 
@@ -2978,6 +3035,7 @@ for (let list of cardWrapList) {
 /************Черный список********** */
 const removeFromBlack = 'Убрать из черного списка';
 const addToBlack = 'Внести в черный список';
+let popupBlack = false; //не внесено в ЧС
 
 for (let item of cardWrapList) {
   item.querySelector('.to-blacklist').innerHTML += addToBlack;
@@ -2996,6 +3054,7 @@ for (let item of cardWrapList) {
     //вносим в черный список
     targ.classList.toggle('add');
     if (targ.getAttribute('data-add') === 'add') {
+      popupBlack = true;
       let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 22));
       targ.innerHTML = tempStr + removeFromBlack;
@@ -3019,6 +3078,7 @@ for (let item of cardWrapList) {
     } else {
       //убираем из черного списка
       favorit.classList.remove('add');
+      popupBlack = false;
       targ.setAttribute('data-add', 'add');
       let innerHTML_ = targ.innerHTML;
       let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
@@ -3046,6 +3106,50 @@ for (let btn of blackListBtns) {
     temp.innerHTML = tempStr + addToBlack;
   });
 }
+
+
+/***********Внести в черный список************ */
+const addToBlackList = document.getElementById('addToBlackList');
+const toBlackLists = document.querySelectorAll('.to-blacklist');
+const employerToBlackList = 'Поместить все объявления от этой компании в игнорируемые';
+const personToBlackList = 'Поместить все объявления от этого соискателя в игнорируемые';
+const label_02 = addToBlackList.querySelector('.label_02');
+const popupBlackClose = document.querySelector('.popup__toBlack-close');
+const popupBlackApply = addToBlackList.querySelector('._yellow');
+let closestCardlist;
+
+for (let item of toBlackLists) {
+  item.addEventListener('click', insertToBlackList);
+}
+
+function insertToBlackList(e) {
+  if (popupBlack) {
+    closestCardlist = e.target.closest('.card__list');
+    headerContainer.classList.add('body-dark');
+    if (e.target.closest('.card__list').classList.contains('employer')) {
+      label_02.innerText = employerToBlackList;
+    } else {
+      label_02.innerText = personToBlackList;
+    }
+    addToBlackList.classList.remove('hide-block');
+    closestCardlist.classList.add('hide-block');
+  }
+}
+
+popupBlackClose.onclick = (e) => {
+  headerContainer.classList.remove('body-dark');
+  e.target.closest('#addToBlackList').classList.add('hide-block');
+  closestCardlist.classList.remove('hide-block');
+};
+
+popupBlackApply.onclick = (e) => {
+  headerContainer.classList.remove('body-dark');
+  e.target.closest('#addToBlackList').classList.add('hide-block');
+  closestCardlist.classList.remove('hide-block');
+};
+
+/******** Конец внести в черный список******** */
+
 /*********Конец черный список******* */
 
 /*************Работа с CRM *************** */
@@ -3197,8 +3301,9 @@ function cloneShare() { //клонирование картинок
     }
   }
 }
-
 /**********Конец поделиться с другом **********/
+
+
 
 /*************************************************** */
 /************Конец работа с попапом Еще************* */
