@@ -3462,10 +3462,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   /*font-size: 17px;*/
   color: #619f00;
   font-weight: 500;
+  line-height: 130%;
 }
 
 .card__col.card-up .card__name {
-  margin-top: -1px;
+  margin-top: -3px;
 }
 
 .card__name a {
@@ -3473,7 +3474,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .card__col .card__place {
-  margin-top: 7px;
+  margin-top: 5px;
   font-size: 16px;
   color: #435269;
 }
@@ -3487,13 +3488,14 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .card__col .card__desc {
-  margin-top: 4px;
+  margin-top: 7px;
 }
 
 .card__col .card__desc li {
   font-size: 16px;
   color: var(--vacansion-light);
   padding-bottom: 2px;
+  line-height: 138%;
 }
 
 .card__col .card__wrap button {
@@ -3560,7 +3562,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   top: 200px;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
+  width: 795px;
   height: 600px;
   z-index: 150;
   padding-top: 80px;
@@ -3621,21 +3623,21 @@ input[type="range"]:active::-webkit-slider-thumb {
 .share1 .main_box_oPijCFyf4W10SR5 {
   top: 0;
   left: 0;
-  width: 360px;
+  width: 362px;
   transform: translate(0, 0);
 }
 
 .share2 .main_box_Ux7FHipfq08BVZL {
   top: 0;
   left: 0;
-  width: 360px;
+  width: 362px;
   transform: translate(0, 0);
 }
 
 .share3 .main_box_bArv1g4eUWpEq3B {
   top: 0;
   left: 0;
-  width: 360px;
+  width: 362px;
   transform: translate(0, 0);
 }
 
@@ -3668,7 +3670,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .popup__share-content {
-  flex-basis: 50%;
+  flex-basis: 51%;
 }
 
 .popup__share-logo {
@@ -3716,13 +3718,12 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .popup__share-captcha {
   margin-top: 10px;
-  height: 50px;
-  border: 1px solid red;
+  height: 78px;
 }
 
 .popup__share-btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   color: #fff;
   padding: 10px;
@@ -3738,7 +3739,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .popup__share-social {
-  margin-top: 25px;
+  margin-top: 60px;
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
@@ -4143,7 +4144,7 @@ button.card__bell-submitButton {
   top: 200px;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
+  width: 795px;
   height: 600px;
   padding-top: 80px;
   z-index: 100;
@@ -4181,7 +4182,7 @@ button.card__bell-submitButton {
 }
 
 .popup__comment-bgimg .main_box_ECP83FMj0NvgbqR {
-  width: 320px;
+  width: 360px;
   top: 0;
   left: 0;
   border-radius: 6px;

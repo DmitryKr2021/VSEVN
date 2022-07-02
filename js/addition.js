@@ -3182,12 +3182,15 @@ for (let item of toCrms) {
 /**************Поделиться с другом ********** */
 const cardShare = document.querySelectorAll('.card-share');
 const popapShares = document.querySelectorAll('.popup__share');
+const popapShareBtn = document.querySelector('.popup__share-btn');
 const slideControls = document.querySelectorAll('.slide__control');
 const slideControlChanges = document.querySelectorAll('.slide__control-change');
 const headerContainer = document.querySelector('.header__container'); //для темного фона
 const popupShareCloses = document.querySelectorAll('.popup__share-close');
 const bgimgWraps = document.querySelectorAll('.bgimg-wrap');
+const recaptcha = document.querySelector('.g-recaptcha');
 let dataShare;
+let counter = 0; //счетчик отправок
 
 const shares = [document.querySelectorAll('.share1'),
   document.querySelectorAll('.share2'),
@@ -3209,16 +3212,23 @@ function shareInfo(e) {
   if (dataShare !== 'share01') {
     cloneShare();
   }
+  if (sessionStorage.getItem('counter') > 0) {
+    showCaptcha();
+  }
   headerContainer.classList.add('body-dark');
   let targ = e.target.closest('.card__wrap');
   targ.querySelector('.popup__share').classList.remove('hide-block');
   targ.parentNode.querySelector('ul').classList.add('hide-block');
   clearInterval(intervalID);
   slideShow();
+  popapShareBtn.onclick = () => {
+    counter++;
+    sessionStorage.setItem('counter', counter);
+  };
 }
 
 //слайдер
-let d = 315;
+let d = 357;
 for (let item of slideControlChanges) {
   item.addEventListener('click', slideChange);
 }
@@ -3251,7 +3261,7 @@ function goStep() {
 function slideShow() {
   for (let item of slideControls) {
     if (item.getAttribute('data-share') === dataShare) {
-      intervalID = setInterval(changeInput, 5000, item);
+      intervalID = setInterval(changeInput, 2000, item);
     }
   }
 }
@@ -3301,6 +3311,18 @@ function cloneShare() { //клонирование картинок
     }
   }
 }
+
+/*****************Вывод капчи**************** */
+/*popapShareBtn.onclick = () => {
+  counter++;
+};*/
+
+function showCaptcha() {
+  recaptcha.classList.remove('hide-block');
+}
+
+/**************Конец вывод капчи***************/
+
 /**********Конец поделиться с другом **********/
 
 
