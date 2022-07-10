@@ -2428,6 +2428,9 @@ const tabsBodys = document.querySelectorAll('.tabs__body');
 const girlWrapper = document.querySelector('.girl__wrapper');
 let green = false;
 const ratings = document.querySelectorAll('.ratings');
+let itemSpan; //для перевода длинного имени в дымку
+let popupSpan = document.createElement('div'); //для перевода длинного имени в дымку
+let spanText; //для перевода длинного имени в дымку
 
 let arrYellow = [];
 arrYellow[0] = 'yellow';
@@ -2469,6 +2472,33 @@ function changeColorGreen() {
     item.classList.remove('ratings-up');
   }
   green = true;
+
+  //Длинное имя в дымку
+  for (let item of cardPretendents) {
+    if (item.querySelector('span')) {
+      itemSpan = item.querySelector('span');
+      spanText = itemSpan.innerText;
+      if (spanText.length > 30) {
+        item.querySelector('span').style.cssText =
+          `background: linear-gradient(to right, rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%, 
+          rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+      }
+
+      itemSpan.addEventListener('mouseover', function () {
+        popupSpan.innerText = spanText;
+        popupSpan.classList.add('input-popup');
+        itemSpan.before(popupSpan);
+        popupSpan.style.top = item.querySelector('span').getBoundingClientRect().top - 40 + 'px';
+        popupSpan.style.left = item.querySelector('span').getBoundingClientRect().left + 'px';
+      });
+
+      itemSpan.addEventListener('mouseout', popupSpanRemove);
+    }
+  }
+
+  function popupSpanRemove() {
+    popupSpan.remove();
+  }
 }
 
 for (let btn of resetAlls) {
@@ -2560,9 +2590,13 @@ selectPeriodDiv.querySelector('.arrow').addEventListener('click', function (e) {
 
 
 //Изначальная дымка
-selectDateInput.style.cssText = `background: linear-gradient(to right, #222 60%, #777 70%, #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+selectDateInput.style.cssText =
+  `background: linear-gradient(to right, #222 60%, #777 70%, 
+  #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
-selectPeriodInput.style.cssText = `background: linear-gradient(to right, #222 60%, #777 70%, #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+selectPeriodInput.style.cssText =
+  `background: linear-gradient(to right, #222 60%, #777 70%, 
+  #ddd 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 
 //показать выбранное значение и свернуть селект
 for (let item of selectDateItems) {
@@ -3035,6 +3069,11 @@ for (let list of cardWrapList) {
 /************Черный список********** */
 const removeFromBlack = 'Убрать из черного списка';
 const addToBlack = 'Внести в черный список';
+
+const toBlackList = document.querySelector('.to-blacklist');
+const invitationPerson = toBlackList.closest('ul').querySelector('.invitation-person');
+const invitationEmployer = toBlackList.closest('ul').querySelector('.invitation-employer');
+
 let popupBlack = false; //не внесено в ЧС
 
 for (let item of cardWrapList) {
@@ -3042,54 +3081,58 @@ for (let item of cardWrapList) {
   item.querySelector('.to-blacklist').setAttribute('data-add', 'add');
 }
 
-for (let item of cardWrapList) {
-  item.querySelector('.to-blacklist').addEventListener('click', function (e) {
-    let targ = e.target;
-    const favorit = targ.closest('.card__wrap-list').
-    querySelector('.no-inblacklist').
-    querySelector('.card__favorite');
-
-    let cardColumns = targ.closest('.card__columns');
-    const blackList = cardColumns.querySelectorAll('.black-list');
-    //вносим в черный список
-    targ.classList.toggle('add');
-    if (targ.getAttribute('data-add') === 'add') {
-      popupBlack = true;
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 22));
-      targ.innerHTML = tempStr + removeFromBlack;
-      targ.setAttribute('data-add', 'remove');
-      targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.add('hide-block');
-      //показать метку черного списка
-      for (let item of blackList) {
-        item.classList.remove('hide-block');
-      }
-      //удалить из избранного
-      favorit.setAttribute('data-add', 'add');
-      let favoritHTML_ = favorit.innerHTML;
-      favorit.classList.toggle('add');
-      if (favoritHTML_.includes('работодателя')) {
-        let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
-        favorit.innerHTML = favoritStr + addEmployer;
-      } else {
-        let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
-        favorit.innerHTML = favoritStr + addPerson;
-      }
-    } else {
-      //убираем из черного списка
-      favorit.classList.remove('add');
-      popupBlack = false;
-      targ.setAttribute('data-add', 'add');
-      let innerHTML_ = targ.innerHTML;
-      let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
-      targ.innerHTML = tempStr + addToBlack;
-      targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.remove('hide-block');
-      for (let item of blackList) {
-        item.classList.add('hide-block');
-      }
+toBlackList.addEventListener('click', function (e) {
+  let targ = e.target;
+  const favorit = targ.closest('.card__wrap-list').
+  querySelector('.no-inblacklist').
+  querySelector('.card__favorite');
+  let cardColumns = targ.closest('.card__columns');
+  const blackList = cardColumns.querySelectorAll('.black-list');
+  //вносим в черный список
+  targ.classList.toggle('add');
+  if (targ.getAttribute('data-add') === 'add') {
+    popupBlack = true;
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 22));
+    targ.innerHTML = tempStr + removeFromBlack;
+    targ.setAttribute('data-add', 'remove');
+    targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.add('hide-block');
+    //показать метку черного списка
+    for (let item of blackList) {
+      item.classList.remove('hide-block');
     }
-  });
-}
+
+    //удалить из избранного
+    favorit.setAttribute('data-add', 'add');
+    let favoritHTML_ = favorit.innerHTML;
+    favorit.classList.toggle('add');
+    if (favoritHTML_.includes('работодателя')) {
+      let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
+      favorit.innerHTML = favoritStr + addEmployer;
+    } else {
+      let favoritStr = (favoritHTML_.slice(0, favoritHTML_.length - 33));
+      favorit.innerHTML = favoritStr + addPerson;
+    }
+  } else {
+    //убираем из черного списка
+    favorit.classList.remove('add');
+    popupBlack = false;
+    targ.setAttribute('data-add', 'add');
+    let innerHTML_ = targ.innerHTML;
+    let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
+    targ.innerHTML = tempStr + addToBlack;
+    targ.parentNode.parentNode.querySelector('.no-inblacklist').classList.remove('hide-block');
+    for (let item of blackList) {
+      item.classList.add('hide-block');
+    }
+    //активировать приглашение
+    setTimeout(() => {
+      invitationPerson.classList.remove('deactivate');
+      invitationEmployer.classList.remove('deactivate');
+    }, 10);
+  }
+});
+//}
 //Убрать из черного списка из самой карточки
 const blackListBtns = document.querySelectorAll('.black-list');
 for (let btn of blackListBtns) {
@@ -3104,13 +3147,17 @@ for (let btn of blackListBtns) {
     let innerHTML_ = temp.innerHTML;
     let tempStr = (innerHTML_.slice(0, innerHTML_.length - 24));
     temp.innerHTML = tempStr + addToBlack;
+    //активировать приглашение
+    setTimeout(() => {
+      invitationPerson.classList.remove('deactivate');
+      invitationEmployer.classList.remove('deactivate');
+    }, 10);
   });
 }
 
 
 /***********Внести в черный список************ */
 const addToBlackList = document.getElementById('addToBlackList');
-const toBlackLists = document.querySelectorAll('.to-blacklist');
 const employerToBlackList = 'Поместить все объявления от этой компании в игнорируемые';
 const personToBlackList = 'Поместить все объявления от этого соискателя в игнорируемые';
 const label_02 = addToBlackList.querySelector('.label_02');
@@ -3118,9 +3165,7 @@ const popupBlackClose = document.querySelector('.popup__toBlack-close');
 const popupBlackApply = addToBlackList.querySelector('._yellow');
 let closestCardlist;
 
-for (let item of toBlackLists) {
-  item.addEventListener('click', insertToBlackList);
-}
+toBlackList.addEventListener('click', insertToBlackList);
 
 function insertToBlackList(e) {
   if (popupBlack) {
@@ -3134,6 +3179,9 @@ function insertToBlackList(e) {
     addToBlackList.classList.remove('hide-block');
     closestCardlist.classList.add('hide-block');
   }
+  //деактивировать приглашение
+  invitationPerson.classList.add('deactivate');
+  invitationEmployer.classList.add('deactivate');
 }
 
 popupBlackClose.onclick = (e) => {
@@ -3313,14 +3361,9 @@ function cloneShare() { //клонирование картинок
 }
 
 /*****************Вывод капчи**************** */
-/*popapShareBtn.onclick = () => {
-  counter++;
-};*/
-
 function showCaptcha() {
   recaptcha.classList.remove('hide-block');
 }
-
 /**************Конец вывод капчи***************/
 
 /**********Конец поделиться с другом **********/
