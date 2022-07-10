@@ -3489,6 +3489,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .card__col .card__desc {
   margin-top: 7px;
+  width: 96%;
+  overflow-x: hidden;
 }
 
 .card__col .card__desc li {
@@ -3496,6 +3498,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   color: var(--vacansion-light);
   padding-bottom: 2px;
   line-height: 138%;
+  white-space: nowrap;
 }
 
 .card__col .card__wrap button {
