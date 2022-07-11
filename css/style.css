@@ -15183,7 +15183,7 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
 
 @media (min-width: 20em) and (max-width: 101.875em) {
   ._btn {
-    *min-height: clamp(2.1875rem, 2.080629771rem + 0.534351145vw, 2.625rem);
+    min-height: clamp(2.1875rem, 2.080629771rem + 0.534351145vw, 2.625rem);
   }
 }
 
