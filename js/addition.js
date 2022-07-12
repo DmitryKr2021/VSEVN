@@ -2716,6 +2716,25 @@ for (let item of ratingItem) {
 }
 /********Конец работа с рейтингом*************/
 
+/***********Показать карточку предприятия ***********/
+const companyCard = document.querySelector('.company-card');
+const cardSupnames = document.querySelectorAll('.card__supname');
+for (let item of cardSupnames) {
+  item.addEventListener('click', showCompanyCard);
+}
+
+function showCompanyCard(e) {
+  const targ = e.target.closest('.card');
+  if (targ.querySelector('.company')) {
+    girlWrapper.classList.add('hide-block');
+    infoOffer.classList.add('hide-block');
+    companyCard.classList.remove('hide-block');
+  }
+}
+
+/*********Конец показать карточку предприятия *********/
+
+
 /***********Показать предприятие ***********/
 
 const infoOffer = document.querySelector('.info__offer');
@@ -2729,6 +2748,7 @@ for (let card of cardCol) {
   for (let item of card.querySelectorAll('a')) {
     item.onclick = (e) => {
       e.preventDefault();
+      //setTimeout(()=>{e.},100);
     };
   }
 }
@@ -2738,6 +2758,7 @@ for (let card of cardFabrics) {
     windowRowRight.classList.remove('initial-hide');
     pretendentCard.classList.add('initial-hide');
     girlWrapper.classList.add('hide-block');
+    companyCard.classList.add('hide-block');
     infoOffer.classList.add('hide-block');
     infoSidebar.classList.add('info__sidebar-narrow');
     infoWindow.classList.add('info__window-wide');
@@ -2751,6 +2772,7 @@ for (let card of cardPretendents) {
     pretendentCard.classList.remove('initial-hide');
     windowRowRight.classList.add('initial-hide');
     girlWrapper.classList.add('hide-block');
+    companyCard.classList.add('hide-block');
     infoOffer.classList.add('hide-block');
     infoSidebar.classList.add('info__sidebar-narrow');
     infoWindow.classList.add('info__window-wide');

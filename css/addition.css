@@ -5279,7 +5279,6 @@ button.card__bell-submitButton {
 .skills__wrap-keys {
   padding-top: 20px;
   padding-bottom: 30px;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .skills__wrap-keys .keys-title {
@@ -5304,6 +5303,7 @@ button.card__bell-submitButton {
 
 .experience__wrap {
   padding-top: 20px;
+  border-top: 1px solid var(--border-color);
 }
 
 .experience__wrap caption {
@@ -5577,3 +5577,246 @@ button.card__bell-submitButton {
   background: url(../img/icons/calendar.webp) no-repeat;
   background-position: 95% center;
 }
+
+/**************Конец анкеты *****************/
+
+/*************Карточка предприятия*************/
+.company-card {
+  margin-top: 20px;
+}
+
+.company-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.company-header__title {
+  font-size: 30px;
+}
+
+.company-header__name {
+  color: var(--card-name);
+  font-size: 16px;
+}
+
+.company-header__adress {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.company-header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.company-header__salary {
+  text-align: left;
+}
+
+.company-header__salary .salary {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.company-header__salary .ndfl {
+  font-size: 12px;
+}
+
+.company-header__view {
+  margin-top: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: var(--bg-yellow);
+  border: 1px solid var(--bg-yellow);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.company-header__view:hover {
+  background-color: #fff;
+}
+
+.company-body {
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.company-body__wrap {
+  margin-top: 60px;
+  width: 90%;
+  margin-left: 10%;
+}
+
+.company-about {
+  margin-top: 20px;
+}
+
+.company-about__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.company-about__title span {
+  font-weight: normal;
+}
+
+.company-about__text {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.company-offer {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.company-offer__title {
+  font-size: 30px;
+}
+
+.company-offer__info {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.company-body .skills__wrap-keys {
+  margin-top: 10px;
+  padding-bottom: 0;
+}
+
+.company-duty {
+  margin-top: 25px;
+}
+
+.company-duty__title {
+  font-weight: 600;
+}
+
+.company-duty__text {
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.company-duty__item {
+  margin-left: 15px;
+  line-height: 120%;
+  list-style: square;
+}
+
+.company-body .pretendent-card__interest {
+  border-bottom: none;
+}
+
+.company-addinfo p:nth-child(2) {
+  margin-top: 15px;
+}
+
+.company-mailadress {
+  margin-top: 15px;
+}
+
+.company-mailadress__title {
+  font-weight: 600;
+}
+
+.company-contacts {
+  margin-top: 15px;
+}
+
+.company-contacts__title {
+  font-weight: 600;
+}
+
+.contacts-place,
+.contacts-adress {
+  margin-top: 10px;
+}
+
+.contacts-place p:first-child,
+.contacts-adress p:first-child {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.contacts-tel-mail {
+  margin-top: 20px;
+}
+
+.company-cite {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.company-cite a {
+  color: var(--bg-yellow);
+  border-bottom: 1px dotted currentColor;
+}
+
+.company__buttons-row {
+  margin-top: 20px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.company__buttons-row button {
+  padding: 10px 2%;
+  padding-left: 4%;
+  border: 1px solid var(--bg-yellow);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.company__buttons-row button:hover {
+  background-color: var(--bg-yellow);
+}
+
+.company__buttons-row button:nth-child(1) {
+  background-image: url(../img/icons/flag.png);
+  background-position: 13px center;
+  background-repeat: no-repeat;
+  background-size: 7%;
+}
+
+.company__buttons-row button:nth-child(2) {
+  background-image: url(../img/icons/star.svg);
+  background-position: -13px center;
+  background-repeat: no-repeat;
+  background-size: 35%;
+}
+
+.company__buttons-row button:nth-child(3) {
+  padding-top: 8px;
+  position: relative;
+}
+
+.company__buttons-row button:nth-child(3) svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+
+.company__buttons-row button:nth-child(4) {
+  *padding: 10px 20px;
+  *padding-left: 40px;
+  background-image: url(../img/icons/printer.png);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+}
+
+.company__buttons-row button:nth-child(5) {
+  padding: 0 2%;
+  background-color: var(--bg-yellow);
+}
+
+.company__buttons-row button:nth-child(5):hover {
+  background-color: #fff;
+}
+
+
+/***********Конец карточки предприятия***********/
