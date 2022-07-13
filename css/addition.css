@@ -3489,7 +3489,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .card__col .card__desc {
   margin-top: 7px;
-  width: 96%;
+  /*width: 96%;*/
   overflow-x: hidden;
 }
 
@@ -3498,7 +3498,9 @@ input[type="range"]:active::-webkit-slider-thumb {
   color: var(--vacansion-light);
   padding-bottom: 2px;
   line-height: 138%;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
+  max-height: 65px;
+  overflow-y: hidden;
 }
 
 .card__col .card__wrap button {
@@ -5065,6 +5067,20 @@ button.card__bell-submitButton {
 
 .resume-title span {
   padding-bottom: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.resume-title span:hover {
+  color: #619f00;
+  border-bottom: 1px solid #619f00;
+}
+
+.resume-title span:not(first-child) {
+  margin-left: 10px;
+}
+
+.resume-title span.active {
   color: #619f00;
   border-bottom: 1px solid #619f00;
 }
@@ -5125,8 +5141,12 @@ button.card__bell-submitButton {
   line-height: 120%;
 }
 
-.info-wrap p span {
+.info-wrap.no-contacts p span {
   color: var(--bg-red);
+}
+
+.info-wrap.contacts p span {
+  color: var(--text-color);
 }
 
 .contacts-wrap {
@@ -5143,22 +5163,40 @@ button.card__bell-submitButton {
   transition: 0.3s;
 }
 
-.contacts-wrap button:nth-child(1) {
+.contacts-wrap.no-contacts button:nth-child(1) {
   background-color: rgba(255, 221, 0, 0.3);
   border: 1px solid rgba(255, 221, 0, 0.3);
 }
 
-.contacts-wrap button:nth-child(2) {
+.contacts-wrap.no-contacts button:nth-child(2) {
   margin-top: 4px;
   border: 1px solid rgba(255, 221, 0, 0.3);
 }
 
-.contacts-wrap button:nth-child(1):hover {
+.contacts-wrap.no-contacts button:nth-child(1):hover {
   background-color: #fff !important;
 }
 
-.contacts-wrap button:nth-child(2):hover {
+.contacts-wrap.no-contacts button:nth-child(2):hover {
   background-color: rgba(255, 221, 0, 0.3);
+}
+
+.contacts-wrap.contacts button:nth-child(1) {
+  background-color: rgb(255, 221, 0);
+  border: 1px solid rgb(255, 221, 0);
+}
+
+.contacts-wrap.contacts button:nth-child(2) {
+  margin-top: 4px;
+  border: 1px solid rgb(255, 221, 0);
+}
+
+.contacts-wrap.contacts button:nth-child(1):hover {
+  background-color: #fff !important;
+}
+
+.contacts-wrap.contacts button:nth-child(2):hover {
+  background-color: rgb(255, 221, 0);
 }
 
 .resume__buttons-row {

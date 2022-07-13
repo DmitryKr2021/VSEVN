@@ -6950,45 +6950,7 @@ input {
 .card__desc {
   display: flex;
   flex-wrap: wrap;
-  /*color: #435269;*/
-  *color: var(--vacansion-light);
   font-weight: 300;
-}
-
-@media (min-width: 101.875em) {
-  .card__desc {
-    font-size: 0.9375rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .card__desc {
-    font-size: clamp(0.75rem, 0.7041984733rem + 0.2290076336vw, 0.9375rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .card__desc {
-    font-size: 0.75rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .card__desc {
-    line-height: 1.25rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .card__desc {
-    line-height: clamp(1rem, 0.9389312977rem + 0.3053435115vw, 1.25rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .card__desc {
-    line-height: 1rem;
-  }
 }
 
 @media (min-width: 101.875em) {

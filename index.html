@@ -2639,7 +2639,7 @@
                 </div>
                 <div class="card__col card-up">
                   <div class="card__supname">
-                    <a href="#">Менеджера</a>
+                    <a href="">Менеджера</a>
                   </div>
                   <a href="" class="card__name">ООО Шарико-подшипниковый завод<br>Красный пролетарий</a>
                   <div class="card__place">
@@ -2647,8 +2647,7 @@
                     <a href="">11.2.2019</a>
                   </div>
                   <ul class="card__desc">
-                    <li>Обязанности: выполнение в установленные сроки производственных заданий</li>
-                    <li>Требования: дисциплинированность, ответственность, знание офисных программ</li>
+                    <li>Обязанности: выполнение в установленные cроки производственных заданий. Требования: дисциплинированность, ответственность, знание офисных программ</li>
                   </ul>
                   <button class="card__favorite card__favorite--remove black-list hide-block">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261 328" width="20" height="17">
@@ -19735,7 +19734,8 @@
                               <time datetime="P5DT2H30M">05 дней 2 часа 30 минут</time>
                             </span></td>
                           </tr>
-                          <tr>
+ <!--Пока не показывать                          
+                          <tr class="hide-block">
                             <td><span class="window__date">
                               Установить другую дату деактивации объявления
                             </span>
@@ -19749,6 +19749,7 @@
                             </div>
                           </td>
                           </tr>
+  -->
                         </table>
                       </div><!--/window__deadline-->
                       <div class="window__now">Это объявление находится на странице 33 
@@ -19800,8 +19801,11 @@
 
                 <div class="pretendent-card__resume">
                   <div class="resume-title">
+                    <span class="active topspan">
+                      Резюме соискателя без контактов
+                    </span>
                     <span>
-                      Резюме соискателя
+                      Резюме соискателя с контактами
                     </span>
                   </div>
 
@@ -19847,7 +19851,7 @@
                      </div>
                     </div>
                     <div class="resume-main__info">
-                      <div class="info-wrap">
+                      <div class="info-wrap no-contacts">
                         <p>ФИО:
                           <span>информация скрыта соискателем</span>
                         </p>
@@ -19893,18 +19897,79 @@
                         <p>Гражданство:
                           <span>информация скрыта соискателем</span>                     
                         </p>
-                    </div><!--/info-wrap-->
+                      </div><!--/info-wrap-->
+                      <div class="info-wrap contacts hide-block">
+                        <p>ФИО:
+                          <span>Петрова Марина Александровна</span>
+                        </p>
+                        <p>Статус соискателя:
+                          <span>Работаю, но открыт для предложений</span>
+                        </p>
+                        <p>Готовность к командировкам:
+                          <span>Иногда</span>
+                        </p>
+                        <p>Переезд:
+                          <span>Невозможен</span>
+                        </p>
+                        <p>Сфера деятельности:
+                          <span>Строительство</span>
+                        </p>
+                        <p>График работы:
+                          <span>Удаленная работа</span>
+                        </p>
+                        <p>Образование:
+                          <span>Высшее</span>
+                        </p>
+                        <p>Стаж работы:
+                          <span>3</span>
+                        </p>
+                        <p>Пол:
+                          <span>Женский</span>
+                        </p>
+                        <p>Семейное положение:
+                          <span>Замужем</span>
+                        </p>
+                        <p>Возраст:
+                          <span>23</span>
+                        </p>
+                        <p>Знак зодиака:
+                          <span>Скорпион</span>
+                        </p>
+                        <p>Регион:
+                          <span>Нижний Новгород</span>
+                        </p>
+                        <p>Район:
+                          <span>Сормовский</span>
+                        </p>
+                        <p>Гражданство:
+                          <span>Россия, Испания</span>                     
+                        </p>
+                      </div><!--/info-wrap-->
                     </div><!--/resume-main__info-->
+
                     <div class="resume-main__contacts">
-                     <div class="contacts-wrap">
+
+                     <div class="contacts-wrap no-contacts">
                       <button class="window__btn _btn _btn--border">
                         Телефон скрыт соискателем
                       </button>
                       <button class="window__btn _btn _btn--border">
                         Email скрыт соискателем
                       </button>
-                      </div><!--/contacts-wrap-->
+                     </div><!--/contacts-wrap-->
+
+                     <div class="contacts-wrap contacts hide-block">
+                      <button class="window__btn _btn _btn--border">
+                        +7(888)123-45-67
+                      </button>
+                      <button class="window__btn _btn _btn--border">
+                        mail@mail.ru
+                      </button>
+                     </div><!--/contacts-wrap-->
+
+
                     </div>
+
                   </div><!--resume-main-->
                   <div class="resume__buttons-row">
                     <button class="window__btn">
@@ -19913,12 +19978,14 @@
                     <button class="window__btn">
                       Напечатать
                     </button>
+<!-- Пока не показывать
                     <button class="window__btn">
                       Изменить дизайн
                     </button>
                     <button class="window__btn">
                       Отредактировать
                     </button>
+-->
                   </div><!--/resume__buttons-row-->
                 </div><!--pretendent-card__resume-->
 
@@ -19929,6 +19996,7 @@
                         <button>Посмотреть карту</button>
                       </p>
                     </div>
+<!-- Пока не показывать
                     <div class="adress__wrap-share">
                       <ul class="wrap-share">
                         <li class="wrap-shareitem"><a href="https://www.facebook.com/"></a></li>
@@ -19942,6 +20010,7 @@
                           https://www.pinterest.ru"></a></li>
                       </ul>
                     </div>
+-->
                   </div><!--/adress__wrap-->
                 </div><!--pretendent-card__adress-->
 

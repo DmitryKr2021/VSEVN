@@ -2480,8 +2480,10 @@ function changeColorGreen() {
       spanText = itemSpan.innerText;
       if (spanText.length > 30) {
         item.querySelector('span').style.cssText =
-          `background: linear-gradient(to right, rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%, 
-          rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+          `background: linear-gradient(to right, 
+          rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%,
+          rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
       }
 
       itemSpan.addEventListener('mouseover', function () {
@@ -2498,6 +2500,37 @@ function changeColorGreen() {
 
   function popupSpanRemove() {
     popupSpan.remove();
+  }
+
+
+  //Дымка в описании вакансии
+  const cardDescs = document.querySelectorAll('.card__desc');
+  let popupDesc = document.createElement('div'); //для перевода в дымку;
+  for (let item of cardDescs) {
+    const descLis = item.querySelectorAll('li');
+    for (let li_ of descLis) {
+      if (li_.innerText.length > 75) {
+        let liText = li_.innerText;
+        li_.style.cssText =
+          `background: linear-gradient(to bottom, #222 55%, #777 60%, #999 65%, #aaa 70%); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent;`;
+
+        li_.addEventListener('mouseover', function () {
+          popupDesc.innerText = liText;
+          popupDesc.style.width = 400 + "px";
+          popupDesc.classList.add('input-popup');
+          li_.before(popupDesc);
+          popupDesc.style.top = li_.getBoundingClientRect().top - 40 + 'px';
+          popupDesc.style.left = li_.getBoundingClientRect().left + 'px';
+        });
+        li_.addEventListener('mouseout', popupDescRemove);
+      }
+    }
+  }
+
+  function popupDescRemove() {
+    popupDesc.remove();
   }
 }
 
@@ -2656,7 +2689,6 @@ selectPeriodDiv.addEventListener('mouseout', function () {
 });
 /***********Конец работа с сортировкой по дате/периоду *********/
 
-
 /*************Работа с рейтингом**************/
 const ratingItem = document.querySelectorAll('.rating__item');
 
@@ -2716,6 +2748,7 @@ for (let item of ratingItem) {
 }
 /********Конец работа с рейтингом*************/
 
+
 /***********Показать карточку предприятия ***********/
 const companyCard = document.querySelector('.company-card');
 const cardSupnames = document.querySelectorAll('.card__supname');
@@ -2726,17 +2759,17 @@ for (let item of cardSupnames) {
 function showCompanyCard(e) {
   const targ = e.target.closest('.card');
   if (targ.querySelector('.company')) {
+    windowRowRight.classList.add('initial-hide');
+    pretendentCard.classList.add('initial-hide');
     girlWrapper.classList.add('hide-block');
     infoOffer.classList.add('hide-block');
     companyCard.classList.remove('hide-block');
   }
 }
-
 /*********Конец показать карточку предприятия *********/
 
 
 /***********Показать предприятие ***********/
-
 const infoOffer = document.querySelector('.info__offer');
 const cardFabrics = document.querySelectorAll('.card__fabric');
 const pretendentCard = document.querySelector('.pretendent-card');
@@ -2746,11 +2779,12 @@ const cardPretendents = document.querySelectorAll('.card__pretendent');
 const cardCol = document.querySelectorAll('.card__col');
 for (let card of cardCol) {
   for (let item of card.querySelectorAll('a')) {
-    item.onclick = (e) => {
-      e.preventDefault();
-      //setTimeout(()=>{e.},100);
-    };
+    item.addEventListener('click', toPreventDef);
   }
+}
+
+function toPreventDef(e) {
+  e.preventDefault();
 }
 
 for (let card of cardFabrics) {
@@ -2780,7 +2814,39 @@ for (let card of cardPretendents) {
 }
 /*********Конец показать соискателя *********/
 
+/**************Карточка соискателя************* */
+const pcResume = pretendentCard.querySelector('.pretendent-card__resume');
+const resumeSpans = pcResume.querySelectorAll('span');
+for (let item of resumeSpans) {
+  item.addEventListener('click', changeTab);
+}
+const contacts = pcResume.querySelectorAll('.contacts');
+const noContacts = pcResume.querySelectorAll('.no-contacts');
 
+function changeTab(e) {
+  for (let item of resumeSpans) {
+    item.classList.remove('active');
+  }
+  e.target.classList.add('active');
+
+  if (!e.target.classList.contains('topspan')) {
+    for (let item of contacts) {
+      item.classList.remove('hide-block');
+    }
+    for (let item of noContacts) {
+      item.classList.add('hide-block');
+    }
+  } else {
+    for (let item of contacts) {
+      item.classList.add('hide-block');
+    }
+    for (let item of noContacts) {
+      item.classList.remove('hide-block');
+    }
+
+  }
+}
+/***********Конец карточка соискателя************/
 
 //Добавить/убрать соискателя/работодателя в избранное
 const cardFavoritesPerson = document.querySelectorAll('.card__favorite.person');
