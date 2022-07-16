@@ -240,7 +240,7 @@ function showInput(e) { //убрать placeholder и показать input
       if (inp.value) {
         resetAll.classList.remove('hide-block');
       } else {
-        inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');
+        //inp.parentNode.querySelector('.placeholder').classList.remove('hide-block');//На удаление?
       }
     }
   }
@@ -410,7 +410,7 @@ function hideAllLists(e) {
     for (let item of toHide2s) {
       item.classList.remove('hide-block');
     }
-    for (let item of document.querySelectorAll('.input-container__ul')) {
+    for (let item of inputContainerUls) {
       if (item.classList.contains('ul-wide2')) {
         item.classList.remove('ul-wide2');
       }
@@ -453,10 +453,11 @@ function hideAllLists(e) {
       }
       if (item.ph2) { //если имеется placeholder2
         if (item.filled) { //если инпут заполнен
-          item.ph2.classList.add('input-field-focus'); //плейсхолдерт поднят
+          item.ph2.classList.add('input-field-focus'); //плейсхолдер поднят
         } else {
           if (!item.open && !e.target.classList.contains('input-container__arrow')) {
             item.input.classList.remove('inputsel'); //удалить подчеркивание
+            item.input.value = ''; //если текст вводился вручную, то очистить его
           }
           if (!e.target.classList.contains('input-container__arrow')) {
             if (!item.ul.classList.contains('showlist')) {
@@ -986,10 +987,15 @@ function doApply(e) { //По кнопке Применить
   for (let item of document.querySelectorAll('.white-font')) {
     item.classList.remove('white-font');
   }
-  document.querySelector('.header').classList.remove('body-dark');
   for (let item of document.querySelectorAll('.zindex50')) {
     item.classList.remove('zindex50');
   }
+  for (let item of document.querySelectorAll('.zindex200')) {
+    item.classList.remove('zindex200');
+  }
+  if (counter == 0) {
+    e.target.closest('.input-container').querySelector('.input-reset').classList.add('hide-block');
+  } //если вначале было выбрано, а по второму заходу ничего не выбрано, спрятать крестик 
 }
 /*************Конец блока селекты************** */
 
@@ -1205,33 +1211,15 @@ for (let inp of staffInputSelects) {
 
 function hideSelect_staff2(e) {
   //обнуляем остальные поля выбора
-
-  /*for (let inp of staffInputSelects) {
-    inp.classList.remove('inputsel');
-  }*/ //На удаление
   for (let uls of staffInputContainerUls) {
     uls.classList.remove('showlist');
     uls.parentNode.querySelector('.arrow').classList.remove('arrow-rotate');
   }
 
   e.target.parentNode.querySelector('.input-container__ul').classList.toggle('showlist');
-
-  //e.target.classList.toggle('inputsel');
   e.target.classList.add('inputsel');
-
   e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
-
-//Показать выбранный select и спрятать placeholder
-/*for (let item of staffInputContainerItems) {
-  item.addEventListener('click', showStaffItemSelected);
-}
-
-function showStaffItemSelected(e) {
-  staffResetAll.classList.remove('hide-block');
-  showAllItemSelected(e);
-}*/
-
 
 /*********Работа с кнопками Применить в мультиселектах*******/
 const staffApplBtns = chooseStaff.querySelectorAll('.apply');
@@ -1955,7 +1943,6 @@ let closeRegions = function () {
   for (let item of document.querySelectorAll('.white-font')) {
     item.classList.remove('white-font');
   }
-  document.querySelector('.header').classList.remove('body-dark');
   for (let item of document.querySelectorAll('.zindex50')) {
     item.classList.remove('zindex50');
   }
@@ -2168,11 +2155,12 @@ function handlerRegApply() {
   for (let item of document.querySelectorAll('.white-font')) {
     item.classList.remove('white-font');
   }
-  document.querySelector('.header').classList.remove('body-dark');
   for (let item of document.querySelectorAll('.zindex50')) {
     item.classList.remove('zindex50');
   }
-
+  for (let item of document.querySelectorAll('.zindex200')) {
+    item.classList.remove('zindex200');
+  }
   chooseRegion.classList.add('up-block');
 
   //посчитать число выбранных регионов и пунктов
@@ -2365,11 +2353,22 @@ function isDark(e) {
     e.target.parentNode.querySelector('.placeholder') && e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
   }
 
+  //чтобы поднятый плейсхолдер Опыт работы и Тип вакансии не просвечивал при сворачивании инпута, лежащего над ними
+  let inpConts = ['inp_cont2', 'inp_cont3', 'inp_cont11', 'inp_cont12', 'inp_cont20'];
+  if (inpConts.includes(e.target.parentNode.id)) {
+    e.target.parentNode.classList.add('zindex200');
+  }
+
   if (isShowList(e)) {
-    document.querySelector('.header').classList.remove('body-dark');
+    setTimeout(() => {
+      document.querySelector('.header').classList.remove('body-dark');
+    }, 100);
     document.querySelector('.salary__mark').classList.add('zindex5');
     for (let item of document.querySelectorAll('.zindex50')) {
       item.classList.remove('zindex50');
+    }
+    for (let item of document.querySelectorAll('.zindex200')) {
+      item.classList.remove('zindex200');
     }
     for (let item of document.querySelectorAll('.white-font')) {
       item.classList.remove('white-font');
@@ -2394,8 +2393,11 @@ function isDark(e) {
 for (let item of inputFieldsAll) { //для регионов и инпутов без селектов 
   item.addEventListener('click', (e) => {
     handlZindex();
-    e.target.parentNode.classList.add('zindex50');
-    e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
+    let targPN = e.target.parentNode;
+    if (e.target.id !== 'region' && e.target.id !== 'region1' && e.target.id !== 'region2') {
+      targPN.classList.add('zindex50');
+    }
+    targPN.querySelector('.placeholder').classList.add('white-font');
   });
 }
 
