@@ -702,6 +702,9 @@ body {
   margin-top: 40px;
 }
 
+/************************************************/
+
+
 .choose__work .block1,
 .choose__work .block2,
 .choose__work .block3,
@@ -3045,6 +3048,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   color: #fff !important;
 }
 
+.zindex {
+  z-index: 150;
+}
+
 .zindex1 {
   z-index: 1;
 }
@@ -3072,10 +3079,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 .zindex50 {
   /*z-index: 500;*/
   z-index: 150;
-}
-
-.zindex200 {
-  z-index: 200;
 }
 
 /*************** Блок info **********************/

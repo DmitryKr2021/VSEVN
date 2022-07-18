@@ -299,6 +299,7 @@ function hideInputReset(e) {
   }
   if (targ.querySelector('.inputselect')) {
     targ.querySelector('.inputselect').value = '';
+    targ.querySelector('.inputselect').classList.remove('inputsel');
   }
 
   if (targ.querySelector('.placeholder')) {
@@ -431,6 +432,26 @@ function hideAllLists(e) {
   if (document.documentElement.clientWidth > 500) {
     //Для широких экранов
     for (let item of inpConts) {
+
+      //Убрать белый цвет при возврате плейсхолдера на место
+      if (e.target.closest('.input-container')) {
+        if (!e.target.parentNode.classList.contains('input-container__item') && e.target.tagName !== 'LI') {
+          for (let item of document.querySelectorAll('.white-font')) {
+            item.classList.remove('white-font');
+          }
+
+          //убрать zindex, чтобы нижние селекты не мешали
+          if (e.target.tagName !== 'LI') {
+            for (let item of document.querySelectorAll('.zindex50')) {
+              item.classList.remove('zindex50');
+            }
+            for (let item of document.querySelectorAll('.zindex')) {
+              item.classList.remove('zindex');
+            }
+          }
+        }
+      }
+
       if (item.ul) {
         if (isNoInRect(e, item) && isNoInRectUl(e, item.ul)) {
           item.ul.classList.remove('showlist');
@@ -453,7 +474,10 @@ function hideAllLists(e) {
       }
       if (item.ph2) { //если имеется placeholder2
         if (item.filled) { //если инпут заполнен
-          item.ph2.classList.add('input-field-focus'); //плейсхолдер поднят
+          //item.ph2.classList.add('input-field-focus'); //плейсхолдер поднят
+          //убрал этот код из-за бага: плейсхолдер не опускался при повторном нажатии на опцию (т.е. ее отмене) 
+          //и затем нажатии на Применить
+
         } else {
           if (!item.open && !e.target.classList.contains('input-container__arrow')) {
             item.input.classList.remove('inputsel'); //удалить подчеркивание
@@ -658,6 +682,14 @@ function hideSelect_1(e) {
   let targ = e.target;
   let targPN = targ.parentNode;
 
+  //Чтобы нижние инпуты не просвечивали при сворачивании верхних
+  for (let item of document.querySelectorAll('.zindex')) {
+    item.classList.remove('zindex');
+  }
+  if (targ.closest('.input-container')) {
+    targ.closest('.input-container').classList.add('zindex');
+  }
+
   //нажали на стрелочку
   if (targ.classList.contains('input-container__arrow')) {
     targPN.querySelector('.input-container__ul').classList.toggle('showlist'); //развернуть селект
@@ -668,6 +700,7 @@ function hideSelect_1(e) {
     }, 50);
 
     targPN.querySelector('.placeholder2').classList.toggle('input-field-focus'); //поднять placeholder
+    //targPN.querySelector('.placeholder2').classList.add('input-field-focus'); //поднять placeholder
 
     /*Для мобильной версии (<500рх) поднять инпут с селектом вверх */
     if (document.documentElement.clientWidth <= 500) {
@@ -714,7 +747,8 @@ function hideSelect_1(e) {
 
   if (targ.classList.contains('is2')) {
     targPN.querySelector('.arrow').classList.add('arrow-rotate');
-    targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');
+    /*targPN.querySelector('.placeholder2').classList.toggle('input-field-focus');*/
+    targPN.querySelector('.placeholder2').classList.add('input-field-focus');
     //Для мобильных <=500px
     if (document.documentElement.clientWidth <= 500) {
       inputUp(targPN);
@@ -723,11 +757,6 @@ function hideSelect_1(e) {
 
   //нажали вне поля выбора
   if (!targ.classList.contains('inputselect')) {
-    for (let item of inputSelects) {
-      if (!item.value) {
-        item.classList.remove('inputsel');
-      }
-    }
     for (let arrow of inputContainerArrows) {
       arrow.classList.remove('arrow-rotate');
     }
@@ -773,6 +802,7 @@ function showAllItemSelected(e) {
       numb++;
     }
   }
+
   if (numb === 0) {
     targPN.parentNode.querySelector('.inputselect').value = '';
   }
@@ -938,7 +968,10 @@ function calculateNumberOfChecked(e) {
 }
 
 function doApply(e) { //По кнопке Применить
-  let eselect = e.target.parentNode;
+  let eselect = e.target.parentNode; //это ul
+  for (let item of document.querySelectorAll('.zindex50')) {
+    item.classList.remove('zindex50');
+  }
   let eInputSelect = eselect.parentNode.querySelector('.inputselect');
   let inputString = eselect.parentNode.firstElementChild.innerText;
   if (eselect.parentNode.querySelector('.placeholder2')) {
@@ -954,6 +987,7 @@ function doApply(e) { //По кнопке Применить
       counter++;
     }
   }
+
   if (counter === 1) {
     eInputSelect.value = chooseInput;
     eselect.classList.remove('showlist'); //свернуть список
@@ -988,14 +1022,15 @@ function doApply(e) { //По кнопке Применить
     item.classList.remove('white-font');
   }
   for (let item of document.querySelectorAll('.zindex50')) {
-    item.classList.remove('zindex50');
-  }
-  for (let item of document.querySelectorAll('.zindex200')) {
-    item.classList.remove('zindex200');
+    //item.classList.remove('zindex50');//на удаление
   }
   if (counter == 0) {
     e.target.closest('.input-container').querySelector('.input-reset').classList.add('hide-block');
-  } //если вначале было выбрано, а по второму заходу ничего не выбрано, спрятать крестик 
+    //если вначале было выбрано, а по второму заходу ничего не выбрано, спрятать крестик 
+
+    e.target.closest('.input-container').querySelector('.inputselect').classList.remove('inputsel');
+    //Сворачивание красной линии только при нулевом выборе
+  }
 }
 /*************Конец блока селекты************** */
 
@@ -2158,9 +2193,6 @@ function handlerRegApply() {
   for (let item of document.querySelectorAll('.zindex50')) {
     item.classList.remove('zindex50');
   }
-  for (let item of document.querySelectorAll('.zindex200')) {
-    item.classList.remove('zindex200');
-  }
   chooseRegion.classList.add('up-block');
 
   //посчитать число выбранных регионов и пунктов
@@ -2353,12 +2385,6 @@ function isDark(e) {
     e.target.parentNode.querySelector('.placeholder') && e.target.parentNode.querySelector('.placeholder').classList.add('white-font');
   }
 
-  //чтобы поднятый плейсхолдер Опыт работы и Тип вакансии не просвечивал при сворачивании инпута, лежащего над ними
-  let inpConts = ['inp_cont2', 'inp_cont3', 'inp_cont11', 'inp_cont12', 'inp_cont20'];
-  if (inpConts.includes(e.target.parentNode.id)) {
-    e.target.parentNode.classList.add('zindex200');
-  }
-
   if (isShowList(e)) {
     setTimeout(() => {
       document.querySelector('.header').classList.remove('body-dark');
@@ -2366,9 +2392,6 @@ function isDark(e) {
     document.querySelector('.salary__mark').classList.add('zindex5');
     for (let item of document.querySelectorAll('.zindex50')) {
       item.classList.remove('zindex50');
-    }
-    for (let item of document.querySelectorAll('.zindex200')) {
-      item.classList.remove('zindex200');
     }
     for (let item of document.querySelectorAll('.white-font')) {
       item.classList.remove('white-font');
