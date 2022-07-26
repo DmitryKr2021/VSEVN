@@ -2535,11 +2535,21 @@ function changeColorGreen() {
     const descLis = item.querySelectorAll('li');
     for (let li_ of descLis) {
       if (li_.innerText.length > 75) {
+
         let liText = li_.innerText;
+        /* старый вариант для вертикальной дымки
         li_.style.cssText =
           `background: linear-gradient(to bottom, #222 55%, #777 60%, #999 65%, #aaa 70%); 
         -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent;`;*/
+
+        if (li_.querySelector('.to-smoke')) {
+          let liSpanText = li_.querySelector('.to-smoke').innerText;
+          li_.querySelector('.to-smoke').style.cssText =
+            `background: linear-gradient(to right, #222 15%, #888 20%, #bbb 30%, #eee 40%); 
+        -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent;`;
+        }
 
         li_.addEventListener('mouseover', function () {
           popupDesc.innerText = liText;
@@ -2936,8 +2946,53 @@ function goToFavoriteEmployer(e) {
   }
 }
 
+/**************************************************** */
+/***************Работа с Сормовской фабрикой***********/
+/**************************************************** */
 
-//О фабрике читать/скрыть
+/****работа с кнопками в хедере***/
+const whButtons = document.querySelectorAll('.wh-button');
+
+//Добавить/убрать в избранное
+const fromSelect = 'Убрать&nbsp;из избранного';
+let pressed = false;
+const whButtons2 = whButtons[2];
+let innerSvg = whButtons2.querySelector('button').innerHTML;
+
+whButtons2.addEventListener('click', function () {
+  if (pressed) {
+    this.innerHTML = innerSvg;
+    this.classList.remove('wh-button__pressed');
+    this.classList.add('wh-button__nopressed');
+  } else {
+    this.innerHTML = innerSvg.replace('Добавить&nbsp;в избранное', fromSelect);
+    this.classList.add('wh-button__pressed');
+    this.classList.remove('wh-button__nopressed');
+  }
+  pressed = !pressed;
+});
+
+//Добавить/убрать в черный список
+const fromBlack = 'Убрать&nbsp;из черного списка';
+let pressed1 = false;
+const whButtons3 = whButtons[3];
+let innerSvg3 = whButtons3.querySelector('button').innerHTML;
+
+whButtons3.addEventListener('click', function () {
+  if (pressed1) {
+    this.innerHTML = innerSvg3;
+    this.classList.remove('wh-button__black');
+    this.classList.add('wh-button__noblack');
+  } else {
+    this.innerHTML = innerSvg3.replace('Добавить в черный список', fromBlack);
+    this.classList.add('wh-button__black');
+    this.classList.remove('wh-button__noblack');
+  }
+  pressed1 = !pressed1;
+});
+
+
+//О фабрике читать еще/скрыть
 const readMore = document.querySelector('.read-more');
 const hideMore = document.querySelector('.hide-more');
 const readMoreBlocks = document.querySelectorAll('.read-more__block');
@@ -2955,6 +3010,22 @@ hideMore.addEventListener('click', function () {
   }
   readMore.classList.remove('hide-block');
 });
+/************Показать еще ценности **********/
+const moreValueShow = document.querySelector('.more__value-show');
+const valueItems = document.querySelectorAll('.value__item');
+moreValueShow.onclick = () => {
+  moreValueShow.classList.add('hide-block');
+  for (let item of valueItems) {
+    item.classList.remove('hide-block');
+  }
+};
+/*********Конец показать еще ценности *******/
+
+/***************************************************** */
+/*************Конец работа с Сормовской фабрикой********/
+/***************************************************** */
+
+
 
 //Пагинация
 const pageNavigationPages = document.querySelector('.page-navigation__pages');
@@ -3097,17 +3168,6 @@ cardBellClose.onclick = () => {
   cardBellFooter.classList.add('hide-block');
 };
 /*******Конец оповещение о вакансии  ********/
-
-/************Показать еще ценности **********/
-const moreValueShow = document.querySelector('.more__value-show');
-const valueItems = document.querySelectorAll('.value__item');
-moreValueShow.onclick = () => {
-  moreValueShow.classList.add('hide-block');
-  for (let item of valueItems) {
-    item.classList.remove('hide-block');
-  }
-};
-/*********Конец показать еще ценности *******/
 
 
 /********************************************** */
@@ -3600,6 +3660,15 @@ function commentClose(e) {
   e.target.parentNode.classList.add('hide-block');
   headerContainer.classList.remove('body-dark');
 }
+
+const iframe01 = document.createElement("iframe");
+const popimg = document.querySelector('.popup__comment-bgimg');
+iframe01.src = "img/iframe/Popup_comment.html";
+popimg.appendChild(iframe01);
+
+iframe01.style.width = "360px";
+iframe01.style.height = "470px";
+iframe01.style.overflow = "hidden";
 /******Конец тут будет комментарий при нажатии*******/
 
 /*window.onclick = (e) => {
@@ -3608,5 +3677,3 @@ function commentClose(e) {
   //alert(e.clientY);
   //console.log(document.getElementById('wide1').getBoundingClientRect().bottom);
 };*/
-
-//window.addEventListener('click', hideAllLists);

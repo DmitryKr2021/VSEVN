@@ -6971,7 +6971,7 @@ input {
   }
 }
 
-.card__desc li span {
+/*.card__desc li span {
   display: inline-block;
   margin-left: 1px;
   margin-right: 4px;
@@ -6979,7 +6979,7 @@ input {
 
 .card__desc li span:not(.card__separator) {
   font-weight: 500;
-}
+}*/
 
 .card__desc--col {
   flex-direction: column;
@@ -14737,46 +14737,6 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
 
   .contact-vacancies>img,
   .contact-vacancies>picture img {
-    margin-bottom: 0.9375rem;
-  }
-}
-
-.contact-vacancies__title {
-  font-weight: 300;
-}
-
-@media (min-width: 101.875em) {
-  .contact-vacancies__title {
-    font-size: 1.125rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .contact-vacancies__title {
-    font-size: clamp(0.9375rem, 0.8916984733rem + 0.2290076336vw, 1.125rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .contact-vacancies__title {
-    font-size: 0.9375rem;
-  }
-}
-
-@media (min-width: 101.875em) {
-  .contact-vacancies__title {
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .contact-vacancies__title {
-    margin-bottom: clamp(0.9375rem, 0.8611641221rem + 0.3816793893vw, 1.25rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .contact-vacancies__title {
     margin-bottom: 0.9375rem;
   }
 }

@@ -3465,16 +3465,16 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .card__col .card__name {
-  margin-top: 5px;
+  margin-top: 1px;
   font-size: 16px;
   /*font-size: 17px;*/
   color: #619f00;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 130%;
 }
 
 .card__col.card-up .card__name {
-  margin-top: -3px;
+  *margin-top: -3px;
 }
 
 .card__name a {
@@ -3496,7 +3496,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .card__col .card__desc {
-  margin-top: 7px;
+  margin-top: 9px;
   /*width: 96%;*/
   overflow-x: hidden;
 }
@@ -3505,16 +3505,23 @@ input[type="range"]:active::-webkit-slider-thumb {
   font-size: 16px;
   color: var(--vacansion-light);
   padding-bottom: 2px;
-  line-height: 138%;
+  line-height: 145%;
   /*white-space: nowrap;*/
-  max-height: 65px;
   overflow-y: hidden;
+  max-height: 45px;
 }
 
 .card__col .card__wrap button {
   font-size: 16px;
 }
 
+.card__row {
+  margin-top: -8px;
+}
+
+.card__row+.card__row {
+  margin-top: 10px;
+}
 
 /*******************************************/
 /****************Попап Еще******************/
@@ -4208,15 +4215,6 @@ button.card__bell-submitButton {
   border-radius: 6px;
 }
 
-.popup__comment-bgimg .main_box_ECP83FMj0NvgbqR {
-  width: 360px;
-  top: 0;
-  left: 0;
-  border-radius: 6px;
-  overflow: hidden;
-  transform: translate(0, 0);
-}
-
 .popup__comment-content {
   flex-basis: 50%;
 }
@@ -4432,6 +4430,13 @@ button.card__bell-submitButton {
   font-size: 25px;
 }
 
+.window__header-factory {
+  margin-top: 7px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--bg-red);
+}
+
 .window__header-items {
   margin-top: 10px;
 }
@@ -4462,12 +4467,21 @@ button.card__bell-submitButton {
   text-decoration: underline;
 }
 
+.window__header-salary {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--bg-red);
+  text-align: right;
+}
+
 .wh-buttons {
+  margin-top: 10px;
   display: flex;
   column-gap: 4px;
 }
 
-.wh-button {
+.wh-button,
+.wh-button__nopressed {
   border: 1px solid #619f00;
   border-radius: 3px;
   cursor: pointer;
@@ -4476,7 +4490,18 @@ button.card__bell-submitButton {
   transition: background-color 0.3s;
 }
 
-.wh-button button {
+.wh-button__nopressed {
+  border: 1px solid #619f00;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #619f00;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.wh-button button,
+.wh-button__nopressed button,
+.wh-button__noblack button {
   display: flex;
   align-items: center;
   position: relative;
@@ -4486,9 +4511,84 @@ button.card__bell-submitButton {
 }
 
 .wh-button:nth-child(2) button,
-.wh-button:nth-child(3) button,
-.wh-button:nth-child(4) button {
+.wh-button:nth-child(3) button {
   padding-left: 36px;
+}
+
+.wh-button:nth-child(2) button {
+  width: 140px;
+}
+
+.wh-button:nth-child(3) button {
+  width: 130px !important;
+}
+
+.wh-button:nth-child(3) button {
+  padding-left: 34px;
+}
+
+.wh-button:nth-child(4) button {
+  padding-left: 34px;
+}
+
+.wh-button__pressed {
+  position: relative;
+  color: var(--bg-red);
+  border: 1px solid var(--bg-red);
+  padding-left: 36px;
+  padding-top: 5px;
+  padding-right: 5px;
+  transition: color 0.3s;
+}
+
+.wh-button__black {
+  position: relative;
+  color: #777;
+  border: 1px solid #777;
+  padding-left: 35px;
+  padding-top: 0;
+  padding-right: 8px;
+  transition: color 0.3s;
+  line-height: 80%;
+}
+
+.wh-button__black svg path {
+  fill: #777;
+}
+
+.wh-button__nopressed {
+  position: relative;
+  padding-left: 34px;
+  padding-top: 5px;
+  padding-right: 10px;
+  transition: color 0.3s;
+}
+
+.wh-button__noblack {
+  position: relative;
+  padding-left: 34px;
+  padding-top: 0;
+  padding-right: 10px;
+  transition: color 0.3s;
+  line-height: 80%;
+}
+
+.wh-button__pressed svg,
+.wh-button__nopressed svg,
+.wh-button__black svg,
+.wh-button__noblack svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wh-button__pressed svg path {
+  fill: var(--bg-red);
+}
+
+.wh-button__nopressed svg path {
+  fill: #619f00;
 }
 
 .wh-button button svg {
@@ -4496,6 +4596,16 @@ button.card__bell-submitButton {
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.wh-button__pressed:hover {
+  color: #fff;
+  background-color: var(--bg-red);
+}
+
+.wh-button__black:hover {
+  color: #fff;
+  background-color: #777;
 }
 
 .wh-button:first-child button {
@@ -4516,8 +4626,15 @@ button.card__bell-submitButton {
   transition: 0;
 }
 
-.wh-button:hover svg path {
+.wh-button:hover svg path,
+.wh-button__nopressed:hover svg path {
   fill: #fff;
+}
+
+.wh-button__nopressed:hover,
+.wh-button__noblack:hover {
+  background-color: #619f00;
+  color: #fff;
 }
 
 .wh-button:last-of-type {
@@ -4584,7 +4701,109 @@ button.card__bell-submitButton {
   }
 }
 
-/**************************************/
+.window-tabs__top {
+  position: relative;
+  width: 100%;
+  height: 215px;
+}
+
+.window-tabs__iframe {
+  width: 100%;
+  height: 215px;
+}
+
+.window-tabs__iframe iframe {
+  width: 1130px;
+  max-width: 1200px;
+  height: 215px;
+}
+
+.window-tabs__logo {
+  position: absolute;
+  width: 260px;
+  height: 240px;
+  padding: 0;
+}
+
+@media (max-width: 1590px) {
+  .window-tabs__logo {
+    left: calc(50vw - 230px);
+  }
+}
+
+@media (max-width: 1250px) {
+  .window-tabs__logo {
+    left: calc(50vw - 180px);
+  }
+}
+
+.window-tabs__logo iframe {
+  width: 260px;
+  max-width: 260px;
+  height: 240px;
+}
+
+.vacancies__main-photo {
+  display: flex;
+  width: 695px;
+  height: 230px;
+  gap: 5px;
+}
+
+.vacancies__main-photo .photo-left,
+.vacancies__main-photo .photo-right {
+  flex-basis: 50%;
+}
+
+.vacancies__main-photo .photo-left {
+  background: url(../img/vacancies/Sormovskaya.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.vacancies__main-photo .photo-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.vacancies__main-photo .photo-right>div {
+  flex-basis: 49%;
+  height: 49%;
+}
+
+.vacancies__main-photo .photo-right .photo-right-1 {
+  background: url(../img/vacancies/candy.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.vacancies__main-photo .photo-right .photo-right-2 {
+  background: url(../img/vacancies/cackes.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.vacancies__main-photo .photo-right .photo-right-3 {
+  background: url(../img/vacancies/s1200.webp) no-repeat;
+  background-size: 100%;
+}
+
+.vacancies__main-photo .photo-right .photo-right-4 {
+  background: url(../img/vacancies/tech_line.jpg) no-repeat;
+  background-size: 100%;
+}
+
+.vacancies__contact-map {
+  width: 633px;
+  height: 300px;
+}
+
+.contact-vacancies__title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+/********Конец стилизация предприятия**************/
 
 
 /**************О компании ************/
@@ -4855,6 +5074,19 @@ button.card__bell-submitButton {
   border-radius: 3px;
 }
 
+.company__adress-site {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.company__adress-site a {
+  color: #5ab8f7;
+  transition: 0.3s;
+}
+
+.company__adress-site a:hover {
+  color: #0357cd;
+}
 
 /*Перекраска баннеров*/
 .card-banner--yellow,
@@ -4944,9 +5176,13 @@ button.card__bell-submitButton {
   height: 20px;
   padding-left: 25px;
   margin-left: 20px;
-  color: #619f00;
+  color: #5ab8f7;
   background: url(../img/icons/icon-eye.png) 0 center no-repeat;
-  background-size: 20%;
+  background-size: 30%;
+}
+
+.window__date-number1 {
+  color: #619f00;
 }
 
 .window__deadline {
@@ -5043,7 +5279,7 @@ button.card__bell-submitButton {
 }
 
 .pretendent-card__header .window__btn:nth-child(3) {
-  background-color: rgb(90, 184, 247);
+  background-color: #5ab8f7;
 }
 
 .pretendent-card__header .window__btn:nth-child(4) {
@@ -5058,10 +5294,10 @@ button.card__bell-submitButton {
 }
 
 .header-right .window__fork {
-  width: 100%;
-  font-size: 36px;
+  font-size: 30px;
   text-align: left;
-  padding-left: 25px;
+  padding-left: 5px;
+  margin-left: 0;
 }
 
 .pretendent-card__resume {
@@ -5864,5 +6100,14 @@ button.card__bell-submitButton {
   background-color: #fff;
 }
 
+.contact-vacancies__person button {
+  padding: 10px 40px;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.contact-vacancies__person button:hover {
+  background-color: var(--bg-yellow);
+}
 
 /***********Конец карточки предприятия***********/
