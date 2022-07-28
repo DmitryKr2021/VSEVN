@@ -13906,18 +13906,6 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
   }
 }
 
-@media (max-width: 20em) {
-  .vacancies__title {
-    margin-bottom: 0.625rem;
-  }
-}
-
-.vacancies__subtitle {
-  text-align: center;
-  color: #8b8b8b;
-  font-weight: 300;
-}
-
 @media (min-width: 101.875em) {
   .vacancies__subtitle {
     font-size: 1rem;
@@ -14154,16 +14142,6 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
     border-color: #b83539;
     color: var(--bg-red);
     border-color: var(--bg-red);
-  }
-}
-
-.vacancies__main {
-  display: flex;
-}
-
-@media (max-width: 1400px) {
-  .vacancies__main {
-    flex-direction: column;
   }
 }
 

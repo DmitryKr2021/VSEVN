@@ -2950,46 +2950,54 @@ function goToFavoriteEmployer(e) {
 /***************Работа с Сормовской фабрикой***********/
 /**************************************************** */
 
-/****работа с кнопками в хедере***/
-const whButtons = document.querySelectorAll('.wh-button');
+/*************работа с кнопками в хедере*************/
 
 //Добавить/убрать в избранное
-const fromSelect = 'Убрать&nbsp;из избранного';
-let pressed = false;
-const whButtons2 = whButtons[2];
-let innerSvg = whButtons2.querySelector('button').innerHTML;
+const btnFavorite = document.querySelector('.btn-favorite');
+const addtoFavorite = 'Добавить&nbsp;в избранное';
+const fromFavorite = 'Убрать из избранного';
+let inFavorite = false;
 
-whButtons2.addEventListener('click', function () {
-  if (pressed) {
-    this.innerHTML = innerSvg;
-    this.classList.remove('wh-button__pressed');
-    this.classList.add('wh-button__nopressed');
+btnFavorite.addEventListener('click', toFavorite);
+
+function toFavorite() {
+  if (!inFavorite) {
+    if (inBlackList) {
+      toBlackList_();
+    }
+    btnFavorite.classList.add('pressed');
+    btnFavorite.querySelector('span').innerText = fromFavorite;
+    inFavorite = !inFavorite;
   } else {
-    this.innerHTML = innerSvg.replace('Добавить&nbsp;в избранное', fromSelect);
-    this.classList.add('wh-button__pressed');
-    this.classList.remove('wh-button__nopressed');
+    btnFavorite.classList.remove('pressed');
+    btnFavorite.querySelector('span').innerHTML = addtoFavorite;
+    inFavorite = !inFavorite;
   }
-  pressed = !pressed;
-});
+}
 
 //Добавить/убрать в черный список
+const btnBlack = document.querySelector('.btn-black');
+const toBlack = 'Добавить в черный список';
 const fromBlack = 'Убрать&nbsp;из черного списка';
-let pressed1 = false;
-const whButtons3 = whButtons[3];
-let innerSvg3 = whButtons3.querySelector('button').innerHTML;
+let inBlackList = false;
 
-whButtons3.addEventListener('click', function () {
-  if (pressed1) {
-    this.innerHTML = innerSvg3;
-    this.classList.remove('wh-button__black');
-    this.classList.add('wh-button__noblack');
+btnBlack.addEventListener('click', toBlackList_);
+
+function toBlackList_() {
+  if (!inBlackList) {
+    if (inFavorite) {
+      toFavorite();
+    }
+    btnBlack.classList.add('pressed');
+    btnBlack.querySelector('span').innerHTML = fromBlack;
+    inBlackList = !inBlackList;
   } else {
-    this.innerHTML = innerSvg3.replace('Добавить в черный список', fromBlack);
-    this.classList.add('wh-button__black');
-    this.classList.remove('wh-button__noblack');
+    btnBlack.classList.remove('pressed');
+    btnBlack.querySelector('span').innerHTML = toBlack;
+    inBlackList = !inBlackList;
   }
-  pressed1 = !pressed1;
-});
+}
+/********Конец работа с кнопками в хедере****************/
 
 
 //О фабрике читать еще/скрыть
