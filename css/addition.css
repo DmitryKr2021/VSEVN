@@ -221,6 +221,10 @@ body {
   padding-bottom: 3px;
 }
 
+.search .tabs__title:not(first-child) {
+  border-left: 1px solid var(--border-color);
+}
+
 .tabs button {
   font-size: 20px;
 }
@@ -229,12 +233,12 @@ body {
   position: relative;
   width: 100%;
   max-width: 685px;
-  margin: 10px auto 0 auto;
+  margin: 25px auto 0 auto;
   border: 2px solid var(--bg-red);
   border-radius: 5px;
   text-align: center;
   color: var(--bg-red);
-  font-size: 1.15rem;
+  font-size: 21px;
   font-weight: 700;
   transform: translateX(4px);
 }
@@ -277,7 +281,8 @@ body {
 /***********Управление полями типа поиска***************/
 .search {
   width: 100%;
-  height: 950px;
+  /*height: 950px;*/
+  height: 970px;
   margin-top: -40px;
   transition: 0.2s;
 }
@@ -676,9 +681,12 @@ body {
 /*********Блок задания условий поиска***************/
 
 /*************choose__work********************/
+.tabs__navigation button.tabs__title {
+  font-size: 21px;
+}
 
-.choose__work--wrap {
-  height: 500px;
+.choose__work * {
+  font-size: 21px;
 }
 
 .form__wrap--blok-1_2 {
@@ -703,7 +711,6 @@ body {
 }
 
 /************************************************/
-
 
 .choose__work .block1,
 .choose__work .block2,
@@ -781,7 +788,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   right: 15px;
-  font-size: 35px;
+  font-size: 35px !important;
   line-height: 18px;
   border-radius: 50%;
   background-color: #bbb;
@@ -789,6 +796,8 @@ body {
   padding: 3px;
   padding-bottom: 5px;
   transition: 0.3s;
+
+  width: 25px;
 }
 
 .input-reset:hover {
@@ -963,10 +972,11 @@ body {
   position: fixed;
   color: #222;
   border-radius: 5px;
-  padding: 5px;
+  padding: 3px;
   padding-left: 10px;
-  background-color: #fef247;
-  box-shadow: 3px 3px 3px #888;
+  background-color: #fff9e0;
+  border: 1px solid #fef247;
+  /*box-shadow: 3px 3px 3px #888;*/
   z-index: 100;
 }
 
@@ -974,11 +984,12 @@ body {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 20%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
   border-color: #fef247 transparent transparent transparent;
+  border-color: #fff9e0 transparent transparent transparent;
 }
 
 .choose__work .block3 .input-container:nth-child(1) {
@@ -1138,7 +1149,7 @@ body {
 .salary .range1 {
   position: absolute;
   display: block;
-  top: 52px;
+  top: 58px;
   left: 5px;
   height: 2px;
   border-radius: 5px;
@@ -1151,7 +1162,7 @@ body {
 .salary__mark--wrap {
   position: absolute;
   left: -22px;
-  top: 21px;
+  top: 27px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -2382,8 +2393,8 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 /*************choose__staff********************/
 
-.choose__staff {
-  font-size: 18px;
+.choose__staff * {
+  font-size: 21px;
 }
 
 .choose__staff .age,
@@ -2535,14 +2546,14 @@ input[type="range"]:active::-webkit-slider-thumb {
 .experience__min,
 .experience__max {
   position: relative;
-  top: -2px;
+  top: -8px;
 }
 
 .age__max,
 .salary1__max,
 .experience__max {
   left: calc(100% - 21px);
-  top: -20px;
+  top: -28px;
 }
 
 .salary1__max {
@@ -2616,6 +2627,10 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any {
   margin-top: -28px;
+}
+
+.choose__any * {
+  font-size: 21px;
 }
 
 .choose__any .form__wrap--blok-1_2 {
@@ -2712,7 +2727,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .choose__any .range3 {
   position: absolute;
-  top: 46px;
+  top: 56px;
   width: 100%;
   height: 2px;
   background-color: var(--bg-red);
@@ -2739,7 +2754,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 .choose__any .mark-right--wrap {
   position: absolute;
   left: -22px;
-  top: 17px;
+  top: 27px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -3380,6 +3395,10 @@ input[type="range"]:active::-webkit-slider-thumb {
   margin-top: -5px;
 }
 
+.card__desc {
+  margin-bottom: 10px;
+}
+
 .card__col .card__supname {
   position: relative;
   padding-right: 20px;
@@ -3860,6 +3879,19 @@ input[type="range"]:active::-webkit-slider-thumb {
   background-position: 0 0;
   background-size: 100%;
 }
+
+/*.card__election,
+.rating {
+  position: absolute;
+  right: 0;
+  border: 1px solid red;
+}
+
+.card__row {
+  min-height: 20px;
+  border: 1px solid red;
+  position: relative;
+}*/
 
 .card__computed button {
   font-size: 16px;
@@ -4700,12 +4732,11 @@ button.card__bell-submitButton {
 
 .vacancies__main-photo {
   display: flex;
-  width: 830px;
+  width: 100%;
   height: 270px;
   margin-left: 50%;
   transform: translateX(-50%);
   gap: 5px;
-  z-index: 20;
 }
 
 .vacancies__main-photo .photo-left,
@@ -4715,8 +4746,24 @@ button.card__bell-submitButton {
 }
 
 .vacancies__main-photo .photo-left {
-  background: url(../img/vacancies/Sormovskaya.jpg) no-repeat;
-  background-size: 100%;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-left img {
+  transform: scale(0.8) translate(-120px, -120px);
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-left:hover {
+  overflow: visible;
+  z-index: 10;
+}
+
+.vacancies__main-photo .photo-left:hover img {
+  position: absolute;
+  margin-left: 50%;
+  transform: scale(1.2) translate(-42%, -120px);
 }
 
 .vacancies__main-photo .photo-right {
@@ -4728,44 +4775,199 @@ button.card__bell-submitButton {
 .vacancies__main-photo .photo-right>div {
   flex-basis: 49%;
   height: 49%;
+  overflow: hidden;
   transition: 0.3s;
-}
-
-.vacancies__main-photo .photo-left {
-  transition: 0.3s;
-}
-
-.vacancies__main-photo .photo-left:hover,
-.vacancies__main-photo .photo-right>div:hover {
-  transform: scale(2.5);
 }
 
 .value__item {
   z-index: -1;
 }
 
-.vacancies__main-photo .photo-right .photo-right-1 {
-  background: url(../img/vacancies/candy.jpg) no-repeat;
-  background-size: 100%;
-}
-
-.vacancies__main-photo .photo-right .photo-right-2 {
-  background: url(../img/vacancies/cackes.jpg) no-repeat;
-  background-size: 100%;
-}
-
-.vacancies__main-photo .photo-right .photo-right-3 {
-  background: url(../img/vacancies/s1200.webp) no-repeat;
-  background-size: 100%;
-}
-
+.vacancies__main-photo .photo-right .photo-right-1,
+.vacancies__main-photo .photo-right .photo-right-2,
+.vacancies__main-photo .photo-right .photo-right-3,
 .vacancies__main-photo .photo-right .photo-right-4 {
-  background: url(../img/vacancies/tech_line.jpg) no-repeat;
-  background-size: 100%;
+  transition: 0.3s;
+  max-width: 280px;
+}
+
+.vacancies__main-photo .photo-right-1:hover,
+.vacancies__main-photo .photo-right-2:hover,
+.vacancies__main-photo .photo-right-3:hover,
+.vacancies__main-photo .photo-right-4:hover {
+  overflow: visible;
+  z-index: 10;
+}
+
+.vacancies__main-photo .photo-right-1 img {
+  transform: scale(0.4) translate(-800px, -600px);
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-right-1:hover img {
+  transform: scale(0.8) translate(-600px, -350px);
+}
+
+.vacancies__main-photo .photo-right-2 img {
+  transform: scale(0.4) translate(-600px, -400px);
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-right-2:hover img {
+  transform: scale(1.1) translate(-600px, -200px);
+}
+
+.vacancies__main-photo .photo-right-3 img {
+  transform: scale(0.4) translate(-600px, -400px);
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-right-3:hover img {
+  transform: scale(1) translate(-400px, -400px);
+}
+
+.vacancies__main-photo .photo-right-4 img {
+  transform: scale(0.4) translate(-800px, -600px);
+  transition: 0.3s;
+}
+
+.vacancies__main-photo .photo-right-4:hover img {
+  transform: scale(1) translate(-800px, -400px);
+}
+
+@media (max-width: 1700px) {
+
+  .window-tabs__content {
+    display: block;
+  }
+
+  .vacancies__main {
+    padding-right: 0;
+  }
+
+  .vacancies__main-photo {
+    flex-direction: column;
+    width: 80%;
+    height: 540px;
+    margin-left: 10%;
+    transform: translateX(0);
+  }
+
+  .vacancies__main-photo .photo-left {
+    flex-basis: 100%;
+    height: 270px;
+  }
+
+  .vacancies__main-photo .photo-right {
+    flex-basis: 100%;
+    height: 320px;
+    padding-left: 5%;
+    padding-right: 4%;
+  }
+
+  .vacancies__main-photo .photo-left img {
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .vacancies__main-photo .photo-right .photo-right-1,
+  .vacancies__main-photo .photo-right .photo-right-2,
+  .vacancies__main-photo .photo-right .photo-right-3,
+  .vacancies__main-photo .photo-right .photo-right-4 {
+    max-width: 50%;
+    width: 50%;
+  }
+
+  .vacancies__main-photo .photo-right-1 img {
+    transform: scale(0.4) translate(-800px, -600px);
+    transition: 0.3s;
+  }
+
+  .vacancies__main-photo .photo-right-1:hover img {
+    transform: scale(0.8) translate(-300px, -350px);
+  }
+
+  .vacancies__main-photo .photo-right-2 img {
+    transform: scale(0.5) translate(-400px, -300px);
+    transition: 0.3s;
+  }
+
+  .vacancies__main-photo .photo-right-2:hover img {
+    transform: scale(1.1) translate(-300px, -200px);
+  }
+
+  .vacancies__main-photo .photo-right-3 img {
+    transform: scale(0.5) translate(-400px, -300px);
+    transition: 0.3s;
+  }
+
+  .vacancies__main-photo .photo-right-3:hover img {
+    transform: scale(1.1) translate(-50px, -300px);
+  }
+
+  .vacancies__main-photo .photo-right-4 img {
+    transform: scale(0.4) translate(-800px, -600px);
+    transition: 0.3s;
+  }
+
+  .vacancies__main-photo .photo-right-4:hover img {
+    transform: scale(1) translate(-500px, -400px);
+  }
+}
+
+.company__adress {
+  margin-top: 20px;
+}
+
+.company__adress-title {
+  font-size: 27px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.company__adress-info {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 700px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  line-height: 130%;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.company__adress-info p {
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.company__adress-site {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.company__adress-site a {
+  color: #5ab8f7;
+  transition: 0.3s;
+}
+
+.company__adress-site a:hover {
+  color: #0357cd;
 }
 
 .vacancies__contact-map {
-  width: 633px;
+  width: 95%;
+  max-width: 633px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vacancies__contact-map iframe {
+  width: 100%;
   height: 300px;
 }
 
@@ -5068,49 +5270,6 @@ button.card__bell-submitButton {
 
 .company__request button:hover {
   background-color: var(--bg-yellow);
-}
-
-.company__adress {
-  margin-top: 20px;
-}
-
-.company__adress-title {
-  font-size: 27px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.company__adress-info {
-  margin-top: 20px;
-  width: 60%;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  padding-top: 10px;
-  padding-left: 25px;
-  padding-right: 10px;
-  padding-bottom: 20px;
-  font-size: 18px;
-  line-height: 130%;
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-}
-
-.company__adress-info p {
-  margin-bottom: 10px;
-}
-
-.company__adress-site {
-  margin-top: 20px;
-  font-size: 20px;
-}
-
-.company__adress-site a {
-  color: #5ab8f7;
-  transition: 0.3s;
-}
-
-.company__adress-site a:hover {
-  color: #0357cd;
 }
 
 /*Перекраска баннеров*/

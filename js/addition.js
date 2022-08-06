@@ -2546,14 +2546,14 @@ function changeColorGreen() {
         if (li_.querySelector('.to-smoke')) {
           let liSpanText = li_.querySelector('.to-smoke').innerText;
           li_.querySelector('.to-smoke').style.cssText =
-            `background: linear-gradient(to right, #222 15%, #888 20%, #bbb 30%, #eee 40%); 
+            `background: linear-gradient(to right, #222 20%, #eee 25%); 
         -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent;`;
         }
 
         li_.addEventListener('mouseover', function () {
           popupDesc.innerText = liText;
-          popupDesc.style.width = 400 + "px";
+          popupDesc.style.width = 900 + "px";
           popupDesc.classList.add('input-popup');
           li_.before(popupDesc);
           popupDesc.style.top = li_.getBoundingClientRect().top - 40 + 'px';

@@ -2859,6 +2859,7 @@ body.popup-show::after {
 
 ::-webkit-scrollbar {
   width: 4px;
+  /*width: 8px;*/
 }
 
 ::-webkit-scrollbar-track {
@@ -4164,23 +4165,6 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   transition: all 0.5s ease 0s;
 }
 
-@media (min-width: 101.875em) {
-  .search .tabs__title {
-    *width: 18.75rem;
-  }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
-  .search .tabs__title {
-    *width: clamp(9.375rem, 7.0849236641rem + 11.4503816794vw, 18.75rem);
-  }
-}
-
-@media (max-width: 20em) {
-  .search .tabs__title {
-    *width: 9.375rem;
-  }
-}
 
 @media (min-width: 101.875em) {
   .search .tabs__title {
@@ -4228,18 +4212,6 @@ header nav ul.dropdown-list::-webkit-scrollbar-track {
   position: relative;
 }
 
-.search .tabs__title:nth-child(2)::after,
-.search .tabs__title:nth-child(2)::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  left: 0;
-  background-color: #435269;
-  opacity: 0.1;
-  width: 1px;
-  height: 75%;
-}
 
 .search .tabs__title:nth-child(2)::before {
   left: auto;
@@ -6500,6 +6472,11 @@ input {
   transition: all 0.5s ease 0s;
 }
 
+.card__logo.empty::after {
+  content: "";
+  z-index: -5;
+}
+
 .card--anonim .card__logo::after {
   display: none;
 }
@@ -6554,7 +6531,7 @@ input {
 
 .card__supname a {
   display: inline-block;
-  max-width: 290px;
+  max-width: 390px;
 }
 
 @media (min-width: 101.875em) {
@@ -9408,13 +9385,14 @@ input {
   }
 }
 
+/**/
 .window-tabs__content {
   display: flex;
   justify-content: space-between;
 }
 
 .window-tabs__content:first-child .window-tabs__col:last-child {
-  flex: 1;
+  *flex: 1;
 }
 
 @media (max-width: 1600px) {
@@ -9427,6 +9405,7 @@ input {
   }
 }
 
+/**/
 .window-tabs__body {
   display: block;
 }
@@ -13865,11 +13844,11 @@ input[name=select__locality]:checked+.select__popup-label_sub::after {
   }
 }
 
-.vacancies {
+/*.vacancies {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+}*/
 
 .vacancies__title {
   color: #2c2c2c;
@@ -15280,7 +15259,8 @@ table tbody {
 }*/
 
 ::-webkit-scrollbar {
-  width: 8px;
+  /*width: 8px;*/
+  width: 16px;
   /* ширина для вертикального скролла */
   border-radius: 4px;
   background-color: #e3e6e9;
