@@ -970,9 +970,11 @@ body {
 
 .input-popup {
   position: fixed;
+  max-width: 900px;
   color: #222;
   border-radius: 5px;
   padding: 3px;
+  font-size: 20px;
   padding-left: 10px;
   background-color: #fff9e0;
   border: 1px solid #fef247;
@@ -980,15 +982,23 @@ body {
   z-index: 100;
 }
 
+.input-popup::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 19.9%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fef247 transparent transparent transparent;
+}
+
 .input-popup::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 20%;
-  margin-left: -5px;
-  border-width: 5px;
+  border-width: 7px;
   border-style: solid;
-  border-color: #fef247 transparent transparent transparent;
   border-color: #fff9e0 transparent transparent transparent;
 }
 
@@ -3492,10 +3502,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   line-height: 130%;
 }
 
-.card__col.card-up .card__name {
-  *margin-top: -3px;
-}
-
 .card__name a {
   display: inline-block;
 }
@@ -3536,11 +3542,28 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .card__row {
   margin-top: -8px;
+  padding-right: 0;
 }
 
 .card__row+.card__row {
   margin-top: 10px;
 }
+
+.card__row-right {
+  display: flex;
+  column-gap: 15px;
+}
+
+.card__row-right .card__computed:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__row-rightcolumn {
+  flex-direction: column-reverse;
+  row-gap: 5px;
+}
+
 
 /*******************************************/
 /****************Попап Еще******************/
@@ -3844,22 +3867,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   text-decoration: underline dotted var(--card-hoverdark);
 }
 
-.ratings {
-  width: 140px;
-  float: right;
-  margin-right: 18px;
-}
-
-.ratings-up {
-  transform: translateY(-40px);
-}
-
-@media (max-width: 1300px) {
-  .ratings-up {
-    transform: translateY(0);
-  }
-}
-
 .rating__items .rating__item:first-child {
   display: none;
 }
@@ -3879,19 +3886,6 @@ input[type="range"]:active::-webkit-slider-thumb {
   background-position: 0 0;
   background-size: 100%;
 }
-
-/*.card__election,
-.rating {
-  position: absolute;
-  right: 0;
-  border: 1px solid red;
-}
-
-.card__row {
-  min-height: 20px;
-  border: 1px solid red;
-  position: relative;
-}*/
 
 .card__computed button {
   font-size: 16px;

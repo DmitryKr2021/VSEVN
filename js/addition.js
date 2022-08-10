@@ -439,7 +439,6 @@ function hideAllLists(e) {
           for (let item of document.querySelectorAll('.white-font')) {
             item.classList.remove('white-font');
           }
-
           //убрать zindex, чтобы нижние селекты не мешали
           if (e.target.tagName !== 'LI') {
             for (let item of document.querySelectorAll('.zindex50')) {
@@ -448,6 +447,10 @@ function hideAllLists(e) {
             for (let item of document.querySelectorAll('.zindex')) {
               item.classList.remove('zindex');
             }
+          }
+          if (e.target.closest('.input-container').querySelector('.input-field')) {
+            e.target.closest('.input-container').classList.add('zindex50');
+            e.target.closest('.input-container').querySelector('.placeholder').classList.add('white-font');
           }
         }
       }
@@ -1659,9 +1662,9 @@ for (let inp of anyInputSelects) {
 function hideSelect_any2(e) {
   //обнуляем остальные поля выбора
 
-  for (let inp of anyInputSelects) {
+  /*for (let inp of anyInputSelects) {
     inp.classList.remove('inputsel');
-  }
+  }*/ //На удаление
   for (let uls of anyInputContainerUls) {
     uls.classList.remove('showlist');
     uls.parentNode.querySelector('.arrow').classList.remove('arrow-rotate');
@@ -2260,7 +2263,7 @@ function showTempValueRubr(e) {
     popup1.innerText = tempValueRubr;
     popup1.classList.add('input-popup');
     e.target.before(popup1);
-    popup1.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
+    popup1.style.top = e.target.getBoundingClientRect().top - 50 + 'px';
     popup1.style.left = e.target.getBoundingClientRect().left + 'px';
   }
 }
@@ -2270,7 +2273,7 @@ function showTempValueVacans(e) {
     popup2.innerText = tempValueVacans;
     popup2.classList.add('input-popup');
     e.target.before(popup2);
-    popup2.style.top = e.target.getBoundingClientRect().top - 40 + 'px';
+    popup2.style.top = e.target.getBoundingClientRect().top - 50 + 'px';
     popup2.style.left = e.target.getBoundingClientRect().left + 'px';
   }
 }
@@ -2330,7 +2333,7 @@ function handleText() {
 
       input_.addEventListener('mouseover', () => {
         input_.before(popup);
-        popup.style.top = input_.getBoundingClientRect().top - 40 + 'px';
+        popup.style.top = input_.getBoundingClientRect().top - 50 + 'px';
         popup.style.left = input_.getBoundingClientRect().left + 'px';
       });
 
@@ -2452,7 +2455,7 @@ const tabsWrap = document.querySelector('.tabs__wrap');
 const tabsBodys = document.querySelectorAll('.tabs__body');
 const girlWrapper = document.querySelector('.girl__wrapper');
 let green = false;
-const ratings = document.querySelectorAll('.ratings');
+const cardRowRights = document.querySelectorAll('.card__row-right');
 let itemSpan; //для перевода длинного имени в дымку
 let popupSpan = document.createElement('div'); //для перевода длинного имени в дымку
 let spanText; //для перевода длинного имени в дымку
@@ -2493,8 +2496,8 @@ function changeColorGreen() {
       girlWrapper.style.transitionDuration = '0.3s';
     }, 300);
   }
-  for (let item of ratings) {
-    item.classList.remove('ratings-up');
+  for (let item of cardRowRights) {
+    item.classList.add('card__row-rightcolumn');
   }
   green = true;
 
@@ -2515,7 +2518,7 @@ function changeColorGreen() {
         popupSpan.innerText = spanText;
         popupSpan.classList.add('input-popup');
         itemSpan.before(popupSpan);
-        popupSpan.style.top = item.querySelector('span').getBoundingClientRect().top - 40 + 'px';
+        popupSpan.style.top = item.querySelector('span').getBoundingClientRect().top - 50 + 'px';
         popupSpan.style.left = item.querySelector('span').getBoundingClientRect().left + 'px';
       });
 
@@ -2534,29 +2537,26 @@ function changeColorGreen() {
   for (let item of cardDescs) {
     const descLis = item.querySelectorAll('li');
     for (let li_ of descLis) {
-      if (li_.innerText.length > 75) {
+      //if (li_.innerText.length > 75) {
+      if (li_.innerText.length > 130) {
+        /*let li_span = li_.querySelector('span');
+        const li_first = li_.innerText.length - li_span.innerText.length;*/
+        // let coef = 75 * 100 / li_.innerText.length;
+        let coef = 0.27 * 130 * 100 / li_.innerText.length;
 
         let liText = li_.innerText;
-        /* старый вариант для вертикальной дымки
-        li_.style.cssText =
-          `background: linear-gradient(to bottom, #222 55%, #777 60%, #999 65%, #aaa 70%); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;`;*/
-
         if (li_.querySelector('.to-smoke')) {
-          let liSpanText = li_.querySelector('.to-smoke').innerText;
           li_.querySelector('.to-smoke').style.cssText =
-            `background: linear-gradient(to right, #222 20%, #eee 25%); 
+            `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
         -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent;`;
         }
 
         li_.addEventListener('mouseover', function () {
           popupDesc.innerText = liText;
-          popupDesc.style.width = 900 + "px";
           popupDesc.classList.add('input-popup');
           li_.before(popupDesc);
-          popupDesc.style.top = li_.getBoundingClientRect().top - 40 + 'px';
+          popupDesc.style.top = li_.getBoundingClientRect().top - 50 + 'px';
           popupDesc.style.left = li_.getBoundingClientRect().left + 'px';
         });
         li_.addEventListener('mouseout', popupDescRemove);
@@ -2689,7 +2689,7 @@ selectDateDiv.addEventListener('mouseover', function () {
   popup3.innerText = selectDateInput.value;
   popup3.classList.add('input-popup');
   selectDateInput.before(popup3);
-  popup3.style.top = selectDateInput.getBoundingClientRect().top - 40 + 'px';
+  popup3.style.top = selectDateInput.getBoundingClientRect().top - 50 + 'px';
   popup3.style.left = selectDateInput.getBoundingClientRect().left + 'px';
 });
 
@@ -2715,7 +2715,7 @@ selectPeriodDiv.addEventListener('mouseover', function () {
   popup4.innerText = selectPeriodInput.value;
   popup4.classList.add('input-popup');
   selectPeriodInput.before(popup4);
-  popup4.style.top = selectPeriodInput.getBoundingClientRect().top - 40 + 'px';
+  popup4.style.top = selectPeriodInput.getBoundingClientRect().top - 50 + 'px';
   popup4.style.left = selectPeriodInput.getBoundingClientRect().left + 'px';
 });
 

@@ -6356,11 +6356,11 @@ input {
   }
 }
 
-@media (min-width: 20em) and (max-width: 101.875em) {
+/*@media (min-width: 20em) and (max-width: 101.875em) {
   .card__col:not(:last-child) {
     margin-right: clamp(0.5625rem, 0.5166984733rem + 0.2290076336vw, 0.75rem);
   }
-}
+}*/
 
 @media (max-width: 20em) {
   .card__col:not(:last-child) {
