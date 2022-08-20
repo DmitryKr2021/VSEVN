@@ -1883,8 +1883,12 @@ for (let i = 2; i < regions.length; i++) {
   regionBodyUl.append(newItem);
 }
 
-//Формирование списка населенных пунктов
+let regionsChecked = {}; //объект для фиксации выбранных регионов
+for (let item of regions) {
+  regionsChecked[item] = false; //изначально никакой регион не выбран
+}
 
+//Формирование списка населенных пунктов
 const punktRegionUls = document.querySelectorAll('.punkt__region--ul');
 //в качестве шаблона для списка берем первый элемент
 
@@ -1937,7 +1941,13 @@ const regionBodyUlItems = regionBodyUl.querySelectorAll('.region__body--item');
 const itemLefts = document.querySelectorAll('.item-left');
 const itemRights = document.querySelectorAll('.item-right');
 const punktItems = document.querySelectorAll('.punkt-item');
-
+const regionResets = document.querySelectorAll('.region__title--reset');
+const leningradRegions = document.querySelectorAll('.leningrad-region');
+const nnovgorodRegions = document.querySelectorAll('.nnovgorod-region');
+let leningradChoosed = false;
+let nnovgorodChoosed = false;
+let allRegionChoosed = false;
+let sumRegCheck = false;
 
 //Показать список регионов
 let outRegion;
@@ -1966,6 +1976,7 @@ let closeRegions = function () {
   chooseRegion.classList.add('up-block');
   punktRegion.classList.add('hide-block');
   punktGroup.classList.add('hide-block');
+  punktAll.classList.add('hide-block');
   labelPunktAll.classList.remove('color-black');
   inputPunktAll.checked = false;
   for (let item of inputPunktGroups) {
@@ -1986,10 +1997,42 @@ let closeRegions = function () {
   }
 };
 
+function clearRegions() {
+  punktGroup.classList.add('hide-block');
+  punktRegion.classList.add('hide-block');
+  for (let item of regionItems) {
+    item.checked = false;
+  }
+  for (let item of punktGroupItems) {
+    item.classList.add('hide-block');
+  }
+  for (let item of punktRegionItems) {
+    item.classList.add('hide-block');
+  }
+}
 chooseRegionClose.onclick = () => closeRegions();
 
 //Все регионы
 regionAll.onclick = (e) => {
+  if (e.target.tagName !== 'LABEL') {
+    allRegionChoosed = !allRegionChoosed;
+    if (allRegionChoosed) {
+      punktAll.classList.remove('hide-block');
+      //leningradChoosed = true;
+      //nnovgorodChoosed = true;
+      regionResets[0].classList.add('active');
+      //sumRegCheck = true;
+    } else {
+      punktAll.classList.add('hide-block');
+      leningradChoosed = false;
+      nnovgorodChoosed = false;
+      regionResets[0].classList.remove('active');
+      sumRegCheck = false;
+      for (let item of regions) {
+        regionsChecked[item] = false; //никакой регион не выбран
+      }
+    }
+  }
   punktRegion.classList.remove('hide-block');
   punktGroup.classList.remove('hide-block');
   labelPunktAll.classList.add('color-black');
@@ -1999,22 +2042,9 @@ regionAll.onclick = (e) => {
   for (let item of punktRegionItems) {
     item.classList.remove('hide-block');
   }
-
   if (inputRegionAll.checked === true) {
     inputRegionAll.checked = false;
-    for (let item of regionItems) {
-      item.checked = false;
-    }
-    punktRegion.classList.add('hide-block');
-    punktGroup.classList.add('hide-block');
-
-    for (let item of punktGroupItems) {
-      item.classList.add('hide-block');
-    }
-    for (let item of punktRegionItems) {
-      item.classList.add('hide-block');
-    }
-
+    clearRegions();
   } else {
     inputRegionAll.checked = true;
     for (let item of regionBodyItems) {
@@ -2025,63 +2055,98 @@ regionAll.onclick = (e) => {
   }
 };
 
-//Если нажали на квадратик
-
+/****************Выбор региона************ */
 for (let item of itemLefts) {
-  item.addEventListener('click', toggleCheckRegion);
-}
-let choosedRegion = '';
-
-function toggleCheckRegion(e) {
-  labelPunktAll.classList.add('color-black');
-  toggleCheck(e);
+  item.addEventListener('click', chooseOneRegion);
 }
 
-function toggleCheck(e) {
-  if (e.target.firstElementChild) {
-    let targ = e.target.firstElementChild;
+function chooseOneRegion(e) {
+  if (e.currentTarget.querySelector('input')) {
+    let targ = e.currentTarget.querySelector('input');
     targ.checked = !targ.checked;
-  }
+  } //обработка нажатия на квадратик
 
-  //Выбрана область
-  choosedRegion = e.currentTarget.querySelector('.region-multi').innerText;
-  if (e.currentTarget.querySelector('.region-left').checked) {
-    for (let item of punktGroupItems) {
-      if (item.getAttribute('data-region') === choosedRegion) {
-        punktGroup.classList.remove('hide-block');
-        punktRegion.classList.remove('hide-block');
-        item.classList.remove('hide-block');
-      }
+  if (e.target.tagName !== 'LABEL') {
+    let regionCheck = e.currentTarget.querySelector('.region-multi').innerText;
+
+    //Активировать/дезактивировать кнопку ОЧИСТИТЬ в регионах
+    regionsChecked[regionCheck] = !regionsChecked[regionCheck];
+    for (let key in regionsChecked) {
+      sumRegCheck = sumRegCheck || regionsChecked[key];
     }
-    for (let item of punktRegionItems) {
-      if (item.getAttribute('data-region') === choosedRegion) {
-        item.classList.remove('hide-block');
-      }
+    if (sumRegCheck) {
+      regionResets[0].classList.add('active');
+      punktAll.classList.remove('hide-block');
+    } else {
+      regionResets[0].classList.remove('active');
+      //punktAll.classList.add('hide-block');
     }
-  } else {
-    for (let item of punktGroupItems) {
-      if (item.getAttribute('data-region') === choosedRegion) {
-        item.classList.add('hide-block');
-      }
+    sumRegCheck = false;
+    //конец Активировать/дезактивировать кнопку ОЧИСТИТЬ в регионах
+
+    //Показать/спрятать кнопку Все населенные пункты при выборе 
+    //Ленинградской или Нижегородской областей
+    if (regionCheck == 'Ленинградская область') {
+      leningradChoosed = !leningradChoosed;
     }
-    for (let item of punktRegionItems) {
-      if (item.getAttribute('data-region') === choosedRegion) {
-        item.classList.add('hide-block');
+    if (regionCheck == 'Нижегородская область') {
+      nnovgorodChoosed = !nnovgorodChoosed;
+    }
+    if (leningradChoosed || nnovgorodChoosed) {
+      regionResets[0].classList.add('active');
+      punktAll.classList.remove('hide-block');
+    }
+    if (!leningradChoosed && !nnovgorodChoosed && !allRegionChoosed) {
+      punktAll.classList.add('hide-block');
+    }
+    //Конец Показать/спрятать кнопку Все населенные пункты
+
+    //Показать/спрятать населенные пункты при выборе 
+    //Ленинградской или Нижегородской областей
+    if (e.currentTarget.querySelector('.region-left').checked) {
+      for (let item of punktGroupItems) {
+        if (item.getAttribute('data-region') === regionCheck) {
+          punktGroup.classList.remove('hide-block');
+          punktRegion.classList.remove('hide-block');
+          item.classList.remove('hide-block');
+        }
+      }
+      for (let item of punktRegionItems) {
+        if (item.getAttribute('data-region') === regionCheck) {
+          item.classList.remove('hide-block');
+        }
+      }
+    } else {
+      for (let item of punktGroupItems) {
+        if (item.getAttribute('data-region') === regionCheck) {
+          item.classList.add('hide-block');
+        }
+      }
+      for (let item of punktRegionItems) {
+        if (item.getAttribute('data-region') === regionCheck) {
+          item.classList.add('hide-block');
+        }
       }
     }
   }
 }
+/**************Конец выбор региона**********/
 
 
 //Очистить регионы
-const regionResets = document.querySelectorAll('.region__title--reset');
-regionResets[0].onclick = () => {
+//const regionResets = document.querySelectorAll('.region__title--reset');//Определено выше
+regionResets[0].onclick = (e) => {
+  e.target.classList.remove('active');
+  punktAll.classList.add('hide-block');
   inputRegionAll.checked = false;
-  for (let item of regionItems) {
-    item.checked = false;
+  allRegionChoosed = false;
+  leningradChoosed = false;
+  nnovgorodChoosed = false;
+  sumRegCheck = false;
+  for (let key in regionsChecked) {
+    regionsChecked[key] = false;
   }
-  punktGroup.classList.add('hide-block');
-  punktRegion.classList.add('hide-block');
+  clearRegions();
   document.getElementById('punkt-all').checked = false;
   for (let item of inputPunktGroups) {
     item.checked = false;
@@ -2090,47 +2155,44 @@ regionResets[0].onclick = () => {
     item.checked = false;
   }
 };
-regionResets[1].onclick = () => {
-  for (let item of inputPunktGroups) {
-    item.checked = false;
-  }
-  for (let item of inputPunktRegions) {
-    item.checked = false;
-  }
-  for (let item of regionItems) {
-    if (item.parentNode.parentNode.classList.contains('punkt__region--ul')) {
-      item.checked = false;
-    }
-  }
-  document.getElementById('punkt-all').checked = false;
-};
+
+// Работа с пунктами*********************
+let punktsLeningradChecked = {}; //объект для фиксации выбранных пунктов Ленинградской обл
+for (let item of leningradRegion) {
+  punktsLeningradChecked[item] = false; //изначально никакой пункт не выбран
+}
+let punktsNnovgorodChecked = {}; //объект для фиксации выбранных пунктов Нижегородской обл
+for (let item of nijegorodRegion) {
+  punktsNnovgorodChecked[item] = false; //изначально никакой пункт не выбран
+}
+let sumLeningradCheck = false;
+let sumNnovgorodCheck = false;
 
 //Кнопка Все населенные пункты
 punktAll.onclick = (e) => {
-  if (labelPunktAll.classList.contains('color-black')) {
-
-    if (inputPunktAll.checked === true) {
-      inputPunktAll.checked = false;
-      for (let item of itemRights) {
-        item.firstElementChild.checked = false;
-      }
-      for (let item of inputPunktGroups) {
-        item.checked = false;
-      }
-      for (let item of inputPunktRegions) {
-        item.checked = false;
-      }
-    } else {
-      inputPunktAll.checked = true;
-      for (let item of itemRights) {
-        item.firstElementChild.checked = true;
-      }
-      for (let item of inputPunktGroups) {
-        item.checked = true;
-      }
-      for (let item of inputPunktRegions) {
-        item.checked = true;
-      }
+  if (inputPunktAll.checked === true) {
+    regionResets[1].classList.remove('active');
+    inputPunktAll.checked = false;
+    for (let item of itemRights) {
+      item.firstElementChild.checked = false;
+    }
+    for (let item of inputPunktGroups) {
+      item.checked = false;
+    }
+    for (let item of inputPunktRegions) {
+      item.checked = false;
+    }
+  } else {
+    inputPunktAll.checked = true;
+    regionResets[1].classList.add('active');
+    for (let item of itemRights) {
+      item.firstElementChild.checked = true;
+    }
+    for (let item of inputPunktGroups) {
+      item.checked = true;
+    }
+    for (let item of inputPunktRegions) {
+      item.checked = true;
     }
   }
 };
@@ -2146,22 +2208,48 @@ for (let item of punktRegionItems) {
   item.addEventListener('click', handlerReg1);
 }
 
-for (let item of regionBodyItems) {
-  if (!item.classList.contains('item-left')) {
-    item.addEventListener('click', handlerReg2);
+for (let item of leningradRegions) {
+  item.addEventListener('click', handlerReg2);
+}
+for (let item of nnovgorodRegions) {
+  item.addEventListener('click', handlerReg3);
+}
+
+function isAnyPunktChecked() {
+  let sum1 = false;
+  let sum2 = false;
+  let cond0 = inputPunktGroups[0].checked;
+  let cond1 = inputPunktGroups[1].checked;
+  let cond2 = inputPunktAll.checked;
+  let cond3 = document.querySelectorAll('.punkt-region-item')[0].checked;
+  let cond4 = document.querySelectorAll('.punkt-region-item')[1].checked;
+
+  for (let key in punktsLeningradChecked) {
+    sum1 = sum1 || punktsLeningradChecked[key];
+  }
+  for (let key in punktsNnovgorodChecked) {
+    sum2 = sum2 || punktsNnovgorodChecked[key];
+  }
+  if (!sum1 && !sum2 && !cond0 && !cond1 && !cond2 && !cond3 && !cond4) {
+    regionResets[1].classList.remove('active');
   }
 }
 
 function handlerReg(e) {
   let targ = e.currentTarget.querySelector('input');
   targ.checked = !targ.checked;
+  //активировать/дезактивировать кнопку ОЧИСТИТЬ в пунктах
+  if (targ.checked) {
+    regionResets[1].classList.add('active');
+  } else {
+    isAnyPunktChecked();
+  }
 }
 
 function handlerReg1(e) {
   if (app.state) {
     return;
   }
-
   let targ = e.currentTarget.children[1];
   targ.checked = !targ.checked;
 
@@ -2170,6 +2258,37 @@ function handlerReg1(e) {
     if (!targ.checked) {
       item.checked = false;
     }
+  }
+  //активировать/дезактивировать кнопку ОЧИСТИТЬ в пунктах
+  if (targ.checked) {
+    regionResets[1].classList.add('active');
+
+    //Ленинградская область
+    if (e.currentTarget.getAttribute('data-region') == 'Ленинградская область') {
+      for (let key in punktsLeningradChecked) {
+        punktsLeningradChecked[key] = true;
+      }
+    }
+    //Нижегородская область
+    if (e.currentTarget.getAttribute('data-region') == 'Нижегородская область') {
+      for (let key in punktsNnovgorodChecked) {
+        punktsNnovgorodChecked[key] = true;
+      }
+    }
+  } else {
+    //Ленинградская область
+    if (e.currentTarget.getAttribute('data-region') == 'Ленинградская область') {
+      for (let key in punktsLeningradChecked) {
+        punktsLeningradChecked[key] = false;
+      }
+    }
+    //Нижегородская область
+    if (e.currentTarget.getAttribute('data-region') == 'Нижегородская область') {
+      for (let key in punktsNnovgorodChecked) {
+        punktsNnovgorodChecked[key] = false;
+      }
+    }
+    isAnyPunktChecked();
   }
 }
 
@@ -2180,8 +2299,65 @@ function handlerReg2(e) {
   setTimeout(() => {
     app.state = false;
   }, 1000);
+  //пункты Ленинградской области
+  if (e.target.tagName !== 'LABEL') {
+    let punktCheck = e.currentTarget.querySelector('.region-multi').innerText;
+
+    //активировать/дезактивировать кнопку ОЧИСТИТЬ в пунктах
+    punktsLeningradChecked[punktCheck] = !punktsLeningradChecked[punktCheck];
+    for (let key in punktsLeningradChecked) {
+      sumLeningradCheck = sumLeningradCheck || punktsLeningradChecked[key];
+    }
+    if (sumLeningradCheck) {
+      regionResets[1].classList.add('active');
+    } else {
+      isAnyPunktChecked();
+    }
+  }
+  sumLeningradCheck = false;
 }
 
+function handlerReg3(e) {
+  let targ = e.currentTarget.firstElementChild;
+  targ.checked = !targ.checked;
+  app.state = true;
+  setTimeout(() => {
+    app.state = false;
+  }, 1000);
+  //пункты Нижегородской области
+  if (e.target.tagName !== 'LABEL') {
+    let punktCheck = e.currentTarget.querySelector('.region-multi').innerText;
+
+    //активировать/дезактивировать кнопку ОЧИСТИТЬ в пунктах
+    punktsNnovgorodChecked[punktCheck] = !punktsNnovgorodChecked[punktCheck];
+    for (let key in punktsNnovgorodChecked) {
+      sumNnovgorodCheck = sumNnovgorodCheck || punktsNnovgorodChecked[key];
+    }
+    if (sumNnovgorodCheck) {
+      regionResets[1].classList.add('active');
+    } else {
+      isAnyPunktChecked();
+    }
+  }
+  sumNnovgorodCheck = false;
+}
+
+//Очистить пункты
+regionResets[1].onclick = (e) => {
+  e.target.classList.remove('active');
+  for (let item of inputPunktGroups) {
+    item.checked = false;
+  }
+  for (let item of inputPunktRegions) {
+    item.checked = false;
+  }
+  for (let item of regionItems) {
+    if (item.parentNode.parentNode.classList.contains('punkt__region--ul')) {
+      item.checked = false;
+    }
+  }
+  document.getElementById('punkt-all').checked = false;
+};
 
 //Нажатие на кнопку Выбрать
 let outRegionText = '';

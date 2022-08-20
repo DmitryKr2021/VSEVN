@@ -364,6 +364,10 @@ body {
 .region__title--reset {
   font-size: 19px;
   text-transform: uppercase;
+  color: #777;
+}
+
+.region__title--reset.active {
   color: var(--bg-red);
 }
 
@@ -488,13 +492,14 @@ body {
   position: relative;
   padding: 10px;
   cursor: pointer;
-  color: #aaa;
+  /*color: #aaa;*/
+  color: var(--text-color);
   border-bottom: 1px solid var(--border-color);
 }
 
-.color-black {
+/*.color-black {
   color: var(--text-color);
-}
+}*/
 
 .punkt__group-bottom {
   border-bottom: 1px solid var(--border-color);
