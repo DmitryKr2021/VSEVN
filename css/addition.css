@@ -1206,7 +1206,8 @@ body {
 .region__title--reset {
  font-size: 19px;
  text-transform: uppercase;
- color: #777;
+ /*color: #777;*/
+ color: transparent;
 }
 
 .region__title--reset.active {
