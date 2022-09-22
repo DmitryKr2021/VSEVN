@@ -246,8 +246,8 @@ body {
  margin-top: 3px;
 }
 
-.header__bottom-wrap .back-blue {
- /*background-color: #30197f;*/
+/*.header__bottom-wrap .back-blue {
+ /*background-color: #30197f;*
  background-color: #04b70a;
  color: #fff;
  border-radius: 3px;
@@ -257,8 +257,21 @@ body {
 }
 
 .header__bottom-wrap .back-blue:hover {
- /*background-color: #439ffe;*/
+ /*background-color: #439ffe;*
  background-color: #3bd640;
+}*/
+
+.header__bottom .open-contacts {
+ margin-left: 5px;
+}
+
+.header__bottom .open-contacts a {
+ margin-right: 0px;
+ padding-left: 0;
+}
+
+.header__bottom .open-contacts:hover svg path {
+ fill: var(--bg-red);
 }
 
 .header__bottom .autorize span {
@@ -319,6 +332,67 @@ body {
 .menu-open .icon-menu::after {
  transform: rotate(45deg);
  bottom: calc(48% - 1px);
+}
+
+.dropdown-list .fa-flag,
+.dropdown-list .fa-gear {
+ color: #142542;
+}
+
+.dropdown-list .cost-service span {
+ transform: translateX(-25px);
+}
+
+.dropdown-list .cost-service svg {
+ width: 50px;
+ height: 50px;
+ transform: scale(0.7) translateX(-12px);
+}
+
+.dropdown-list .cost-service:hover svg path {
+ fill: none;
+}
+
+.dropdown-list .cost-service:hover svg g {
+ stroke: #d63236;
+}
+
+.dropdown-list .contact-access span {
+ transform: translateX(-25px);
+}
+
+.dropdown-list .contact-access svg {
+ width: 50px;
+ height: 50px;
+ transform: scale(0.6) translateX(-12px);
+}
+
+.dropdown-list .contact-access:hover svg path {
+ fill: none;
+}
+
+.dropdown-list .contact-access:hover svg path {
+ stroke: #d63236;
+}
+
+.dropdown-list .contact-access:hover svg path:nth-child(1) {
+ stroke: none;
+}
+
+.dropdown-list .resume-constructor svg {
+ transform: translateX(-5px);
+}
+
+.dropdown-list .resume-constructor span {
+ transform: translateX(-10px);
+}
+
+.dropdown-list .help {
+ margin-left: 15px;
+}
+
+.dropdown-list .help span {
+ margin-left: 15px;
 }
 
 .popup-enterDesctop {
