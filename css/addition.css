@@ -86,6 +86,7 @@ body {
  padding-top: 8px;
  padding-left: 30px;
  padding-right: 8px;
+ color: #142542;
 }
 
 .header__top-wrap .ul-autorize li:nth-child(1),
@@ -106,6 +107,21 @@ body {
 
 .header__top-wrap .navbar-ul li {
  margin-right: 17px;
+}
+
+.header__top-wrap .navbar-ul li i,
+.header__top-wrap .navbar-ul li svg {
+ width: 27px;
+ height: 20px;
+}
+
+.header__top-archive span {
+ font-size: 18px;
+}
+
+.header__top-wrap .navbar-ul .header__top-message svg {
+ transform: translateY(1px);
+ padding: 2px 4px 2px 0;
 }
 
 .header__top .btn-prim {
@@ -184,7 +200,6 @@ body {
  transform: translateX(-50%);
  display: flex;
  align-items: center;
- /*justify-content: space-between;*/
  justify-content: flex-start;
  width: 100%;
  max-width: 1640px;
@@ -193,6 +208,7 @@ body {
  font-size: 18px;
  font-size: 21px;
  height: 100%;
+ color: #142542;
 }
 
 .header__bottom a {
@@ -246,21 +262,6 @@ body {
  margin-top: 3px;
 }
 
-/*.header__bottom-wrap .back-blue {
- /*background-color: #30197f;*
- background-color: #04b70a;
- color: #fff;
- border-radius: 3px;
- transition: 0.3s;
- padding-left: 10px;
- padding-bottom: 20px;
-}
-
-.header__bottom-wrap .back-blue:hover {
- /*background-color: #439ffe;*
- background-color: #3bd640;
-}*/
-
 .header__bottom .open-contacts {
  margin-left: 5px;
 }
@@ -305,7 +306,7 @@ body {
  position: absolute;
  width: 100%;
  height: 3px;
- background-color: #000;
+ background-color: #142542;
 }
 
 .icon-menu::before {
@@ -697,16 +698,14 @@ body {
  text-decoration: underline;
 }
 
-/*@media (max-width: 1400px) {
- .header__bottom-wrap div:nth-child(2) svg {
-  width: calc(10px + (190px - 10vw)*0.2);
-  height: 50px;
- }
-}*/
-
-@media (max-width: 1240px) {
+@media (max-width: 1245px) {
  .ul-unautorize {
   margin-top: -1px;
+ }
+
+ .header__top li a i,
+ .header__top li a svg {
+  display: none;
  }
 
  .header__bottom-wrap div:nth-child(4) {
@@ -717,17 +716,10 @@ body {
 
  .header__bottom-wrap .header__menu {
   position: relative;
-
  }
 }
 
 @media (max-width: 1220px) {
-
- .header__top li a i,
- .header__top li a svg {
-  display: none;
- }
-
  .header__top-wrap .navbar-ul li {
   margin-right: 45px;
  }
