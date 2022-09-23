@@ -1039,7 +1039,8 @@ function doApply(e) { //По кнопке Применить
 
 
 /*********Управление доп.ползунком в Range1******** */
-const salaryMax = 700000;
+const salaryMax = 100000;
+const salaryMin = 20000;
 const range1 = document.querySelector('.range1');
 range1.value = salaryMax;
 const salary = document.querySelector('.salary');
@@ -1065,20 +1066,23 @@ function stopHandler(e) {
 }
 
 function showSalary(value, text) { //Показать на шкале з/плату с нужной точностью
- if (value < 2000) {
-  text.innerText = Math.round(value / 100) * 100;
- } else {
-  if (value < 50000) {
-   text.innerText = Math.round(value / 500) * 500;
+ if (text == salMin) {
+  if (value < 25000) {
+   text.innerText = Math.floor(value / 1000) * 1000;
   } else {
-   if (value < 100000) {
-    text.innerText = Math.round(value / 1000) * 1000;
-   } else {
-    text.innerText = Math.round(value / 5000) * 5000;
-   }
+   text.innerText = Math.round((value - 10000) / 5000) * 5000;
+  }
+ } else {
+  if (value < 25000) {
+   text.innerText = Math.floor(value / 1000) * 1000;
+  } else {
+   text.innerText = Math.round(value / 5000) * 5000;
   }
  }
+ let d = (value - salaryMin) / (salaryMax - salaryMin) * range1.offsetWidth;
+ salMinMax.style.width = d - salaryMarkWrap.getBoundingClientRect().left + 'px';
 }
+
 
 function showAge(value, text) { //Показать на шкале возраст с нужной точностью
  if (value < 20) {
@@ -1101,7 +1105,6 @@ function handlerMark(e) {
  document.addEventListener('mouseup', onMouseUp);
 
  function onMouseMove(e) {
-
   salaryMark.classList.add('salary__mark--active');
 
   let newLeft = e.clientX - shiftX - salary.getBoundingClientRect().left;
@@ -1109,24 +1112,25 @@ function handlerMark(e) {
   if (newLeft < 0) {
    newLeft = 0;
   }
-
-  let rightEdge = salary.offsetWidth * range1.value / salaryMax - salaryMarkWrap.offsetWidth;
+  let rightEdge =
+   salary.offsetWidth * (range1.value - salaryMin) / (salaryMax - salaryMin) - salaryMarkWrap.offsetWidth;
 
   if (newLeft > rightEdge) {
    newLeft = rightEdge;
   }
 
   salaryMarkWrap.style.left = newLeft - correct + 'px';
+  range1Progress = (range1.value - salaryMin) / (salaryMax - salaryMin) * 100;
 
-  range1Progress = range1.value / salaryMax * 100;
   smw = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * 100;
   range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${smw}%, #ec0303 ${smw}%, #ec0303 ${range1Progress}%, #fff ${range1Progress}%, #fff 100%)`;
 
-  let salMinValue = smw * salaryMax / 100;
+  let salMinValue = smw * salaryMax / 100 + salaryMin;
 
   showSalary(salMinValue, salMin);
 
-  salMinMax.style.width = (range1.value - smw * salaryMax / 100) / salaryMax * salWidthInitial + 'px';
+  let d = ((range1.value - salaryMin) * (salary.offsetWidth) / (salaryMax - salaryMin));
+  salMinMax.style.width = d - salaryMarkWrap.getBoundingClientRect().left + 'px';
   salMinMax.style.left = smw * salWidthInitial / 100 + 'px';
  }
 
@@ -1142,11 +1146,11 @@ function handlerMark(e) {
 }
 
 range1.oninput = () => {
- if (range1.value < (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * salaryMax) {
-  range1.value = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * salaryMax;
+ if (range1.value < (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * (salaryMax - salaryMin) + salaryMin) {
+  range1.value = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * (salaryMax - salaryMin) + salaryMin;
  }
 
- range1Progress = range1.value / salaryMax * 100;
+ range1Progress = (range1.value - salaryMin) / (salaryMax - salaryMin) * 100;
  if (!salaryMarkWrap.style.left) {
   salaryMarkWrap.style.left = -correct + 'px';
  }
@@ -1155,7 +1159,6 @@ range1.oninput = () => {
  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${smw}%, #ec0303 ${smw}%, #ec0303 ${range1Progress}%, #fff ${range1Progress}%, #fff 100%)`;
 
  //Вывод зарплаты с округлением
- salMinMax.style.width = (range1.value - smw * salaryMax / 100) / salaryMax * salWidthInitial + 'px';
  showSalary(range1.value, salMax);
 };
 
@@ -1193,7 +1196,7 @@ function resetInputs() {
  setTimeout(() => {
   range1.value = salaryMax;
   salMax.innerText = salaryMax;
-  salMin.innerText = 0;
+  salMin.innerText = 20000;
   salMinMax.style.width = salWidthInitial + 'px';
   salMinMax.style.left = 0 + 'px';
   salaryMarkWrap.style.left = -correct + 'px';
@@ -1206,8 +1209,8 @@ function resetInputs() {
 /**************Блок Поиск сотрудников***************** */
 const ageMax = 70;
 const ageMin = 14;
-const salary1Max = 700000;
-const salary1Min = 0;
+const salary1Max = 100000;
+const salary1Min = 20000;
 const experienceMax = 56;
 const experienceMin = 0;
 const range2s = document.querySelectorAll('.range2');
@@ -1415,7 +1418,7 @@ function salary1LeftHandler(e) {
   }
   chooseStaff.querySelector('.salary1__mark-left--wrap').style.left = newLeft - correct + 'px';
   let leftShift = newLeft / salary1_.offsetWidth * 100;
-  let rightShift = (parseFloat(getComputedStyle(salary1_max).left) + 10) / salary1_.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary1_max).left) + 35) / salary1_.offsetWidth * 100;
 
   rangeSalary1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1705,8 +1708,8 @@ function anyCalculateNumberOfChecked(e) {
 
 /****************Шкала Зарплата2************ */
 
-const salary2Max = 700000;
-const salary2Min = 0;
+const salary2Max = 100000;
+const salary2Min = 20000;
 const range3 = document.querySelector('.range3');
 const anyMarkLeft = chooseAny.querySelector('.mark-left');
 const anyMarkRight = chooseAny.querySelector('.mark-right');
@@ -1740,7 +1743,7 @@ function salary2LeftHandler(e) {
   }
   chooseAny.querySelector('.salary2__mark-left--wrap').style.left = newLeft - correct + 'px';
   let leftShift = newLeft / salary2_.offsetWidth * 100;
-  let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 32) / salary2_.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 45) / salary2_.offsetWidth * 100;
 
   range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 

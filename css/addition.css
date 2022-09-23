@@ -2254,8 +2254,8 @@ body {
  left: 50%;
  top: 52%;
  transform: translate(-50%, -50%);
- width: 20px;
- height: 20px;
+ width: 22px;
+ height: 22px;
  background-color: var(--bg-red);
  border: solid var(--border-color);
  border-width: 5px;
@@ -2276,7 +2276,6 @@ body {
 }
 
 input[type="range"]::-webkit-slider-thumb {
- background-color: var(--bg-red);
  background-color: var(--bg-red);
  width: 22px;
  height: 22px;
