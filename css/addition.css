@@ -217,8 +217,11 @@ body {
 }
 
 .header__bottom-wrap div:nth-child(2) {
- margin-left: -15px;
- margin-right: 10px;
+ margin-left: 10px;
+}
+
+.header__bottom-wrap div:nth-child(3) {
+ margin-left: 20px;
 }
 
 .header__bottom-wrap div:nth-child(2) svg {
