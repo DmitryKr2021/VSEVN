@@ -5700,7 +5700,13 @@ input {
   transform: scale(1);
  }
 
- .card:not(.window--vacancies .card):hover .card__logo::after {
+ /*.card:not(.window--vacancies .card):hover .card__logo::after {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+ }*/
+
+ .card__logo:hover::after {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
@@ -6355,25 +6361,7 @@ input {
 }
 
 .card__col:not(:last-child) {
- width: 62px;
-}
-
-@media (min-width: 101.875em) {
- .card__col:not(:last-child) {
-  margin-right: 0.75rem;
- }
-}
-
-/*@media (min-width: 20em) and (max-width: 101.875em) {
-  .card__col:not(:last-child) {
-    margin-right: clamp(0.5625rem, 0.5166984733rem + 0.2290076336vw, 0.75rem);
-  }
-}*/
-
-@media (max-width: 20em) {
- .card__col:not(:last-child) {
-  margin-right: 0.5625rem;
- }
+ width: 70px;
 }
 
 @media (min-width: 101.875em) {
@@ -6544,24 +6532,6 @@ input {
 
 @media (min-width: 101.875em) {
  .card__supname a {
-  font-size: 1.0625rem;
- }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
- .card__supname a {
-  font-size: clamp(0.9375rem, 0.9069656489rem + 0.1526717557vw, 1.0625rem);
- }
-}
-
-@media (max-width: 20em) {
- .card__supname a {
-  font-size: 0.9375rem;
- }
-}
-
-@media (min-width: 101.875em) {
- .card__supname a {
   margin-right: 0.625rem;
  }
 }
@@ -6582,30 +6552,6 @@ input {
  background-color: #fff000;
  padding-top: 2px;
  padding-bottom: 5px;
-}
-
-@media (min-width: 101.875em) {
- .card--yellow .card__supname {
-  *padding-right: 0.625rem;
- }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
- .card--yellow .card__supname {
-  *padding-right: clamp(0.3125rem, 0.2361641221rem + 0.3816793893vw, 0.625rem);
- }
-}
-
-@media (max-width: 20em) {
- .card--yellow .card__supname {
-  *padding-right: 0.3125rem;
- }
-}
-
-@media (min-width: 101.875em) {
- .card--yellow .card__supname {
-  *padding-left: 0.625rem;
- }
 }
 
 @media (min-width: 20em) and (max-width: 101.875em) {
@@ -6858,13 +6804,7 @@ input {
  width: max-content;
 }
 
-@media (min-width: 101.875em) {
- .window--vacancies .card__name {
-  font-size: 0.875rem;
- }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
+/*@media (min-width: 20em) and (max-width: 101.875em) {
  .window--vacancies .card__name {
   font-size: clamp(0.75rem, 0.7194656489rem + 0.1526717557vw, 0.875rem);
  }
@@ -6874,7 +6814,7 @@ input {
  .window--vacancies .card__name {
   font-size: 0.75rem;
  }
-}
+}*/
 
 .card__place {
  display: flex;

@@ -2662,7 +2662,9 @@ const cardRowRights = document.querySelectorAll('.card__row-right');
 let itemSpan; //для перевода длинного имени в дымку
 let popupSpan = document.createElement('div'); //для перевода длинного имени в дымку
 let spanText; //для перевода длинного имени в дымку
-
+const cardNames = document.querySelectorAll('.card__name');
+const cardDescs = document.querySelectorAll('.card__desc');
+let popupName = document.createElement('div'); //для перевода в дымку;
 let arrYellow = [];
 arrYellow[0] = 'yellow';
 for (let i = 1; i < 18; i++) {
@@ -2735,37 +2737,36 @@ function changeColorGreen() {
 
 
  //Дымка в описании вакансии
- const cardDescs = document.querySelectorAll('.card__desc');
+ //const cardDescs = document.querySelectorAll('.card__desc');
  let popupDesc = document.createElement('div'); //для перевода в дымку;
- for (let item of cardDescs) {
-  const descLis = item.querySelectorAll('li');
-  for (let li_ of descLis) {
-   //if (li_.innerText.length > 75) {
-   if (li_.innerText.length > 130) {
-    /*let li_span = li_.querySelector('span');
-    const li_first = li_.innerText.length - li_span.innerText.length;*/
-    // let coef = 75 * 100 / li_.innerText.length;
-    let coef = 0.27 * 130 * 100 / li_.innerText.length;
 
-    let liText = li_.innerText;
-    if (li_.querySelector('.to-smoke')) {
-     li_.querySelector('.to-smoke').style.cssText =
+ function SmokeInVacancion() {
+
+  let goSmoke = function (e) {
+   const li_ = e.currentTarget;
+   popupDesc.innerText = li_.innerText;
+   popupDesc.classList.add('input-popup');
+   li_.before(popupDesc);
+   popupDesc.style.top = li_.getBoundingClientRect().top - 50 + 'px';
+   popupDesc.style.left = li_.getBoundingClientRect().left + 'px';
+  };
+
+  for (let item of cardDescs) {
+   const descLi = item.querySelector('li');
+   if (descLi.innerText.length > 130) {
+    let coef = 27 * 130 / descLi.innerText.length;
+    if (descLi.querySelector('.to-smoke')) {
+     descLi.querySelector('.to-smoke').style.cssText =
       `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
         -webkit-background-clip: text; 
         -webkit-text-fill-color: transparent;`;
     }
-
-    li_.addEventListener('mouseover', function () {
-     popupDesc.innerText = liText;
-     popupDesc.classList.add('input-popup');
-     li_.before(popupDesc);
-     popupDesc.style.top = li_.getBoundingClientRect().top - 50 + 'px';
-     popupDesc.style.left = li_.getBoundingClientRect().left + 'px';
-    });
-    li_.addEventListener('mouseout', popupDescRemove);
+    descLi.addEventListener('mouseover', goSmoke);
+    descLi.addEventListener('mouseout', popupDescRemove);
    }
   }
  }
+ SmokeInVacancion();
 
  function popupDescRemove() {
   popupDesc.remove();
@@ -2789,6 +2790,18 @@ function changeColorYellow() {
 window.addEventListener('click', function (e) {
  if (e.clientY > info.getBoundingClientRect().top - 30) {
   changeColorGreen();
+
+  let coef = 80;
+  for (let item of cardNames) {
+   if (item.innerText.length > 30) {
+    item.style.cssText =
+     `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, #629f0010 ${coef*1.2}%); 
+     -webkit-background-clip: text; 
+     -webkit-text-fill-color: transparent;`;
+    item.addEventListener('mouseover', showNamePopup);
+   }
+   item.addEventListener('mouseout', popupNameRemove);
+  }
  }
 });
 
@@ -2806,6 +2819,67 @@ window.addEventListener('scroll', function () {
  }
 });
 /***********Конец смены цвета в рисунке девушки **********/
+
+
+/**************Перевод в дымку в левом поле**************** */
+window.addEventListener('resize', handleTextToSmoke);
+window.addEventListener('load', handleTextToSmoke);
+
+/*const cardNames = document.querySelectorAll('.card__name');
+let popupName = document.createElement('div'); //для перевода в дымку;*/ //Определены выше в расширении/сужении полей
+
+function handleTextToSmoke() {
+ let coef = 80;
+ for (let item of cardNames) {
+  if (item.scrollWidth > item.offsetWidth) {
+   item.style.cssText =
+    `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, #629f0010 ${coef*1.2}%); 
+     -webkit-background-clip: text; 
+     -webkit-text-fill-color: transparent;`;
+   item.addEventListener('mouseover', showNamePopup);
+  }
+  item.addEventListener('mouseout', popupNameRemove);
+
+  if (item.offsetWidth < 450) {
+   for (let item of cardDescs) {
+    const descLi = item.querySelector('li');
+    coef = 27 * 130 / descLi.innerText.length;
+    if (descLi.innerText.length > 130) {
+     if (descLi.querySelector('.to-smoke')) {
+      descLi.querySelector('.to-smoke').style.cssText =
+       `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
+         -webkit-background-clip: text; 
+         -webkit-text-fill-color: transparent;`;
+     }
+     descLi.addEventListener('mouseover', showNamePopup);
+     descLi.addEventListener('mouseout', popupNameRemove);
+    }
+   }
+  } else {
+   for (let item of cardDescs) {
+    if (item.querySelector('.to-smoke')) {
+     item.querySelector('.to-smoke').style.cssText = '';
+    }
+   }
+  }
+ }
+}
+
+function showNamePopup(e) {
+ const targ = e.currentTarget;
+ let itemText = targ.innerText;
+ popupName.innerText = itemText;
+ popupName.classList.add('input-popup');
+ targ.before(popupName);
+ popupName.style.top = targ.getBoundingClientRect().top - 50 + 'px';
+ popupName.style.left = targ.getBoundingClientRect().left + 'px';
+}
+
+function popupNameRemove() {
+ popupName.remove();
+}
+/************Конец перевод в дымку в левом поле**************/
+
 
 /**Переключение вкладок Актуальные вакансии/В тексте объявления**/
 const infoContainer = document.querySelector('.info__container');
