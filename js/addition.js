@@ -89,6 +89,7 @@ const chooseStaff = document.querySelector('.choose__staff');
 const chooseAny = document.querySelector('.choose__any');
 const search = document.querySelector('.search');
 
+
 //кнопки Очистить
 const resetAll = chooseWork.querySelector('.reset-all');
 const staffResetAll = chooseStaff.querySelector('.staff__reset-all');
@@ -196,32 +197,46 @@ function handleResetAll(e) {
   item.classList.remove('input-field-focus');
   //вернуть placeholder2 на место
  }
+
+
 }
 
 /**********Конец работа с кнопками Показать/Очистить *********/
 
-
 //Скрыть/показать поисковую панель
-const rollUp = document.querySelector('.roll-up');
-const rollUpBtn = document.querySelector('.roll-up__btn');
-const rollUpSpan = document.querySelector('.roll-up__span');
+const rollNews = document.querySelectorAll('.roll__new');
+const rollUpBtns = document.querySelectorAll('.roll-up__new');
+const rollUpSpans = document.querySelectorAll('.roll-up__span');
 //const search = document.querySelector('.search');//Определено выше
 let flagShow = true;
 
-rollUpBtn.onclick = () => {
+for (let item of rollUpBtns) {
+ item.addEventListener('click', toRollUp);
+}
+
+function toRollUp(e) {
+ for (let item of rollUpBtns) {
+  item.parentNode.classList.toggle('active');
+ }
+ document.querySelector('.choose__work').classList.toggle('roll-ups');
+ document.querySelector('.choose__staff').classList.toggle('roll-ups');
+ document.querySelector('.choose__any').classList.toggle('roll-ups');
+ search.classList.toggle('search-reduced');
+ document.querySelector('.search__container').classList.toggle('reduced1');
+ document.querySelector('.info').classList.toggle('info-reduced');
+
  if (flagShow) {
-  rollUpSpan.innerText = 'Показать поисковую панель';
-  rollUp.classList.add('active');
-  document.querySelector('.choose').classList.add('hide-block');
-  search.classList.add('search-reduced');
+  for (let item of rollUpBtns) {
+   item.parentNode.querySelector('.roll-up__span').innerText = 'Показать поисковую панель';
+  }
  } else {
-  rollUpSpan.innerText = 'Скрыть поисковую панель';
-  rollUp.classList.remove('active');
-  document.querySelector('.choose').classList.remove('hide-block');
-  search.classList.remove('search-reduced');
+  for (let item of rollUpBtns) {
+   item.parentNode.querySelector('.roll-up__span').innerText = 'Скрыть поисковую панель';
+  }
  }
  flagShow = !flagShow;
-};
+}
+
 /*************Конец блока************** */
 
 /************************Блок Поиск работы***********************/
@@ -343,11 +358,6 @@ const inputSelects = document.querySelectorAll('.inputselect');
 const inputContainers = document.querySelectorAll('.input-container');
 const inputContainerUls = document.querySelectorAll('.input-container__ul');
 const inputContainerArrows = document.querySelectorAll('.input-container__arrow');
-let x1rubric;
-let x2rubric; //координаты расширенного блока рубрикатора
-let x1vacansion;
-let x2vacansion;
-let y2vacansion; //координаты расширенного блока вакансий
 
 window.addEventListener('click', hideAllLists);
 
@@ -372,57 +382,81 @@ function isNoInRectUl(e, rect) {
  }
 }
 
+function isNoInRectInput(eX, eY, rect) {
+ let rectBound = rect.getBoundingClientRect();
+ if (eX < rectBound.left || eX > rectBound.right || eY < rectBound.top || eY > rectBound.bottom) {
+  return true;
+ } else {
+  return false;
+ }
+}
+
+function closeRubricator(eX, eY, rubric) {
+ for (let item of inputSelects) {
+  if (item.id === rubric) {
+   const containerUl = item.parentNode.querySelector('ul');
+   if (isNoInRectInput(eX, eY, item) && isNoInRectInput(eX, eY, containerUl)) {
+    removeWideNew(item);
+   }
+  }
+ }
+}
+
+function removeWideNew(arg) {
+ document.getElementById('inp_cont6').style.display = 'block';
+ document.getElementById('inp_cont15').style.display = 'block';
+ for (let item of toHides) {
+  item.classList.remove('hide-block');
+ }
+
+ arg.closest('.input-container').querySelector('ul').classList.remove('ul-wide');
+
+ arg.closest('.input-container').querySelector('ul').classList.remove('ul-wide2');
+
+ arg.closest('.input-container').querySelector('.for-button').classList.add('hide-block');
+
+ if (arg.classList.contains('apply') && arg.parentNode.classList.contains('for-button')) {
+  arg.parentNode.classList.add('hide-block');
+ }
+ if (!arg.value) {
+  arg.classList.remove('inputsel');
+  //если ничего не выбрано, убрать подчеркивание
+ }
+ setTimeout(() => {
+  flagVacansion = false;
+  flagVacansion1 = false;
+ }, 100);
+}
+
+function closeVacansion(eX, eY, vacansion) {
+ for (let item of inputSelects) {
+  if (item.id === vacansion) {
+   const containerUl = item.parentNode.querySelector('.input-container__ul');
+   if (isNoInRectInput(eX, eY, item) &&
+    isNoInRectInput(eX, eY, containerUl)) {
+    removeWideNew(item);
+   }
+  }
+ }
+}
+
 function hideAllLists(e) {
  let eX = e.clientX;
  let eY = e.clientY;
  if (document.documentElement.clientWidth > 500) {
 
-  if (eY < document.getElementById('rubricator').getBoundingClientRect().top || eY < document.getElementById('rubricator1').getBoundingClientRect().top || eY < document.getElementById('rubricator2').getBoundingClientRect().top) {
-   removeWide(e);
-   for (let item of document.querySelectorAll('.ul-wide')) {
-    item.classList.remove('ul-wide');
-   }
-   for (let item of document.querySelectorAll('.for-button')) {
-    item.classList.add('hide-block');
-   }
+  if (flagVacansion) {
+   closeVacansion(eX, eY, 'vacansion');
   }
-
-  if (eY < document.getElementById('vacansion').getBoundingClientRect().top ||
-   eY < document.getElementById('vacansion1').getBoundingClientRect().top) {
-   removeWide2(e);
-   for (let item of document.querySelectorAll('.ul-wide2')) {
-    item.classList.remove('ul-wide2');
-   }
-   for (let item of document.querySelectorAll('.for-button')) {
-    if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
-     item.classList.add('hide-block');
-    }
-   }
+  if (flagVacansion1) {
+   closeVacansion(eX, eY, 'vacansion1');
+  }
+  if (!flagVacansion && !flagVacansion1) {
+   closeRubricator(eX, eY, 'rubricator');
+   closeRubricator(eX, eY, 'rubricator1');
+   closeRubricator(eX, eY, 'rubricator2');
   }
  }
-
-
- let vacLeft = x1vacansion;
- if (document.documentElement.clientWidth < 1200) {
-  vacLeft = 15;
- }
-
- if (e.clientX < vacLeft || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
-  for (let item of toHide2s) {
-   item.classList.remove('hide-block');
-  }
-  for (let item of inputContainerUls) {
-   if (item.classList.contains('ul-wide2')) {
-    item.classList.remove('ul-wide2');
-   }
-  }
-  for (let item of document.querySelectorAll('.for-button')) {
-   if (item.parentNode.querySelector('label').innerText == 'Тип вакансии') {
-    item.classList.add('hide-block');
-   }
-  }
- }
-
 
  //Убрать блок регионов
  if (eX < regionRect.left || eX > regionRect.right) {
@@ -463,17 +497,6 @@ function hideAllLists(e) {
       item.arrow.classList.remove('arrow-rotate');
      }
     }
-
-    if (e.clientX < x1rubric || e.clientX > searchContainer.getBoundingClientRect().right - 23) {
-
-     for (let item of toHides) {
-      item.classList.remove('hide-block');
-     }
-     item.ul.classList.remove('ul-wide');
-     for (let item of document.querySelectorAll('.for-button')) {
-      item.classList.add('hide-block');
-     }
-    }
    }
    if (item.ph2) { //если имеется placeholder2
     if (item.filled) { //если инпут заполнен
@@ -501,10 +524,6 @@ function hideAllLists(e) {
    e.target.parentNode.classList.contains('input-container__item')) {
    return;
   }
-  //перестать прятать блоки при расширении рубрикатора
-  for (let item of toHides) {
-   item.classList.remove('hide-block');
-  }
 
   //Опустить и свернуть поднятый инпут
   let t1 = false;
@@ -527,16 +546,9 @@ function hideAllLists(e) {
     if (item.querySelector('.placeholder2') && !t1) {
      item.querySelector('.placeholder2').classList.remove('input-field-focus');
     }
-    rollUp.classList.remove('roll-up2');
     search.classList.remove('search2');
     chooseWork.querySelector('.choose__work--wrap').classList.remove('input-down');
 
-    for (let item of document.querySelectorAll('.ul-wide')) {
-     item.classList.remove('ul-wide');
-    }
-    for (let item of document.querySelectorAll('.ul-wide2')) {
-     item.classList.remove('ul-wide2');
-    }
     for (let item of document.querySelectorAll('.for-button')) {
      item.classList.add('hide-block');
     }
@@ -633,7 +645,6 @@ function inputUp(targPN) {
        item.querySelector('.placeholder2') &&
         !item.classList.contains('fixed-top') &&
         item.querySelector('.placeholder2').classList.remove('input-field-focus');
-
        item.querySelector('.inputselect') && !item.classList.contains('fixed-top') && item.querySelector('.inputselect').classList.remove('inputsel');
       }
      }
@@ -736,9 +747,6 @@ function hideSelect_1(e) {
    addWide2(e);
   } else {
    targPN.querySelector('.input-container__ul').classList.remove('ul-wide2');
-   for (let item of toHide2s) {
-    item.classList.remove('hide-block');
-   }
    if (targPN.querySelector('.for-button')) {
     targPN.querySelector('.for-button').classList.add('hide-block');
    }
@@ -853,6 +861,7 @@ function hideSelect_2(e) {
  e.target.nextElementSibling.nextElementSibling.classList.toggle('arrow-rotate');
 }
 
+
 /******** Расширение рубрикатора **************** */
 const ulwides = document.querySelectorAll('.ulwide');
 const toHides = document.querySelectorAll('.to-hide');
@@ -864,8 +873,6 @@ for (let item of ulwides) {
 function addWide(e) {
  let ulRubric = e.target.parentNode.querySelector('.input-container__ul');
  ulRubric.classList.add('ul-wide');
- x1rubric = ulRubric.getBoundingClientRect().left;
- x2rubric = ulRubric.getBoundingClientRect().right;
  for (let item of toHides) {
   item.classList.add('hide-block');
  }
@@ -908,26 +915,32 @@ function removeWide(e) {
 
 /*************Расширение типа вакансии ***************/
 const ulwide2s = document.querySelectorAll('.ulwide2');
-const toHide2s = document.querySelectorAll('.to-hide2');
+let flagVacansion = false;
+let flagVacansion1 = false;
 
 for (let item of ulwide2s) {
  item.addEventListener('click', addWide2);
 }
 
 function addWide2(e) {
- e.target.parentNode.querySelector('.input-container__ul').classList.add('ul-wide2');
- let ulVacansion = e.target.parentNode.querySelector('.input-container__ul');
- x1vacansion = ulVacansion.getBoundingClientRect().left;
- x2vacansion = ulVacansion.getBoundingClientRect().right;
- y2vacansion = ulVacansion.getBoundingClientRect().bottom;
-
- for (let item of toHide2s) {
-  item.classList.add('hide-block');
+ if (e.target.id == 'vacansion') {
+  flagVacansion = true;
+ } else {
+  flagVacansion1 = true;
  }
+
+ let ulVacansion = e.target.parentNode.querySelector('.input-container__ul');
+ ulVacansion.classList.add('ul-wide2');
+
+ let formWrap = e.target.closest('.form__wrap');
+ const toHide2s = formWrap.querySelectorAll('.to-hide2');
 
  setTimeout(() => {
   if (document.getElementById('inp_cont15').getBoundingClientRect().left > 800) {
    document.getElementById('inp_cont15').style.display = 'none';
+  }
+  for (let item of toHide2s) {
+   item.classList.add('hide-block');
   }
  }, 10);
 
@@ -937,11 +950,8 @@ function addWide2(e) {
 }
 
 function removeWide2(e) {
- document.getElementById('inp_cont15').style.display = 'block';
- for (let item of toHide2s) {
-  item.classList.remove('hide-block');
- }
-
+ /*document.getElementById('inp_cont15').style.display = 'block';
+ 
  if (e.target.classList.contains('input-reset')) {
   if (e.target.parentNode.querySelector('.for-button')) {
    e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
@@ -952,7 +962,7 @@ function removeWide2(e) {
  if (e.target.classList.contains('apply') && e.target.parentNode.classList.contains('for-button')) {
   e.target.parentNode.classList.add('hide-block');
   e.target.parentNode.previousElementSibling.classList.remove('ul-wide2');
- }
+ }*/
 }
 /***********Конец расширения типа вакансии *************/
 
@@ -2426,126 +2436,82 @@ function handlerRegApply() {
 /***Поля ввода, где текст не помещается**
  перевод в дымку и всплывающее окно***/
 
-const charWidth = 10; //ширина 1 символа
+let charWidth = 11; //ширина 1 символа
 
 const rubric = document.getElementById('rubricator');
 const rubric1 = document.getElementById('rubricator1');
 const rubric2 = document.getElementById('rubricator2');
-let popup1 = document.createElement('div');
-
 const vacans = document.getElementById('vacansion');
 const vacans1 = document.getElementById('vacansion1');
-let popup2 = document.createElement('div');
+const vacation = document.getElementById('vacation');
+const vacation1 = document.getElementById('vacation1');
+const vacation2 = document.getElementById('vacation2');
+const region = document.getElementById('region');
+const region1 = document.getElementById('region1');
+const region2 = document.getElementById('region2');
+const company = document.getElementById('company');
+const company1 = document.getElementById('company1');
+const company2 = document.getElementById('company2');
 
 function showTempValueRubr(e) {
- if (tempValueRubr) {
-  popup1.innerText = tempValueRubr;
-  popup1.classList.add('input-popup');
-  e.target.before(popup1);
-  popup1.style.top = e.target.getBoundingClientRect().top - 50 + 'px';
-  popup1.style.left = e.target.getBoundingClientRect().left + 'px';
+ let str = e.target.value ? e.target.value : e.target.nextElementSibling.innerText;
+ if (str.length * charWidth > e.target.offsetWidth) {
+  let popup1 = e.target.closest('.input-container').querySelector('.popup-select');
+  popup1.classList.remove('hide-block');
+  if (e.target.value) {
+   popup1.innerText = e.target.value;
+  } else {
+   popup1.innerText = e.target.nextElementSibling.innerText;
+  }
+  popup1.style.width = (str.length * charWidth) + 'px';
  }
 }
 
-function showTempValueVacans(e) {
- if (tempValueVacans) {
-  popup2.innerText = tempValueVacans;
-  popup2.classList.add('input-popup');
-  e.target.before(popup2);
-  popup2.style.top = e.target.getBoundingClientRect().top - 50 + 'px';
-  popup2.style.left = e.target.getBoundingClientRect().left + 'px';
- }
+const arrInputs = [rubric, rubric1, rubric2, vacans, vacans1, vacation, vacation1, vacation2, region, region1, region2, company, company1, company2];
+arrInputs.forEach(item => itemOver(item));
+arrInputs.forEach(item => itemOut(item));
+
+function itemOver(item) {
+ item.onmouseover = (e) => {
+  showTempValueRubr(e);
+ };
 }
 
-rubric.onmouseover = (e) => {
- showTempValueRubr(e);
-};
-rubric.addEventListener('mouseout', function () {
- popup1.remove();
-});
-rubric1.onmouseover = (e) => {
- showTempValueRubr(e);
-};
-rubric1.addEventListener('mouseout', function () {
- popup1.remove();
-});
-rubric2.onmouseover = (e) => {
- showTempValueRubr(e);
-};
-rubric2.addEventListener('mouseout', function () {
- popup1.remove();
-});
+function itemOut(item) {
+ item.addEventListener('mouseout', function (e) {
+  e.target.closest('.input-container').querySelector('.popup-select').classList.add('hide-block');
+ });
+}
 
-vacans.onmouseover = (e) => {
- showTempValueVacans(e);
-};
-vacans.addEventListener('mouseout', function () {
- popup2.remove();
-});
-vacans1.onmouseover = (e) => {
- showTempValueVacans(e);
-};
-vacans1.addEventListener('mouseout', function () {
- popup2.remove();
-});
 
 function handleText() {
  const inputContainers = document.querySelectorAll('.input-container');
  for (let item of inputContainers) {
   const label_ = item.querySelector('label');
   const input_ = item.querySelector('input');
+  if (input_.parentNode.querySelector('.arrow')) {
+   charWidth = 12;
+  }
+  if (label_.innerText.length * charWidth > input_.offsetWidth) {
+   let coef = 95 * input_.offsetWidth / (label_.innerText.length * charWidth);
 
-  //длина строки в символах
-  const labelText = label_.innerText;
-
-  //максимальная длина строки
-  const maxLength = Math.round(input_.offsetWidth / charWidth) * 0.83;
-  let popup = document.createElement('div');
-  popup.innerText = labelText;
-  popup.classList.add('input-popup');
-
-  if (labelText.length > maxLength) {
-   let coef = maxLength / labelText.length * 100;
    label_.style.cssText = `background: linear-gradient(to right,
-        #000 ${0.6*coef}%, #777 ${0.7*coef}%, #ddd ${0.75*coef}%,
-         transparent 90%, transparent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
-
-   input_.addEventListener('mouseover', () => {
-    input_.before(popup);
-    popup.style.top = input_.getBoundingClientRect().top - 50 + 'px';
-    popup.style.left = input_.getBoundingClientRect().left + 'px';
-   });
-
-   input_.onmouseout = () => {
-    popup.remove();
-   };
+        #000 ${0.6*coef}%, #333 ${0.7*coef}%, #777 ${0.8*coef}%, transparent ${0.95*coef}%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
   } else {
    label_.style.cssText = 'color: #333;';
-   input_.addEventListener('mouseover', () => {
-    if (popup) {
-     popup.style.display = 'none';
-    }
-   });
   }
-
-  input_.addEventListener('click', function () {
-   label_.style.cssText = 'color: #333;';
-   if (popup) {
-    popup.style.display = 'none';
-   }
-  });
  }
 }
 
 handleText();
 
-//window.addEventListener('resize', handleText);
+window.addEventListener('resize', handleText);
+window.addEventListener('click', handleText);
 
 /**********Затемнение страницы при активации селектов ******/
 window.addEventListener('click', isDark);
 
 function isDark(e) {
-
  if (e.target.classList.contains('input-field')) {
   return; //если нажат input без селекта
  }
@@ -2589,7 +2555,9 @@ function isDark(e) {
    if (eX < rectLeft1 || eX > rectRight1 || eY < rectTop1 || eY > rectBottom1) {
     if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist')) {
      setTimeout(() => {
-      document.querySelector('.header').classList.remove('body-dark');
+      document.querySelector('.search__container').classList.remove('body-dark');
+      document.querySelector('.header').classList.remove('header-dark');
+      document.querySelector('.info').classList.remove('info-dark');
      }, 100);
     }
    }
@@ -2643,7 +2611,10 @@ function handlZindex() {
  for (let item of document.querySelectorAll('.zindex15')) {
   item.classList.remove('zindex15');
  }
- document.querySelector('.header').classList.add('body-dark');
+
+ document.querySelector('.search__container').classList.add('body-dark');
+ document.querySelector('.header').classList.add('header-dark');
+ document.querySelector('.info').classList.add('info-dark');
 }
 /**********Конец затемнения страницы ******/
 
@@ -2788,7 +2759,7 @@ function changeColorYellow() {
 
 //При клике ниже желтого поля развернуть зеленую девушку 
 window.addEventListener('click', function (e) {
- if (e.clientY > info.getBoundingClientRect().top - 30) {
+ if ((e.clientY > info.getBoundingClientRect().top - 30) && !e.target.closest('.roll__new')) {
   changeColorGreen();
 
   let coef = 80;
@@ -4094,12 +4065,16 @@ popupSignin.addEventListener('click', function (e) {
 
 popupEnterDesctopExit.onclick = () => {
  popupEnterDesctop.classList.add('hide-block');
- document.querySelector('.header').classList.remove('body-dark');
+ document.querySelector('.search__container').classList.remove('body-dark');
+ document.querySelector('.header').classList.remove('header-dark');
+ document.querySelector('.info').classList.remove('info-dark');
 };
 
 btnOut.addEventListener('click', () => {
  popupEnterDesctop.classList.add('hide-block');
- document.querySelector('.header').classList.remove('body-dark');
+ document.querySelector('.search__container').classList.remove('body-dark');
+ document.querySelector('.header').classList.remove('header-dark');
+ document.querySelector('.info').classList.remove('info-dark');
 });
 
 miniBtnSignup.addEventListener('click', toRegister);
@@ -4191,7 +4166,14 @@ function closeAutorize720(e) {
  headerBottomAlert.classList.add('hide-block');
  headerEnterBtn.classList.remove('hide-block');
  popupEnter.classList.add('hide-block');
- document.querySelector('.header').classList.remove('body-dark');
+ document.querySelector('.search__container').classList.remove('body-dark');
+ document.querySelector('.header').classList.remove('header-dark');
+ document.querySelector('.info').classList.remove('info-dark');
 }
 
 /*********Конец мобильный вариант меньше 720px******/
+
+/*window.onclick = () => {
+
+ alert(window.devicePixelRatio * 100);
+};*/
