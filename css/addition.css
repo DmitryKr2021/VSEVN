@@ -1,4 +1,4 @@
-body {
+﻿body {
  width: 100vw;
 }
 
@@ -4446,7 +4446,7 @@ input[type="range"]:active::-webkit-slider-thumb {
  padding-left: 40px;
  padding-right: 20px;
 
- border: 2px solid blue;
+ *border: 2px solid blue;
 
  width: 97%;
  margin-left: 1.5%;
