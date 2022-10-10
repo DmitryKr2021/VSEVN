@@ -246,6 +246,7 @@ const inputFields = chooseWork.querySelectorAll('.input-field');
 const inputFieldsAll = document.querySelectorAll('.input-field');
 let tempValueRubr; //временное хранение вводимого значения рубрикатора
 let tempValueVacans; //временное хранение вводимого значения вакансий
+const staffInputFields = chooseStaff.querySelectorAll('.input-field');
 
 window.addEventListener('click', showInput);
 
@@ -1048,131 +1049,120 @@ function doApply(e) { //По кнопке Применить
 /*************Конец блока селекты************** */
 
 
-/*********Управление доп.ползунком в Range1******** */
+/****************Шкала Зарплата************ */
+
+const salary = chooseWork.querySelector('.salary');
+const salary_min = salary.querySelector('.salary-min');
+const salary_max = salary.querySelector('.salary-max');
+const salMinMax = salary.querySelector('.salary-min-max');
+const salWidthInitial = salMinMax.offsetWidth;
 const salaryMax = 100000;
 const salaryMin = 20000;
 const range1 = document.querySelector('.range1');
-range1.value = salaryMax;
-const salary = document.querySelector('.salary');
-const salaryMark = document.querySelector('.salary__mark');
-const salaryMarkWrap = document.querySelector('.salary__mark--wrap');
-let range1Progress;
-var smw = 0;
-const correct = 21; //поправка на размер mark-wrap
-const salMinMax = document.querySelector('.salary-min-max');
-const salMin = document.querySelector('.salary-min');
-const salMax = document.querySelector('.salary-max');
-const salWidthInitial = salMinMax.offsetWidth;
-let salWidth = salary.getBoundingClientRect().right - salary.getBoundingClientRect().left;
-
-range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${0}%, #ec0303 ${0}%, #ec0303 100%)`;
-
-salaryMarkWrap.addEventListener('mousedown', handlerMark);
-
-salaryMarkWrap.addEventListener('mouseout', stopHandler);
-
-function stopHandler(e) {
- salaryMark.classList.remove('salary__mark--active');
-}
+const workMarkLeft = chooseWork.querySelector('.mark-left');
+const workMarkLeftWrap = chooseWork.querySelector('.salary__mark-left--wrap');
+const workMarkRight = chooseWork.querySelector('.mark-right');
+const workMarkRightWrap = chooseWork.querySelector('.salary__mark-right--wrap');
+const correct = 21;
 
 function showSalary(value, text) { //Показать на шкале з/плату с нужной точностью
- if (text == salMin) {
-  if (value < 25000) {
-   text.innerText = Math.floor(value / 1000) * 1000;
-  } else {
-   text.innerText = Math.round((value - 10000) / 5000) * 5000;
-  }
+ if (value < 25000) {
+  text.innerText = Math.floor(value / 1000) * 1000;
  } else {
-  if (value < 25000) {
-   text.innerText = Math.floor(value / 1000) * 1000;
-  } else {
-   text.innerText = Math.round(value / 5000) * 5000;
-  }
- }
- let d = (value - salaryMin) / (salaryMax - salaryMin) * range1.offsetWidth;
- salMinMax.style.width = d - salaryMarkWrap.getBoundingClientRect().left + 'px';
-}
-
-
-function showAge(value, text) { //Показать на шкале возраст с нужной точностью
- if (value < 20) {
-  text.innerText = Math.round(value);
- } else {
-  text.innerText = Math.round(value / 5) * 5;
+  text.innerText = Math.round(value / 5000) * 5000;
  }
 }
 
-function handlerMark(e) {
- salaryMark.classList.add('salary__mark--active');
- salaryMarkWrap.onmouseout = () => {
-  salaryMark.classList.remove('salary__mark--active');
- };
+//Left
 
- e.preventDefault();
- let shiftX = e.clientX - salaryMarkWrap.getBoundingClientRect().left;
+workMarkLeftWrap.addEventListener('mousedown', salaryLeftHandler);
 
- document.addEventListener('mousemove', onMouseMove);
- document.addEventListener('mouseup', onMouseUp);
+function salaryLeftHandler(e) {
+ let shiftX = e.clientX - e.target.getBoundingClientRect().left;
 
- function onMouseMove(e) {
-  salaryMark.classList.add('salary__mark--active');
+ document.addEventListener('mousemove', salaryLeftMouseMove);
+ document.addEventListener('mouseup', salaryLeftMouseUp);
 
+ function salaryLeftMouseMove(e) {
+  e.preventDefault();
+  chooseWork.querySelector('.salary__mark-left').classList.add('mark--active');
   let newLeft = e.clientX - shiftX - salary.getBoundingClientRect().left;
-
   if (newLeft < 0) {
    newLeft = 0;
   }
-  let rightEdge =
-   salary.offsetWidth * (range1.value - salaryMin) / (salaryMax - salaryMin) - salaryMarkWrap.offsetWidth;
+
+  let rightEdge = parseFloat(getComputedStyle(salary_max).left) + correct * 2 - workMarkLeftWrap.offsetWidth;
 
   if (newLeft > rightEdge) {
    newLeft = rightEdge;
   }
+  workMarkLeftWrap.style.left = newLeft - correct + 'px';
+  let leftShift = newLeft / salary.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary_max).left) + 45) / salary.offsetWidth * 100;
 
-  salaryMarkWrap.style.left = newLeft - correct + 'px';
-  range1Progress = (range1.value - salaryMin) / (salaryMax - salaryMin) * 100;
+  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
-  smw = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * 100;
-  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${smw}%, #ec0303 ${smw}%, #ec0303 ${range1Progress}%, #fff ${range1Progress}%, #fff 100%)`;
+  let salaryMinText = (salaryMin + (salaryMax - salaryMin) * newLeft / salary.offsetWidth);
+  showSalary(salaryMinText, salary_min);
 
-  let salMinValue = smw * salaryMax / 100 + salaryMin;
-
-  showSalary(salMinValue, salMin);
-
-  let d = ((range1.value - salaryMin) * (salary.offsetWidth) / (salaryMax - salaryMin));
-  salMinMax.style.width = d - salaryMarkWrap.getBoundingClientRect().left + 'px';
-  salMinMax.style.left = smw * salWidthInitial / 100 + 'px';
+  salary_min.style.left = newLeft + 'px';
  }
 
- function onMouseUp() {
-  document.removeEventListener('mousemove', onMouseMove);
-  document.removeEventListener('mouseup', onMouseUp);
-  salaryMark.classList.remove('salary__mark--active');
+ function salaryLeftMouseUp() {
+  document.removeEventListener('mousemove', salaryLeftMouseMove);
+  document.removeEventListener('mouseup', salaryLeftMouseUp);
+  chooseWork.querySelector('.salary__mark-left').classList.remove('mark--active');
  }
-
- salaryMark.ondragstart = function () {
-  return false;
- };
 }
 
-range1.oninput = () => {
- if (range1.value < (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * (salaryMax - salaryMin) + salaryMin) {
-  range1.value = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * (salaryMax - salaryMin) + salaryMin;
+//Right 
+
+workMarkRightWrap.addEventListener('mousedown', salaryRightHandler);
+
+function salaryRightHandler(e) {
+ let shiftX = e.clientX - e.target.getBoundingClientRect().left;
+
+ document.addEventListener('mousemove', salaryRightMouseMove);
+ document.addEventListener('mouseup', salaryRightMouseUp);
+
+ function salaryRightMouseMove(e) {
+  e.preventDefault();
+  chooseWork.querySelector('.salary__mark-right').classList.add('mark--active');
+
+  let newLeft = e.clientX - shiftX - salary.getBoundingClientRect().left;
+  if (newLeft < 0) {
+   newLeft = 0;
+  }
+  let rightEdge = salary.offsetWidth - workMarkRightWrap.offsetWidth + correct * 2;
+  if (newLeft > rightEdge) {
+   newLeft = rightEdge;
+  }
+
+  let leftEdge = parseFloat(getComputedStyle(salary_min).left) + correct * 3 - workMarkRightWrap.offsetWidth;
+  if (newLeft < leftEdge) {
+   newLeft = leftEdge;
+  }
+
+  workMarkRightWrap.style.left = newLeft - correct + 'px';
+
+  let rightShift = newLeft / salary.offsetWidth * 100;
+  let leftShift = (parseFloat(getComputedStyle(salary_min).left)) / salary.offsetWidth * 100;
+  salary_max.style.left = newLeft - 50 + 'px';
+
+  range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
+
+  let salarymaxText = (salaryMin + (salaryMax - salaryMin) * (newLeft + 18) / salary.offsetWidth);
+  showSalary(salarymaxText, salary_max);
  }
 
- range1Progress = (range1.value - salaryMin) / (salaryMax - salaryMin) * 100;
- if (!salaryMarkWrap.style.left) {
-  salaryMarkWrap.style.left = -correct + 'px';
+ function salaryRightMouseUp() {
+  document.removeEventListener('mousemove', salaryRightMouseMove);
+  document.removeEventListener('mouseup', salaryRightMouseUp);
+  chooseWork.querySelector('.salary__mark-right').classList.remove('mark--active');
  }
- smw = (parseFloat(salaryMarkWrap.style.left) + correct) / salWidth * 100;
+}
+/****************Конец шкала Зарплата************ */
 
- range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${smw}%, #ec0303 ${smw}%, #ec0303 ${range1Progress}%, #fff ${range1Progress}%, #fff 100%)`;
-
- //Вывод зарплаты с округлением
- showSalary(range1.value, salMax);
-};
-
-/**********Конец блока Управление доп.ползунком в Range1********/
 
 /*********Работа с кнопкой Очистить вкладка Поиск работы*********/
 resetAll.addEventListener('click', resetInputs);
@@ -1204,12 +1194,23 @@ function resetInputs() {
  resetAll.classList.add('hide-block');
 
  setTimeout(() => {
-  range1.value = salaryMax;
-  salMax.innerText = salaryMax;
-  salMin.innerText = 20000;
+  salary_max.innerText = salaryMax;
+  salary_min.innerText = salaryMin;
   salMinMax.style.width = salWidthInitial + 'px';
-  salMinMax.style.left = 0 + 'px';
-  salaryMarkWrap.style.left = -correct + 'px';
+  salary_min.style.left = 0 + 'px';
+  salary_max.style.left = salWidthInitial - 70 + 'px';
+
+  function resetLeft(arg) {
+   arg.style.left = -correct + 'px';
+  }
+
+  function resetRigh(arg, rect) {
+   const rectBound = rect.getBoundingClientRect();
+   arg.style.left = rectBound.right - rectBound.left - 40 + 'px';
+  }
+  resetLeft(document.querySelector('.salary__mark-left--wrap'));
+  resetRigh(document.querySelector('.salary__mark-right--wrap'), salary);
+
  }, 10);
 }
 /*************Конец Работа с кнопкой Очистить ************** */
@@ -1247,7 +1248,7 @@ const experienceMinMax = experience_.querySelector('.experience__min-max');
 
 /**********Работа с селектами*****************/
 
-const staffInputFields = chooseStaff.querySelectorAll('.input-field');
+//const staffInputFields = chooseStaff.querySelectorAll('.input-field'); Определено выше в работе с полями
 const staffInputSelects = chooseStaff.querySelectorAll('.inputselect');
 const staffInputContainerUls = chooseStaff.querySelectorAll('.input-container__ul');
 const staffInputContainerItems = chooseStaff.querySelectorAll('.input-container__item');
@@ -1311,6 +1312,14 @@ function handlerStaffMark(e) {
 }
 
 /****************Шкала Возраст************ */
+function showAge(value, text) { //Показать на шкале возраст с нужной точностью
+ if (value < 20) {
+  text.innerText = Math.round(value);
+ } else {
+  text.innerText = Math.round(value / 5) * 5;
+ }
+}
+
 //Left
 
 document.querySelector('.age__mark-left--wrap').addEventListener('mousedown', ageLeftHandler);
@@ -1478,7 +1487,7 @@ function salary1RightHandler(e) {
   let rightShift = newLeft / salary1_.offsetWidth * 100;
   let leftShift = (parseFloat(getComputedStyle(salary1_min).left)) / salary1_.offsetWidth * 100;
 
-  salary1_max.style.left = newLeft - 30 + 'px';
+  salary1_max.style.left = newLeft - 50 + 'px';
 
   rangeSalary1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1624,6 +1633,11 @@ function staffResetInputs() {
   experience_min.style.left = 0 + 'px';
 
   function resetMax(arg, wrap) {
+   let correct = 30;
+   if (arg == salary1_max) {
+    correct = 65;
+   }
+
    const rect = wrap.getBoundingClientRect();
    arg.style.left = rect.right - rect.left - correct + 'px';
   }
@@ -1803,7 +1817,7 @@ function salary2RightHandler(e) {
   let rightShift = newLeft / salary2_.offsetWidth * 100;
   let leftShift = (parseFloat(getComputedStyle(salary2_min).left)) / salary2_.offsetWidth * 100;
 
-  salary2_max.style.left = newLeft - 30 + 'px';
+  salary2_max.style.left = newLeft - 50 + 'px';
 
   range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1849,7 +1863,7 @@ function anyResetInputs() {
 
   function anyResetMax(arg, wrap) {
    const rect = wrap.getBoundingClientRect();
-   arg.style.left = rect.right - rect.left - 50 + 'px';
+   arg.style.left = rect.right - rect.left - 65 + 'px';
   }
 
   anyResetMax(salary2_max, salary2MinMax);
@@ -2678,16 +2692,16 @@ function changeColorGreen() {
  green = true;
 
  //Длинное имя в дымку
- for (let item of cardPretendents) {
+ /*for (let item of cardPretendents) {
   if (item.querySelector('span')) {
    itemSpan = item.querySelector('span');
    spanText = itemSpan.innerText;
    if (spanText.length > 30) {
     item.querySelector('span').style.cssText =
      `background: linear-gradient(to right, 
-          rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%,
-          rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+           rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%,
+           rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent);
+           -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
    }
 
    itemSpan.addEventListener('mouseover', function () {
@@ -2704,14 +2718,14 @@ function changeColorGreen() {
 
  function popupSpanRemove() {
   popupSpan.remove();
- }
+ }*/
 
 
  //Дымка в описании вакансии
  //const cardDescs = document.querySelectorAll('.card__desc');
- let popupDesc = document.createElement('div'); //для перевода в дымку;
+ //let popupDesc = document.createElement('div'); //для перевода в дымку;
 
- function SmokeInVacancion() {
+ /*function SmokeInVacancion() {
 
   let goSmoke = function (e) {
    const li_ = e.currentTarget;
@@ -2741,7 +2755,7 @@ function changeColorGreen() {
 
  function popupDescRemove() {
   popupDesc.remove();
- }
+ }*/
 }
 
 for (let btn of resetAlls) {
@@ -2793,6 +2807,7 @@ window.addEventListener('scroll', function () {
 
 
 /**************Перевод в дымку в левом поле**************** */
+const cardPretendents = document.querySelectorAll('.card__pretendent');
 window.addEventListener('resize', handleTextToSmoke);
 window.addEventListener('load', handleTextToSmoke);
 
@@ -2802,13 +2817,17 @@ let popupName = document.createElement('div'); //для перевода в ды
 function handleTextToSmoke() {
  let coef = 80;
  for (let item of cardNames) {
-  if (item.scrollWidth > item.offsetWidth) {
+  if (item.scrollWidth > item.offsetWidth && item.offsetWidth < 620) {
    item.style.cssText =
-    `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, #629f0010 ${coef*1.2}%); 
+    `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
      -webkit-background-clip: text; 
      -webkit-text-fill-color: transparent;`;
    item.addEventListener('mouseover', showNamePopup);
+  } else {
+   item.style.cssText = '';
+   item.removeEventListener('mouseover', showNamePopup);
   }
+
   item.addEventListener('mouseout', popupNameRemove);
 
   if (item.offsetWidth < 450) {
@@ -2834,6 +2853,54 @@ function handleTextToSmoke() {
    }
   }
  }
+
+ for (let item of cardPretendents) {
+  let coef = 75;
+  if (item.offsetWidth < 390) {
+   item.style.cssText =
+    `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
+     -webkit-background-clip: text; 
+     -webkit-text-fill-color: transparent;`;
+   item.addEventListener('mouseover', showNamePopup);
+  } else {
+   item.style.cssText = '';
+   item.removeEventListener('mouseover', showNamePopup);
+  }
+
+  item.addEventListener('mouseout', popupNameRemove);
+
+  /*if (item.offsetWidth < 450) {
+   for (let item of cardDescs) {
+    const descLi = item.querySelector('li');
+    coef = 27 * 130 / descLi.innerText.length;
+    if (descLi.innerText.length > 130) {
+     if (descLi.querySelector('.to-smoke')) {
+      descLi.querySelector('.to-smoke').style.cssText =
+       `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
+         -webkit-background-clip: text; 
+         -webkit-text-fill-color: transparent;`;
+     }
+     descLi.addEventListener('mouseover', showNamePopup);
+     descLi.addEventListener('mouseout', popupNameRemove);
+    }
+   }
+  } else {
+   for (let item of cardDescs) {
+    if (item.querySelector('.to-smoke')) {
+     item.querySelector('.to-smoke').style.cssText = '';
+    }
+   }
+  }*/
+ }
+
+
+
+
+
+
+
+
+
 }
 
 function showNamePopup(e) {
@@ -3056,7 +3123,8 @@ function showCompanyCard(e) {
 const infoOffer = document.querySelector('.info__offer');
 const cardFabrics = document.querySelectorAll('.card__fabric');
 const pretendentCard = document.querySelector('.pretendent-card');
-const cardPretendents = document.querySelectorAll('.card__pretendent');
+//const cardPretendents = document.querySelectorAll('.card__pretendent'); 
+//Определено выше в Переводе в дымку в левом поле
 
 //Запретить переход по ссылкам в карточках
 const cardCol = document.querySelectorAll('.card__col');
