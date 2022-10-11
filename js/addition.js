@@ -1098,7 +1098,7 @@ function salaryLeftHandler(e) {
   }
   workMarkLeftWrap.style.left = newLeft - correct + 'px';
   let leftShift = newLeft / salary.offsetWidth * 100;
-  let rightShift = (parseFloat(getComputedStyle(salary_max).left) + 45) / salary.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary_max).left) + 50) / salary.offsetWidth * 100;
 
   range1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1437,7 +1437,7 @@ function salary1LeftHandler(e) {
   }
   chooseStaff.querySelector('.salary1__mark-left--wrap').style.left = newLeft - correct + 'px';
   let leftShift = newLeft / salary1_.offsetWidth * 100;
-  let rightShift = (parseFloat(getComputedStyle(salary1_max).left) + 35) / salary1_.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary1_max).left) + 50) / salary1_.offsetWidth * 100;
 
   rangeSalary1.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -1767,7 +1767,7 @@ function salary2LeftHandler(e) {
   }
   chooseAny.querySelector('.salary2__mark-left--wrap').style.left = newLeft - correct + 'px';
   let leftShift = newLeft / salary2_.offsetWidth * 100;
-  let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 45) / salary2_.offsetWidth * 100;
+  let rightShift = (parseFloat(getComputedStyle(salary2_max).left) + 50) / salary2_.offsetWidth * 100;
 
   range3.style.background = `linear-gradient(to right, #fff 0%, #fff ${leftShift}%, #ec0303 ${leftShift}%, #ec0303 ${rightShift}%, #fff ${rightShift}%, #fff 100%)`;
 
@@ -2567,7 +2567,7 @@ function isDark(e) {
 
   if (eX < rectLeft || eX > rectRight || eY < rectTop || eY > rectBottom) {
    if (eX < rectLeft1 || eX > rectRight1 || eY < rectTop1 || eY > rectBottom1) {
-    if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist')) {
+    if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist') && !e.currentTarget.classList.contains('choose-autorize__item')) {
      setTimeout(() => {
       document.querySelector('.search__container').classList.remove('body-dark');
       document.querySelector('.header').classList.remove('header-dark');
@@ -2644,12 +2644,8 @@ const tabsBodys = document.querySelectorAll('.tabs__body');
 const girlWrapper = document.querySelector('.girl__wrapper');
 let green = false;
 const cardRowRights = document.querySelectorAll('.card__row-right');
-let itemSpan; //для перевода длинного имени в дымку
-let popupSpan = document.createElement('div'); //для перевода длинного имени в дымку
-let spanText; //для перевода длинного имени в дымку
 const cardNames = document.querySelectorAll('.card__name');
 const cardDescs = document.querySelectorAll('.card__desc');
-let popupName = document.createElement('div'); //для перевода в дымку;
 let arrYellow = [];
 arrYellow[0] = 'yellow';
 for (let i = 1; i < 18; i++) {
@@ -2690,72 +2686,6 @@ function changeColorGreen() {
   item.classList.add('card__row-rightcolumn');
  }
  green = true;
-
- //Длинное имя в дымку
- /*for (let item of cardPretendents) {
-  if (item.querySelector('span')) {
-   itemSpan = item.querySelector('span');
-   spanText = itemSpan.innerText;
-   if (spanText.length > 30) {
-    item.querySelector('span').style.cssText =
-     `background: linear-gradient(to right, 
-           rgba(97, 159, 0, 1)60%, rgba(97, 159, 0, 0.5) 70%,
-           rgba(97, 159, 0, 0.2) 75%, transparent 90%, transparent);
-           -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
-   }
-
-   itemSpan.addEventListener('mouseover', function () {
-    popupSpan.innerText = spanText;
-    popupSpan.classList.add('input-popup');
-    itemSpan.before(popupSpan);
-    popupSpan.style.top = item.querySelector('span').getBoundingClientRect().top - 50 + 'px';
-    popupSpan.style.left = item.querySelector('span').getBoundingClientRect().left + 'px';
-   });
-
-   itemSpan.addEventListener('mouseout', popupSpanRemove);
-  }
- }
-
- function popupSpanRemove() {
-  popupSpan.remove();
- }*/
-
-
- //Дымка в описании вакансии
- //const cardDescs = document.querySelectorAll('.card__desc');
- //let popupDesc = document.createElement('div'); //для перевода в дымку;
-
- /*function SmokeInVacancion() {
-
-  let goSmoke = function (e) {
-   const li_ = e.currentTarget;
-   popupDesc.innerText = li_.innerText;
-   popupDesc.classList.add('input-popup');
-   li_.before(popupDesc);
-   popupDesc.style.top = li_.getBoundingClientRect().top - 50 + 'px';
-   popupDesc.style.left = li_.getBoundingClientRect().left + 'px';
-  };
-
-  for (let item of cardDescs) {
-   const descLi = item.querySelector('li');
-   if (descLi.innerText.length > 130) {
-    let coef = 27 * 130 / descLi.innerText.length;
-    if (descLi.querySelector('.to-smoke')) {
-     descLi.querySelector('.to-smoke').style.cssText =
-      `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;`;
-    }
-    descLi.addEventListener('mouseover', goSmoke);
-    descLi.addEventListener('mouseout', popupDescRemove);
-   }
-  }
- }
- SmokeInVacancion();
-
- function popupDescRemove() {
-  popupDesc.remove();
- }*/
 }
 
 for (let btn of resetAlls) {
@@ -2810,11 +2740,9 @@ window.addEventListener('scroll', function () {
 const cardPretendents = document.querySelectorAll('.card__pretendent');
 window.addEventListener('resize', handleTextToSmoke);
 window.addEventListener('load', handleTextToSmoke);
+let popupName = document.createElement('div'); //для перевода в дымку;
 
-/*const cardNames = document.querySelectorAll('.card__name');
-let popupName = document.createElement('div'); //для перевода в дымку;*/ //Определены выше в расширении/сужении полей
-
-function handleTextToSmoke() {
+function cardNamesToSmoke() {
  let coef = 80;
  for (let item of cardNames) {
   if (item.scrollWidth > item.offsetWidth && item.offsetWidth < 620) {
@@ -2827,33 +2755,25 @@ function handleTextToSmoke() {
    item.style.cssText = '';
    item.removeEventListener('mouseover', showNamePopup);
   }
-
   item.addEventListener('mouseout', popupNameRemove);
+ }
+}
 
-  if (item.offsetWidth < 450) {
-   for (let item of cardDescs) {
-    const descLi = item.querySelector('li');
-    coef = 27 * 130 / descLi.innerText.length;
-    if (descLi.innerText.length > 130) {
-     if (descLi.querySelector('.to-smoke')) {
-      descLi.querySelector('.to-smoke').style.cssText =
-       `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
-         -webkit-background-clip: text; 
-         -webkit-text-fill-color: transparent;`;
-     }
-     descLi.addEventListener('mouseover', showNamePopup);
-     descLi.addEventListener('mouseout', popupNameRemove);
-    }
-   }
+function cardDescsToSmoke() {
+ const charWidth = 7.5;
+ for (let item of cardDescs) {
+  let maxCharCount = Math.round(2 * item.offsetWidth / charWidth);
+  let thisStr = item.querySelector('li').innerText;
+  if (thisStr.length > (maxCharCount - 5)) {
+   item.querySelector('li').addEventListener('mouseover', showNamePopup);
+   item.querySelector('li').addEventListener('mouseout', popupNameRemove);
   } else {
-   for (let item of cardDescs) {
-    if (item.querySelector('.to-smoke')) {
-     item.querySelector('.to-smoke').style.cssText = '';
-    }
-   }
+   item.querySelector('li').removeEventListener('mouseover', showNamePopup);
   }
  }
+}
 
+function cardPretendentsToSmoke() {
  for (let item of cardPretendents) {
   let coef = 75;
   if (item.offsetWidth < 390) {
@@ -2866,41 +2786,14 @@ function handleTextToSmoke() {
    item.style.cssText = '';
    item.removeEventListener('mouseover', showNamePopup);
   }
-
   item.addEventListener('mouseout', popupNameRemove);
-
-  /*if (item.offsetWidth < 450) {
-   for (let item of cardDescs) {
-    const descLi = item.querySelector('li');
-    coef = 27 * 130 / descLi.innerText.length;
-    if (descLi.innerText.length > 130) {
-     if (descLi.querySelector('.to-smoke')) {
-      descLi.querySelector('.to-smoke').style.cssText =
-       `background: linear-gradient(to right, #222 ${coef}%, #888 ${coef*1.1}%, #eee ${coef*1.2}%); 
-         -webkit-background-clip: text; 
-         -webkit-text-fill-color: transparent;`;
-     }
-     descLi.addEventListener('mouseover', showNamePopup);
-     descLi.addEventListener('mouseout', popupNameRemove);
-    }
-   }
-  } else {
-   for (let item of cardDescs) {
-    if (item.querySelector('.to-smoke')) {
-     item.querySelector('.to-smoke').style.cssText = '';
-    }
-   }
-  }*/
  }
+}
 
-
-
-
-
-
-
-
-
+function handleTextToSmoke() {
+ cardNamesToSmoke();
+ cardDescsToSmoke();
+ cardPretendentsToSmoke();
 }
 
 function showNamePopup(e) {
@@ -4002,10 +3895,45 @@ const liAutorize = document.querySelector('.li-autorize');
 const aAutorize = document.querySelector('.a-autorize');
 const autorize = document.querySelector('.autorize');
 const dropdownAutorizes = document.querySelectorAll('.dropdown-autorize');
+const btnRegist = document.querySelector('.btn-regist');
 const btnEnter = document.querySelector('.btn-enter');
 const btnOut = document.querySelector('.btn-out');
+const popupEnterDesctop = document.querySelector('.popup-enterDesctop');
+const chooseAutorize = document.querySelector('.choose-autorize');
+const chooseAutorizeItems = document.querySelectorAll('.choose-autorize__item');
+let enterOf;
+
+function scalePopup() {
+ if (window.devicePixelRatio * 100 > 120) {
+  popupEnterDesctop.classList.add('scale');
+ } else {
+  popupEnterDesctop.classList.remove('scale');
+ }
+}
+
+btnRegist.addEventListener('click', function () {
+ scalePopup();
+});
 
 btnEnter.addEventListener('click', function () {
+ scalePopup();
+ chooseAutorize.classList.remove('hide-block');
+});
+
+chooseAutorizeItems[1].addEventListener('mouseover', function (e) {
+ chooseAutorizeItems[0].classList.remove('active');
+});
+chooseAutorize.addEventListener('mouseout', function (e) {
+ chooseAutorizeItems[0].classList.add('active');
+});
+
+for (let item of chooseAutorizeItems) {
+ item.addEventListener('click', enterSite);
+}
+
+function enterSite(e) {
+ enterOf = e.currentTarget.getAttribute('data-enter');
+ chooseAutorize.classList.add('hide-block');
  ulUnautorize.classList.add('hide-block');
  ulAutorize.classList.remove('hide-block');
  autorize.classList.remove('hide-block');
@@ -4014,7 +3942,27 @@ btnEnter.addEventListener('click', function () {
  for (let item of dropdownAutorizes) {
   item.classList.remove('hide-block');
  }
-});
+ popupEnterDesctop.classList.remove('hide-block');
+ toEnter(e);
+ handlZindex();
+ if (enterOf === 'pretendent') {
+  correctEnter();
+ }
+}
+
+function correctEnter() {
+ //коррекция шапки и бургера, если вошел соискатель
+ document.querySelector('.open-contacts').classList.add('hide-block');
+ for (let item of document.querySelectorAll('.employer-only')) {
+  item.classList.add('hide-block');
+ }
+ liAutorize.classList.add('lock');
+ aAutorize.classList.add('lock');
+ for (let item of dropdownAutorizes) {
+  item.classList.add('hide-block');
+ }
+}
+
 btnOut.addEventListener('click', function () {
  ulUnautorize.classList.remove('hide-block');
  ulAutorize.classList.add('hide-block');
@@ -4106,7 +4054,6 @@ popupSlideShow();
 /*****Регистрация******/
 const popupSignin = document.querySelector('a[data-popup="#popup-signin"]');
 const popupEnter_ = document.querySelector('a[data-popup="#popup-enter"]');
-
 const miniBtnSignup = document.querySelector('.sigIn-btn');
 const topEnter1 = document.querySelector('.top__enter1');
 const topEnter2 = document.querySelector('.top__enter2');
@@ -4116,14 +4063,7 @@ const signup1 = document.querySelector('.signup1');
 const signup2 = document.querySelector('.signup2');
 const pre1 = document.querySelector('.pre1');
 const pre2 = document.querySelector('.pre2');
-const popupEnterDesctop = document.querySelector('.popup-enterDesctop');
 const popupEnterDesctopExit = document.querySelector('.popup-enterDesctop__exit');
-
-popupEnter_.addEventListener('click', function (e) {
- popupEnterDesctop.classList.remove('hide-block');
- toEnter(e);
- handlZindex();
-});
 
 popupSignin.addEventListener('click', function (e) {
  popupEnterDesctop.classList.remove('hide-block');
@@ -4143,6 +4083,10 @@ btnOut.addEventListener('click', () => {
  document.querySelector('.search__container').classList.remove('body-dark');
  document.querySelector('.header').classList.remove('header-dark');
  document.querySelector('.info').classList.remove('info-dark');
+ document.querySelector('.open-contacts').classList.remove('hide-block');
+ for (let item of document.querySelectorAll('.employer-only')) {
+  item.classList.remove('hide-block');
+ }
 });
 
 miniBtnSignup.addEventListener('click', toRegister);
@@ -4190,7 +4134,7 @@ window.addEventListener('click', function (e) {
   const eY = e.clientY;
 
   if (eX < rectLeft1 || eX > rectRight1 || eY < rectTop1 || eY > rectBottom1) {
-   popupEnterDesctop.classList.add('hide-block');
+   //popupEnterDesctop.classList.add('hide-block');
   }
  }
 });
@@ -4240,8 +4184,3 @@ function closeAutorize720(e) {
 }
 
 /*********Конец мобильный вариант меньше 720px******/
-
-/*window.onclick = () => {
-
- alert(window.devicePixelRatio * 100);
-};*/

@@ -179,6 +179,27 @@ body {
  fill: var(--bg-red);
 }
 
+.header__bottom-wrap .choose-autorize {
+ position: absolute;
+ top: 0px;
+ right: 20px;
+ z-index: 10000;
+ background-color: #fff;
+ padding: 10px 20px;
+}
+
+.choose-autorize__item {
+ transition: 0.3s;
+ padding: 5px;
+}
+
+.choose-autorize__item.active {
+ background-color: var(--bg-yellow);
+}
+.choose-autorize__item:hover {
+ background-color: var(--bg-yellow);
+}
+
 .ul-unautorize {
  margin-top: -5px;
 }
@@ -357,9 +378,11 @@ body {
  display: block;
  position: relative;
  width: 30px;
- height: 18px;
+ /*height: 18px;*/
+ height: 15px;
  cursor: pointer;
  z-index: 5;
+ border: 1px solid transparent;
 }
 
 .icon-menu span,
@@ -375,15 +398,17 @@ body {
 }
 
 .icon-menu::before {
- top: 16px;
+ /*top: 16px;*/
+ top: 13px;
 }
 
 .icon-menu::after {
- bottom: 16px;
+ /*bottom: 16px;*/
+ bottom: 13px;
 }
 
 .icon-menu span {
- top: calc(48% - 1px);
+ top: 5px;
 }
 
 .menu-open .icon-menu span {
@@ -471,6 +496,11 @@ body {
  z-index: 600;
  border-radius: 10px;
  height: 848px;
+}
+
+.popup-enterDesctop.scale {
+ top: -20px;
+ transform: translateX(-50%) scale(0.8);
 }
 
 .popup-enterDesctop__exit {
@@ -2664,8 +2694,6 @@ body {
  width: 100%;
  height: 900px;
  overflow: hidden;
-
- border: 1px solid red;
 }
 
 @media (max-width: 500px) {
@@ -4460,9 +4488,6 @@ body {
  margin-top: 15px;
  padding-left: 40px;
  padding-right: 20px;
-
- border: 2px solid blue;
-
  width: 97%;
  margin-left: 1.5%;
 }
@@ -4772,6 +4797,9 @@ body {
 }
 
 .card__desc {
+ display: flex;
+ flex-wrap: wrap;
+ font-weight: 300;
  margin-bottom: 10px;
 }
 
@@ -4892,17 +4920,32 @@ body {
 .card__col .card__desc {
  margin-top: 9px;
  /*width: 96%;*/
- overflow-x: hidden;
+ /*overflow-x: hidden;*/
 }
 
 .card__col .card__desc li {
+ position: relative;
  font-size: 16px;
  color: var(--vacansion-light);
  padding-bottom: 2px;
  line-height: 145%;
- /*white-space: nowrap;*/
  overflow-y: hidden;
  max-height: 45px;
+ word-wrap: break-word;
+ overflow-wrap: break-word;
+ -webkit-hyphens: auto;
+ hyphens: auto;
+ word-break: break-all;
+}
+
+.card__col .card__desc li:after {
+ content: '';
+ position: absolute;
+ top: 25px;
+ right: 0;
+ width: 70px;
+ height: 20px;
+ background: linear-gradient(to right, rgba(250, 250, 250, 0.3), #fff);
 }
 
 .card__col .card__wrap button {

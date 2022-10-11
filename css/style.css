@@ -6361,39 +6361,6 @@ input {
  }
 }
 
-.card__desc {
- display: flex;
- flex-wrap: wrap;
- font-weight: 300;
-}
-
-@media (min-width: 101.875em) {
- .card__desc {
-  margin-bottom: 1.25rem;
- }
-}
-
-@media (min-width: 20em) and (max-width: 101.875em) {
- .card__desc {
-  margin-bottom: clamp(0.9375rem, 0.8611641221rem + 0.3816793893vw, 1.25rem);
- }
-}
-
-@media (max-width: 20em) {
- .card__desc {
-  margin-bottom: 0.9375rem;
- }
-}
-
-/*.card__desc li span {
-  display: inline-block;
-  margin-left: 1px;
-  margin-right: 4px;
-}
-
-.card__desc li span:not(.card__separator) {
-  font-weight: 500;
-}*/
 
 .card__desc--col {
  flex-direction: column;
