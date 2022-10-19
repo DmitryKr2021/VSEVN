@@ -196,6 +196,7 @@ body {
 .choose-autorize__item.active {
  background-color: var(--bg-yellow);
 }
+
 .choose-autorize__item:hover {
  background-color: var(--bg-yellow);
 }
@@ -4592,7 +4593,6 @@ body {
 .select__date,
 .select__period {
  position: absolute;
- *top: 30px;
  top: 28px;
  left: -1px;
  width: calc(100% + 2px);
@@ -4811,15 +4811,10 @@ body {
 }
 
 .card__col .card__supname a {
- /*font-size: 18px;*/
  font-size: 20px;
  font-weight: 500;
  line-height: 120%;
 }
-
-/*.card-up .card__supname a {
- padding-bottom: 5px;
-}*/
 
 .card__col .card__num {
  position: absolute;
@@ -4831,7 +4826,6 @@ body {
 .card__col .card__favorite {
  margin-top: -10px;
  font-size: 16px;
- /*font-size: 17px;*/
  height: 25px;
  margin-bottom: 10px;
  color: #619f00;

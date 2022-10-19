@@ -7120,23 +7120,6 @@ input {
  }
 }
 
-@media (min-width: 20em) and (max-width: 101.875em) {
- .datepicker-elem input {
-  font-size: clamp(0.875rem, 0.8444656489rem + 0.1526717557vw, 1rem);
- }
-}
-
-@media (max-width: 20em) {
- .datepicker-elem input {
-  font-size: 0.875rem;
- }
-}
-
-@media (min-width: 101.875em) {
- .datepicker-elem input {
-  margin-right: 0.9375rem;
- }
-}
 
 @media (min-width: 20em) and (max-width: 101.875em) {
  .datepicker-elem input {

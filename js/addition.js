@@ -2686,6 +2686,7 @@ function changeColorGreen() {
   item.classList.add('card__row-rightcolumn');
  }
  green = true;
+
 }
 
 for (let btn of resetAlls) {
@@ -2717,6 +2718,10 @@ window.addEventListener('click', function (e) {
    }
    item.addEventListener('mouseout', popupNameRemove);
   }
+
+  setTimeout(() => {
+   cardDescsToSmoke();
+  }, 1000); //уйти от контекста клика windows
  }
 });
 
@@ -2727,7 +2732,6 @@ window.addEventListener('scroll', function () {
   if (girlWrapper.classList.contains('fixed2')) {
    girlWrapper.classList.add('fixed3');
   }
-  //girlWrapper.style.left = infoWindow.getBoundingClientRect().left + infoWindow.clientWidth / 2 + -275 + 'px';
  } else {
   girlWrapper.classList.remove('fixed1');
   girlWrapper.classList.remove('fixed3');
