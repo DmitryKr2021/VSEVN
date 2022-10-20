@@ -309,6 +309,7 @@ function showInputReset(e) {
 function hideInputReset(e) {
  e.target.classList.add('hide-block');
  let targ = e.target.parentNode;
+ targ.querySelector('.apply').classList.add('apply-after'); //дезактивировать кнопку "Применить"
 
  if (targ.querySelector('.input-field')) {
   targ.querySelector('.input-field').value = '';
@@ -782,6 +783,10 @@ for (let item of document.querySelectorAll('.input-container__item')) {
 }
 
 function showAllItemSelected(e) {
+
+ e.target.closest('.input-container').querySelector('.apply').classList.remove('apply-after');
+ //активировать кнопку "Применить"
+
  //Показать выбранный select и спрятать placeholder на всех вкладках
  let targ;
  if (e.target.tagName === 'LI') {
@@ -951,8 +956,8 @@ function addWide2(e) {
 }
 
 function removeWide2(e) {
- /*document.getElementById('inp_cont15').style.display = 'block';
- 
+ document.getElementById('inp_cont15').style.display = 'block';
+
  if (e.target.classList.contains('input-reset')) {
   if (e.target.parentNode.querySelector('.for-button')) {
    e.target.parentNode.querySelector('.for-button').classList.add('hide-block');
@@ -963,22 +968,32 @@ function removeWide2(e) {
  if (e.target.classList.contains('apply') && e.target.parentNode.classList.contains('for-button')) {
   e.target.parentNode.classList.add('hide-block');
   e.target.parentNode.previousElementSibling.classList.remove('ul-wide2');
- }*/
+ }
 }
 /***********Конец расширения типа вакансии *************/
 
 
 /*********Работа с кнопками Применить в мультиселектах*******/
+for (let btn of document.querySelectorAll('.apply')) {
+ btn.classList.add('apply-after');
+ //изначально все кнопки Применить неактивны
+}
+
 const applBtns = chooseWork.querySelectorAll('.apply');
+
 for (let btn of applBtns) {
  btn.addEventListener('click', calculateNumberOfChecked);
 }
 
 function calculateNumberOfChecked(e) {
- resetAll.classList.remove('hide-block');
- removeWide(e);
- removeWide2(e);
- doApply(e);
+ if (e.target.classList.contains('apply-after')) {
+  e.stopPropagation();
+ } else {
+  resetAll.classList.remove('hide-block');
+  removeWide(e);
+  removeWide2(e);
+  doApply(e);
+ }
 }
 
 function doApply(e) { //По кнопке Применить
@@ -1280,10 +1295,14 @@ for (let btn of staffApplBtns) {
 }
 
 function staffCalculateNumberOfChecked(e) {
- staffResetAll.classList.remove('hide-block');
- doApply(e);
- removeWide(e);
- removeWide2(e);
+ if (e.target.classList.contains('apply-after')) {
+  e.stopPropagation();
+ } else {
+  staffResetAll.classList.remove('hide-block');
+  doApply(e);
+  removeWide(e);
+  removeWide2(e);
+ }
 }
 /*************Конец блока селекты************** */
 
@@ -1723,10 +1742,14 @@ for (let btn of anyApplBtns) {
 }
 
 function anyCalculateNumberOfChecked(e) {
- anyResetAll.classList.remove('hide-block');
- removeWide(e);
- removeWide2(e);
- doApply(e);
+ if (e.target.classList.contains('apply-after')) {
+  e.stopPropagation();
+ } else {
+  anyResetAll.classList.remove('hide-block');
+  removeWide(e);
+  removeWide2(e);
+  doApply(e);
+ }
 }
 /*************Конец блока селекты************** */
 
@@ -2560,6 +2583,7 @@ function isDark(e) {
  const rectTop1 = rectPopupEnter1.top;
  const rectBottom1 = rectPopupEnter1.bottom;
  //координаты попапа авторизации для desctop
+ const btnAutorizes = document.querySelectorAll('.btn-autorize');
 
  if (isShowList(e)) {
   const eX = e.clientX;
@@ -2567,7 +2591,9 @@ function isDark(e) {
 
   if (eX < rectLeft || eX > rectRight || eY < rectTop || eY > rectBottom) {
    if (eX < rectLeft1 || eX > rectRight1 || eY < rectTop1 || eY > rectBottom1) {
-    if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist') && !e.currentTarget.classList.contains('choose-autorize__item')) {
+
+    if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist') && (btnAutorizes[0] != e.target) && btnAutorizes[1] != e.target) {
+
      setTimeout(() => {
       document.querySelector('.search__container').classList.remove('body-dark');
       document.querySelector('.header').classList.remove('header-dark');
