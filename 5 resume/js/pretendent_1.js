@@ -1481,34 +1481,9 @@ function closeEditWorkPopup() {
   targTR.querySelectorAll('.td-title')[0].innerText = editWorkDuration.value;
   targTR.querySelectorAll('.td-text')[0].innerText = editWorkDate.value;
 
-  targTR.querySelectorAll('.td-title')[1].innerHTML = '';
-  let span1 = document.createElement('span');
-  targTR.querySelectorAll('.td-title')[1].prepend(span1);
-  span1.classList.add('td-title__span');
-  span1.innerText = editWorkCompany.value;
-
-  let span2 = document.createElement('span');
-  targTR.querySelectorAll('.td-title')[1].append(span2);
-  span2.classList.add('title-edit');
-  let btn1 = document.createElement('button');
-  btn1.classList.add('pencil');
-  btn1.addEventListener('click', editWork);
-  span2.prepend(btn1);
-  let btn2 = document.createElement('button');
-  btn2.classList.add('li-remove');
-  btn2.style.marginLeft = 4 + 'px';
-  btn2.innerHTML = '&#10006;';
-  span2.after(btn2);
-  btn2.addEventListener('click', function (e) {
-   targTR.remove();
-  });
+  targTR.querySelectorAll('.td-title')[1].querySelector('.td-title__span').innerText = editWorkCompany.value;
 
   targTR.querySelectorAll('.td-text')[1].innerText = editWorkDuty.value;
-
-  if (closeAll) {
-   btn1.classList.add('hide-block');
-   btn2.classList.add('hide-block');
-  }
  }
 
  editWorkPopup.classList.add('hide-block');

@@ -458,6 +458,9 @@ function hideAllLists(e) {
    closeRubricator(eX, eY, 'rubricator1');
    closeRubricator(eX, eY, 'rubricator2');
   }
+  setTimeout(() => {
+   handleText();
+  }, 20); //вернуть дымку названиям селектов
  }
 
  //Убрать блок регионов
@@ -822,6 +825,8 @@ function showAllItemSelected(e) {
 
  if (numb === 0) {
   targPN.parentNode.querySelector('.inputselect').value = '';
+  e.target.closest('.input-container').querySelector('.apply').classList.add('apply-after');
+  //деактивировать кнопку "Применить"
  }
  if (numb === 1) {
   for (let item of thisChecked) {
@@ -2532,8 +2537,12 @@ function handleText() {
   if (label_.innerText.length * charWidth > input_.offsetWidth) {
    let coef = 95 * input_.offsetWidth / (label_.innerText.length * charWidth);
 
-   label_.style.cssText = `background: linear-gradient(to right,
-        #000 ${0.6*coef}%, #333 ${0.7*coef}%, #777 ${0.8*coef}%, transparent ${0.95*coef}%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+   if (label_.classList.contains('white-font')) {
+    label_.style.cssText = '';
+   } else {
+    label_.style.cssText = `background: linear-gradient(to right,
+     #000 ${0.6*coef}%, #333 ${0.7*coef}%, #777 ${0.8*coef}%, transparent ${0.95*coef}%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
+   }
   } else {
    label_.style.cssText = 'color: #333;';
   }
