@@ -897,27 +897,6 @@
   <div class="main__wrapper">
    <div class="pretendent-card">
     <div class="pretendent-card__wrap">
-
-     <div class="choose-variant">
-      <ul class="variant-ul">
-       <li class="variant-item">
-        <button class="_btn--border active">Вариант 1</button>
-       </li>
-       <li class="variant-item">
-        <button class="_btn--border">Вариант 2</button>
-       </li>
-       <li class="variant-item">
-        <button class="_btn--border">Вариант 3</button>
-       </li>
-       <li class="variant-item">
-        <button class="_btn--border">Вариант 4</button>
-       </li>
-       <li class="variant-item">
-        <button class="_btn--border">Вариант 5</button>
-       </li>
-      </ul>
-     </div>
-
      <div class="pretendent-card__header">
       <div class="pretendent-card__header-wrap">
        <div class="header-left">
@@ -985,8 +964,9 @@
           </table>
          </div>
          <!--/window__deadline-->
-         <div class="window__now">Это объявление находится на странице 33
+         <div class="window__now">Это объявление находится на странице <span class="pageN">33</span>
           <span><a>Показать это объявление на странице</a></span>
+          <button class="up">Поднять объявление</button>
          </div>
          <div class="edit-comment">
           <svg class="svg-comment" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
@@ -1054,25 +1034,37 @@
 
       <div class="resume-title resume-title__1">
        <span class="active topspan">
-        Резюме соискателя <span class="span-hide">с контактами</span>
+        <button>
+         Резюме соискателя <span class="span-hide">с контактами</span>
+        </button>
        </span>
        <span>
-        Резюме соискателя без контактов
+        <button>
+         Резюме соискателя без контактов
+        </button>
        </span>
        <span>
-        Анонимное резюме
+        <button>
+         Анонимное резюме
+        </button>
        </span>
        <span>
-        Анкета для приема на работу
+        <button class="anket">
+         Анкета для приема на работу
+        </button>
        </span>
       </div>
 
       <div class="resume-title resume-title__2 hide-block">
        <span class="active topspan">
-        Подробности объявления
+        <button>
+         Подробности объявления
+        </button>
        </span>
        <span>
-        Другие объявления соискателя (<span class="span-red">2</span>)
+        <button>
+         Другие объявления соискателя (<span class="span-red">2</span>)
+        </button>
        </span>
       </div>
 
@@ -1668,8 +1660,13 @@
          <button class="window__btn _btn _btn--border">
           Телефон скрыт соискателем
          </button>
+
          <button class="window__btn _btn _btn--border">
           Email скрыт соискателем
+         </button>
+
+         <button class="window__btn">
+          <span>Написать соискателю</span>
          </button>
         </div>
         <!--/contacts-wrap-->
@@ -1681,12 +1678,18 @@
            +7 950 777-00-00
           </span>
          </button>
+
          <button class="window__btn">
           <span>E-mail: <br></span>
           <span class="contact-email__adress">
            111nat@mail.ru
           </span>
          </button>
+
+         <button class="window__btn">
+          <span>Написать соискателю</span>
+         </button>
+
          <button class="window__btn">
           <div class="btn-content">
            <p class="btn-text">
@@ -1699,6 +1702,7 @@
           </div>
           <!--/btn-content-->
          </button>
+
         </div>
         <!--/contacts-wrap-->
         <div class="contacts-wrap__edit initial-hide">
@@ -1748,7 +1752,23 @@
        <div class="resume-anonim__wrap">
         <div class="resume-anonim__foto">
          <div class="anonim__foto-wrap">
-          <img class="anonim__resume-img" src="img/icon-avatar.svg" alt="foto" width="100%">
+          <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="512.000000pt" height="152.000000pt"
+           viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+           <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#c4c6c6" stroke="none">
+            <path d="M2461 4260 c-556 -77 -833 -718 -507 -1173 193 -272 539 -380 855
+-269 114 41 185 86 276 177 91 91 136 162 177 276 130 368 -41 768 -398 930
+-117 53 -276 76 -403 59z m234 -225 c181 -47 333 -199 380 -380 47 -181 -7
+-377 -140 -510 -167 -167 -419 -204 -629 -92 -121 64 -226 197 -261 332 -19
+76 -19 194 0 270 47 178 198 331 376 379 72 19 201 20 274 1z" />
+            <path d="M2385 2549 c-576 -78 -1040 -499 -1175 -1063 -32 -131 -43 -297 -30
+-427 6 -62 18 -127 26 -145 32 -68 -54 -64 1354 -64 1407 0 1322 -4 1354 64
+21 44 38 233 31 330 -21 262 -91 477 -223 681 -200 310 -518 529 -879 605
+-114 24 -351 34 -458 19z m394 -224 c229 -44 431 -152 602 -324 229 -228 349
+-520 349 -847 l0 -84 -1177 0 -1176 0 6 127 c15 318 120 570 326 787 180 189
+448 322 712 355 92 12 255 5 358 -14z" />
+           </g>
+          </svg>
+
          </div>
         </div>
         <div class="resume-anonim__center">
@@ -1806,11 +1826,16 @@
            +7 950 777-00-00
           </span>
          </button>
+
          <button class="window__btn">
           <span>E-mail: <br></span>
           <span class="contact-email__adress">
            111nat@mail.ru
           </span>
+         </button>
+
+         <button class="window__btn">
+          <span>Написать соискателю</span>
          </button>
         </div>
         <!--/anonim-contacts-->
@@ -1879,7 +1904,7 @@
           </span>
          </p>
          <div class="adress-map">
-          <button>Посмотреть карту</button>
+          <button class="window__btn">Посмотреть карту</button>
          </div>
         </div>
         <!--/adress__wrap-->
@@ -2608,6 +2633,849 @@
       <!--/container-wrap-->
      </div>
      <!--/pretendent-card__container-->
+
+     <div class="window-tabs__body pretendent-anket initial-hide">
+      <div class="window-tabs__main">
+       <div class="window-tabs__content">
+        <div class="window-tabs__col col1">
+         <h2 class="window-tabs__main-title">Анкета ( заполняется собственноручно )</h2>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Фамилия</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Имя</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Отчество</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Если изменяли фамилию, имя или отчество, то укажите их, а также когда, где и по
+           какой причине</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="foo" data-error="" placeholder="" class="input _date"
+           inputmode="numeric">
+          <span>Год, число, месяц и место рождения ( село, деревня, город, район, область, край,
+           республика )</span>
+         </label>
+         <div class="window-tabs__options window-tabs__options--fd">
+          <span>Загранпаспорт:</span>
+          <div class="options">
+           <div class="options__item">
+            <input hidden id="o_1" class="options__input" checked type="radio" value="1" name="option">
+            <label for="o_1" class="options__label"><span class="options__text">есть</span></label>
+           </div>
+           <div class="options__item">
+            <input hidden id="o_2" class="options__input" type="radio" value="2" name="option">
+            <label for="o_2" class="options__label"><span class="options__text">нет</span></label>
+           </div>
+          </div>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Национальность</span>
+          </label>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Гражданство</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Гражданство</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Адрес проживания</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Адрес проживания</span>
+         </label>
+
+         <div class="window-tabs__row window-tabs__row--two">
+          <label class="window-tabs__label window-tabs__label--sel married _active-focus _not-input">
+           <div class="input-container__arrow arrow form-arrow"></div>
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input"
+            readonly>
+           <ul class="select__married">
+            <li class="select__married-item">Замужем</li>
+            <li class="select__married-item">Женат</li>
+            <li class="select__married-item">Холост</li>
+           </ul>
+           <span>Семейное положение</span>
+          </label>
+
+          <label class="window-tabs__label window-tabs__label--date _active-focus">
+           <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder=""
+            class="input _date datepicker-item" inputmode="numeric" readonly>
+           <span class="date-span">С какого времени</span>
+          </label>
+         </div>
+
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Дети ( пол и возраст )</span>
+         </label>
+         <div class="window-tabs__row">
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>ФИО мужа / жены</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Место работы мужа / жены</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Должность</span>
+          </label>
+         </div>
+         <div class="window-tabs__row">
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>ФИО отца</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Место работы отца</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Должность</span>
+          </label>
+         </div>
+         <div class="window-tabs__row">
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>ФИО матери</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Место работы матери</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Должность</span>
+          </label>
+         </div>
+         <div class="window-tabs__label window-tabs__label--big">
+          <span>Гражданство</span>
+          <label>
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>( если изменяли, то укажите, когда и по какой причине, прежнее гражданство,
+            если имеете гражданство другого государства, укажите )</span>
+          </label>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Были ли Вы за границей ( где, когда и с какой целью )</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Были ли Вы и Ваши близкие родственники судимы ( когда и за что )</span>
+         </label>
+         <div class="window-tabs__row window-tabs__row--three">
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Как долго проживаете в г.Нижний Новгород</span>
+          </label>
+
+          <label class="window-tabs__label window-tabs__label--sel flat _active-focus">
+           <div class="input-container__arrow arrow form-arrow"></div>
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <ul class="select__flat">
+            <li class="select__flat-item">Отдельная квартира</li>
+            <li class="select__flat-item">Арендованная квартира</li>
+            <li class="select__flat-item">Частный дом</li>
+           </ul>
+           <span>Условия проживания</span>
+          </label>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Отношения к воинской обязанности и военское звание, в каком военном комиссариате
+           состоите на воинской учете</span>
+         </label>
+         <div class="window-tabs__row">
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Мобильный телефон</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Домашний телефон</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Доп. телефон</span>
+          </label>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Паспорт № и серия</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Кем выдан</span>
+         </label>
+         <label class="window-tabs__label label-date">
+          <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder=""
+           class="input _date datepicker-item" inputmode="numeric" readonly>
+          <span class="date-span">Дата выдачи</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Другое</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>ИНН</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Свидетельство ПФ</span>
+         </label>
+         <div class="window-tabs__options health window-tabs__options--big">
+          <span>Есть ли у вас ограничения по состоянию здоровья по выполнению каких - либо работ</span>
+          <div class="options">
+           <div class="options__item">
+            <input hidden id="o_3" class="options__input" checked type="radio" value="2" name="option-02">
+            <label for="o_3" class="options__label"><span class="options__text">да</span></label>
+           </div>
+           <div class="options__item">
+            <input hidden id="o_4" class="options__input" type="radio" value="3" name="option-02">
+            <label for="o_4" class="options__label"><span class="options__text">нет</span></label>
+           </div>
+          </div>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Кем желаете работать</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Почему Вы считаете, что соответствуете этой должности </span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Когда готовы приступить к работе</span>
+         </label>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Что Вы ожидаете от нашего предприятия</span>
+         </label>
+
+         <div class="window-tabs__block">
+          <div class="window-tabs__line"><span>Желательный график работы:</span></div>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Самое ранее время работы с</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Самое позднее время работы до</span>
+          </label>
+         </div>
+
+         <div class=" window-tabs__block--mmb">
+          <div class="window-tabs__line"><span>Оплата труда:</span></div>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>На последнем месте работы, руб</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Желаемая на испытательный срок, руб</span>
+          </label>
+         </div>
+
+         <div class="window-tabs__block">
+          <div class="window-tabs__line window-tabs__line--fd">
+           <span>Образование:</span>
+           <div class="options">
+            <div class="options__item">
+             <input hidden id="o_5" class="options__input" checked type="radio" value="1" name="option-3">
+             <label for="o_5" class="options__label"><span class="options__text">Высшее</span></label>
+            </div>
+            <div class="options__item">
+             <input hidden id="o_6" class="options__input" type="radio" value="2" name="option-3">
+             <label for="o_6" class="options__label"><span class="options__text">Незаконченное
+               высшее</span></label>
+            </div>
+            <div class="options__item">
+             <input hidden id="o_7" class="options__input" type="radio" value="3" name="option-3">
+             <label for="o_7" class="options__label"><span class="options__text">Среднее
+               специальное</span></label>
+            </div>
+           </div>
+          </div>
+          <table class="window-tabs__table window-tabs__table--first">
+           <thead>
+            <tr>
+             <th class="datepicker-elem_">
+              <span>Дата <br> поступления</span>
+              </td>
+             <th class="datepicker-elem_">
+              <span>Дата <br>
+               окончания</span>
+              </td>
+             <th>Форма <br>
+              обучения</td>
+             <th>Ср.балл <br>
+              аттестата</td>
+             <th>Специальность <br>
+              квалификация</td>
+            </tr>
+           </thead>
+           <tbody>
+            <tr id="data-range">
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+
+             </td>
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+            </tr>
+            <tr id="data-range">
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+
+             </td>
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+            </tr>
+            <tr id="data-range">
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+
+             </td>
+             <td>
+              <label>
+               <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+                class="input _date datepicker-item" inputmode="numeric">
+              </label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <!--/window-tabs__block-->
+        </div>
+        <!--/window-tabs__col-->
+
+        <div class="window-tabs__col col2">
+         <sidebar class="window-tabs__side">
+          <p>Утверждена
+           распоряжением&nbsp;Правительства
+           Российской Федерации
+           от 26 мая 2005 г. №667-р.</p>
+          <label class="window-tabs__avatar">
+           <input autocomplete="off" type="file" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Место для фотографии 3х4</span>
+          </label>
+         </sidebar>
+        </div>
+       </div>
+       <!--/window-tabs__content-->
+
+       <div class="window-tabs__content">
+        <div class="window-tabs__block add-educate">
+         <div class="window-tabs__line"><span>Дополнительное образование ( курсы, стажировки и
+           др.):</span></div>
+         <table class="window-tabs__table window-tabs__table--m">
+          <thead>
+           <tr>
+            <th>Год обучения</td>
+            <th>Название</td>
+            <th>Длительность <br>
+             обучения</td>
+            <th>Специальность <br>
+             квалификация</td>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+               class="input _date-years">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+               class="input _date-years">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+               class="input _date-years">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+            <td>
+             <label>
+              <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+             </label>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+       <!--/window-tabs__content-->
+
+       <div class="window-tabs__content">
+        <div class="window-tabs__col col3">
+         <div class="window-tabs__block">
+          <div class="window-tabs__line"><span>Место работы:</span></div>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Название профессии</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Должность</span>
+          </label>
+          <div id="data-range" class="window-tabs__row">
+           <label class="window-tabs__label window-tabs__label--date _active-focus">
+            <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+             class="input _date datepicker-item" inputmode="numeric">
+            <span class="date-span">Начало работы</span>
+           </label>
+           <div class="window-tabs__column">
+            <label class="window-tabs__label window-tabs__label--date _active-focus">
+             <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+              class="input _date datepicker-item" inputmode="numeric">
+             <span class="date-span">Окончание работы</span>
+            </label>
+            <div class="checkbox checkbox--end">
+             <input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+             <label for="c_1" class="checkbox__label">
+              <span class="checkbox__text">Работаю в настоящее время</span>
+             </label>
+            </div>
+           </div>
+           <!--/window-tabs__column-->
+          </div>
+          <!--/data-range-->
+          <div class="window-tabs__add add">
+           <div class="add__main">
+            <div class="add__input">
+             <div class="add__input-title">Обязанности</div>
+             <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Ремонт автомобилей"
+              class="input add-input">
+            </div>
+            <button class="add__btn">+</button>
+           </div>
+           <ul class="add__list">
+            <li class="add__item">
+             Обучение персонала методике общения с клиентами крупного бизнеса (B2B, B2C)
+             <button class="add__close _close-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10"
+               viewBox="0 0 18 18">
+               <defs>
+                <path id="avzva"
+                 d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" />
+               </defs>
+               <g>
+                <g transform="translate(-674 -144)">
+                 <use fill="#776511" xlink:href="#avzva" />
+                </g>
+               </g>
+              </svg>
+             </button>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+        <div class="window-tabs__col window-tabs__col--right"></div>
+       </div>
+       <!--/window-tabs__content-->
+
+       <div class="window-tabs__content">
+        <div class="window-tabs__col col4">
+         <div class="window-tabs__block">
+          <div class="window-tabs__line"><span>Место работы:</span></div>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Название профессии</span>
+          </label>
+          <label class="window-tabs__label">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <span>Должность</span>
+          </label>
+          <div id="data-range" class="window-tabs__row">
+           <label class="window-tabs__label window-tabs__label--date _active-focus">
+            <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+             class="input _date datepicker-item" inputmode="numeric">
+            <span class="date-span">Начало работы</span>
+           </label>
+           <div class="window-tabs__column">
+            <label class="window-tabs__label window-tabs__label--date _active-focus">
+             <!-- <div class="window-tabs__wrap"> -->
+             <input autocomplete="off" type="text" name="datepicker" data-error="" placeholder="" readonly
+              class="input _date datepicker-item" inputmode="numeric">
+             <span class="date-span">Окончание работы</span>
+             <!-- </div> -->
+            </label>
+            <div class="checkbox checkbox--end">
+             <input id="c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+             <label for="c_2" class="checkbox__label">
+              <span class="checkbox__text">Работаю в настоящее время</span>
+             </label>
+            </div>
+           </div>
+          </div>
+          <div class="window-tabs__add add">
+           <div class="add__main">
+            <div class="add__input">
+             <div class="add__input-title">Обязанности</div>
+             <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Ремонт автомобилей"
+              class="input add-input">
+            </div>
+            <button class="add__btn">+</button>
+           </div>
+           <ul class="add__list">
+            <li class="add__item">
+             Обучение персонала методике общения с клиентами крупного бизнеса (B2B, B2C)
+             <button class="add__close _close-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10"
+               viewBox="0 0 18 18">
+               <defs>
+                <path id="avzva"
+                 d="M691.485 160.07l-1.414 1.415-7.071-7.071-7.071 7.071-1.414-1.414 7.07-7.071-7.07-7.071 1.414-1.415 7.07 7.071 7.072-7.07 1.414 1.414-7.07 7.07z" />
+               </defs>
+               <g>
+                <g transform="translate(-674 -144)">
+                 <use fill="#776511" xlink:href="#avzva" />
+                </g>
+               </g>
+              </svg>
+             </button>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+        <div class="window-tabs__col window-tabs__col--right"></div>
+       </div>
+       <!--/window-tabs__content-->
+
+       <div class="window-tabs__content">
+        <div class="window-tabs__col col5">
+         <div class="window-tabs__block">
+          <div class="window-tabs__line">
+           <p>Иностранные языки от 0 до 3 <span>( 3 - свободное владение; 2 - читаю, перевожу, но со словарем; 1 - не
+             знаю;
+             0 - не учил)</span></p>
+          </div>
+          <table class="window-tabs__table window-tabs__table--last">
+           <thead>
+            <tr>
+             <th></th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              Оцените владение
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input "></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+          <table class="window-tabs__table window-tabs__table--last">
+           <thead>
+            <tr>
+             <th></th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+             <th>
+              <label class="window-tabs__label">
+               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+               <span>Название языка</span>
+              </label>
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              Оцените владение
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input "></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+             <td>
+              <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+                class="input"></label>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div>
+        <div class="window-tabs__col"></div>
+       </div>
+       <!--/window-tabs__content-->
+
+       <div class="window-tabs__content">
+        <div class="window-tabs__col col6">
+         <div class="window-tabs__row window-tabs__row--op">
+          <div class="window-tabs__options window-tabs__options--big">
+           <span>Наличие трудовой книжки</span>
+           <div class="options">
+            <div class="options__item">
+             <input hidden id="o_8" class="options__input" checked type="radio" value="1" name="option-04">
+             <label for="o_8" class="options__label"><span class="options__text">есть</span></label>
+            </div>
+            <div class="options__item">
+             <input hidden id="o_9" class="options__input" type="radio" value="2" name="option-04">
+             <label for="o_9" class="options__label"><span class="options__text">нет</span></label>
+            </div>
+           </div>
+          </div>
+          <!--/window-tabs__options-->
+
+          <div class="window-tabs__options window-tabs__options--big">
+           <span>Наличие медицинский книжки</span>
+           <div class="options">
+            <div class="options__item">
+             <input hidden id="o_10" class="options__input" checked type="radio" value="1" name="option-05">
+             <label for="o_10" class="options__label"><span class="options__text">есть</span></label>
+            </div>
+            <div class="options__item">
+             <input hidden id="o_11" class="options__input" type="radio" value="2" name="option-05">
+             <label for="o_11" class="options__label"><span class="options__text">нет</span></label>
+            </div>
+           </div>
+          </div>
+          <!--/window-tabs__options-->
+         </div>
+         <!--/window-tabs__row-->
+
+         <div class="window-tabs__name">
+          Я, <span>Захаров Алексей Евгеньевич</span>
+         </div>
+         <label class="window-tabs__label">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <span>Фамилия, инициалы работника, заполняющего анкету</span>
+         </label>
+         <p class="window-tabs__text">
+          Заверяю, что мои ответы на вопросы анкеты являются достоверными и полными, а так же
+          подтверждаю свое согласие, на обработку моих
+          персональнных данных в объеме, запись и хранение на материальных носителях информации.
+          Мне извкестно, что заведомо ложные сведения,
+          сообщенные о себе в анкете. и мое несоответсвие квалификационным требованиям могут
+          повлечь отказ в участии в конкурсе и приеме на
+          должность. На проведение в отношении меня проверочных мроприятий согласен ( согласна )
+         </p>
+         <div class="window-tabs__footer-btn">
+          <button class="window-tabs__btn">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" width="22" height="22">
+            <path fill-rule="evenodd"
+             d="m64.1 15.7q0.3 0.4 0.5 0.9q0.2 0.5 0.3 1q0.1 0.5 0.1 1v40.2q0 1.1-0.4 2q-0.4 1-1.1 1.7q-0.7 0.7-1.7 1.1q-0.9 0.4-2 0.4h-53.6q-1.1 0-2-0.4q-1-0.4-1.7-1.1q-0.7-0.7-1.1-1.7q-0.4-0.9-0.4-2v-53.6q0-1.1 0.4-2q0.4-1 1.1-1.7q0.7-0.7 1.7-1.1q0.9-0.4 2-0.4h40.2q0.5 0 1 0.1q0.5 0.1 1 0.3q0.5 0.2 0.9 0.5q0.4 0.3 0.8 0.6l13.4 13.4q0.3 0.4 0.6 0.8zm-3.1 2.9q0-0.1 0-0.2q0-0.1-0.1-0.3q0-0.1-0.1-0.2q-0.1 0-0.1-0.1l-13.5-13.5q-0.1 0-0.1-0.1q-0.1-0.1-0.3-0.1q-0.1-0.1-0.2-0.1q-0.1 0-0.2 0h-1.2v12.9q0 0.4-0.2 0.7q-0.1 0.4-0.4 0.7q-0.3 0.3-0.6 0.4q-0.4 0.2-0.8 0.2h-30.5q-0.4 0-0.8-0.2q-0.4-0.1-0.6-0.4q-0.3-0.3-0.5-0.7q-0.1-0.3-0.1-0.7v-12.9h-4.5q-0.3 0-0.5 0.1q-0.2 0.1-0.4 0.2q-0.1 0.2-0.2 0.4q-0.1 0.2-0.1 0.5v53.6q0 0.3 0.1 0.5q0.1 0.2 0.2 0.4q0.2 0.1 0.4 0.2q0.2 0.1 0.5 0.1h10.2v-20.7q0-0.4 0.1-0.7q0.2-0.4 0.4-0.7q0.3-0.3 0.7-0.4q0.4-0.2 0.8-0.2h29.2q0.4 0 0.8 0.2q0.4 0.1 0.7 0.4q0.2 0.3 0.4 0.7q0.1 0.3 0.1 0.7v20.7h10.2q0.3 0 0.5-0.1q0.2-0.1 0.4-0.2q0.1-0.2 0.2-0.4q0.1-0.2 0.1-0.5zm-15.4 41.4v-18.6h-25.2v18.6zm-31-56v10.9h26.5v-10.9zm3.1 7.3v-3c0-0.5 0.2-1 0.6-1.4c0.4-0.4 0.9-0.6 1.4-0.6c0.5 0 1 0.2 1.4 0.6c0.4 0.4 0.6 0.9 0.6 1.4v3c0 0.5-0.2 1-0.6 1.4c-0.4 0.4-0.9 0.6-1.4 0.6c-0.5 0-1-0.2-1.4-0.6c-0.4-0.4-0.6-0.9-0.6-1.4z"
+             fill="#619f25" />
+           </svg>
+           <span>Сохранить изменения</span>
+          </button>
+          <button class="window-tabs__btn">
+           <svg style="transform: rotate(90deg);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 21" width="25"
+            height="19">
+            <path fill-rule="evenodd"
+             d="m4.2 0h1.1l-0.1 2l19.2 0.1c1.7 0 3.1 1.3 3.1 2.9v10.9c0 1.7-1.4 3-3.1 3h-19.2v2h-1v-6h-2c-1.1 0-2-0.9-2-2v-4.9c0-1.1 0.9-2 2-2h2zm1 17.8l19.2 0.1c1.1 0 2-0.9 2-2l0.1-10.9c0-1.1-1-2-2.1-2h-19.2zm2.1-4h17.1v1h-17.1zm0-4l17.2 0.1v1l-17.2-0.1zm0-3.9h17.2v1l-17.2-0.1zm-6.1 7c0 0.5 0.4 1 1 1h2v-7h-2c-0.5 0-1 0.5-1 1z"
+             fill="#619f25" />
+           </svg>
+           <span>Очистить все поля анкеты</span>
+          </button>
+          <a href="img/icons/disk.svg" download class="window-tabs__btn">
+           <svg fill="none" height="24" stroke="#619f25" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" x2="12" y1="15" y2="3" />
+           </svg>
+           <span>Скачать в jpg</span>
+          </a>
+         </div>
+        </div>
+        <!--/window-tabs__col-->
+
+        <div class="window-tabs__col"></div>
+       </div>
+       <!--/window-tabs__content-->
+      </div>
+      <!--/window-tabs__main-->
+     </div>
+     <!--/window-tabs__body pretendent-anket-->
+
     </div>
     <!--/pretendent-card__wrap-->
    </div>

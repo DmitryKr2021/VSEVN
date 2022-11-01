@@ -9,13 +9,14 @@ moreAdsBtn.onclick = () => {
 };*/
 
 /**************Выбор варианта резюме *************/
-const variantItems = document.querySelectorAll('.variant-item');
 const windowDeadline = document.querySelector('.window__deadline');
 const windowNow = document.querySelector('.window__now');
 const resumeMain = document.querySelector('.resume-main');
 const resumeAnonim = document.querySelector('.resume-anonim');
 const resumeTitles = document.querySelectorAll('.resume-title');
+const resumeTitle1 = document.querySelector('.resume-title__1');
 const resumeTitleSpans = document.querySelector('.resume-title').querySelectorAll('span');
+const windowButtonsRow = document.querySelector('.window__buttons-row');
 const windowButtonsRowBtns = document.querySelector('.window__buttons-row').querySelectorAll('button');
 const resumeButtonsRow = document.querySelector('.resume__buttons-row');
 const resumeButtonsRowBtns = document.querySelector('.resume__buttons-row').querySelectorAll('button');
@@ -33,26 +34,77 @@ const windowForks = document.querySelectorAll('.window__fork');
 windowButtonsRowBtns[2].style.display = 'none';
 noContacts[1].style.display = 'none';
 resumeAnonim.style.display = 'none';
+windowButtonsRow.style.display = 'none';
 
-for (let item of variantItems) {
- item.addEventListener('click', changeVariant);
-}
 
-function changeVariant(e) {
- for (let item of variantItems) {
-  item.childNodes[1].classList.remove('active');
+/*****Показать резюме соискателя с контактами *******/
+resumeTitle1.querySelectorAll('button')[0].onclick = (e) => {
+ resumeMain.style.display = 'flex';
+ windowButtonsRow.style.display = 'none';
+ document.querySelector('.pretendent-card__container').classList.remove('hide-block');
+ pretendentAnket.classList.add('initial-hide');
+ for (let item of resumeTitleSpans) {
+  item.classList.remove('active');
  }
- e.currentTarget.childNodes[1].classList.add('active');
-}
+ showVar1();
+ e.currentTarget.parentNode.classList.add('active');
 
-variantItems[0].addEventListener('click', showVar1);
+ //Выйти из режима редактирования
+ stopEdit();
+ editResume.innerText = toEditResume;
+ editResume.classList.remove('active');
+ resumeEdited = false;
+ //конец выйти
+
+ noContacts[1].style.display = 'none'; //Убрать скрытый телефон 
+};
+/****Поднять объявление ****/
+const up = document.querySelector('.up');
+const pageN = document.querySelector('.pageN');
+up.onclick = () => pageN.innerText = ' ' + '1';
+/**Конец поднять объявление **/
+
+/***Конец показать резюме соискателя с контактами *****/
+
+/*****Показать резюме соискателя без контактов *******/
+resumeTitle1.querySelectorAll('button')[1].onclick = (e) => {
+ resumeMain.style.display = 'flex';
+ windowButtonsRow.style.display = 'flex';
+ document.querySelector('.pretendent-card__container').classList.remove('hide-block');
+ pretendentAnket.classList.add('initial-hide');
+
+ for (let item of resumeTitleSpans) {
+  item.classList.remove('active');
+ }
+ e.target.parentNode.classList.add('active');
+ showVar2();
+ contacts[1].style.display = 'none';
+ contacts[1].querySelectorAll('button')[2].classList.remove('hide-block');
+ noContacts[1].style.display = 'flex';
+ stopEdit();
+};
+/***Конец показать резюме соискателя без контактов *****/
+
+/***********Показать анонимное резюме ***********/
+resumeTitle1.querySelectorAll('button')[2].onclick = (e) => {
+ resumeMain.style.display = 'flex';
+ windowButtonsRow.style.display = 'flex';
+ document.querySelector('.pretendent-card__container').classList.remove('hide-block');
+ pretendentAnket.classList.add('initial-hide');
+
+ for (let item of resumeTitleSpans) {
+  item.classList.remove('active');
+ }
+ e.target.parentNode.classList.add('active');
+ showVar5();
+ stopEdit();
+};
+
+/*******Конец показать анонимное резюме *********/
 
 function showVar1() {
  windowDeadline.classList.remove('hide-block');
  windowNow.classList.remove('hide-block');
- for (let i = 1; i < resumeTitleSpans.length; i++) {
-  resumeTitleSpans[i].classList.remove('hide-block');
- }
  resumeButtonsRowBtns[2].classList.remove('hide-block');
  resumeButtonsRowBtns[3].classList.remove('hide-block');
  windowButtonsRowBtns[2].style.display = 'none';
@@ -78,22 +130,16 @@ function showVar1() {
  }
 }
 
-variantItems[1].addEventListener('click', showVar2);
-
 function showVar2() {
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
- for (let i = 1; i < resumeTitleSpans.length; i++) {
-  resumeTitleSpans[i].classList.add('hide-block');
- }
+ resumeTitleSpans[0].classList.remove('hide-block');
  document.querySelector('.span-hide').classList.remove('hide-block');
  resumeMain.style.display = 'flex';
  resumeAnonim.style.display = 'none';
  resumeButtonsRowBtns[2].classList.add('hide-block');
  resumeButtonsRowBtns[3].classList.add('hide-block');
  windowButtonsRowBtns[2].style.display = 'none';
- resumeTitles[0].classList.remove('hide-block');
- resumeTitles[1].classList.add('hide-block');
  anotherResume.classList.add('hide-block');
  changeDesign.classList.add('hide-block');
  editResume.classList.add('hide-block');
@@ -111,8 +157,6 @@ function showVar2() {
   item.nextElementSibling.classList.remove('hide-block');
  }
 }
-
-variantItems[2].addEventListener('click', showVar3);
 
 function showVar3() {
  windowDeadline.classList.add('hide-block');
@@ -145,8 +189,6 @@ function showVar3() {
  }
 }
 
-variantItems[3].addEventListener('click', showVar4);
-
 function showVar4() {
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
@@ -178,14 +220,9 @@ function showVar4() {
  }
 }
 
-variantItems[4].addEventListener('click', showVar5);
-
 function showVar5() {
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
- for (let i = 0; i < resumeTitleSpans.length; i++) {
-  resumeTitleSpans[i].classList.add('hide-block');
- }
  resumeMain.style.display = 'none';
  resumeAnonim.style.display = 'flex';
  resumeButtonsRowBtns[2].classList.add('hide-block');
@@ -212,6 +249,131 @@ function showVar5() {
 }
 
 /**********Конец выбор варианта резюме ***********/
+
+/***************Работа с анкетой ******************/
+/**********Показать анкету ********/
+const anket = document.querySelector('.anket');
+const pretendentAnket = document.querySelector('.pretendent-anket');
+anket.addEventListener('click', function (e) {
+
+ for (let item of resumeTitleSpans) {
+  item.classList.remove('active');
+ }
+ e.target.parentNode.classList.add('active');
+ windowDeadline.classList.add('hide-block');
+ windowNow.classList.add('hide-block');
+ resumeMain.style.display = 'none';
+ resumeAnonim.style.display = 'none';
+ document.querySelector('.pretendent-card__container').classList.add('hide-block');
+ pretendentAnket.classList.remove('initial-hide');
+});
+/*******Конец показать анкету ******/
+
+/***********Плейсхолдеры ***********/
+const windowTabsLabels = document.querySelectorAll('.window-tabs__label');
+for (let item of windowTabsLabels) {
+ item.querySelector('input').addEventListener('mouseout', checkFull);
+}
+
+function checkFull(e) {
+ let b1 = !e.target.parentNode.classList.contains('married');
+ let b2 = !e.target.classList.contains('datepicker-item');
+ let b3 = !e.target.parentNode.classList.contains('flat');
+ let b4 = !e.target.parentNode.classList.contains('_date');
+
+ if (e.target.value && b1 && b2 && b3 && b4) {
+  e.target.nextElementSibling.classList.add('active');
+ }
+}
+/*******Конец плейсхолдеры *********/
+
+/********Семейное положение ********/
+const married = document.querySelector('.married');
+const selectMarried = document.querySelector('.select__married');
+const selectMarriedItems = document.querySelectorAll('.select__married-item');
+const datepickerItem = document.querySelector('.datepicker-item');
+const windowTabsLabelDate = document.querySelector('.window-tabs__label--date');
+
+married.addEventListener('click', function (e) {
+ married.querySelector('.input-container__arrow').classList.toggle('active');
+ selectMarried.classList.toggle('active');
+});
+
+for (let item of selectMarriedItems) {
+ item.addEventListener('click', chooseMarriedItem);
+}
+
+function chooseMarriedItem(e) {
+ e.target.parentNode.previousElementSibling.value = e.target.innerText;
+ married.querySelector('.input-container__arrow').classList.remove('active');
+ selectMarried.classList.remove('active');
+ married.querySelector('span').classList.add('active');
+}
+/*****Конец семейное положение *****/
+
+/***********Гражданство ***********/
+const windowTabsLabelBig = document.querySelector('.window-tabs__label--big');
+
+windowTabsLabelBig.querySelector('input').onmouseout = (e) => {
+ if (e.target.value) {
+  windowTabsLabelBig.classList.add('active');
+ } else {
+  windowTabsLabelBig.classList.remove('active');
+ }
+};
+/********Конец гражданство ********/
+
+/**********Условия проживания ********/
+const flat = document.querySelector('.flat');
+const selectFlat = document.querySelector('.select__flat');
+const selectFlatItems = document.querySelectorAll('.select__flat-item');
+
+flat.addEventListener('click', function (e) {
+ flat.querySelector('.input-container__arrow').classList.toggle('active');
+ selectFlat.classList.toggle('active');
+});
+
+for (let item of selectFlatItems) {
+ item.addEventListener('click', chooseFlatItem);
+}
+
+function chooseFlatItem(e) {
+ e.target.parentNode.previousElementSibling.value = e.target.innerText;
+ flat.querySelector('.input-container__arrow').classList.remove('active');
+ selectFlat.classList.remove('active');
+ flat.querySelector('span').classList.add('active');
+}
+/*******Конец условия проживания *****/
+
+/*****Место работы, обязанности ******/
+//const 
+const addBtns = document.querySelectorAll('.add__btn');
+for (let btn of addBtns) {
+ btn.addEventListener('click', addResponsibilities);
+}
+
+function addResponsibilities(e) {
+ let addInput = document.createElement('input');
+ addInput.classList.add('add-input');
+ e.target.parentNode.append(addInput);
+}
+/***Конец место работы, обязанности **/
+
+/******Обучение персонала методике ******/
+const addCloses = document.querySelectorAll('.add__close');
+for (let item of addCloses) {
+ item.onclick = (e) => {
+  e.target.closest('.add__item').remove();
+ };
+}
+/***Конец обучение персонала методике ***/
+
+
+
+/************Конец работа с анкетой ***************/
+
+
+
 
 /***********Корректировка даты деактивации ********/
 const datepickerInput = document.querySelector('input[name="datepicker"]');
@@ -268,6 +430,68 @@ const toEditResume = 'Отредактировать';
 const toSaveResume = 'Сохранить изменения';
 let resumeEdited = false;
 
+function stopEdit() {
+ for (let item of edits) {
+  item.classList.add('initial-hide');
+ }
+ for (let item of liRemoves) {
+  item.classList.add('initial-hide');
+ }
+ for (let item of pencils) {
+  item.classList.add('initial-hide');
+ }
+ for (let item of listItems) {
+  item.classList.remove('item-edit');
+ }
+ for (let item of titleEdits) {
+  item.classList.remove('title-edit-show');
+ }
+ for (let item of tdTitles) {
+  if (item.childNodes[1]) {
+   if (item.childNodes[1].tagName == 'SPAN') {
+    item.classList.remove('goup');
+   }
+  }
+ }
+
+ //вернуть вид ключевых навыков
+ for (let item of document.querySelectorAll('.keys-listitem')) {
+  item.classList.remove('item-edit');
+  item.querySelector('.li-remove').classList.add('initial-hide');
+ }
+
+ //спрятать карандаш и крестик в новой работе
+ if (newTr) {
+  newTr.querySelector('.pencil').classList.add('initial-hide');
+  newTr.querySelector('.li-remove').classList.add('initial-hide');
+ }
+
+ //спрятать карандаш и крестик в новом образовании
+ if (newStudyTr) {
+  newStudyTr.querySelector('.pencil').classList.add('initial-hide');
+  newStudyTr.querySelector('.li-remove').classList.add('initial-hide');
+ }
+
+ //спрятать карандаш и крестик в новых курсах
+ if (newCoursesTr) {
+  newCoursesTr.querySelector('.pencil').classList.add('initial-hide');
+  newCoursesTr.querySelector('.li-remove').classList.add('initial-hide');
+ }
+
+ //спрятать карандаш и крестик в новом языке
+ if (newLanguageTr) {
+  newLanguageTr.querySelector('.pencil').classList.add('initial-hide');
+  newLanguageTr.querySelector('.li-remove').classList.add('initial-hide');
+ }
+
+ contactsWrap.style.display = 'flex';
+ contactsWrapEdit.style.display = 'none';
+
+ adressWrap.classList.remove('edit-info');
+ skillsWrapList.classList.remove('edit-info');
+}
+
+
 editResume.addEventListener('click', function (e) {
  if (!resumeEdited) { //начать редактирование
   e.target.innerText = toSaveResume;
@@ -316,66 +540,8 @@ editResume.addEventListener('click', function (e) {
 
   if (telOk && EmailOk) {
    e.target.innerText = toEditResume;
-   this.classList.remove('active');
-
-   for (let item of edits) {
-    item.classList.add('initial-hide');
-   }
-   for (let item of liRemoves) {
-    item.classList.add('initial-hide');
-   }
-   for (let item of pencils) {
-    item.classList.add('initial-hide');
-   }
-   for (let item of listItems) {
-    item.classList.remove('item-edit');
-   }
-   for (let item of titleEdits) {
-    item.classList.remove('title-edit-show');
-   }
-   for (let item of tdTitles) {
-    if (item.childNodes[1]) {
-     if (item.childNodes[1].tagName == 'SPAN') {
-      item.classList.remove('goup');
-     }
-    }
-   }
-
-   //вернуть вид ключевых навыков
-   for (let item of document.querySelectorAll('.keys-listitem')) {
-    item.classList.remove('item-edit');
-    item.querySelector('.li-remove').classList.add('initial-hide');
-   }
-
-   //спрятать карандаш и крестик в новой работе
-   if (newTr) {
-    newTr.querySelector('.pencil').classList.add('initial-hide');
-    newTr.querySelector('.li-remove').classList.add('initial-hide');
-   }
-
-   //спрятать карандаш и крестик в новом образовании
-   if (newStudyTr) {
-    newStudyTr.querySelector('.pencil').classList.add('initial-hide');
-    newStudyTr.querySelector('.li-remove').classList.add('initial-hide');
-   }
-
-   //спрятать карандаш и крестик в новых курсах
-   if (newCoursesTr) {
-    newCoursesTr.querySelector('.pencil').classList.add('initial-hide');
-    newCoursesTr.querySelector('.li-remove').classList.add('initial-hide');
-   }
-
-   //спрятать карандаш и крестик в новом языке
-   if (newLanguageTr) {
-    newLanguageTr.querySelector('.pencil').classList.add('initial-hide');
-    newLanguageTr.querySelector('.li-remove').classList.add('initial-hide');
-   }
-
-   contactsWrap.style.display = 'flex';
-   contactsWrapEdit.style.display = 'none';
-
-   adressWrap.classList.remove('edit-info');
-   skillsWrapList.classList.remove('edit-info');
+   e.target.classList.remove('active');
+   stopEdit();
 
    contactTelNumber.innerText = editTel.value || editTelPlaceholder;
    contactEmailAdress.innerText = editMail.value || editEmailPlaceholder;

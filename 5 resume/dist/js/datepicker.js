@@ -2431,6 +2431,23 @@ var Datepicker = (function () {
     resetDate(nowDate, newDates);
    };
   }
+
+  if (newDates.length !== 0) {
+   for (let item of document.querySelectorAll('.datepicker-item')) {
+    if (item.value && item.parentNode.querySelector('.date-span')) {
+     item.parentNode.querySelector('.date-span').classList.add('active');
+    }
+    const monthes = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    if (item.value && item == document.activeElement) {
+     let today = new Date(newDates[0]);
+     let dd = String(today.getDate()).padStart(2, '0');
+     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+     let yyyy = today.getFullYear();
+     let dateFormatted = dd + ' ' + monthes[+mm - 1] + ' ' + yyyy;
+     item.value = dateFormatted;
+    }
+   }
+  }
  }
 
  function resetDate(nowDate, newDates) {
@@ -2443,7 +2460,6 @@ var Datepicker = (function () {
   let yyyy = today.getFullYear();
   let dateFormatted = dd + '.' + mm + '.' + yyyy;
   windowDeadlineLeft.innerText = dateFormatted;
-
   let restMin = Math.round((newDates - nowDate) / 60000);
   let restDays = Math.floor(restMin / (60 * 24));
   let restHours = Math.floor((restMin - restDays * 24 * 60) / 60);
@@ -2787,7 +2803,8 @@ var Datepicker = (function () {
     render: true
    });
    const inputDates = stringToArray(this.inputField.value, this.config.dateDelimiter);
-   setDate(this, inputDates, opts);
+   //Исправлено мной для отмены переделывания формата даты
+   /*setDate(this, inputDates, opts);*/
   }
 
   /**

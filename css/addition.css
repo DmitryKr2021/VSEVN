@@ -5448,6 +5448,7 @@ body {
  position: relative;
  margin-top: 16px;
  -webkit-appearance: none;
+ appearance: none;
  border: 1px solid #c9cdd4;
  border-radius: 3px;
  box-sizing: border-box;
