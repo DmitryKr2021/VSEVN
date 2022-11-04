@@ -456,7 +456,6 @@ button.window__btn {
 
 .window__deadline table tr td {
  justify-content: left;
- width: 50%;
  font-size: 18px;
  padding: 0;
 }
@@ -489,41 +488,34 @@ button.window__btn {
  display: flex;
 }
 
+@media (max-width: 1020px) {
+ .window__lineInline {
+  flex-wrap: wrap;
+  gap: 10px;
+ }
+
+ .window__deadline .window__btn {
+  margin-left: 0px;
+ }
+}
+
 .datepicker-elem {
  display: inline-block;
  background: url(../img/calendar.webp) no-repeat;
  background-position: 90% center;
  padding-right: 10px;
- width: 180px;
+ width: 198px;
 }
 
 .datepicker-item {
  vertical-align: middle;
- width: 180px;
+ width: 198px;
  height: 38px;
  background-color: transparent;
  border: 1px solid var(--border-color);
  border-radius: 3px;
  padding: 5px;
  cursor: pointer;
-}
-
-@media (max-width: 1275px) {
- .window__deadline .window__btn {
-  margin-left: 0px;
- }
-}
-
-@media (max-width: 1260px) {
- .window__deadline .window__btn {
-  margin-top: 5px;
-  *width: 100%;
- }
-
- .datepicker-elem {
-  margin-left: 50%;
-  transform: translateX(-50%);
- }
 }
 
 .data-incorrect {
@@ -690,7 +682,6 @@ button.window__btn {
   background-color: var(--bg-red);
   color: #fff;
   font-size: 18px;
-  /*min-height: 40px;*/
   min-height: 50px;
   padding: 0 30px;
   padding-bottom: 3px;
@@ -773,13 +764,7 @@ button.window__btn {
  transition: 0.3s;
 }
 
-@media (max-width: 1030px) {
- .resume-title span {
-  padding-bottom: 3px;
- }
-}
-
-.resume-title span:hover {
+.resume-title span button:hover {
  color: #619f00;
  border-bottom: 1px solid #619f00;
 }
@@ -788,7 +773,7 @@ button.window__btn {
  margin-left: 0;
 }
 
-.resume-title span.active {
+.resume-title span.active button {
  color: #619f00;
  border-bottom: 1px solid #619f00;
 }
@@ -797,11 +782,98 @@ button.window__btn {
  color: var(--bg-red);
 }
 
+@media (max-width: 1050px) {
+ .resume-title span {
+  padding-bottom: 3px;
+ }
+
+ .resume-title__1 {
+  width: 80%;
+  max-width: 700px;
+  display: flex;
+ }
+}
+
+@media (max-width: 852px) {
+ .resume-title__1 {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+ }
+
+ .resume-title__1 span {
+  width: 50%;
+  margin-left: 0;
+ }
+}
+
+@media (max-width: 740px) {
+ .resume-title__1 {
+  flex-direction: column;
+ }
+
+ .resume-title__1 span {
+  width: 100%;
+  margin-left: 0;
+ }
+}
+
 .resume-main {
  margin-top: 24px;
  display: flex;
  justify-content: space-between;
  align-items: start;
+}
+
+@media (max-width: 1130px) {
+
+ .resume-main {
+  display: grid;
+  grid-gap: 1vw;
+  grid-template-rows: minmax(250px, auto) minmax(250px, auto);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+ }
+
+ .resume-main__foto {
+  padding-left: 5vw;
+ }
+
+ .resume-main__info {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+ }
+
+ .resume-main__info .info-wrap {
+  margin-left: 2vw;
+ }
+
+ .resume-main__contacts {
+  margin-right: 5vw;
+ }
+}
+
+@media (max-width: 720px) {
+ .resume-main__foto {
+  padding-left: 0;
+ }
+
+ .resume-main__contacts {
+  margin-right: 0;
+ }
+
+ .resume-main__info .info-wrap {
+  margin-left: 0;
+ }
+}
+
+@media (max-width: 620px) {
+ .resume-main {
+  grid-template-rows: 1fr minmax(200px, auto) minmax(200px, auto);
+  grid-template-columns: 100%;
+ }
 }
 
 .resume-anonim {
@@ -875,14 +947,14 @@ button.window__btn {
  padding-left: 46px;
  letter-spacing: -0.5px;
  background: url(../img/download.svg) 25% center no-repeat;
- background-size: 9%;
+ background-size: 23px;
 }
 
 .resume-anonim__buttons-row button:nth-child(3) {
  padding-left: 47px;
  letter-spacing: -0.5px;
  background: url(../img/printer.svg) 30% center no-repeat;
- background-size: 9%;
+ background-size: 23px;
 }
 
 .resume-anonim__buttons-row button:nth-child(4) {
@@ -905,6 +977,78 @@ button.window__btn {
  justify-content: center;
  height: 70%;
  gap: 10px !important;
+}
+
+@media (max-width: 1260px) {
+ .resume-anonim {
+  margin-bottom: 200px;
+ }
+
+ .resume-anonim__wrap {
+  display: grid;
+  grid-gap: 5vw;
+  grid-template-rows: minmax(250px, auto) minmax(250px, auto);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  padding-left: 12vw;
+  padding-right: 12vw;
+ }
+
+ .resume-anonim__center {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+ }
+}
+
+@media (max-width: 930px) {
+ .resume-anonim__wrap {
+  grid-gap: 5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+ }
+}
+
+@media (max-width: 680px) {
+ .resume-anonim__wrap {
+  grid-gap: 5vw;
+  padding-left: 0;
+  padding-right: 0;
+ }
+
+ .resume-anonim__center {
+  padding-left: 0;
+  padding-right: 0;
+ }
+}
+
+@media (max-width: 620px) {
+ .resume-anonim__wrap {
+  padding-left: 10vw;
+  padding-right: 10vw;
+ }
+
+ .resume-anonim {
+  margin-bottom: 500px;
+ }
+
+ .resume-anonim__wrap {
+  grid-template-rows: 1fr minmax(300px, auto) minmax(250px, auto);
+  grid-template-columns: 100%;
+ }
+
+ .resume-anonim__center {
+  margin-right: 5vw;
+ }
+
+ .resume-anonim__buttons-row {
+  flex-direction: column;
+ }
+
+ .resume-anonim__buttons-row .window__btn {
+  width: 100%;
+ }
 }
 
 .resume-main__foto {
@@ -1816,19 +1960,21 @@ button.edit {
 
 .btn-socicon .whatsapp {
  display: inline-block;
- margin-left: 15px;
+ margin-left: 10px;
+ padding-left: 5px;
  width: 50%;
  height: 20px;
  background: url(../img/whatsapp.svg) 0 0 no-repeat;
- background-size: 15%;
+ background-size: 20px;
 }
 
 .btn-socicon .viber {
  display: inline-block;
  width: 35%;
+ padding-left: 5px;
  height: 20px;
  background: url(../img/viber.svg) 0 0 no-repeat;
- background-size: 23%;
+ background-size: 20px;
 }
 
 .contacts-wrap__edit {
@@ -1952,8 +2098,6 @@ button.edit {
 }
 
 .resume__buttons-row .btn-favorite.pressed {
- /*color: #fff;
-  background-color: var(--bg-red);*/
  border: 1px solid var(--bg-red);
  color: var(--bg-red);
  background-color: var(--bg-yellow);
@@ -2113,13 +2257,6 @@ button.edit {
  margin-bottom: 15px;
 }
 
-.contacts-share {
- padding-top: 10px;
- padding-bottom: 45px;
- width: 86%;
- margin-left: 6%;
-}
-
 .contacts-share__container {
  position: absolute;
  bottom: -6px;
@@ -2129,10 +2266,21 @@ button.edit {
 }
 
 .wrap-share {
- margin-top: 31px;
  display: flex;
  column-gap: 22px;
  padding-left: 10px;
+}
+
+@media (max-width: 730px) {
+ .contacts-share__container {
+  position: relative;
+ }
+
+ .wrap-share {
+  column-gap: 10px;
+  padding-left: 0;
+  margin-top: 0;
+ }
 }
 
 .wrap-shareitem {
@@ -2148,6 +2296,18 @@ button.edit {
  display: inline-block;
  width: 50px;
  height: 50px;
+}
+
+@media (max-width: 380px) {
+ .wrap-shareitem {
+  width: 35px;
+  height: 35px;
+ }
+
+ .wrap-shareitem a {
+  width: 40px;
+  height: 40px;
+ }
 }
 
 .wrap-shareitem:nth-child(1) a {

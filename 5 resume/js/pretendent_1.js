@@ -13,6 +13,7 @@ const windowDeadline = document.querySelector('.window__deadline');
 const windowNow = document.querySelector('.window__now');
 const resumeMain = document.querySelector('.resume-main');
 const resumeAnonim = document.querySelector('.resume-anonim');
+const resumeAnonimWrap = document.querySelector('.resume-anonim__wrap');
 const resumeTitles = document.querySelectorAll('.resume-title');
 const resumeTitle1 = document.querySelector('.resume-title__1');
 const resumeTitleSpans = document.querySelector('.resume-title').querySelectorAll('span');
@@ -36,10 +37,23 @@ noContacts[1].style.display = 'none';
 resumeAnonim.style.display = 'none';
 windowButtonsRow.style.display = 'none';
 
-
 /*****Показать резюме соискателя с контактами *******/
 resumeTitle1.querySelectorAll('button')[0].onclick = (e) => {
+ resumeAnonimWrap.style.display = 'none';
  resumeMain.style.display = 'flex';
+ if (document.documentElement.clientWidth < 1131) {
+  resumeMain.style.display = 'grid';
+ }
+
+ window.onresize = () => {
+  resumeAnonimWrap.style.display = 'none';
+  if (document.documentElement.clientWidth < 1110) {
+   resumeMain.style.display = 'grid';
+  } else {
+   resumeMain.style.display = 'flex';
+  }
+ };
+
  windowButtonsRow.style.display = 'none';
  document.querySelector('.pretendent-card__container').classList.remove('hide-block');
  pretendentAnket.classList.add('initial-hide');
@@ -69,6 +83,19 @@ up.onclick = () => pageN.innerText = ' ' + '1';
 /*****Показать резюме соискателя без контактов *******/
 resumeTitle1.querySelectorAll('button')[1].onclick = (e) => {
  resumeMain.style.display = 'flex';
+ if (document.documentElement.clientWidth < 1131) {
+  resumeMain.style.display = 'grid';
+ }
+
+ window.onresize = () => {
+  resumeAnonimWrap.style.display = 'none';
+  if (document.documentElement.clientWidth < 1110) {
+   resumeMain.style.display = 'grid';
+  } else {
+   resumeMain.style.display = 'flex';
+  }
+ };
+
  windowButtonsRow.style.display = 'flex';
  document.querySelector('.pretendent-card__container').classList.remove('hide-block');
  pretendentAnket.classList.add('initial-hide');
@@ -87,7 +114,20 @@ resumeTitle1.querySelectorAll('button')[1].onclick = (e) => {
 
 /***********Показать анонимное резюме ***********/
 resumeTitle1.querySelectorAll('button')[2].onclick = (e) => {
- resumeMain.style.display = 'flex';
+ resumeAnonimWrap.style.display = 'flex';
+ if (document.documentElement.clientWidth < 1244) {
+  resumeAnonimWrap.style.display = 'grid';
+ }
+
+ window.onresize = () => {
+  resumeMain.style.display = 'none';
+  if (document.documentElement.clientWidth < 1244) {
+   resumeAnonimWrap.style.display = 'grid';
+  } else {
+   resumeAnonimWrap.style.display = 'flex';
+  }
+ };
+
  windowButtonsRow.style.display = 'flex';
  document.querySelector('.pretendent-card__container').classList.remove('hide-block');
  pretendentAnket.classList.add('initial-hide');
@@ -108,7 +148,6 @@ function showVar1() {
  resumeButtonsRowBtns[2].classList.remove('hide-block');
  resumeButtonsRowBtns[3].classList.remove('hide-block');
  windowButtonsRowBtns[2].style.display = 'none';
- resumeMain.style.display = 'flex';
  resumeAnonim.style.display = 'none';
  resumeTitles[1].classList.add('hide-block');
  resumeTitles[0].classList.remove('hide-block');
@@ -134,8 +173,6 @@ function showVar2() {
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
  resumeTitleSpans[0].classList.remove('hide-block');
- document.querySelector('.span-hide').classList.remove('hide-block');
- resumeMain.style.display = 'flex';
  resumeAnonim.style.display = 'none';
  resumeButtonsRowBtns[2].classList.add('hide-block');
  resumeButtonsRowBtns[3].classList.add('hide-block');
@@ -259,6 +296,11 @@ anket.addEventListener('click', function (e) {
  for (let item of resumeTitleSpans) {
   item.classList.remove('active');
  }
+
+ window.onresize = () => {
+  resumeMain.style.display = 'none';
+ };
+
  e.target.parentNode.classList.add('active');
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
