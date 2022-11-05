@@ -410,11 +410,7 @@ for (let item of addCloses) {
 }
 /***Конец обучение персонала методике ***/
 
-
-
 /************Конец работа с анкетой ***************/
-
-
 
 
 /***********Корректировка даты деактивации ********/
@@ -422,7 +418,6 @@ const datepickerInput = document.querySelector('input[name="datepicker"]');
 datepickerInput.onclick = () => {
  resumeMainInfo.classList.add('calendar-open');
 };
-
 /*******Конец корректировка даты деактивации ******/
 
 /****************Замена фото**************** */
@@ -464,6 +459,9 @@ const contactTelNumber = document.querySelector('.contact-tel__number');
 const contactEmailAdress = document.querySelector('.contact-email__adress');
 const editTelPlaceholder = document.querySelector('.edit-tel').getAttribute("placeholder");
 const editEmailPlaceholder = document.querySelector('.edit-mail').getAttribute("placeholder");
+const divEyes = document.querySelectorAll('.div-eyes');
+const span2s = document.querySelectorAll('.span2');
+const span2texts = document.querySelectorAll('.span2text');
 let telOk = false;
 let EmailOk = false;
 let closeAll = false;
@@ -473,6 +471,20 @@ const toSaveResume = 'Сохранить изменения';
 let resumeEdited = false;
 
 function stopEdit() {
+ //спрятать глаза
+ for (let item of divEyes) {
+  item.classList.add('initial-hide');
+ }
+
+ //Спрятать закрытую информацию
+ for (let item of span2texts) {
+  if (item.classList.contains('hide')) {
+   item.textContent = "Информация скрыта соискателем";
+   item.classList.remove('hide'); //убрать серый цвет
+   item.classList.add('hide2'); //красный цвет
+  }
+ }
+
  for (let item of edits) {
   item.classList.add('initial-hide');
  }
@@ -538,6 +550,11 @@ editResume.addEventListener('click', function (e) {
  if (!resumeEdited) { //начать редактирование
   e.target.innerText = toSaveResume;
   e.target.classList.add('active');
+
+  //показать глаза
+  for (let item of divEyes) {
+   item.classList.remove('initial-hide');
+  }
 
   for (let item of edits) {
    item.classList.remove('initial-hide');
@@ -808,8 +825,30 @@ const popupAdv = resumeMainInfo.querySelector('.popup-adv');
 const forPopupInput = resumeMainInfo.querySelector('.for__popup-input');
 const popupHide = document.querySelector('.popup-hide');
 const savePopups = document.querySelectorAll('.save-popup');
+const openedEyes = document.querySelectorAll('.opened-eye');
+const closedEyes = document.querySelectorAll('.closed-eye');
 let targ;
 let popupRect;
+
+/*************Глаз открытый/закрытый *********/
+for (let item of openedEyes) {
+ item.addEventListener('click', toCloseEye);
+}
+for (let item of closedEyes) {
+ item.addEventListener('click', toOpenEye);
+}
+
+function toCloseEye(e) {
+ e.currentTarget.classList.add('hide-block');
+ e.currentTarget.parentNode.querySelector('.closed-eye').classList.remove('hide-block');
+ e.currentTarget.closest('.span2').querySelector('.span2text').classList.add('hide'); //серый цвет
+}
+
+function toOpenEye(e) {
+ e.currentTarget.classList.add('hide-block');
+ e.currentTarget.parentNode.querySelector('.opened-eye').classList.remove('hide-block');
+}
+/*********Конец глаз открытый/закрытый *******/
 
 for (let pencil of infoPencils) {
  pencil.addEventListener('click', pencilClick);

@@ -369,6 +369,7 @@ button.window__btn {
  max-width: 1360px;
  margin-left: auto;
  margin-right: auto;
+ background-color: #fff;
 }
 
 .pretendent-card__header {
@@ -1096,6 +1097,159 @@ button.edit {
  background-size: 15px;
 }
 
+.info-wrap.contacts {
+ position: relative;
+}
+
+.span2 {
+ position: relative;
+}
+
+.span2text.hide {
+ color: #999;
+}
+
+.span2text.hide2 {
+ color: var(--bg-red);
+}
+
+.div-eyes {
+ position: absolute;
+ right: -35px;
+ top: 5px;
+ height: 15px;
+ width: 25px;
+ cursor: pointer;
+}
+
+.div-eyes.correct2 {
+ right: 80px;
+ top: 29px;
+}
+
+@media (max-width: 1370px) {
+ .div-eyes.correct2 {
+  right: 5px;
+ }
+}
+
+@media (max-width: 1252px) {
+ .div-eyes.correct1 {
+  top: 28px;
+  right: 10px;
+ }
+}
+
+@media (max-width: 1214px) {
+ .div-eyes.correct2 {
+  top: 6px;
+  right: -30px;
+ }
+}
+
+@media (max-width: 1130px) {
+ .div-eyes.correct1 {
+  top: 6px;
+  right: -30px;
+ }
+}
+
+@media (max-width: 932px) {
+ .div-eyes.correct2 {
+  top: 30px;
+  right: 195px;
+ }
+}
+
+@media (max-width: 840px) {
+ .div-eyes.correct2 {
+  right: 130px;
+ }
+}
+
+@media (max-width: 761px) {
+ .div-eyes.correct2 {
+  right: 80px;
+ }
+}
+
+@media (max-width: 676px) {
+ .div-eyes.correct2 {
+  right: 5px;
+ }
+}
+
+@media (max-width: 614px) {
+ .div-eyes.correct1 {
+  top: 30px;
+  right: 10px;
+ }
+}
+
+@media (max-width: 597px) {
+ .div-eyes.correct2 {
+  top: 5px;
+  right: -30px;
+ }
+}
+
+@media (max-width: 5557px) {
+ .div-eyes.correct2 {
+  top: 30px;
+ }
+}
+
+.opened-eye,
+.closed-eye {
+ position: relative;
+}
+
+.opened-eye {
+ height: 10px;
+ width: 20px;
+}
+
+.closed-eye {
+ height: 15px;
+ width: 25px;
+}
+
+.opened-eye svg {
+ position: absolute;
+ top: 2px;
+ left: 2px;
+ width: 20px;
+ height: 10px;
+}
+
+.closed-eye svg {
+ position: absolute;
+ width: 25px;
+ height: 15px;
+}
+
+.eye-tooltip {
+ position: absolute;
+ text-align: center;
+ color: #333;
+ background-color: #fff;
+ top: -30px;
+ right: -70px;
+ width: 160px;
+ box-shadow: 3px 3px 3px rgba(25, 25, 25, 0.5);
+ opacity: 0;
+ transition: 0.3s;
+ z-index: -1;
+}
+
+.opened-eye svg:hover+.eye-tooltip,
+.closed-eye svg:hover+.eye-tooltip {
+ opacity: 1;
+ z-index: 10;
+}
+
+
+
 /***********Popup для редактирования resume*********/
 .resume-main__popup {
  position: absolute;
@@ -1398,7 +1552,6 @@ button.edit {
  color: #7f7f7f !important;
 }
 
-
 .datetable table thead tr:last-child {
  font-size: small;
 }
@@ -1413,7 +1566,6 @@ button.edit {
 .datetable table thead tr:nth-child(2) td:nth-child(3):hover {
  cursor: pointer;
  user-select: none;
-
 }
 
 .datetable table tbody td {
