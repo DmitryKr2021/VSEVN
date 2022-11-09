@@ -2555,6 +2555,7 @@ window.addEventListener('resize', handleText);
 window.addEventListener('click', handleText);
 
 /**********Затемнение страницы при активации селектов ******/
+let bul9 = true;
 window.addEventListener('click', isDark);
 
 function isDark(e) {
@@ -2601,8 +2602,16 @@ function isDark(e) {
   if (eX < rectLeft || eX > rectRight || eY < rectTop || eY > rectBottom) {
    if (eX < rectLeft1 || eX > rectRight1 || eY < rectTop1 || eY > rectBottom1) {
 
-    if (!e.target.classList.contains('header-enter__btn') && !e.target.classList.contains('submit-ad') && !e.target.classList.contains('btn-enter') && !e.target.classList.contains('btn-regist') && (btnAutorizes[0] != e.target) && btnAutorizes[1] != e.target) {
+    let bul1 = !e.target.classList.contains('header-enter__btn');
+    let bul2 = !e.target.classList.contains('submit-ad');
+    let bul3 = !e.target.classList.contains('btn-enter');
+    let bul4 = !e.target.classList.contains('btn-regist');
+    let bul5 = btnAutorizes[0] != e.target;
+    let bul6 = btnAutorizes[1] != e.target;
+    let bul7 = !e.target.classList.contains('a-comment');
+    let bul8 = !e.target.classList.contains('popup__comment-text');
 
+    if (bul1 && bul2 && bul3 && bul4 && bul5 && bul6 && bul7 && bul8 && bul9) {
      setTimeout(() => {
       document.querySelector('.search__container').classList.remove('body-dark');
       document.querySelector('.header').classList.remove('header-dark');
@@ -3132,7 +3141,7 @@ function changeTab(e) {
 /***********Конец карточка соискателя************/
 
 //Добавить/убрать соискателя/работодателя в избранное
-const cardFavoritesPerson = document.querySelectorAll('.card__favorite.person');
+const cardFavoritesPerson = document.querySelectorAll('.person');
 const cardFavoritesEmployer = document.querySelectorAll('.card__favorite.employer');
 const addPerson = 'Добавить соискателя в избранное';
 const removePerson = 'Убрать соискателя из избранного';
@@ -3841,7 +3850,8 @@ for (let item of aComments) {
 }
 
 function showCommentBlock(e) {
- headerContainer.classList.add('body-dark');
+ handlZindex();
+
  let targ = e.target.closest('article').nextElementSibling;
  targ.classList.remove('hide-block');
  if (commentSave) {
@@ -3883,7 +3893,16 @@ function saveComment(e) {
  if (!e.target.classList.contains('long')) {
   targ.classList.add('hide-block');
   commentSave = true;
-  headerContainer.classList.remove('body-dark');
+  bul9 = true;
+  let art = e.target.getAttribute('data-article');
+  for (let item of document.querySelectorAll('article')) {
+   if (item.getAttribute('data-article') == art) {
+    item.classList.add('blueback');
+    item.querySelector('.card__desc').classList.add('blueb');
+   }
+  }
+ } else {
+  bul9 = false;
  }
 }
 
@@ -3892,6 +3911,7 @@ for (let btn of btnBreaks) {
 }
 
 function breakComment(e) {
+ bul9 = true;
  let targ = e.target.closest('.popup__comment');
  targ.querySelector('.char-number').innerText = '0';
  targ.querySelector('.popup__comment-text').value = '';
@@ -4110,18 +4130,19 @@ popupSignin.addEventListener('click', function (e) {
  handlZindex();
 });
 
-popupEnterDesctopExit.onclick = () => {
+function popupEnterExit(e) {
  popupEnterDesctop.classList.add('hide-block');
  document.querySelector('.search__container').classList.remove('body-dark');
  document.querySelector('.header').classList.remove('header-dark');
  document.querySelector('.info').classList.remove('info-dark');
+}
+
+popupEnterDesctopExit.onclick = () => {
+ popupEnterExit();
 };
 
 btnOut.addEventListener('click', () => {
- popupEnterDesctop.classList.add('hide-block');
- document.querySelector('.search__container').classList.remove('body-dark');
- document.querySelector('.header').classList.remove('header-dark');
- document.querySelector('.info').classList.remove('info-dark');
+ popupEnterExit();
  document.querySelector('.open-contacts').classList.remove('hide-block');
  for (let item of document.querySelectorAll('.employer-only')) {
   item.classList.remove('hide-block');
