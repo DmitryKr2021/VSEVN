@@ -311,6 +311,20 @@ anket.addEventListener('click', function (e) {
 });
 /*******Конец показать анкету ******/
 
+/********* Показать телефон и email **********/
+const btnTelMails = document.querySelectorAll('.btnTelMail');
+
+for (let item of btnTelMails) {
+ item.addEventListener('click', showTelMail);
+}
+
+function showTelMail(e) {
+ e.currentTarget.querySelector('.span-before').classList.add('hide-block');
+ e.currentTarget.querySelector('.span-after').classList.remove('initial-hide');
+}
+/******Конец показать телефон и email ********/
+
+
 /***********Плейсхолдеры ***********/
 const windowTabsLabels = document.querySelectorAll('.window-tabs__label');
 for (let item of windowTabsLabels) {

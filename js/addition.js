@@ -2730,7 +2730,6 @@ function changeColorGreen() {
   item.classList.add('card__row-rightcolumn');
  }
  green = true;
-
 }
 
 for (let btn of resetAlls) {
@@ -2747,10 +2746,11 @@ function changeColorYellow() {
 }
 
 //При клике ниже желтого поля развернуть зеленую девушку 
+let gold = false;
 window.addEventListener('click', function (e) {
  if ((e.clientY > info.getBoundingClientRect().top - 30) && !e.target.closest('.roll__new')) {
+  gold = true; //Для дымки короткого поля в card-gold
   changeColorGreen();
-
   let coef = 80;
   for (let item of cardNames) {
    if (item.innerText.length > 30) {
@@ -2765,6 +2765,7 @@ window.addEventListener('click', function (e) {
 
   setTimeout(() => {
    cardDescsToSmoke();
+   cardNamesToSmoke();
   }, 1000); //уйти от контекста клика windows
  }
 });
@@ -2791,9 +2792,11 @@ window.addEventListener('load', handleTextToSmoke);
 let popupName = document.createElement('div'); //для перевода в дымку;
 
 function cardNamesToSmoke() {
+
  let coef = 80;
+ let maxL = 620;
  for (let item of cardNames) {
-  if (item.scrollWidth > item.offsetWidth && item.offsetWidth < 620) {
+  if (item.scrollWidth > item.offsetWidth && item.offsetWidth < maxL) {
    item.style.cssText =
     `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
      -webkit-background-clip: text; 
@@ -2804,11 +2807,22 @@ function cardNamesToSmoke() {
    item.removeEventListener('mouseover', showNamePopup);
   }
   item.addEventListener('mouseout', popupNameRemove);
+
+  if (gold) {
+   if (item.classList.contains('card-gold__name')) {
+    item.style.cssText =
+     `background: linear-gradient(to right, #565656 ${coef}%, #565656 ${coef*1.1}%, transparent ${coef*1.2}%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;`;
+    item.addEventListener('mouseover', showNamePopup);
+   }
+  }
  }
 }
 
 function cardDescsToSmoke() {
- const charWidth = 7.5;
+ //const charWidth = 7.5;
+ const charWidth = 6;
  for (let item of cardDescs) {
   let maxCharCount = Math.round(2 * item.offsetWidth / charWidth);
   let thisStr = item.querySelector('li').innerText;
@@ -2979,6 +2993,24 @@ selectPeriodDiv.addEventListener('mouseout', function () {
  popup4.remove();
 });
 /***********Конец работа с сортировкой по дате/периоду *********/
+
+/*********Показать/спрятать список телефонов******/
+const cardPhones = document.querySelectorAll('.card__phone');
+const popupPhoneCloses = document.querySelectorAll('.popup-phone__close');
+
+for (let item of cardPhones) {
+ item.onclick = (e) => {
+  e.target.nextElementSibling.classList.remove('hide-block');
+ };
+}
+
+for (let item of popupPhoneCloses) {
+ item.onclick = (e) => {
+  e.target.parentNode.classList.add('hide-block');
+ };
+}
+/*****Конец показать/спрятать список телефонов****/
+
 
 /*************Работа с рейтингом**************/
 const ratingItem = document.querySelectorAll('.rating__item');
