@@ -3352,7 +3352,7 @@ svg path {
  top: 42px;
  right: 0;
  min-width: 155px;
- padding: 5px 0 0 0;
+ padding: 8px 0 0 0;
  border: 1px solid rgba(0, 0, 0, 0.2);
  background-color: #fff;
  *transform: translate(-10px, 10px);
@@ -3361,7 +3361,7 @@ svg path {
  transition: all 0.3s ease 0s;
  z-index: 30;
  overflow: auto;
- max-height: 75vh;
+ max-height: 80vh;
  box-shadow: 0 0 3px 3px rgba(100, 100, 100, 0.4)
 }
 
@@ -3393,7 +3393,8 @@ svg path {
  border-top: none;
 }
 
-.dropdown-list li:first-child {
+.dropdown-list li:first-child,
+.dropdown-list li:nth-child(2) {
  display: flex;
  justify-content: space-around;
  align-items: center;
@@ -3491,7 +3492,7 @@ svg path {
  background-size: contain;
 }
 
-.dropdown-list li:nth-child(3) a:nth-child(4) {
+.dropdown-list li:nth-child(4) a:nth-child(4) {
  padding-left: 8px;
 }
 
@@ -6094,18 +6095,6 @@ input {
 @media (max-width: 20em) {
  .card__favorite svg {
   margin-right: 0.3125rem;
- }
-}
-
-@media (any-hover: hover) {
- .card__favorite:not(.card__favorite--green):hover {
-  *color: #B83539;
-  *color: var(--bg-red);
- }
-
- .card__favorite:not(.card__favorite--green):hover svg path {
-  *fill: #B83539;
-  *fill: var(--bg-red);
  }
 }
 

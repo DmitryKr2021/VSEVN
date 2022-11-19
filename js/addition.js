@@ -4030,14 +4030,13 @@ function enterSite(e) {
  autorize.classList.remove('hide-block');
  liAutorize.classList.remove('lock');
  aAutorize.classList.remove('lock');
- for (let item of dropdownAutorizes) {
-  item.classList.remove('hide-block');
- }
  popupEnterDesctop.classList.remove('hide-block');
  toEnter(e);
  handlZindex();
  if (enterOf === 'pretendent') {
   correctEnter();
+ } else {
+  dropdownAutorizes[0].classList.remove('hide-block');
  }
 }
 
@@ -4049,9 +4048,10 @@ function correctEnter() {
  }
  liAutorize.classList.add('lock');
  aAutorize.classList.add('lock');
- for (let item of dropdownAutorizes) {
-  item.classList.add('hide-block');
- }
+
+ document.querySelector('.li-employer').classList.add('hide-block');
+ document.querySelector('.li-person').classList.remove('hide-block');
+
 }
 
 btnOut.addEventListener('click', function () {

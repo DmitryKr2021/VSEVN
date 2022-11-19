@@ -487,6 +487,30 @@ body {
  margin-left: 15px;
 }
 
+.dropdown-out {
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+
+.header__menu .dropdown-list .li-img {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding-left: 10px;
+ overflow: hidden;
+}
+
+.header__menu .dropdown-list .li-img svg {
+ width: 135px;
+ height: 62px;
+}
+
+.dropdown-list .li-person .li-img {
+ border-radius: 50%;
+ border: 1px solid #888;
+}
+
+
 .popup-enterDesctop {
  position: fixed;
  left: 50%;
@@ -4780,6 +4804,11 @@ body {
  background-color: #fff;
 }
 
+.info .card-gold::before {
+ content: "";
+ background-color: #dfc100;
+}
+
 .card__col_:first-child {
  width: 70px;
  padding-right: 10px;
@@ -4990,8 +5019,8 @@ body {
  background-color: var(--bg-yellow);
 }
 
-.card-gold2:nth-child(3) .card__col_ .card__supname a,
-.card-gold2:nth-child(4) .card__col_ .card__supname a {
+.card-gold2:nth-child(4) .card__col_ .card__supname a,
+.card-gold2:nth-child(5) .card__col_ .card__supname a {
  background-color: #fff;
 }
 
@@ -5002,6 +5031,10 @@ body {
  font-weight: bold;
  padding-bottom: 10px;
  border-bottom: 2px solid rgb(255, 221, 0);
+}
+
+.card-gold2 .card__phone {
+ margin-top: 3px;
 }
 
 .card-gold2 .name-rating {
@@ -5035,8 +5068,8 @@ body {
 
 .card-gold2 .card__row {
  margin-top: 10px;
- justify-content: space-between;
- column-gap: 0;
+ justify-content: start;
+ column-gap: 10px;
  flex-wrap: wrap;
  row-gap: 10px;
 }
@@ -5092,55 +5125,294 @@ body {
  padding-top: 3px;
 }
 
-.card-gold2:nth-child(3) .card__salary {
+.card-gold2:nth-child(4) .card__salary,
+.card-gold2:nth-child(5) .card__salary {
  margin-top: -3px;
  padding-bottom: 0;
 }
 
-.card-gold2:nth-child(3) .name-rating__top {
+.card-gold2:nth-child(4) .name-rating__top,
+.card-gold2:nth-child(5) .name-rating__top {
  display: flex;
  flex-wrap: wrap;
  justify-content: start;
  column-gap: 8px;
 }
 
-.card-gold2:nth-child(3) .card__name,
-.card-gold2:nth-child(4) .card__name {
+.card-gold2:nth-child(4) .card__name,
+.card-gold2:nth-child(5) .card__name,
+.card-gold2:nth-child(6) .card__name,
+.card-gold2:nth-child(7) .card__name {
  width: auto;
 }
 
-.card-gold2:nth-child(3) .name-rating__top a:nth-child(2),
-.card-gold2:nth-child(3) .name-rating__top a:nth-child(3) {
+.card-gold2:nth-child(4) .name-rating__top a:nth-child(2),
+.card-gold2:nth-child(4) .name-rating__top a:nth-child(3),
+.card-gold2:nth-child(5) .name-rating__top a:nth-child(2),
+.card-gold2:nth-child(5) .name-rating__top a:nth-child(3) {
  font-size: 16px;
  color: #435269;
  padding-top: 2px;
 }
 
-.card-gold2:nth-child(4) .card__col_ .card__supname {
+.card-gold2:nth-child(6) .card__col_ .card__supname,
+.card-gold2:nth-child(7) .card__col_ .card__supname {
+ margin-top: 3px;
+ padding-bottom: 10px;
+ border-bottom: 2px solid #ffdd00;
+ justify-content: start;
+}
+
+.card-gold2:nth-child(6) .card__important,
+.card-gold2:nth-child(7) .card__important {
+ background-color: var(--bg-yellow);
+ padding: 5px 20px;
+ border-radius: 30px;
+}
+
+.card-gold2:nth-child(6) .name-rating__top,
+.card-gold2:nth-child(7) .name-rating__top {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: start;
+ column-gap: 8px;
+}
+
+.card-gold2:nth-child(6) .name-rating__top a:nth-child(2),
+.card-gold2:nth-child(7) .name-rating__top a:nth-child(2),
+.card-gold2:nth-child(6) .name-rating__top a:nth-child(3),
+.card-gold2:nth-child(7) .name-rating__top a:nth-child(3) {
+ font-size: 16px;
+ color: #435269;
+ padding-top: 2px;
+}
+
+.card-gold2:nth-child(6),
+.card-gold2:nth-child(7) {
+ border: 2px solid var(--bg-yellow);
+ border-radius: 10px;
+}
+
+.card-gold2:nth-child(6) .card__logo,
+.card-gold2:nth-child(7) .card__logo {
+ border: 1px solid #ebe3c6;
+}
+
+.card-gold3 .card__logo {
+ border-radius: 50%;
+ border: 1px solid #ffdd00;
+}
+
+.card-gold3:nth-child(8) .card__logo {
+ border: 1px solid #dbdcde;
+}
+
+.card-gold3 .card__logo::before {
+ content: "FOTO";
+ color: #ffdd00;
+}
+
+.card-gold3:nth-child(8) .card__logo::before {
+ color: #dbdcde;
+}
+
+.card-gold3 .person.pop {
+ padding-left: 25px;
+ background: url(../img/icons/aster-gold2.svg) -2px -3px no-repeat;
+}
+
+.card-gold3 .person.pop:hover {
+ background: url(../img/icons/aster-green.svg) -2px -3px no-repeat;
+}
+
+
+.card-gold4 .card__col_ .card__supname a {
+ margin-top: -2px;
+ font-size: 20px;
+ font-weight: normal;
+ text-transform: uppercase;
+ padding-left: 5px;
+ padding-right: 5px;
+ background-color: var(--bg-yellow);
+}
+
+.card-gold4:nth-child(11) .card__col_ .card__supname a,
+.card-gold4:nth-child(12) .card__col_ .card__supname a {
+ background-color: #fff;
+}
+
+.card-gold4 .card__salary {
+ margin-top: 3px;
+ font-size: 20px;
+ color: var(--bg-red);
+ font-weight: bold;
+ padding-bottom: 10px;
+ border-bottom: 2px solid rgb(255, 221, 0);
+}
+
+.card-gold4 .card__phone {
+ margin-top: 3px;
+}
+
+.card-gold4 .name-rating {
+ margin-top: 7px;
+ display: flex;
+ flex-direction: column;
+ border-bottom: none;
+}
+
+.card-gold4 .card__work {
+ margin-top: 0px;
+ line-height: 110%;
+ color: #435269;
+}
+
+.card-gold4 .card__work-item span:first-child {
+ color: #9facc0;
+}
+
+.card-gold4 .card__place {
+ margin-top: 10px;
+ display: flex;
+ flex-direction: column;
+ line-height: 110%;
+ color: #435269;
+}
+
+.card-gold4 .card__place a {
+ color: #435269;
+}
+
+.card-gold4 .card__row {
+ margin-top: 10px;
+ justify-content: start;
+ column-gap: 10px;
+ flex-wrap: wrap;
+ row-gap: 10px;
+}
+
+.card-gold4 .card__row>button,
+.card-gold4 .card__wrap>button {
+ height: 30px;
+ color: #565656;
+ background-color: #f2f2f2;
+ padding-left: 30px;
+ padding-right: 10px;
+ border-radius: 3px;
+ transition: 0.3s;
+}
+
+.card-gold4 .card__row>button:hover,
+.card-gold4 .card__wrap>button:hover {
+ background-color: var(--bg-yellow);
+}
+
+.card-gold4 .card__wrap>button {
+ padding-left: 20px;
+ padding-right: 15px;
+}
+
+.card-gold4 .card__row>button:before,
+.card-gold4 .card__wrap>button:before {
+ content: "";
+ display: inline-block;
+ vertical-align: middle;
+ height: 100%;
+}
+
+.card-gold4 .card__row>button svg,
+.card-gold4 .card__wrap>button svg {
+ position: absolute;
+ top: 5px;
+ left: 10px;
+}
+
+.card-gold4 .card__computed {
+ height: 30px;
+ padding-left: 5px;
+ padding-right: 5px;
+ border: 1px solid var(--bg-yellow);
+ border-radius: 3px;
+}
+
+.card-gold4 .card__importance {
+ font-size: 15px;
+ color: #fff;
+ padding-left: 23px;
+ padding-top: 3px;
+}
+
+.card-gold4:nth-child(11) .card__salary,
+.card-gold4:nth-child(12) .card__salary {
+ margin-top: -3px;
+ padding-bottom: 0;
+}
+
+.card-gold4:nth-child(11) .name-rating__top,
+.card-gold4:nth-child(12) .name-rating__top {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: start;
+ column-gap: 8px;
+}
+
+.card-gold4:nth-child(11) .card__name,
+.card-gold4:nth-child(12) .card__name,
+.card-gold4:nth-child(13) .card__name,
+.card-gold4:nth-child(14) .card__name {
+ width: auto;
+}
+
+.card-gold4:nth-child(11) .name-rating__top a:nth-child(2),
+.card-gold4:nth-child(11) .name-rating__top a:nth-child(3),
+.card-gold4:nth-child(12) .name-rating__top a:nth-child(2),
+.card-gold4:nth-child(12) .name-rating__top a:nth-child(3) {
+ font-size: 16px;
+ color: #435269;
+ padding-top: 2px;
+}
+
+.card-gold4:nth-child(13) .card__col_ .card__supname,
+.card-gold4:nth-child(14) .card__col_ .card__supname {
  margin-top: 3px;
  padding-bottom: 10px;
  border-bottom: 2px solid rgb(255, 221, 0);
  justify-content: start;
 }
 
-.card-gold2:nth-child(4) .card__important {
+.card-gold4:nth-child(13) .card__important,
+.card-gold4:nth-child(14) .card__important {
  background-color: var(--bg-yellow);
  padding: 5px 20px;
  border-radius: 30px;
 }
 
-.card-gold2:nth-child(4) .name-rating__top {
+.card-gold4:nth-child(13) .name-rating__top,
+.card-gold4:nth-child(14) .name-rating__top {
  display: flex;
  flex-wrap: wrap;
  justify-content: start;
  column-gap: 8px;
 }
 
-.card-gold2:nth-child(4) .name-rating__top a:nth-child(2),
-.card-gold2:nth-child(4) .name-rating__top a:nth-child(3) {
+.card-gold4:nth-child(13) .name-rating__top a:nth-child(2),
+.card-gold4:nth-child(14) .name-rating__top a:nth-child(2),
+.card-gold4:nth-child(13) .name-rating__top a:nth-child(3),
+.card-gold4:nth-child(14) .name-rating__top a:nth-child(3) {
  font-size: 16px;
  color: #435269;
  padding-top: 2px;
+}
+
+.card-gold4:nth-child(13),
+.card-gold4:nth-child(14) {
+ border: 2px solid var(--bg-yellow);
+ border-radius: 10px;
+}
+
+.card-gold4:nth-child(13) .card__logo,
+.card-gold4:nth-child(14) .card__logo {
+ border: 1px solid #ebe3c6;
 }
 
 /***--Конец доп блоки в желтой гамме--***/
