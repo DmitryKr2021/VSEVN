@@ -968,6 +968,7 @@
           <span><a>Показать это объявление на странице</a></span>
           <button class="up">Поднять объявление</button>
          </div>
+         <!--
          <div class="edit-comment">
           <svg class="svg-comment" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 16 16">
@@ -980,6 +981,7 @@
            Тут будет комментарий при нажатии на который появляется попап "редактировать"
           </a>
          </div>
+        -->
         </div>
         <!--header-leftwrap-->
        </div>
@@ -3058,15 +3060,18 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
         <div class="window-tabs__col col1">
          <h2 class="window-tabs__main-title">Анкета ( заполняется собственноручно )</h2>
          <label class="window-tabs__label">
-          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+           class="input text-only">
           <span>Фамилия</span>
          </label>
          <label class="window-tabs__label">
-          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+           class="input text-only">
           <span>Имя</span>
          </label>
          <label class="window-tabs__label">
-          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+          <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+           class="input text-only">
           <span>Отчество</span>
          </label>
          <label class="window-tabs__label">
@@ -3220,15 +3225,18 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
          </label>
          <div class="window-tabs__row">
           <label class="window-tabs__label">
-           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <input autocomplete="off" type="tel" data-mask="+7(___)___-__-__" name="form[]" data-error="Ошибка"
+            placeholder="" class="input">
            <span>Мобильный телефон</span>
           </label>
           <label class="window-tabs__label">
-           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <input autocomplete="off" type="tel" data-mask="+7(___)___-__-__" name="form[]" data-error="Ошибка"
+            placeholder="" class="input">
            <span>Домашний телефон</span>
           </label>
           <label class="window-tabs__label">
-           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <input autocomplete="off" type="tel" data-mask="+7(___)___-__-__" name="form[]" data-error="Ошибка"
+            placeholder="" class="input">
            <span>Доп. телефон</span>
           </label>
          </div>
@@ -3302,16 +3310,18 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
          <div class=" window-tabs__block--mmb">
           <div class="window-tabs__line"><span>Оплата труда:</span></div>
           <label class="window-tabs__label">
-           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+            class="input number-only">
            <span>На последнем месте работы, руб</span>
           </label>
           <label class="window-tabs__label">
-           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="" class="input">
+           <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
+            class="input number-only ">
            <span>Желаемая на испытательный срок, руб</span>
           </label>
          </div>
 
-         <div class="window-tabs__block">
+         <div class="window-tabs__block block-education">
           <div class="window-tabs__line window-tabs__line--fd">
            <span>Образование:</span>
            <div class="options">
@@ -3370,7 +3380,8 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
-                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+                class="input number-only" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false"
+                inputmode="numeric"></label>
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
@@ -3397,7 +3408,8 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
-                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+                class="input number-only" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false"
+                inputmode="numeric"></label>
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
@@ -3424,7 +3436,8 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
-                class="input" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false" inputmode="numeric"></label>
+                class="input number-only" data-inputmask="'mask': '9', 'repeat': 1, 'greedy' : false"
+                inputmode="numeric"></label>
              </td>
              <td>
               <label><input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
@@ -3493,7 +3506,7 @@ l-230 -190 -17 26 c-45 69 -51 220 -11 302 42 86 137 161 224 180 62 13 146 3
             </td>
            </tr>
            <tr>
-            <td>
+            <td class="wrong-year">
              <label>
               <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder=""
                class="input _date-years">

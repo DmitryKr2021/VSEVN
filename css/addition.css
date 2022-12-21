@@ -4524,22 +4524,29 @@ body {
 
 .info__window {
  height: 10250px;
+ height: 3200px;
  background-color: #fff;
 }
 
-.info__container {
- display: flex;
-}
-
-.info__container .info__sidebar {
- height: 100vh;
+.info__sidebar {
+ *height: 100vh;
+ height: 3200px;
  overflow-y: scroll;
  overflow-x: hidden;
 }
 
+.info__container {
+ display: flex;
+ *height: 100vh;
+ *overflow-y: scroll;
+ *overflow-y: hidden;
+ overflow-x: hidden;
+}
+
 .info__container .info__window {
- height: 100vh;
- overflow-y: scroll;
+ *height: 100vh;
+ *overflow-y: scroll;
+ overflow-y: hidden;
  overflow-x: hidden;
 }
 
@@ -4794,9 +4801,9 @@ body {
 }
 
 /*****--Доп блоки в желтой гамме--*****/
-
 .info .tabs,
-.info .cards {
+.info .cards,
+.page {
  background-color: #fbf7da;
 }
 
@@ -4856,15 +4863,15 @@ body {
 }
 
 .card-gold .popup-phone__close {
+ display: block;
  position: absolute;
- width: 40px;
- height: 40px;
- padding-top: 0;
- font-size: 40px;
- line-height: 40px;
+ padding: 0;
+ padding-bottom: 10px;
+ font-size: 60px;
+ line-height: 20px;
  background-color: #fff;
  top: -5px;
- right: -45px;
+ right: -40px;
 }
 
 .card-gold .name-rating {
@@ -4983,6 +4990,11 @@ body {
 
 .card-gold .card__item a {
  font-size: 16px;
+}
+
+.card-gold .card__item button {
+ margin-left: 0;
+ padding-left: 0px !important;
 }
 
 .card-gold .card__item button:hover,
@@ -5193,6 +5205,22 @@ body {
  border-radius: 10px;
 }
 
+.card-gold2:nth-child(6) .card__info button,
+.card-gold2:nth-child(7) .card__info button,
+.card-gold3:nth-child(13) .card__info button,
+.card-gold3:nth-child(14) .card__info button {
+ padding-left: 12px;
+ padding-right: 12px;
+}
+
+.card-gold2:nth-child(6)::before,
+.card-gold2:nth-child(7)::before,
+.card-gold3:nth-child(13)::before,
+.card-gold3:nth-child(14)::before {
+ content: "";
+ background-color: transparent;
+}
+
 .card-gold2:nth-child(6) .card__logo,
 .card-gold2:nth-child(7) .card__logo {
  border: 1px solid #ebe3c6;
@@ -5307,9 +5335,14 @@ body {
  background-color: var(--bg-yellow);
 }
 
-.card-gold4 .card__wrap>button {
+/*.card-gold4 .card__wrap>button {
  padding-left: 20px;
  padding-right: 15px;
+}*/
+
+.card-gold .card__info button {
+ padding-left: 12px;
+ padding-right: 12px;
 }
 
 .card-gold4 .card__row>button:before,
@@ -8267,11 +8300,12 @@ button.card__bell-submitButton {
 
 .company-header__salary .salary {
  margin-top: 5px;
+ font-size: 25px;
  font-weight: 600;
 }
 
 .company-header__salary .ndfl {
- font-size: 12px;
+ font-size: 16px;
 }
 
 .company-header__view {

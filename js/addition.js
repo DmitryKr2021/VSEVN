@@ -3107,6 +3107,13 @@ for (let card of cardCol) {
  }
 }
 
+const cardCol_ = document.querySelectorAll('.card__col_');
+for (let card of cardCol_) {
+ for (let item of card.querySelectorAll('a')) {
+  item.addEventListener('click', toPreventDef);
+ }
+}
+
 function toPreventDef(e) {
  e.preventDefault();
 }
@@ -3434,6 +3441,7 @@ function handleArrow(e) {
  e.target.classList.toggle('arrow-rotate');
  e.target.parentNode.querySelector('ul').classList.toggle('show_');
 }
+
 /***********Конец работа с анкетой ************/
 
 /********Оповещение о вакансии  *************/

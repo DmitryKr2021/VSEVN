@@ -300,7 +300,7 @@ anket.addEventListener('click', function (e) {
  window.onresize = () => {
   resumeMain.style.display = 'none';
  };
-
+ windowButtonsRow.style.display = 'flex';
  e.target.parentNode.classList.add('active');
  windowDeadline.classList.add('hide-block');
  windowNow.classList.add('hide-block');
@@ -310,6 +310,103 @@ anket.addEventListener('click', function (e) {
  pretendentAnket.classList.remove('initial-hide');
 });
 /*******Конец показать анкету ******/
+
+/*****Ввод в текстовые поля *****/
+const textOnlys = document.querySelectorAll('.text-only');
+const inputsTextOnly = [];
+//Создаем массив объектов из полей текстового ввода и их начальных значений
+for (let item of textOnlys) {
+ inputsTextOnly.push({
+  thisItem: item,
+  textValue: '',
+ });
+}
+
+for (let i = 0; i < inputsTextOnly.length; i += 1) {
+ inputsTextOnly[i].thisItem.addEventListener('input', (e) => {
+  let newValue = e.target.value;
+  if (newValue.match(/[^а-яА-Я]/g)) {
+   e.target.value = inputsTextOnly[i].textValue;
+   return;
+  }
+  inputsTextOnly[i].textValue = newValue;
+  e.target.value = newValue;
+ });
+}
+/**Конец ввод в текстовые поля **/
+
+/*****Ввод в числовые поля *****/
+const numberOnlys = document.querySelectorAll('.number-only');
+const inputsNumberOnly = [];
+//Создаем массив объектов из полей числового ввода и их начальных значений
+for (let item of numberOnlys) {
+ inputsNumberOnly.push({
+  thisItem: item,
+  textValue: '',
+ });
+}
+
+for (let i = 0; i < inputsNumberOnly.length; i += 1) {
+ inputsNumberOnly[i].thisItem.addEventListener('input', (e) => {
+  let newValue = e.target.value;
+  if (newValue.match(/[^0-9.,]/g)) {
+   e.target.value = inputsNumberOnly[i].textValue;
+   return;
+  }
+  inputsNumberOnly[i].textValue = newValue;
+  e.target.value = newValue;
+ });
+}
+/**Конец ввод в числовые поля **/
+
+/*****Ввод в поля с годом *****/
+const dateYears = document.querySelectorAll('._date-years');
+const inputsYearOnly = [];
+//Создаем массив объектов из полей ввода года и их начальных значений
+for (let item of dateYears) {
+ inputsYearOnly.push({
+  thisItem: item,
+  textValue: '',
+ });
+}
+
+for (let i = 0; i < inputsYearOnly.length; i += 1) {
+
+ inputsYearOnly[i].thisItem.addEventListener('input', (e) => {
+  let newValue = e.target.value;
+
+  if (inputsYearOnly[i].textValue.length >= 3 && +e.target.value > 1900 && +e.target.value < 2020) {
+   e.target.classList.remove('wrong-year');
+  }
+
+  if (inputsYearOnly[i].textValue.length >= 3 && +e.target.value < 1900 && +e.target.value > 2020) {
+   e.target.classList.add('wrong-year');
+  }
+
+  if (inputsYearOnly[i].textValue.length > 3) {
+   e.target.value = newValue.slice(0, 4);
+   return;
+  }
+
+  if (newValue.match(/[^0-9]/g)) {
+   e.target.value = inputsYearOnly[i].textValue;
+   return;
+  }
+  inputsYearOnly[i].textValue = newValue;
+  e.target.value = newValue;
+ });
+
+ inputsYearOnly[i].thisItem.addEventListener('change', (e) => {
+  if (+e.target.value < 1900 || +e.target.value > 2020) {
+   e.target.classList.add('wrong-year');
+  } else {
+   e.target.classList.remove('wrong-year');
+  }
+ });
+}
+/**Конец ввод в поля с годом **/
+
+
 
 /********* Показать телефон и email **********/
 const btnTelMails = document.querySelectorAll('.btnTelMail');

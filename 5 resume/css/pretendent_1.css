@@ -549,15 +549,20 @@ button.window__btn.mono:before {
 }
 
 .window__now span:nth-child(2):hover {
- color: var(--bg-red);
+ color: var(--card-hoverdark);
 }
 
 .window__now button {
  margin-left: 20px;
- color: var(--bg-red);
+ color: var(--card-name);
  padding-bottom: 0;
  border: none;
- border-bottom: 1px dashed var(--bg-red);
+ line-height: 1.12;
+ border-bottom: 1px dashed var(--card-name);
+}
+
+.window__now button:hover {
+ color: var(--card-hoverdark);
 }
 
 .header-leftwrap .edit-comment {
@@ -3623,12 +3628,9 @@ button.edit {
 .window-tabs__col.col1,
 .window-tabs__col.col3,
 .window-tabs__col.col4,
+.window-tabs__col.col5,
 .window-tabs__col.col6 {
  width: 70%;
-}
-
-.window-tabs__col.col5 {
- width: 80%;
 }
 
 .window-tabs__side p {
@@ -3768,8 +3770,13 @@ button.edit {
  height: 100%;
 }
 
-.options__item+.options__item {
+.options__item {
  margin-left: 10px;
+ margin-left: 20px;
+}
+
+.options__item+.options__item {
+ margin-right: 10px;
 }
 
 .window-tabs__options .window-tabs__label {
@@ -3781,6 +3788,7 @@ button.edit {
  position: relative;
  width: 50px;
  padding-left: 30px;
+ box-sizing: border-box;
 }
 
 .options__label::before {
@@ -3799,10 +3807,10 @@ button.edit {
  content: '';
  display: block;
  position: absolute;
- top: 0;
- left: 3px;
- width: 16px;
- height: 16px;
+ top: 1px;
+ left: 4px;
+ width: 14px;
+ height: 14px;
  background-color: var(--bg-yellow);
 }
 
@@ -3934,6 +3942,32 @@ button.edit {
  }
 }
 
+@media (max-width: 590px) {
+ .health {
+  margin-top: 30px;
+ }
+
+ .block-education {
+  margin-top: 40px;
+ }
+
+ .options__label {
+  padding-left: 0;
+ }
+
+ .options__label::before {
+  top: -30px;
+ }
+
+ .options__input:checked+.options__label::after {
+  top: -26px;
+ }
+
+ .col6 {
+  margin-top: 30px;
+ }
+}
+
 .window-tabs__label,
 .window-tabs__label.label-date {
  background-color: #fff;
@@ -4019,7 +4053,7 @@ button.edit {
 }
 
 .add-educate {
- width: 80%;
+ width: 70%;
 }
 
 .add-educate td:nth-child(1) {
@@ -4054,14 +4088,7 @@ button.edit {
  }
 }
 
-@media (max-width: 1060px) {
- .window-tabs__avatar {
-  width: 12rem;
-  height: 12rem;
- }
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
  .pretendent-anket {
   position: relative;
  }
@@ -4074,18 +4101,30 @@ button.edit {
  }
 
  .window-tabs__main-title {
-  margin-bottom: 300px;
+  margin-bottom: 350px;
  }
 
  .window-tabs__col.col1,
  .window-tabs__col.col3,
  .window-tabs__col.col4,
+ .window-tabs__col.col5,
  .window-tabs__col.col6 {
   width: 100%;
  }
 
- .window-tabs__col.col5 {
-  *width: 80%;
+ .add-educate {
+  width: 100%;
+ }
+}
+
+@media (max-width: 1060px) {
+ .window-tabs__avatar {
+  width: 12rem;
+  height: 12rem;
+ }
+
+ .window-tabs__main-title {
+  margin-bottom: 320px;
  }
 }
 
@@ -4131,10 +4170,10 @@ button.edit {
  content: '';
  display: block;
  position: absolute;
- top: 3px;
- left: -27px;
- width: 16px;
- height: 16px;
+ top: 4px;
+ left: -26px;
+ width: 14px;
+ height: 14px;
  background-color: var(--bg-yellow);
  cursor: pointer;
 }
@@ -4263,6 +4302,11 @@ button.edit {
 .window-tabs__footer-btn span {
  color: var(--card-name);
  text-decoration: underline;
+}
+
+.wrong-year {
+ /*Некорректный год*/
+ color: red;
 }
 
 /**************Конец анкеты *****************/

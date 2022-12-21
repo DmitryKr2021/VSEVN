@@ -2437,7 +2437,11 @@ var Datepicker = (function () {
     if (item.value && item.parentNode.querySelector('.date-span')) {
      item.parentNode.querySelector('.date-span').classList.add('active');
     }
-    const monthes = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+    /*const monthes = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];//месяц текстом*/
+
+    const monthes = ['.01.', '.02.', '.03.', '.04.', '.05.', '.06.', '.07.', '.08.', '.09.', '.10.', '.11.', '.12.']; //месяц числом
+
     if (item.value && item == document.activeElement) {
      let today = new Date(newDates[0]);
      let dd = String(today.getDate()).padStart(2, '0');
