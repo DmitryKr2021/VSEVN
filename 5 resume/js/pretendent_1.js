@@ -499,7 +499,6 @@ function chooseFlatItem(e) {
 /*******Конец условия проживания *****/
 
 /*****Место работы, обязанности ******/
-//const 
 const addBtns = document.querySelectorAll('.add__btn');
 for (let btn of addBtns) {
  btn.addEventListener('click', addResponsibilities);

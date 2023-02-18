@@ -2750,7 +2750,7 @@ let gold = false;
 window.addEventListener('click', function (e) {
  if ((e.clientY > info.getBoundingClientRect().top - 30) && !e.target.closest('.roll__new')) {
   gold = true; //Для дымки короткого поля в card-gold
-  changeColorGreen();
+  //changeColorGreen(); - старый вариант, сужение при любом клике ниже желтого поля
   let coef = 80;
   for (let item of cardNames) {
    if (item.innerText.length > 30) {
@@ -2760,12 +2760,12 @@ window.addEventListener('click', function (e) {
      -webkit-text-fill-color: transparent;`;
     item.addEventListener('mouseover', showNamePopup);
    }
-   item.addEventListener('mouseout', popupNameRemove);
   }
 
   setTimeout(() => {
    cardDescsToSmoke();
    cardNamesToSmoke();
+   toFavorToSmoke();
   }, 1000); //уйти от контекста клика windows
  }
 });
@@ -2787,18 +2787,18 @@ window.addEventListener('scroll', function () {
 
 /**************Перевод в дымку в левом поле**************** */
 const cardPretendents = document.querySelectorAll('.card__pretendent');
+const toFavors = document.querySelectorAll('.to-favor');
+const toFavor1s = document.querySelectorAll('.to-favor1');
 window.addEventListener('resize', handleTextToSmoke);
 window.addEventListener('load', handleTextToSmoke);
-let popupName = document.createElement('div'); //для перевода в дымку;
 
 function cardNamesToSmoke() {
-
  let coef = 80;
  let maxL = 620;
  for (let item of cardNames) {
   if (item.scrollWidth > item.offsetWidth && item.offsetWidth < maxL) {
    item.style.cssText =
-    `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
+    `background: linear-gradient(to right, #373737 ${coef}%, #656565 ${coef*1.1}%, transparent ${coef*1.2}%); 
      -webkit-background-clip: text; 
      -webkit-text-fill-color: transparent;`;
    item.addEventListener('mouseover', showNamePopup);
@@ -2806,38 +2806,33 @@ function cardNamesToSmoke() {
    item.style.cssText = '';
    item.removeEventListener('mouseover', showNamePopup);
   }
-  item.addEventListener('mouseout', popupNameRemove);
-
+  
   if (gold) {
    if (item.classList.contains('card-gold__name')) {
     item.style.cssText =
      `background: linear-gradient(to right, #565656 ${coef}%, #565656 ${coef*1.1}%, transparent ${coef*1.2}%); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;`;
-    item.addEventListener('mouseover', showNamePopup);
+    //item.addEventListener('mouseover', showNamePopup);
    }
   }
  }
 }
 
 function cardDescsToSmoke() {
- //const charWidth = 7.5;
  const charWidth = 6;
  for (let item of cardDescs) {
   let maxCharCount = Math.round(2 * item.offsetWidth / charWidth);
   let thisStr = item.querySelector('li').innerText;
-  if (thisStr.length > (maxCharCount - 5)) {
+  if (thisStr.length > (maxCharCount - 30)) {
    item.querySelector('li').addEventListener('mouseover', showNamePopup);
-   item.querySelector('li').addEventListener('mouseout', popupNameRemove);
-  } else {
-   item.querySelector('li').removeEventListener('mouseover', showNamePopup);
   }
  }
 }
 
 function cardPretendentsToSmoke() {
+ let coef = 75;
  for (let item of cardPretendents) {
-  let coef = 75;
   if (item.offsetWidth < 390) {
    item.style.cssText =
     `background: linear-gradient(to right, #619f00 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
@@ -2848,7 +2843,35 @@ function cardPretendentsToSmoke() {
    item.style.cssText = '';
    item.removeEventListener('mouseover', showNamePopup);
   }
-  item.addEventListener('mouseout', popupNameRemove);
+ }
+}
+
+function toFavorToSmoke() {
+ let coef = 75;
+ for (let item of toFavors) {
+  if(!item.classList.contains('to-favor1')) {
+  if (item.offsetWidth < 200) {
+   item.style.cssText =
+    `background: linear-gradient(to right, #565656 ${coef}%, #629f008e ${coef*1.1}%, transparent ${coef*1.2}%); 
+     -webkit-background-clip: text; 
+     -webkit-text-fill-color: transparent;`;
+   item.addEventListener('mouseover', showNamePopup);
+  } else {
+   item.style.cssText = '';
+   item.removeEventListener('mouseover', showNamePopup);
+  }
+  } else {
+   if (item.offsetWidth < 180) {
+    item.style.cssText =
+     `background: linear-gradient(to right, #dfc100 ${coef}%, #fced8f ${coef*1.1}%, transparent ${coef*1.2}%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;`;
+    item.addEventListener('mouseover', showNamePopup);
+   } else {
+    item.style.cssText = '';
+    item.removeEventListener('mouseover', showNamePopup);
+   }
+  }
  }
 }
 
@@ -2856,21 +2879,31 @@ function handleTextToSmoke() {
  cardNamesToSmoke();
  cardDescsToSmoke();
  cardPretendentsToSmoke();
+ toFavorToSmoke();
 }
 
 function showNamePopup(e) {
+ const popupName = document.createElement('div'); 
+ let topShift = 70;
  const targ = e.currentTarget;
+ if(targ.classList.contains('to-favor')) {
+  topShift = 30;
+ }
+ 
  let itemText = targ.innerText;
- popupName.innerText = itemText;
+ popupName.innerHTML = itemText;
  popupName.classList.add('input-popup');
  targ.before(popupName);
- popupName.style.top = targ.getBoundingClientRect().top - 50 + 'px';
+ popupName.style.top = targ.getBoundingClientRect().top - topShift + 'px';
  popupName.style.left = targ.getBoundingClientRect().left + 'px';
+
+ targ.addEventListener('mouseout', popupNameRemove);
+ 
+ function popupNameRemove() {
+  popupName.remove();
+ }
 }
 
-function popupNameRemove() {
- popupName.remove();
-}
 /************Конец перевод в дымку в левом поле**************/
 
 
@@ -3134,8 +3167,8 @@ for (let card of cardFabrics) {
 /***********Показать соискателя ***********/
 for (let card of cardPretendents) {
  card.addEventListener('click', function () {
-  pretendentCard.classList.remove('initial-hide');
   windowRowRight.classList.add('initial-hide');
+  pretendentCard.classList.remove('initial-hide');
   girlWrapper.classList.add('hide-block');
   companyCard.classList.add('hide-block');
   infoOffer.classList.add('hide-block');
@@ -3144,6 +3177,19 @@ for (let card of cardPretendents) {
  });
 }
 /*********Конец показать соискателя *********/
+
+/***********Показать вакансию ***********/
+for (let card of cardSupnames) {
+ card.addEventListener('click', function () {
+  windowRowRight.classList.add('initial-hide');
+  companyCard.classList.remove('initial-hide');
+  girlWrapper.classList.add('hide-block');
+  infoOffer.classList.add('hide-block');
+  infoSidebar.classList.add('info__sidebar-narrow');
+  infoWindow.classList.add('info__window-wide');
+ });
+}
+/*********Конец показать вакансию *********/
 
 /**************Карточка соискателя************* */
 const pcResume = pretendentCard.querySelector('.pretendent-card__resume');
